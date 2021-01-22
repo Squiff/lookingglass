@@ -3,16 +3,27 @@ const componentPackage = require('./buildComponents');
 const buildPaths = require('./buildPaths');
 const babelCMD = require('./babelCMD');
 
+let logID = 1;
+
+function buildLog(msg) {
+    console.log(`Build Step ${logID}: ${msg}`);
+    logID += 1;
+}
+
 async function runBuild() {
-    // clear previous build
+    buildLog('Clear build directory');
     await fse.emptyDir(buildPaths.out);
-    // ES modules
+
+    buildLog('Babel - ES Modules');
     await babelCMD([buildPaths.babelEntry, '--out-dir', buildPaths.esm], 'esm');
-    // CommonJS Modules
+
+    buildLog('Babel - CommonJS Modules');
     await babelCMD([buildPaths.babelEntry, '--out-dir', buildPaths.cjs], 'cjs');
-    // create package to resolve ESM/CJS imports/requires
+
+    buildLog('Create Component Package');
     await componentPackage();
-    // copy SASS
+
+    buildLog('Copy SASS Directory');
     await fse.copy(buildPaths.sassEntry, buildPaths.sassOutput);
 }
 

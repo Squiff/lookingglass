@@ -15,7 +15,8 @@ async function babelCMD(params, env) {
     const { stdout, stderr } = await exec(cmdStr);
 
     console.log(stdout);
-    console.error(stderr);
+
+    if (stderr) console.error(stderr);
 }
 
 module.exports = babelCMD;
