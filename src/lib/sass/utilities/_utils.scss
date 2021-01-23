@@ -1,0 +1,30 @@
+@use 'sass:math';
+
+
+// round number to specified number of DP
+// option: up|down|null
+@function round($num, $dp, $option: null){
+    $divisor: power(10, $dp);
+    $temp: math.round($num * $divisor) / $divisor;  
+    $result: null;
+
+    @if $option == down {
+        $result: math.floor($num * $divisor) / $divisor
+    } @else if $option == up {
+        $result: math.ceiling($num * $divisor) / $divisor
+    } @else {
+        $result: math.round($num * $divisor) / $divisor
+    }
+
+    @return $result;
+}
+
+@function power($num, $exponent){
+    $result: 1;
+    
+    @for $_ from 1 through $exponent {
+        $result: $result * $num;
+    }
+    
+    @return $result;
+}

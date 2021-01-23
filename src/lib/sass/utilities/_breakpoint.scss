@@ -1,0 +1,39 @@
+@use 'sass:map';
+@use '../components/config';
+
+$breakpoints: config.$breakpoints;
+
+// get the prefix for the provide breakpoint name
+@function prefix($breakpoint) {
+    $bk-size: map.get($breakpoints, $breakpoint);
+
+    @if $bk-size != 0 {
+        @return #{$breakpoint}\:; // m\: -> m:
+    } @else {
+        @return '';
+    }
+}
+
+@function isDefault($breakpoint){
+    $bk-size: map.get($breakpoints, $breakpoint);
+
+    @if $bk-size == 0 {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// wrap contents in a media query for the given breakpoint name
+@mixin media($breakpoint) {
+    $bk-size: map.get($breakpoints, $breakpoint);
+
+    @if $bk-size == 0 {
+        @content;
+    } @else {
+        @media (min-width: $bk-size) {
+            @content;
+            }
+        }
+
+}
