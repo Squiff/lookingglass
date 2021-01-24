@@ -1,0 +1,35 @@
+@use './config';
+@use '../utilities/colors';
+@use 'sass:map';
+@use 'sass:color';
+
+$colors: colors.allColors();
+
+// ----- COLORS ----
+// Background/Text/Border Color
+
+// background classes - color
+@mixin background($colorName, $color) {
+    .bg-#{$colorName} {
+        background-color: $color;
+    }
+}
+
+@mixin textColor($colorName, $color) {
+    .color-#{$colorName} {
+        color: $color;
+    }
+}
+
+@mixin borderColor($colorName, $color) {
+    .bc-#{$colorName} {
+        border-color: $color;
+    }
+}
+
+// background classes
+@each $colorName, $color in $colors {
+    @include background($colorName, $color);
+    @include textColor($colorName, $color);
+    @include borderColor($colorName, $color);
+}

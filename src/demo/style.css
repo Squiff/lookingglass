@@ -5,8 +5,11 @@
 }
 
 .placeholder {
-    background-color: #2a9d8f;
     height: 100px;
     padding: 20px;
     border: 1px solid #333333;
+}
+
+.color-example {
+    height: 40px;
 }

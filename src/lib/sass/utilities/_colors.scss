@@ -1,0 +1,61 @@
+@use 'sass:map';
+@use 'sass:color';
+@use '../components/config';
+
+// get colors for components
+@function componentColors() {
+    @return config.$theme;
+}
+
+// get all colors
+// $variants: including light/dark variants
+@function allColors($variants: true) {
+    $allColors: map.merge(config.$colors, config.$theme);
+
+    @if $variants {
+        $colorVariants: colorVariants();
+        $allColors: map.merge($colorVariants, $allColors);
+    }
+
+    @return $allColors;
+}
+
+// generate light/dark variants for all colors supplied in config.$colorVariants
+@function colorVariants() {
+    $output: ();
+    $colors: allColors(
+        $variants: false,
+    );
+
+    @each $colorName in config.$colorVariants {
+        $color: map.get($colors, $colorName);
+
+        @if $color {
+            $variants: colorVariant($colorName, $color);
+            $output: map.merge($output, $variants);
+        }
+    }
+
+    @return $output;
+}
+
+// generate light/dark variations for a single color
+@function colorVariant($colorName, $color) {
+    $output: ();
+    $variantStep: 100% / (config.$colorVariantCount + 1);
+
+    @for $scale from 1 through config.$colorVariantCount {
+        $variantScale: $scale * $variantStep;
+
+        $light: color.scale($color, $lightness: $variantScale);
+        $lightName: #{$colorName}-l#{$scale};
+
+        $dark: color.scale($color, $lightness: -$variantScale);
+        $darkName: #{$colorName}-d#{$scale};
+
+        $output: map.set($output, $darkName, $dark);
+        $output: map.set($output, $lightName, $light);
+    }
+
+    @return $output;
+}
