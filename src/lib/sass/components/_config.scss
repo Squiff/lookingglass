@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 // ********** BREAKPOINTS **********
 
 $breakpoints: (
@@ -6,11 +8,21 @@ $breakpoints: (
     'l': 1024px,
 ) !default;
 
-// ********** COLORS **********
-// colors: generate classes for text, background and border
-// theme: as above + generates variations for components
+// container max width (defaults approx 95% of breakpoint)
+$containers: (
+    'sm': 100vw,
+    'm': 90vw,
+    'l': 90vw,
+);
 
-// themes: generate components
+// after medium breakpoint, 80% width up to 1400px
+$containerWidth: 80vw;
+$containWidthFrom: 'm';
+$containerMax: 1400px;
+
+// ********** COLORS **********
+
+// themes: generate component variants
 $theme: (
     'primary': #3a6b7e,
     'secondary': #07212b,

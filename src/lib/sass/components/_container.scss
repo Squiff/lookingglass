@@ -1,0 +1,18 @@
+@use './config';
+@use '../utilities/breakpoint';
+
+$width: config.$containerWidth;
+$widthFrom: config.$containWidthFrom;
+$max: config.$containerMax;
+
+.container {
+    width: 100%;
+    max-width: $max;
+    margin: auto;
+}
+
+@include breakpoint.media($widthFrom) {
+    .container {
+        width: $width;
+    }
+} ;

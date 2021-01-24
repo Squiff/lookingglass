@@ -23,7 +23,7 @@ function FlexEx5() {
                     <Placeholder>cols=3</Placeholder>
                 </Flex.Child>
                 <Flex.Child cols="1">
-                    <Placeholder>cols=1</Placeholder>
+                    <Placeholder>1</Placeholder>
                 </Flex.Child>
                 <Flex.Child cols="auto">
                     <Placeholder>cols=auto</Placeholder>
@@ -37,10 +37,10 @@ function FlexEx5() {
                 <Flex.Child cols="2">
                     <Flex>
                         <Flex.Child cols="6">
-                            <Placeholder>cols=6</Placeholder>
+                            <Placeholder>6</Placeholder>
                         </Flex.Child>
                         <Flex.Child cols="6">
-                            <Placeholder>cols=6</Placeholder>
+                            <Placeholder>6</Placeholder>
                         </Flex.Child>
                     </Flex>
                 </Flex.Child>

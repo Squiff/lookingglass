@@ -10,14 +10,14 @@ import Flex from '/src/lib/components/flex';
 
 function FlexExample() {
     return (
-        <>
+        <div className="container">
             <FlexEx1 />
             <FlexEx2 />
             <FlexEx3 />
             <FlexEx4 />
             <FlexEx5 />
             <FlexEx6 />
-        </>
+        </div>
     );
 }
 

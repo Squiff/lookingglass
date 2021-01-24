@@ -3,7 +3,7 @@ import Swatch from './Swatch';
 
 function ColorExamples() {
     return (
-        <>
+        <div className="container">
             <h1>Theme Colors</h1>
             <div className="bg-primary color-example color-secondary">
                 Primary background secondary text
@@ -19,9 +19,11 @@ function ColorExamples() {
             <div className="bg-dark color-example"></div>
             <div className="bg-light color-example"></div>
             <h1>Color Variants</h1>
+            <h3>Primary</h3>
             <Swatch variant="primary" variantCount="4" />
+            <h3>Secondary</h3>
             <Swatch variant="secondary" variantCount="4" />
-        </>
+        </div>
     );
 }
 
