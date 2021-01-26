@@ -2,6 +2,9 @@
 @use './components/flex';
 @use './components/colors';
 
+@use './components/alerts';
+@use './components/btn';
+
 * {
     margin: 0;
     padding: 0;

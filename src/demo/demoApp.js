@@ -2,6 +2,7 @@ import React from 'react';
 import FlexExample from './components/FlexExample';
 import ColorExamples from './components/ColorExamples';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import AlertExamples from './components/AlertExamples';
 
 function DemoApp() {
     return (
@@ -14,6 +15,9 @@ function DemoApp() {
                     <div>
                         <Link to="/color">Color</Link>
                     </div>
+                    <div>
+                        <Link to="/alert">Alert</Link>
+                    </div>
                 </div>
 
                 <Switch>
@@ -22,6 +26,9 @@ function DemoApp() {
                     </Route>
                     <Route path="/color">
                         <ColorExamples />
+                    </Route>
+                    <Route path="/alert">
+                        <AlertExamples />
                     </Route>
                 </Switch>
             </div>

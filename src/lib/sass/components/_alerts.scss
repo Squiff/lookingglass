@@ -1,0 +1,50 @@
+@use 'sass:map';
+@use 'sass:color';
+@use '../utilities/colors';
+
+$colors: colors.componentColors();
+
+$border-radius: 5px !default;
+$border-width: 0 !default;
+$padding: 10px !default;
+$colorLightness: -80% !default; // background color scale factor
+$bgLightness: 50% !default; // foreground color scale factor
+
+@mixin alert($colorName, $color) {
+    .alert-#{$colorName} {
+        color: color.scale($color, $lightness: $colorLightness);
+        background-color: color.scale($color, $lightness: $bgLightness);
+
+        @if $border-width > 0 {
+            border-color: $color;
+        }
+    }
+}
+
+@mixin alertSolid($colorName, $color) {
+    .alert-#{$colorName}-solid {
+        color: colors.textColor($color);
+        background-color: $color;
+    }
+}
+
+.alert {
+    padding: $padding;
+    border-radius: $border-radius;
+
+    @if $border-width > 0 {
+        border-width: $border-width;
+        border-style: solid;
+    }
+}
+
+@each $colorName, $color in $colors {
+    @include alert($colorName, $color);
+    @include alertSolid($colorName, $color);
+}
+
+// close button will be positioned in top right
+.alert--close {
+    position: relative;
+    padding-right: 50px;
+}

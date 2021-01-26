@@ -41,5 +41,8 @@ $colors: (
 ) !default;
 
 // generate [variantCount] light/dark variations for specified colors
-$colorVariants: ('primary', 'secondary');
-$colorVariantCount: 4;
+$colorVariants: ('primary', 'secondary') !default;
+$colorVariantCount: 4 !default;
+
+// Text color to be used on light backgrounds
+$darkTextColor: #222222 !default;
