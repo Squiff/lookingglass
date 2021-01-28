@@ -59,5 +59,6 @@ module.exports = {
         hot: true,
         port: 7357,
         clientLogLevel: 'silent',
+        historyApiFallback: true,
     },
 };
