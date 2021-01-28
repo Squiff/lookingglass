@@ -1,3 +1,97 @@
+@use 'sass:color';
+@use './config';
+@use '../utilities/colors';
+
+$colors: colors.componentColors();
+
+$padding: 8px 16px !default;
+$paddingSm: 5px 10px !default;
+$paddingL: 12px 24px !default;
+$borderRadius: 3px !default;
+
+// ========= Solid Color  ============
+@mixin buttonSolid($colorName, $color) {
+    .btn-#{$colorName} {
+        & {
+            // border: 1px solid $color;
+            background-color: $color;
+            color: colors.textColor($color);
+        }
+
+        &:hover:not(:disabled) {
+            background-color: color.scale($color, $lightness: -20%);
+        }
+    }
+}
+
+// ========= Outline Color  ============
+@mixin buttonOutline($colorName, $color) {
+    .btn-#{$colorName}-outline {
+        & {
+            background-color: transparent;
+            border: 1px solid $color;
+            color: $color;
+        }
+
+        &:hover:not(:disabled) {
+            background-color: $color;
+            color: colors.textColor($color);
+            border-color: $color;
+        }
+    }
+}
+
+/********** GENERATE CSS *************/
+.btn {
+    display: inline-block;
+    padding: $padding;
+    border-radius: $borderRadius;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+
+    &:disabled {
+        cursor: default;
+        opacity: 0.7;
+    }
+
+    /* Size Variants */
+    &--s {
+        padding: $paddingSm;
+        font-size: 0.875rem;
+    }
+
+    &--l {
+        padding: $paddingL;
+        font-size: 1.125rem;
+    }
+
+    /* Shadow */
+    &--shadow {
+        box-shadow: 0 3px 0 -2px rgba(0, 0, 0, 0.3),
+            0 2px 2px 0 rgba(0, 0, 0, 0.15), 0 1px 5px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    /* no styling */
+    &--none {
+        & {
+            background-color: transparent;
+            color: currentColor;
+        }
+
+        &:hover:not(:disabled) {
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+    }
+}
+
+@each $colorName, $color in $colors {
+    @include buttonSolid($colorName, $color);
+    @include buttonOutline($colorName, $color);
+}
+
+/********** Additional Tool Buttons *************/
 .close-btn {
     font-size: 24px;
     width: 40px;

@@ -65,7 +65,7 @@
 // https://www.w3.org/TR/WCAG20-TECHS/G18.html#G18-tests
 
 // function to pick the appropriate dark or light text color for the specied background
-// will give a warning if neither of the color does not suit light or dark text color
+// will give a warning if the background is not suitable for light or dark text
 @function textColor($bg) {
     $lightContrast: contrastRatio($bg, #ffffff);
     $darkContrast: contrastRatio($bg, config.$darkTextColor);
