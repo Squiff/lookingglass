@@ -4,6 +4,7 @@ import ColorExamples from './components/ColorExamples';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import AlertExamples from './components/AlertExamples';
 import ButtonExample from './components/ButtonExample';
+import Typography from './components/Typography';
 
 function DemoApp() {
     return (
@@ -22,6 +23,9 @@ function DemoApp() {
                     <div>
                         <Link to="/button">Button</Link>
                     </div>
+                    <div>
+                        <Link to="/typography">Typography</Link>
+                    </div>
                 </div>
 
                 <Switch>
@@ -36,6 +40,9 @@ function DemoApp() {
                     </Route>
                     <Route path="/button">
                         <ButtonExample />
+                    </Route>
+                    <Route path="/typography">
+                        <Typography />
                     </Route>
                 </Switch>
             </div>
