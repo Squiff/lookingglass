@@ -46,3 +46,10 @@ $colorVariantCount: 4 !default;
 
 // Text color to be used on light backgrounds
 $darkTextColor: #222222 !default;
+
+// ********** OTHER **********
+$z-index: (
+    'overlay': 1000,
+);
+
+$overlay-animation-duration: 300ms !default;
