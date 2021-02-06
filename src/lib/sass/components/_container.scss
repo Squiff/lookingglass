@@ -1,18 +1,24 @@
 @use './config';
 @use '../utilities/breakpoint';
 
-$width: config.$containerWidth;
-$widthFrom: config.$containWidthFrom;
-$max: config.$containerMax;
+// container will be full width up until this breakpoint
+$container-full-breakpoint: 'm' !default;
+// padding to apply when at full width
+$container-full-padding: 0 10px !default;
+// max/@forward ; after breakpoint
+$width: 85vw !default;
+$max-width: 1400px !default;
 
 .container {
     width: 100%;
-    max-width: $max;
+    max-width: $max-width;
+    padding: $container-full-padding;
     margin: auto;
 }
 
-@include breakpoint.media($widthFrom) {
+@include breakpoint.media($container-full-breakpoint) {
     .container {
         width: $width;
+        padding: 0;
     }
 } ;

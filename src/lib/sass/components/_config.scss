@@ -8,18 +8,6 @@ $breakpoints: (
     'l': 1024px,
 ) !default;
 
-// container max width (defaults approx 95% of breakpoint)
-$containers: (
-    'sm': 100vw,
-    'm': 90vw,
-    'l': 90vw,
-);
-
-// after medium breakpoint, 80% width up to 1400px
-$containerWidth: 80vw;
-$containWidthFrom: 'm';
-$containerMax: 1400px;
-
 // ********** COLORS **********
 
 // themes: generate component variants
