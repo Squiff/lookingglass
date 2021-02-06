@@ -6,6 +6,7 @@ import AlertExamples from './components/AlertExamples';
 import ButtonExample from './components/ButtonExample';
 import Typography from './components/Typography';
 import DrawerExample from './components/DrawerExample';
+import ModalExample from './components/ModalExample';
 
 function DemoApp() {
     return (
@@ -30,6 +31,9 @@ function DemoApp() {
                     <div>
                         <Link to="/drawers">Drawers</Link>
                     </div>
+                    <div>
+                        <Link to="/modals">Modals</Link>
+                    </div>
                 </div>
 
                 <Switch>
@@ -50,6 +54,9 @@ function DemoApp() {
                     </Route>
                     <Route path="/drawers">
                         <DrawerExample />
+                    </Route>
+                    <Route path="/modals">
+                        <ModalExample />
                     </Route>
                 </Switch>
             </div>

@@ -7,6 +7,7 @@ $background-color-closed: color.change($background-color, $alpha: 0);
 
 .overlay {
     position: fixed;
+    display: flex;
     top: 0;
     right: 0;
     bottom: 0;
@@ -20,6 +21,11 @@ $background-color-closed: color.change($background-color, $alpha: 0);
     // note: content is tabbable to retain focus.
     &__content {
         outline: none;
+    }
+
+    &--center {
+        justify-content: center;
+        align-items: center;
     }
 
     &--closed {

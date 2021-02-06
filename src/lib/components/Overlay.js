@@ -23,10 +23,11 @@ const transitionClasses = {
 // trapping/retaining focus
 // escape key to close
 // clicking on overlay to close
-function Overlay({ children, show, onClose, closeOnClick }) {
+function Overlay({ children, show, onClose, closeOnClick, center }) {
     const overlayRef = useRef();
     const transitionEnd = useTransitionEnd(overlayRef);
     const [focusTrapActive, setFocusTrapActive] = useState(show);
+    const classes = ['overlay'];
 
     // disable the scroll and hide scrollbar
     useRemoveWindowScroll(show);
@@ -62,6 +63,12 @@ function Overlay({ children, show, onClose, closeOnClick }) {
         }
     }
 
+    if (center) {
+        classes.push('overlay--center');
+    }
+
+    const classStr = classes.join(' ');
+
     return (
         <CSSTransition
             in={show}
@@ -72,7 +79,7 @@ function Overlay({ children, show, onClose, closeOnClick }) {
         >
             <FocusTrap active={focusTrapActive} focusTrapOptions={FocusOptions}>
                 <div
-                    className="overlay"
+                    className={classStr}
                     onClick={handleClick}
                     ref={overlayRef}
                     role="dialog"
