@@ -35,7 +35,7 @@ function Overlay({ children, show, onClose, closeOnClick }) {
     useEffect(() => {
         if (show) {
             const listener = (e) => {
-                if (e.code === 'Escape' && onClick) {
+                if (e.code === 'Escape' && onClose) {
                     onClose();
                 }
             };
@@ -71,7 +71,13 @@ function Overlay({ children, show, onClose, closeOnClick }) {
             addEndListener={transitionEnd}
         >
             <FocusTrap active={focusTrapActive} focusTrapOptions={FocusOptions}>
-                <div className="overlay" onClick={handleClick} ref={overlayRef}>
+                <div
+                    className="overlay"
+                    onClick={handleClick}
+                    ref={overlayRef}
+                    role="dialog"
+                    aria-modal="true"
+                >
                     <div
                         className="overlay__content"
                         tabIndex="0" //ensures focus trap always has something to focus

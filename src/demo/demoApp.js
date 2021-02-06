@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import AlertExamples from './components/AlertExamples';
 import ButtonExample from './components/ButtonExample';
 import Typography from './components/Typography';
+import DrawerExample from './components/DrawerExample';
 
 function DemoApp() {
     return (
@@ -26,6 +27,9 @@ function DemoApp() {
                     <div>
                         <Link to="/typography">Typography</Link>
                     </div>
+                    <div>
+                        <Link to="/drawers">Drawers</Link>
+                    </div>
                 </div>
 
                 <Switch>
@@ -43,6 +47,9 @@ function DemoApp() {
                     </Route>
                     <Route path="/typography">
                         <Typography />
+                    </Route>
+                    <Route path="/drawers">
+                        <DrawerExample />
                     </Route>
                 </Switch>
             </div>
