@@ -10,20 +10,20 @@ $colors: colors.allColors();
 
 // background classes - color
 @mixin background($colorName, $color) {
-    .bg-#{$colorName} {
-        background-color: $color;
+    .bg--#{$colorName} {
+        background-color: $color !important;
     }
 }
 
 @mixin textColor($colorName, $color) {
-    .color-#{$colorName} {
-        color: $color;
+    .color--#{$colorName} {
+        color: $color !important;
     }
 }
 
 @mixin borderColor($colorName, $color) {
-    .bc-#{$colorName} {
-        border-color: $color;
+    .bc--#{$colorName} {
+        border-color: $color !important;
     }
 }
 
