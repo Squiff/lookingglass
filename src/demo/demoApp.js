@@ -7,6 +7,7 @@ import ButtonExample from './components/ButtonExample';
 import Typography from './components/Typography';
 import DrawerExample from './components/DrawerExample';
 import ModalExample from './components/ModalExample';
+import SpinnerExample from './components/SpinnerExample';
 
 function DemoApp() {
     return (
@@ -34,6 +35,9 @@ function DemoApp() {
                     <div>
                         <Link to="/modals">Modals</Link>
                     </div>
+                    <div>
+                        <Link to="/spinners">Spinners</Link>
+                    </div>
                 </div>
 
                 <Switch>
@@ -57,6 +61,9 @@ function DemoApp() {
                     </Route>
                     <Route path="/modals">
                         <ModalExample />
+                    </Route>
+                    <Route path="/spinners">
+                        <SpinnerExample />
                     </Route>
                 </Switch>
             </div>

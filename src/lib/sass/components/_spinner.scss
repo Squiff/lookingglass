@@ -1,0 +1,74 @@
+@use 'sass:math';
+@use 'sass:map';
+@use './config';
+
+$animation-duration: 1.5s !default;
+// Spinner uses currentColor this is the default color if none is supplied.
+$color: map.get(config.$theme, 'info') !default;
+
+// svg viewbox is 100x 100y
+$svg-radius: 40;
+$svg-circumference: 2 * math.$pi * $svg-radius;
+
+.spinner {
+    width: 35px;
+    height: 35px;
+    color: $color;
+    transform: rotateZ(-90deg);
+
+    &--rotate {
+        animation: rotate-animation $animation-duration linear infinite;
+    }
+
+    &--s {
+        height: 20px;
+        width: 20px;
+    }
+
+    &--l {
+        height: 50px;
+        width: 50px;
+    }
+
+    &__circle {
+        fill: none;
+        stroke-width: 16;
+        stroke: currentColor;
+        animation: fill-animation $animation-duration linear infinite;
+    }
+
+    &__halo {
+        fill: none;
+        stroke-width: 18;
+        stroke: currentColor;
+        opacity: 0.2;
+    }
+}
+
+// circle always draws from 3 o'clock going clockwise
+// transformZ is used to make this start at 12 o'clock
+// stroke-dasharray: [draw-length] [gap]
+// stroke-dashoffset: +ve to pull dash start point / -ve to push
+@keyframes fill-animation {
+    0% {
+        stroke-dasharray: 0 $svg-circumference;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: $svg-circumference;
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dasharray: $svg-circumference;
+        stroke-dashoffset: -$svg-circumference;
+    }
+}
+
+@keyframes rotate-animation {
+    0% {
+        transform: rotateZ(-90deg);
+    }
+    100% {
+        transform: rotateZ(270deg);
+    }
+}
