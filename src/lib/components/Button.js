@@ -1,10 +1,14 @@
 import React from 'react';
 
-function Button({ children, color, size, btnStyle, shadow, ...props }) {
+function Button({ children, color, size, btnStyle, shadow, block, ...props }) {
     const classes = ['btn'];
 
     if (btnStyle === 'none') {
         classes.push('btn--none');
+    }
+
+    if (block) {
+        classes.push('btn--block');
     }
 
     switch (size) {
@@ -23,10 +27,10 @@ function Button({ children, color, size, btnStyle, shadow, ...props }) {
             classes.push('btn--none');
             break;
         case 'outline':
-            classes.push(`btn-${color}-outline`);
+            classes.push(`btn--outline-${color}`);
             break;
         default:
-            classes.push(`btn-${color}`);
+            classes.push(`btn--clr-${color}`);
             // include shadow by default
             if (shadow !== false) {
                 classes.push('btn--shadow');

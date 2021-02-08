@@ -1,17 +1,23 @@
 @use 'sass:color';
 @use './config';
 @use '../utilities/colors';
+@use '../utilities/shadows';
 
 $colors: colors.componentColors();
 
+$font-weight: 600 !default;
+$font-size: 1rem !default;
 $padding: 8px 16px !default;
-$paddingSm: 5px 10px !default;
-$paddingL: 12px 24px !default;
+$padding-small: 5px 10px !default;
+$font-size-small: 0.875rem !default;
+$padding-large: 12px 24px !default;
+$font-size-large: 1.125rem !default;
 $borderRadius: 3px !default;
+$shadow: 1 !default;
 
 // ========= Solid Color  ============
 @mixin buttonSolid($colorName, $color) {
-    .btn-#{$colorName} {
+    .btn--clr-#{$colorName} {
         & {
             // border: 1px solid $color;
             background-color: $color;
@@ -26,7 +32,7 @@ $borderRadius: 3px !default;
 
 // ========= Outline Color  ============
 @mixin buttonOutline($colorName, $color) {
-    .btn-#{$colorName}-outline {
+    .btn--outline-#{$colorName} {
         & {
             background-color: transparent;
             border: 1px solid $color;
@@ -46,10 +52,11 @@ $borderRadius: 3px !default;
     display: inline-block;
     padding: $padding;
     border-radius: $borderRadius;
-    font-size: 1rem;
-    font-family: inherit;
+    font-size: $font-size;
+    font-weight: $font-weight;
     cursor: pointer;
     border: none;
+    transition: background-color 250ms;
 
     &:disabled {
         cursor: default;
@@ -58,19 +65,18 @@ $borderRadius: 3px !default;
 
     /* Size Variants */
     &--s {
-        padding: $paddingSm;
-        font-size: 0.875rem;
+        padding: $padding-small;
+        font-size: $font-size-small;
     }
 
     &--l {
-        padding: $paddingL;
-        font-size: 1.125rem;
+        padding: $padding-large;
+        font-size: $font-size-large;
     }
 
     /* Shadow */
     &--shadow {
-        box-shadow: 0 3px 0 -2px rgba(0, 0, 0, 0.3),
-            0 2px 2px 0 rgba(0, 0, 0, 0.15), 0 1px 5px 0 rgba(0, 0, 0, 0.15);
+        @include shadows.shadow($shadow);
     }
 
     /* no styling */
@@ -83,6 +89,11 @@ $borderRadius: 3px !default;
         &:hover:not(:disabled) {
             background-color: rgba(0, 0, 0, 0.15);
         }
+    }
+
+    &--block {
+        display: block;
+        width: 100%;
     }
 }
 

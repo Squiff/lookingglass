@@ -8,14 +8,19 @@ import ButtonEx4 from '../examples/button/ButtonEx4';
 function ButtonExample() {
     return (
         <div className="container">
-            <h1>Varieties</h1>
+            <h1>Button</h1>
+            <h4>Varieties</h4>
             <ButtonEx1 />
-            <h1>Outline</h1>
+            <h4>Outline</h4>
             <ButtonEx2 />
-            <h1>No Styling</h1>
+            <h4>No Styling</h4>
             <ButtonEx3 />
-            <h1>Sizes</h1>
+            <h4>Sizes</h4>
             <ButtonEx4 />
+            <h4>Block</h4>
+            <Button size="l" btnStyle="outline" color="primary" block={true}>
+                Block Button
+            </Button>
         </div>
     );
 }
