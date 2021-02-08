@@ -17,9 +17,13 @@ module.exports = function (api) {
         presets: [
             [
                 '@babel/preset-env',
-                { modules: modules, targets: '> 0.5%, not dead' },
+                {
+                    modules: modules,
+                    targets: '> 0.5%, not dead',
+                },
             ],
             '@babel/preset-react',
         ],
+        plugins: ['@babel/plugin-transform-runtime'],
     };
 };
