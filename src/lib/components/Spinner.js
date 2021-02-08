@@ -22,14 +22,14 @@ function Spinner({ className, style, halo, color, size, rotate }) {
     let haloCircle;
     if (halo) {
         haloCircle = (
-            <circle class="spinner__halo" cx="50" cy="50" r="40"></circle>
+            <circle className="spinner__halo" cx="50" cy="50" r="40"></circle>
         );
     }
 
     const classStr = classNames(classes, className);
 
     return (
-        <svg class={classStr} style={style} viewBox="0 0 100 100">
+        <svg className={classStr} style={style} viewBox="0 0 100 100">
             {haloCircle}
             <circle class="spinner__circle" cx="50" cy="50" r="40"></circle>
         </svg>

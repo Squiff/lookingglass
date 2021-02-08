@@ -8,6 +8,7 @@ import Typography from './components/Typography';
 import DrawerExample from './components/DrawerExample';
 import ModalExample from './components/ModalExample';
 import SpinnerExample from './components/SpinnerExample';
+import LoaderExample from './components/LoaderExample';
 
 function DemoApp() {
     return (
@@ -38,6 +39,9 @@ function DemoApp() {
                     <div>
                         <Link to="/spinners">Spinners</Link>
                     </div>
+                    <div>
+                        <Link to="/loader">Loader</Link>
+                    </div>
                 </div>
 
                 <Switch>
@@ -64,6 +68,9 @@ function DemoApp() {
                     </Route>
                     <Route path="/spinners">
                         <SpinnerExample />
+                    </Route>
+                    <Route path="/loader">
+                        <LoaderExample />
                     </Route>
                 </Switch>
             </div>
