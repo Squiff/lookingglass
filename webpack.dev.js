@@ -50,6 +50,10 @@ module.exports = {
                 test: /\.(scss|sass|css)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+            },
         ],
     },
     //devtool: '(none)',

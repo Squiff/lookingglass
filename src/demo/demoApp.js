@@ -9,6 +9,7 @@ import DrawerExample from './components/DrawerExample';
 import ModalExample from './components/ModalExample';
 import SpinnerExample from './components/SpinnerExample';
 import LoaderExample from './components/LoaderExample';
+import CardExamples from './components/CardExamples';
 
 function DemoApp() {
     return (
@@ -42,6 +43,9 @@ function DemoApp() {
                     <div>
                         <Link to="/loader">Loader</Link>
                     </div>
+                    <div>
+                        <Link to="/card">Card</Link>
+                    </div>
                 </div>
 
                 <Switch>
@@ -71,6 +75,9 @@ function DemoApp() {
                     </Route>
                     <Route path="/loader">
                         <LoaderExample />
+                    </Route>
+                    <Route path="/card">
+                        <CardExamples />
                     </Route>
                 </Switch>
             </div>
