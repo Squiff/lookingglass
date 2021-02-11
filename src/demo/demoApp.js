@@ -10,6 +10,7 @@ import ModalExample from './components/ModalExample';
 import SpinnerExample from './components/SpinnerExample';
 import LoaderExample from './components/LoaderExample';
 import CardExamples from './components/CardExamples';
+import TableExamples from './components/TableExamples';
 
 function DemoApp() {
     return (
@@ -46,6 +47,9 @@ function DemoApp() {
                     <div>
                         <Link to="/card">Card</Link>
                     </div>
+                    <div>
+                        <Link to="/table">Table</Link>
+                    </div>
                 </div>
 
                 <Switch>
@@ -78,6 +82,9 @@ function DemoApp() {
                     </Route>
                     <Route path="/card">
                         <CardExamples />
+                    </Route>
+                    <Route path="/table">
+                        <TableExamples />
                     </Route>
                 </Switch>
             </div>
