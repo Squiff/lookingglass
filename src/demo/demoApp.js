@@ -11,6 +11,7 @@ import SpinnerExample from './components/SpinnerExample';
 import LoaderExample from './components/LoaderExample';
 import CardExamples from './components/CardExamples';
 import TableExamples from './components/TableExamples';
+import TabsExample from './components/TabsExample';
 
 function DemoApp() {
     return (
@@ -50,6 +51,9 @@ function DemoApp() {
                     <div>
                         <Link to="/table">Table</Link>
                     </div>
+                    <div>
+                        <Link to="/tabs">Tabs</Link>
+                    </div>
                 </div>
 
                 <Switch>
@@ -85,6 +89,9 @@ function DemoApp() {
                     </Route>
                     <Route path="/table">
                         <TableExamples />
+                    </Route>
+                    <Route path="/tabs">
+                        <TabsExample />
                     </Route>
                 </Switch>
             </div>

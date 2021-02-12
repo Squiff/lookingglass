@@ -1,0 +1,40 @@
+@use '../utilities/shadows';
+@use '../components/config';
+@use 'sass:map';
+
+$background-nav: #f4f4f4;
+$tab-padding: 9px 16px 12px 16px;
+$tab-active-background: #ffffff;
+$tab-active-hightlight: map.get(config.$theme, 'primary');
+$panel-background: #ffffff;
+$panel-padding: 12px;
+
+.tabs {
+    border: 2px solid $background-nav;
+    border-top-width: 0;
+
+    &__panel {
+        background: $panel-background;
+        padding: $panel-padding;
+    }
+
+    &__nav {
+        display: flex;
+        background-color: $background-nav;
+    }
+
+    &__tab {
+        background-color: $background-nav;
+        padding: $tab-padding;
+        font-weight: 500;
+        cursor: pointer;
+        border-width: 3px 0 0 0;
+        border-style: solid;
+        border-color: $background-nav;
+
+        &--active {
+            background-color: $tab-active-background;
+            border-color: $tab-active-hightlight;
+        }
+    }
+}
