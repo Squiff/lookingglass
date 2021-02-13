@@ -12,6 +12,7 @@ import LoaderExample from './components/LoaderExample';
 import CardExamples from './components/CardExamples';
 import TableExamples from './components/TableExamples';
 import TabsExample from './components/TabsExample';
+import UtilitiesExamples from './components/UtilitiesExamples';
 
 function DemoApp() {
     return (
@@ -54,6 +55,9 @@ function DemoApp() {
                     <div>
                         <Link to="/tabs">Tabs</Link>
                     </div>
+                    <div>
+                        <Link to="/utilities">Utilities</Link>
+                    </div>
                 </div>
 
                 <Switch>
@@ -92,6 +96,9 @@ function DemoApp() {
                     </Route>
                     <Route path="/tabs">
                         <TabsExample />
+                    </Route>
+                    <Route path="/utilities">
+                        <UtilitiesExamples />
                     </Route>
                 </Switch>
             </div>

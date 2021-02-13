@@ -1,0 +1,41 @@
+@use '../../config';
+@use '../../../utilities/colors';
+@use 'sass:map';
+@use 'sass:color';
+
+$background: true !default;
+$text-color: true !default;
+
+
+// all colors defined in main config file
+$colors: colors.allColors();
+
+// ----- COLORS ----
+@mixin background($colors) {
+    @each $colorName, $color in $colors {
+        .bg--#{$colorName} {
+            background-color: $color !important;
+        }
+    }
+}
+
+@mixin textColor($colors) {
+    @each $colorName, $color in $colors {
+        .clr--#{$colorName} {
+            color: $color !important;
+        }
+    }
+}
+
+
+
+// generate classes
+@if $background {
+    @include background($colors);
+}
+
+@if $text-color {
+    @include textColor($colors);
+}
+
+

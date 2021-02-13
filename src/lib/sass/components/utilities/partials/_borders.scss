@@ -1,0 +1,82 @@
+@use 'sass:map';
+@use '../../../utilities/directions';
+@use '../../../utilities/colors';
+@use '../../config';
+
+$border: true !default;
+$border-color: true !default;
+$border-radius: true !default;
+
+$border-widths: (
+    0: 0,
+    1: 1px,
+    2: 2px,
+    3: 3px,
+    4: 4px,
+) !default;
+
+$border-directions: ('all', 't', 'b', 'r', 'l') !default;
+
+$border-radius-values: (
+    0: 0,
+    1: 2px,
+    2: 4px,
+    3: 8px,
+    rounded: 9999px,
+) !default;
+
+$border-colors: map.merge(config.$colors, config.$theme) !default;
+
+// returns shape ('y': (classsPrefix: '-y', propSuffixes: ('-top','-bottom'))
+$_direction-map: directions.getDirections($border-directions);
+
+@mixin borderWidth() {
+    @each $width-id, $width in $border-widths {
+        @each $direction in $border-directions {
+            $direction-props: map.get($_direction-map, $direction);
+            $direction-prefix: map.get($direction-props, 'classPrefix');
+            $direction-suffixes: map.get($direction-props, 'propSuffixes');
+
+            .bdr#{$direction-prefix}--#{$width-id} {
+                border#{$direction-suffixes}-width: $width !important;
+            }
+        }
+    }
+}
+
+@mixin borderRadius() {
+    @each $radius-id, $radius in $border-radius-values {
+        .bdr-rad--#{$radius-id} {
+            border-radius: $radius !important;
+        }
+    }
+}
+
+@mixin borderColor($colors) {
+    @each $colorName, $color in $colors {
+        .bdr-clr--#{$colorName} {
+            border-color: $color !important;
+        }
+    }
+
+    // also include current color
+    .bdr-clr--current-color {
+        border-color: currentColor;
+    }
+}
+
+@if $border {
+    .bdr {
+        border-style: solid;
+    }
+
+    @include borderWidth();
+}
+
+@if $border-radius {
+    @include borderRadius();
+}
+
+@if $border-color {
+    @include borderColor($border-colors);
+}
