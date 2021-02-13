@@ -13,6 +13,10 @@ function UtilitiesExamples() {
                 <br />
                 Any classes that are already on the child will be merged
             </p>
+            <h2>Margin &amp; padding</h2>
+            <Lookingglass padding="3" margin="3">
+                <div>MARGIN AND PADDING</div>
+            </Lookingglass>
             <h2>Border</h2>
             <ul>
                 Utility classes are included for:

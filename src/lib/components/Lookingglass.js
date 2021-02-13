@@ -5,9 +5,10 @@ import classNames from 'classnames';
 // should have a single child
 function Lookingglass({ children, ...props }) {
     const borderClasses = borderClassResolver(props);
+    const spacerClasses = spacerClassResolver(props);
 
     const child = React.Children.only(children);
-    const classes = classNames(borderClasses, child.props.className);
+    const classes = classNames(borderClasses, spacerClasses, child.props.className);
     const childWithClass = React.cloneElement(child, { className: classes });
 
     return <>{childWithClass}</>;
@@ -68,6 +69,49 @@ function borderClassResolver(props) {
     const classNames = classNameResolver(borderProps, classPrefix, borderValues);
 
     return [...output, ...classNames];
+}
+
+function spacerClassResolver(props) {
+    const {
+        margin,
+        marginTop,
+        marginRight,
+        marginBottom,
+        marginLeft,
+        padding,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft,
+    } = props;
+
+    const spacerProps = {
+        margin,
+        marginTop,
+        marginRight,
+        marginBottom,
+        marginLeft,
+        padding,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft,
+    };
+
+    const classPrefix = {
+        margin: 'm',
+        marginTop: 'm-t',
+        marginRight: 'm-r',
+        marginBottom: 'm-b',
+        marginLeft: 'm-l',
+        padding: 'p',
+        paddingTop: 'p-t',
+        paddingRight: 'p-r',
+        paddingBottom: 'p-b',
+        paddingLeft: 'p-l',
+    };
+
+    return classNameResolver(spacerProps, classPrefix);
 }
 
 export default Lookingglass;
