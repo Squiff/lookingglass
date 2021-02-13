@@ -34,6 +34,7 @@ const classPrefix = {
     paddingRight: 'p-r',
     paddingBottom: 'p-b',
     paddingLeft: 'p-l',
+    shadow: 'shadow',
 };
 
 const classValueMapping = {

@@ -1,0 +1,15 @@
+@use '../../../utilities/shadows';
+
+$shadows: true !default;
+
+@mixin shadow($number) {
+    .shadow--#{$number} {
+        @include shadows.shadow($number);
+    }
+}
+
+@if $shadows {
+    @for $i from 0 through 24 {
+        @include shadow($i);
+    }
+}

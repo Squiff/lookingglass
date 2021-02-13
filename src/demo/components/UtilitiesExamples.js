@@ -33,6 +33,14 @@ function UtilitiesExamples() {
             <Lookingglass border="2" borderLeft={5} borderColor="warning" borderRadius="rounded">
                 <div>BORDER WIDTH/COLOR/RADIUS</div>
             </Lookingglass>
+
+            <h2>Shadow</h2>
+            <p>Shadow takes a value from 0 to 24. A higher number represents a higher elevation.</p>
+            <Lookingglass shadow="2">
+                <div>shadow</div>
+            </Lookingglass>
+
+            <div style={{ height: '200px' }}></div>
         </div>
     );
 }
