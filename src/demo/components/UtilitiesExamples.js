@@ -17,6 +17,11 @@ function UtilitiesExamples() {
             <Lookingglass padding="3" margin="3">
                 <div>MARGIN AND PADDING</div>
             </Lookingglass>
+            <h2>Color</h2>
+            <Lookingglass backgroundColor="primary-l4" color="primary-d1">
+                <div>BACKGROUND AND TEXT COLOR</div>
+            </Lookingglass>
+
             <h2>Border</h2>
             <ul>
                 Utility classes are included for:
@@ -25,11 +30,8 @@ function UtilitiesExamples() {
                 <li>Border Radius</li>
             </ul>
 
-            <Lookingglass border="2" borderLeft={5} borderColor="warning">
-                <div>
-                    I am lookingglass Content
-                    <div>nested 1</div>
-                </div>
+            <Lookingglass border="2" borderLeft={5} borderColor="warning" borderRadius="rounded">
+                <div>BORDER WIDTH/COLOR/RADIUS</div>
             </Lookingglass>
         </div>
     );
