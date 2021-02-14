@@ -1,0 +1,87 @@
+$font-size: true !default;
+$font-weight: true !default;
+$text-decoration: true !default;
+$text-transform: true !default;
+$text-align: true !default;
+
+$font-sizes: (
+    '075': 0.75rem,
+    '0875': 0.875rem,
+    '1': 1rem,
+    '1125': 1.125rem,
+    '125': 1.25rem,
+    '15': 1.5rem,
+    '2': 2rem,
+    '25': 2.5rem,
+    '3': 3rem,
+) !default;
+
+$font-weights: (100, 200, 300, 400, 500, 600, 700, 800, 900) !default;
+$text-transforms: (none, uppercase, lowercase, capitalize) !default;
+$text-aligns: (left, right, center) !default;
+
+@mixin fontSize() {
+    @each $size-id, $size in $font-sizes {
+        .fs--#{$size-id} {
+            font-size: $size;
+        }
+    }
+}
+
+@mixin fontWeight() {
+    @each $weight in $font-weights {
+        .fw--#{$weight} {
+            font-weight: $weight;
+        }
+    }
+}
+
+@mixin textDecoration() {
+    .text-decoration--none {
+        text-decoration: none;
+    }
+
+    .text-decoration--underline {
+        text-decoration: underline;
+    }
+
+    .text-decoration--strike {
+        text-decoration: line-through;
+    }
+}
+
+@mixin textTransform() {
+    @each $transform in $text-transforms {
+        .text-transform--#{$transform} {
+            text-transform: $transform;
+        }
+    }
+}
+
+@mixin textAlign() {
+    @each $align in $text-aligns {
+        .text-align--#{$align} {
+            text-align: $align;
+        }
+    }
+}
+
+@if $font-size {
+    @include fontSize();
+}
+
+@if $font-weight {
+    @include fontWeight();
+}
+
+@if $text-decoration {
+    @include textDecoration();
+}
+
+@if $text-transform {
+    @include textTransform();
+}
+
+@if $text-align {
+    @include textAlign();
+}

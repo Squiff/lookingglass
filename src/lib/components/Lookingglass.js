@@ -35,10 +35,16 @@ const classPrefix = {
     paddingBottom: 'p-b',
     paddingLeft: 'p-l',
     shadow: 'shadow',
+    fontSize: 'fs',
+    fontWeight: 'fw',
+    textDecoration: 'text-decoration',
+    textTransform: 'text-transform',
+    textAlign: 'text-align',
 };
 
 const classValueMapping = {
     borderColor: { current: 'current-color' },
+    textDecoration: { 'line-through': 'strike' },
 };
 
 // a generic function to resolve props to class names

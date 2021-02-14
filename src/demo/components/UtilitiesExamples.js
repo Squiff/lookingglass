@@ -40,6 +40,74 @@ function UtilitiesExamples() {
                 <div>shadow</div>
             </Lookingglass>
 
+            <h2>Font Size</h2>
+            <Lookingglass fontSize="075">
+                <div>The quick brown fox jumps over the lazy dog</div>
+            </Lookingglass>
+            <Lookingglass fontSize="0875">
+                <div>The quick brown fox jumps over the lazy dog</div>
+            </Lookingglass>
+            <Lookingglass fontSize="1">
+                <div>The quick brown fox jumps over the lazy dog</div>
+            </Lookingglass>
+            <Lookingglass fontSize="125">
+                <div>The quick brown fox jumps over the lazy dog</div>
+            </Lookingglass>
+            <Lookingglass fontSize="15">
+                <div>The quick brown fox jumps over the lazy dog</div>
+            </Lookingglass>
+            <Lookingglass fontSize="2">
+                <div>The quick brown fox jumps over the lazy dog</div>
+            </Lookingglass>
+            <Lookingglass fontSize="25">
+                <div>The quick brown fox jumps over the lazy dog</div>
+            </Lookingglass>
+            <Lookingglass fontSize="3">
+                <div>The quick brown fox jumps over the lazy dog</div>
+            </Lookingglass>
+
+            <h2>Font Weight</h2>
+            <Lookingglass fontWeight="900">
+                <div>The quick brown fox jumps over the lazy dog</div>
+            </Lookingglass>
+
+            <h2>Text Decoration</h2>
+            <p>
+                <Lookingglass textDecoration="none">
+                    <a href="#">THIS IS A LINK</a>
+                </Lookingglass>
+                . This text is{' '}
+                <Lookingglass textDecoration="underline">
+                    <span>UNDERLINED</span>
+                </Lookingglass>
+                . This text has a{' '}
+                <Lookingglass textDecoration="line-through">
+                    <span>Strike Through</span>
+                </Lookingglass>
+            </p>
+
+            <h2>Text Transform</h2>
+            <Lookingglass textTransform="none">
+                <h5>None</h5>
+            </Lookingglass>
+            <Lookingglass textTransform="uppercase">
+                <h5>uppercase</h5>
+            </Lookingglass>
+            <Lookingglass textTransform="lowercase">
+                <h5>LOWERCASE</h5>
+            </Lookingglass>
+            <Lookingglass textTransform="capitalize">
+                <h5>capitalize another</h5>
+            </Lookingglass>
+
+            <h2>Text Align</h2>
+            <Lookingglass textAlign="right">
+                <p>This text is right aligned</p>
+            </Lookingglass>
+            <Lookingglass textAlign="center">
+                <p>This text is center aligned</p>
+            </Lookingglass>
+
             <div style={{ height: '200px' }}></div>
         </div>
     );
