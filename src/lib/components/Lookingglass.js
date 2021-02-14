@@ -40,6 +40,8 @@ const classPrefix = {
     textDecoration: 'text-decoration',
     textTransform: 'text-transform',
     textAlign: 'text-align',
+    width: 'w',
+    height: 'h',
 };
 
 const classValueMapping = {

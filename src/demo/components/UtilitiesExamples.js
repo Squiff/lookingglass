@@ -1,5 +1,6 @@
 import React from 'react';
 import Lookingglass from '../../lib/components/Lookingglass';
+import Flex from '../../lib/components/Flex';
 
 function UtilitiesExamples() {
     return (
@@ -107,6 +108,19 @@ function UtilitiesExamples() {
             <Lookingglass textAlign="center">
                 <p>This text is center aligned</p>
             </Lookingglass>
+            <h2>Sizing</h2>
+            <Lookingglass height="50vh" width="50vw" backgroundColor="secondary" color="white" fontWeight="600">
+                <Flex justify="center" align="center" type="auto">
+                    <div>50vh / 50vw</div>
+                </Flex>
+            </Lookingglass>
+            <div style={{ height: '500px' }}>
+                <Lookingglass backgroundColor="primary" width="50" height="50" fontWeight="600">
+                    <Flex justify="center" align="center" type="auto">
+                        <div>Width/Height 25% - Parent 500px</div>
+                    </Flex>
+                </Lookingglass>
+            </div>
 
             <div style={{ height: '200px' }}></div>
         </div>
