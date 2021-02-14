@@ -3,12 +3,12 @@ import classNames from 'classnames';
 
 // component generates classes from props and merges them with classes on the child
 // should have a single child
-function Lookingglass({ children, ...props }) {
+function Lookingglass({ children, className, ...props }) {
     const classes1 = classNameResolver(props, classPrefix, classValueMapping);
     const classes2 = miscClassResolver(props);
 
     const child = React.Children.only(children);
-    const mergedClasses = classNames(classes1, classes2, child.props.className);
+    const mergedClasses = classNames(classes1, classes2, className, child.props.className);
     const childWithClass = React.cloneElement(child, { className: mergedClasses });
 
     return <>{childWithClass}</>;
@@ -42,6 +42,12 @@ const classPrefix = {
     textAlign: 'text-align',
     width: 'w',
     height: 'h',
+    position: 'pos',
+    left: 'left',
+    right: 'right',
+    top: 'top',
+    bottom: 'bottom',
+    absolute: 'pos-abs',
 };
 
 const classValueMapping = {

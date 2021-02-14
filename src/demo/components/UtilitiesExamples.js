@@ -121,6 +121,20 @@ function UtilitiesExamples() {
                     </Flex>
                 </Lookingglass>
             </div>
+            <h2>Position</h2>
+            <Lookingglass backgroundColor="primary" fontWeight="600" position="relative" top="50">
+                <div>STATIC</div>
+            </Lookingglass>
+            <h4>Absolute</h4>
+            <Flex justify="center" align="center" className="bg--light p--5" type="auto">
+                <Lookingglass backgroundColor="white" position="relative" height="30vh" width="75">
+                    <div>
+                        <Lookingglass absolute="top-right" backgroundColor="primary-d3" borderRadius="3">
+                            <div style={{ width: '50px', height: '50px' }}></div>
+                        </Lookingglass>
+                    </div>
+                </Lookingglass>
+            </Flex>
 
             <div style={{ height: '200px' }}></div>
         </div>
