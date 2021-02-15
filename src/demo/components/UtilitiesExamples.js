@@ -129,14 +129,21 @@ function UtilitiesExamples() {
             <Flex justify="center" align="center" className="bg--light p--5" type="auto">
                 <Lookingglass backgroundColor="white" position="relative" height="30vh" width="75">
                     <div>
-                        <Lookingglass absolute="top-right" backgroundColor="primary-d3" borderRadius="3">
+                        <Lookingglass absolute="top-right" backgroundColor="error" borderRadius="rounded">
                             <div style={{ width: '50px', height: '50px' }}></div>
                         </Lookingglass>
                     </div>
                 </Lookingglass>
             </Flex>
 
-            <div style={{ height: '200px' }}></div>
+            <h2>Display</h2>
+
+            <Lookingglass backgroundColor="light" display="inline-block">
+                <div>I am an inline-block</div>
+            </Lookingglass>
+            <Lookingglass backgroundColor="light" display={{ s: 'none', m: 'block' }}>
+                <div>I disappear on small screens</div>
+            </Lookingglass>
         </div>
     );
 }

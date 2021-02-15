@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { prefixClass } from '../utilities/utils';
 
 // component generates classes from props and merges them with classes on the child
 // should have a single child
@@ -48,6 +49,7 @@ const classPrefix = {
     top: 'top',
     bottom: 'bottom',
     absolute: 'pos-abs',
+    display: 'display',
 };
 
 const classValueMapping = {
@@ -65,7 +67,7 @@ function classNameResolver(props, classMapping, valueMapping, separator = '--') 
 
     for (const key in props) {
         const value = props[key];
-        if (value !== undefined) {
+        if (value !== undefined && typeof value !== 'object') {
             const prefix = classMapping[key];
             let classNameSuffix = value;
 
@@ -82,12 +84,21 @@ function classNameResolver(props, classMapping, valueMapping, separator = '--') 
 
 // function for class Names that do not fit into the classNameResolver pattern
 function miscClassResolver(props) {
-    const { border, borderTop, borderRight, borderBottom, borderLeft } = props;
+    const { border, borderTop, borderRight, borderBottom, borderLeft, display } = props;
     const output = [];
 
     // add base border style if at least ones of these props is defined
     if ([border, borderTop, borderRight, borderBottom, borderLeft].some((a) => a !== undefined)) {
         output.push('bdr');
+    }
+
+    // display can pass in an object of breakpoint values {s:'none', m:'block'}
+    if (typeof display === 'object') {
+        for (const k in display) {
+            const displayClassName = `${classPrefix.display}--${display[k]}`;
+            const breakpointClass = prefixClass(k, displayClassName);
+            output.push(breakpointClass);
+        }
     }
 
     return output;
