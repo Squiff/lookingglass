@@ -144,6 +144,15 @@ function UtilitiesExamples() {
             <Lookingglass backgroundColor="light" display={{ s: 'none', m: 'block' }}>
                 <div>I disappear on small screens</div>
             </Lookingglass>
+
+            <h2>Overflow</h2>
+            <Lookingglass height="10vh" overflow="auto">
+                <div>
+                    <Lookingglass height="20vh" backgroundColor="light">
+                        <div>f</div>
+                    </Lookingglass>
+                </div>
+            </Lookingglass>
         </div>
     );
 }

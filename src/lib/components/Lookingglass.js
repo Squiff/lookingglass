@@ -50,6 +50,9 @@ const classPrefix = {
     bottom: 'bottom',
     absolute: 'pos-abs',
     display: 'display',
+    overflow: 'overflow',
+    overflowX: 'overflow-x',
+    overflowY: 'overflow-y',
 };
 
 const classValueMapping = {

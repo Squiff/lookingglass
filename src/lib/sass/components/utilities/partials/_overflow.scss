@@ -1,0 +1,21 @@
+$overflow: true !default;
+
+$overflows: (scroll, hidden, auto, visible) !default;
+
+@mixin overflow() {
+    @each $f in $overflows {
+        .overflow--#{$f} {
+            overflow: $f;
+        }
+        .overflow-x--#{$f} {
+            overflow-x: $f;
+        }
+        .overflow-y--#{$f} {
+            overflow-y: $f;
+        }
+    }
+}
+
+@if $overflow {
+    @include overflow();
+}
