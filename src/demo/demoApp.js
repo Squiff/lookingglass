@@ -2,7 +2,6 @@ import React from 'react';
 import ColorExamples from './components/ColorExamples';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import AlertExamples from './components/AlertExamples';
-import DrawerExample from './components/DrawerExample';
 import ModalExample from './components/ModalExample';
 import SpinnerExample from './components/SpinnerExample';
 import LoaderExample from './components/LoaderExample';
@@ -21,10 +20,6 @@ function DemoApp() {
                     </div>
                     <div>
                         <Link to="/alert">Alert</Link>
-                    </div>
-
-                    <div>
-                        <Link to="/drawers">Drawers</Link>
                     </div>
                     <div>
                         <Link to="/modals">Modals</Link>
@@ -55,10 +50,6 @@ function DemoApp() {
                     </Route>
                     <Route path="/alert">
                         <AlertExamples />
-                    </Route>
-
-                    <Route path="/drawers">
-                        <DrawerExample />
                     </Route>
                     <Route path="/modals">
                         <ModalExample />
