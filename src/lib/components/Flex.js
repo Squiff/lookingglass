@@ -9,15 +9,7 @@ import { prefixClasses, prefixClass, isBreakpoint } from '../utilities/utils';
 // flex-equal, flex-stack, flex-auto,
 
 export default function Flex(props) {
-    let {
-        children,
-        className,
-        type,
-        cols,
-        justify,
-        align,
-        ...otherProps
-    } = props;
+    let { children, className, type, cols, justify, align, ...otherProps } = props;
 
     // get class names
     let classes = ['flex'];
@@ -57,7 +49,7 @@ Flex.Child = (props) => {
             const breakpointClass = `fx-${otherProps[p]}`;
             const prefixedClass = prefixClass(p, breakpointClass);
 
-            classes = classes.push(prefixedClass);
+            classes.push(prefixedClass);
         }
     }
 
@@ -96,3 +88,5 @@ function FlexClassResolver(property, value) {
             return undefined;
     }
 }
+
+Flex.Child.displayName = 'Flex.Child';

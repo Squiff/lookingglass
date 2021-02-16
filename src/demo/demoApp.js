@@ -1,5 +1,4 @@
 import React from 'react';
-import FlexExample from './components/FlexExample';
 import ColorExamples from './components/ColorExamples';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import AlertExamples from './components/AlertExamples';
@@ -17,9 +16,6 @@ function DemoApp() {
         <Router>
             <div>
                 <div>
-                    <div>
-                        <Link to="/flex">Flex</Link>
-                    </div>
                     <div>
                         <Link to="/color">Color</Link>
                     </div>
@@ -54,9 +50,6 @@ function DemoApp() {
                 </div>
 
                 <Switch>
-                    <Route path="/flex">
-                        <FlexExample />
-                    </Route>
                     <Route path="/color">
                         <ColorExamples />
                     </Route>
