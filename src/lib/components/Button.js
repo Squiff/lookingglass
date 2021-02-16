@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Button({ children, color, size, btnStyle, shadow, block, ...props }) {
     const classes = ['btn'];
@@ -45,5 +46,13 @@ function Button({ children, color, size, btnStyle, shadow, block, ...props }) {
         </button>
     );
 }
+
+Button.propTypes = {
+    color: PropTypes.oneOf(['primary', 'secondary', 'success', 'error', 'warning', 'info']),
+    size: PropTypes.oneOf(['s', 'l']),
+    btnStyle: PropTypes.oneOf(['none', 'outline']),
+    shadow: PropTypes.bool,
+    block: PropTypes.bool,
+};
 
 export default Button;

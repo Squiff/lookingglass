@@ -3,7 +3,6 @@ import FlexExample from './components/FlexExample';
 import ColorExamples from './components/ColorExamples';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import AlertExamples from './components/AlertExamples';
-import ButtonExample from './components/ButtonExample';
 import Typography from './components/Typography';
 import DrawerExample from './components/DrawerExample';
 import ModalExample from './components/ModalExample';
@@ -27,9 +26,6 @@ function DemoApp() {
                     </div>
                     <div>
                         <Link to="/alert">Alert</Link>
-                    </div>
-                    <div>
-                        <Link to="/button">Button</Link>
                     </div>
                     <div>
                         <Link to="/typography">Typography</Link>
@@ -69,9 +65,6 @@ function DemoApp() {
                     </Route>
                     <Route path="/alert">
                         <AlertExamples />
-                    </Route>
-                    <Route path="/button">
-                        <ButtonExample />
                     </Route>
                     <Route path="/typography">
                         <Typography />
