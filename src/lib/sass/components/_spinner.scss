@@ -15,38 +15,49 @@ $svg-circumference: 2 * math.$pi * $svg-radius;
     height: 35px;
     color: $color;
     transform: rotateZ(-90deg);
-
-    &--rotate {
-        animation: rotate-animation $animation-duration linear infinite;
-    }
-
-    &--s {
-        height: 20px;
-        width: 20px;
-    }
-
-    &--l {
-        height: 50px;
-        width: 50px;
-    }
+    animation: rotate-animation $animation-duration linear infinite;
 
     &__circle {
         fill: none;
-        stroke-width: 16;
+        stroke-width: 12;
         stroke: currentColor;
         animation: fill-animation $animation-duration linear infinite;
     }
 
     &__halo {
         fill: none;
-        stroke-width: 18;
+        stroke-width: 16;
         stroke: currentColor;
         opacity: 0.2;
     }
+
+    &--s {
+        height: 20px;
+        width: 20px;
+
+        & .spinner__circle {
+            stroke-width: 18;
+        }
+
+        & .spinner__halo {
+            stroke-width: 22;
+        }
+    }
+
+    &--l {
+        height: 50px;
+        width: 50px;
+
+        & .spinner__circle {
+            stroke-width: 8;
+        }
+
+        & .spinner__halo {
+            stroke-width: 10;
+        }
+    }
 }
 
-// circle always draws from 3 o'clock going clockwise
-// transformZ is used to make this start at 12 o'clock
 // stroke-dasharray: [draw-length] [gap]
 // stroke-dashoffset: +ve to pull dash start point / -ve to push
 @keyframes fill-animation {

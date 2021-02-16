@@ -1,17 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 
-function Spinner({ className, style, halo, color, size, rotate }) {
+function Spinner({ className, style, halo, color, size }) {
     const classes = ['spinner'];
 
     // Spinner uses currentColor
     // this prop is only a helper to set the utility color class
     if (color) {
-        classes.push(`color--${color}`);
-    }
-
-    if (rotate) {
-        classes.push('spinner--rotate');
+        classes.push(`clr--${color}`);
     }
 
     if (['s', 'l'].includes(size)) {
@@ -21,9 +17,7 @@ function Spinner({ className, style, halo, color, size, rotate }) {
     // include a transparent halo
     let haloCircle;
     if (halo) {
-        haloCircle = (
-            <circle className="spinner__halo" cx="50" cy="50" r="40"></circle>
-        );
+        haloCircle = <circle className="spinner__halo" cx="50" cy="50" r="40"></circle>;
     }
 
     const classStr = classNames(classes, className);
