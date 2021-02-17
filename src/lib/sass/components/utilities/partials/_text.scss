@@ -17,7 +17,7 @@ $font-sizes: (
 ) !default;
 
 $font-weights: (100, 200, 300, 400, 500, 600, 700, 800, 900) !default;
-$text-transforms: (none, uppercase, lowercase, capitalize) !default;
+$text-transforms: (uppercase, lowercase, capitalize) !default;
 $text-aligns: (left, right, center) !default;
 
 @mixin fontSize() {
