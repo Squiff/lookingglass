@@ -2,7 +2,6 @@ import React from 'react';
 import ColorExamples from './components/ColorExamples';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import AlertExamples from './components/AlertExamples';
-import ModalExample from './components/ModalExample';
 import LoaderExample from './components/LoaderExample';
 import CardExamples from './components/CardExamples';
 import TableExamples from './components/TableExamples';
@@ -19,9 +18,6 @@ function DemoApp() {
                     </div>
                     <div>
                         <Link to="/alert">Alert</Link>
-                    </div>
-                    <div>
-                        <Link to="/modals">Modals</Link>
                     </div>
                     <div>
                         <Link to="/loader">Loader</Link>
@@ -46,9 +42,6 @@ function DemoApp() {
                     </Route>
                     <Route path="/alert">
                         <AlertExamples />
-                    </Route>
-                    <Route path="/modals">
-                        <ModalExample />
                     </Route>
                     <Route path="/loader">
                         <LoaderExample />
