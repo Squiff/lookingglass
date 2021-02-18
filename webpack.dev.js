@@ -9,7 +9,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 module.exports = {
     mode: 'development',
     entry: {
-        main: './src/demo/index.js',
+        main: './sandbox/index.js',
     },
     output: {
         filename: '[name].js',
@@ -25,7 +25,7 @@ module.exports = {
 
         // DEP_WEBPACK_COMPILATION_ASSETS: https://github.com/jantimon/html-webpack-plugin/issues/1527
         new HtmlWebpackPlugin({
-            template: './src/demo/index.html',
+            template: './sandbox/index.html',
             filename: 'index.html',
         }),
     ],
