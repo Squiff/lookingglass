@@ -15,6 +15,7 @@ $img-height: 200px;
 .card {
     @include shadows.shadow($shadow);
     border-radius: $border-radius;
+    overflow: hidden;
 
     &__content {
         padding: $padding;

@@ -33,4 +33,9 @@ Card.Img = (props) => {
     );
 };
 
+Card.Content.displayName = 'Card.Content';
+Card.Header.displayName = 'Card.Header';
+Card.Body.displayName = 'Card.Body';
+Card.Img.displayName = 'Card.Img';
+
 export default Card;
