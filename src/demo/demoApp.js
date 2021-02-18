@@ -2,7 +2,6 @@ import React from 'react';
 import ColorExamples from './components/ColorExamples';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import AlertExamples from './components/AlertExamples';
-import TableExamples from './components/TableExamples';
 import TabsExample from './components/TabsExample';
 
 function DemoApp() {
@@ -17,9 +16,6 @@ function DemoApp() {
                         <Link to="/alert">Alert</Link>
                     </div>
                     <div>
-                        <Link to="/table">Table</Link>
-                    </div>
-                    <div>
                         <Link to="/tabs">Tabs</Link>
                     </div>
                 </div>
@@ -30,9 +26,6 @@ function DemoApp() {
                     </Route>
                     <Route path="/alert">
                         <AlertExamples />
-                    </Route>
-                    <Route path="/table">
-                        <TableExamples />
                     </Route>
                     <Route path="/tabs">
                         <TabsExample />
