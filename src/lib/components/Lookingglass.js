@@ -57,6 +57,10 @@ const classPrefix = {
     overflow: 'overflow',
     overflowX: 'overflow-x',
     overflowY: 'overflow-y',
+    scrollbarColor: 'scrl-clr',
+    scrollbarSize: 'scrl',
+    scrollbarStyle: 'scrl',
+    scrollbarTrack: 'scrl__track',
 };
 
 const classValueMapping = {
@@ -91,7 +95,7 @@ function classNameResolver(props, classMapping, valueMapping, separator = '--') 
 
 // function for class Names that do not fit into the classNameResolver pattern
 function miscClassResolver(props) {
-    const { border, borderTop, borderRight, borderBottom, borderLeft, display } = props;
+    const { border, borderTop, borderRight, borderBottom, borderLeft } = props;
     const output = [];
 
     // add base border style if at least ones of these props is defined
@@ -99,7 +103,14 @@ function miscClassResolver(props) {
         output.push('bdr');
     }
 
+    // add base scrollbar style if at least one of these props is defined
+    const { scrollbarColor, scrollbarSize, scrollbarStyle, scrollbarTrack } = props;
+    if ([scrollbarColor, scrollbarSize, scrollbarStyle, scrollbarTrack].some((a) => a !== undefined)) {
+        output.push('scrl');
+    }
+
     // display can pass in an object of breakpoint values {s:'none', m:'block'}
+    const display = props.display;
     if (typeof display === 'object') {
         for (const k in display) {
             const displayClassName = `${classPrefix.display}--${display[k]}`;
