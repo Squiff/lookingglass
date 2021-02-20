@@ -1,4 +1,5 @@
 import React, { Children } from 'react';
+import PropTypes from 'prop-types';
 
 function Table({ children, size, border, hover, removeHeadColor }) {
     const classes = ['table'];
@@ -23,6 +24,13 @@ function Table({ children, size, border, hover, removeHeadColor }) {
 
     return <table className={classStr}>{children}</table>;
 }
+
+Table.propTypes = {
+    border: PropTypes.oneOf(['all', 'none']),
+    hover: PropTypes.bool,
+    removeHeadColor: PropTypes.bool,
+    size: PropTypes.oneOf(['s', 'l']),
+};
 
 Table.defaultProps = {
     hover: true,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { prefixClasses, prefixClass, isBreakpoint } from '../utilities/utils';
+import PropTypes from 'prop-types';
 
 // type: equal | stack | auto
 // cols - should not be able to specify above + columns
@@ -88,5 +89,16 @@ function FlexClassResolver(property, value) {
             return undefined;
     }
 }
+
+Flex.propTypes = {
+    type: PropTypes.oneOf(['equal', 'stack', 'auto']),
+    cols: PropTypes.oneOf(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']),
+    justify: PropTypes.oneOf(['center', 'start', 'end', 'between', 'around', 'evenly']),
+    align: PropTypes.oneOf(['start', 'end', 'center', 'baseline']),
+};
+
+Flex.Child.propTypes = {
+    cols: PropTypes.oneOf(['auto', 'equal', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']),
+};
 
 Flex.Child.displayName = 'Flex.Child';

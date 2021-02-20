@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import useTransitionEnd from '../utilities/hooks/useTransitionEnd';
 import Overlay from './Overlay';
+import PropTypes from 'prop-types';
 
 function Modal({ children, show, onClose, onClosed, onOpened, closeOnClick }) {
     const modalRef = useRef();
@@ -20,12 +21,7 @@ function Modal({ children, show, onClose, onClosed, onOpened, closeOnClick }) {
             onExited={onClosed}
             onEntered={onOpened}
         >
-            <Overlay
-                show={show}
-                onClose={onClose}
-                closeOnClick={closeOnClick}
-                center={true}
-            >
+            <Overlay show={show} onClose={onClose} closeOnClick={closeOnClick} center={true}>
                 <div className={classStr} ref={modalRef}>
                     {children}
                 </div>
@@ -50,6 +46,14 @@ function transitionClasses() {
         exitDone,
     };
 }
+
+Modal.propTypes = {
+    show: PropTypes.bool,
+    onClose: PropTypes.func,
+    onClosed: PropTypes.func,
+    onOpened: PropTypes.func,
+    closeOnClick: PropTypes.bool,
+};
 
 Modal.defaultProps = {
     closeOnClick: true,

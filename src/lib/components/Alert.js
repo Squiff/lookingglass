@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CloseButton from './CloseButton';
+import PropTypes from 'prop-types';
 
 function Alert({ children, color, alertStyle, show, onClose, ...props }) {
     const [closed, setClosed] = useState(false);
@@ -39,5 +40,12 @@ function Alert({ children, color, alertStyle, show, onClose, ...props }) {
         </div>
     );
 }
+
+Alert.propTypes = {
+    color: PropTypes.string,
+    alertStyle: PropTypes.oneOf(['solid']),
+    show: PropTypes.bool,
+    onClose: PropTypes.func,
+};
 
 export default Alert;

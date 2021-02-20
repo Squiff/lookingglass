@@ -1,4 +1,4 @@
-import React, { Children, useEffect, useState } from 'react';
+import React, { Children } from 'react';
 import Spinner from './Spinner';
 
 function Loader({ status, children }) {
@@ -9,18 +9,14 @@ function Loader({ status, children }) {
         case null:
             return null;
         case 'loading':
-            displayComponent = Children.toArray(children).filter(
-                (c) => c.type === Loader.Loading
-            );
+            displayComponent = Children.toArray(children).filter((c) => c.type === Loader.Loading);
 
             if (displayComponent.length === 0) {
                 displayComponent = <LoadingDefault />;
             }
             break;
         case 'error':
-            displayComponent = Children.toArray(children).filter(
-                (c) => c.type === Loader.Error
-            );
+            displayComponent = Children.toArray(children).filter((c) => c.type === Loader.Error);
             break;
         case 'complete':
         default:
@@ -54,5 +50,9 @@ const LoadingDefault = () => {
         </div>
     );
 };
+
+Loader.Loading.displayName = 'Loader.Loading';
+Loader.Complete.displayName = 'Loader.Complete';
+Loader.Error.displayName = 'Loader.Error';
 
 export default Loader;

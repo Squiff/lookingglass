@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Overlay from './Overlay';
 import { CSSTransition } from 'react-transition-group';
 import useTransitionEnd from '../utilities/hooks/useTransitionEnd';
+import PropTypes from 'prop-types';
 
 // direction: orientation of the drawer
 // show: to open/close the drawer
@@ -9,15 +10,7 @@ import useTransitionEnd from '../utilities/hooks/useTransitionEnd';
 //          will not close itself - user has to use this to set the 'show' prop to false when this is fired
 // onClosed/onOpened events fired when the open/close transitions have completed
 
-function Drawer({
-    children,
-    direction,
-    show,
-    onClose,
-    onClosed,
-    onOpened,
-    closeOnClick,
-}) {
+function Drawer({ children, direction, show, onClose, onClosed, onOpened, closeOnClick }) {
     const drawerRef = useRef();
     const transitionEnd = useTransitionEnd(drawerRef);
     const transitionClassNames = transitionClasses(direction);
@@ -59,6 +52,15 @@ function transitionClasses(direction) {
         exitDone,
     };
 }
+
+Drawer.propTypes = {
+    direction: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
+    show: PropTypes.bool,
+    onClose: PropTypes.func,
+    onClosed: PropTypes.func,
+    onOpened: PropTypes.func,
+    closeOnClick: PropTypes.bool,
+};
 
 Drawer.defaultProps = {
     closeOnClick: true,

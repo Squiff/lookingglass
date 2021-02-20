@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 function Spinner({ className, style, halo, color, size }) {
     const classes = ['spinner'];
@@ -29,5 +30,10 @@ function Spinner({ className, style, halo, color, size }) {
         </svg>
     );
 }
+
+Spinner.propTypes = {
+    halo: PropTypes.bool,
+    size: PropTypes.oneOf(['s', 'l']),
+};
 
 export default Spinner;

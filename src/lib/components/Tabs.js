@@ -1,4 +1,5 @@
 import React, { Children, useState } from 'react';
+import PropTypes from 'prop-types';
 
 function Tabs({ children, active, onChange }) {
     const ChildrenArr = Children.toArray(children);
@@ -68,5 +69,22 @@ Tabs.Tab = ({ children, tabId, activeTabId, onClick }) => {
 Tabs.Panel = ({ children, tabId }) => {
     return <div className="tabs__panel">{children}</div>;
 };
+
+Tabs.propTypes = {
+    tabId: PropTypes.string,
+    active: PropTypes.string,
+    onChange: PropTypes.func,
+};
+
+Tabs.Tab = {
+    tabId: PropTypes.string,
+};
+
+Tabs.Panel = {
+    tabId: PropTypes.string,
+};
+
+Tabs.Tab.displayName = 'Tabs.Tab';
+Tabs.Panel.displayName = 'Tabs.Panel';
 
 export default Tabs;

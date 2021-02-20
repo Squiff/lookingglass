@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { prefixClass } from '../utilities/utils';
+import PropTypes from 'prop-types';
 
 // component generates classes from props and merges them with classes on the child
 // should have a single child
@@ -121,5 +122,53 @@ function miscClassResolver(props) {
 
     return output;
 }
+
+Lookingglass.propTypes = {
+    backgroundColor: PropTypes.string,
+    color: PropTypes.string,
+    border: PropTypes.string,
+    borderTop: PropTypes.string,
+    borderRight: PropTypes.string,
+    borderBottom: PropTypes.string,
+    borderLeft: PropTypes.string,
+    borderColor: PropTypes.string,
+    borderRadius: PropTypes.string,
+    margin: PropTypes.string,
+    marginTop: PropTypes.string,
+    marginRight: PropTypes.string,
+    marginBottom: PropTypes.string,
+    marginLeft: PropTypes.string,
+    marginX: PropTypes.string,
+    marginY: PropTypes.string,
+    padding: PropTypes.string,
+    paddingTop: PropTypes.string,
+    paddingRight: PropTypes.string,
+    paddingBottom: PropTypes.string,
+    paddingLeft: PropTypes.string,
+    paddingX: PropTypes.string,
+    paddingY: PropTypes.string,
+    shadow: PropTypes.string,
+    fontSize: PropTypes.string,
+    fontWeight: PropTypes.string,
+    textDecoration: PropTypes.string,
+    textTransform: PropTypes.string,
+    textAlign: PropTypes.string,
+    width: PropTypes.string,
+    height: PropTypes.string,
+    position: PropTypes.string,
+    left: PropTypes.string,
+    right: PropTypes.string,
+    top: PropTypes.string,
+    bottom: PropTypes.string,
+    absolute: PropTypes.string,
+    display: PropTypes.string,
+    overflow: PropTypes.string,
+    overflowX: PropTypes.string,
+    overflowY: PropTypes.string,
+    scrollbarColor: PropTypes.string,
+    scrollbarSize: PropTypes.oneOf(['s', 'l']),
+    scrollbarStyle: PropTypes.oneOf(['none', 'rounded']),
+    scrollbarTrack: PropTypes.oneOf(['none']),
+};
 
 export default Lookingglass;
