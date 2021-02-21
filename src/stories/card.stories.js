@@ -3,11 +3,6 @@ import Button from '../lib/components/Button';
 import Lookingglass from '../lib/components/Lookingglass';
 import puppyjpg from './assets/img/puppies.jpg';
 
-export default {
-    component: Card,
-    title: 'Card',
-};
-
 export const Basic = (args) => (
     <Card>
         <Card.Content>
@@ -24,12 +19,12 @@ export const Basic = (args) => (
 export const AdditionalControls = (args) => (
     <Card>
         <Card.Content>
-            <Card.Header>With Buttons</Card.Header>
+            <Card.Header>Card Header</Card.Header>
             <Card.Body>
                 <Lookingglass marginBottom="2">
                     <div>
-                        Any additional components can be added directly into the card content or body. For instance
-                        adding buttons.
+                        Any additional components can be added directly into the card content. For instance adding
+                        buttons.
                     </div>
                 </Lookingglass>
             </Card.Body>
@@ -42,7 +37,7 @@ export const AdditionalControls = (args) => (
 
 export const Img = (args) => (
     <Card style={{ width: '350px' }}>
-        <Card.Img style={{ height: '200px' }}>
+        <Card.Img>
             <img src={puppyjpg} alt="puppy" />
         </Card.Img>
         <Card.Content>

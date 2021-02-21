@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
+/** A Content container suitable for most element types  */
 function Card({ children, style }) {
     return (
         <div className="card" style={style}>

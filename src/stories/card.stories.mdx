@@ -1,0 +1,37 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './card.stories.js';
+import Card from '../lib/components/Card';
+
+<Meta title="Cards" component={Card} />
+
+# Cards
+
+A Card is a container suitable for most element types. Cards are split up into multiple subcomponents:
+
+-   `Card` : Parent container that wraps all the content and provides elevation
+-   `Card.Content`: provides padding for the card content
+-   `Card.Header`
+-   `Card.Body`
+-   `Card.Img` : A container for images
+
+## Basic
+
+A Basic example of a card with a Header and Body
+
+<Canvas>
+    <Story story={stories.Basic} />
+</Canvas>
+
+Content can be added directly into the card content
+
+<Canvas>
+    <Story story={stories.AdditionalControls} />
+</Canvas>
+
+## Image
+
+Images can be added directly into the `Card.Img` component. An appropriate width and height should be set. The image will be scaled to the `Card.Img` container and uses the `object-fit: cover` css prop to deal any aspect ratio discrepencies.
+
+<Canvas>
+    <Story story={stories.Img} />
+</Canvas>
