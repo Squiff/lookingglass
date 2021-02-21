@@ -1,12 +1,66 @@
+import { useState } from 'react';
 import Alert from '../lib/components/Alert';
+import Button from '../lib/components/Button';
 
-export default {
-    component: Alert,
-    title: 'Alert',
+const tableDisable = { table: { disable: true } };
+const tableEnable = { table: { disable: false } };
+
+export const argTypes = {
+    color: {
+        control: {
+            type: 'select',
+            options: ['primary', 'secondary', 'success', 'error', 'warning', 'info'],
+        },
+        ...tableDisable,
+    },
+    alertStyle: {
+        control: {
+            type: 'radio',
+            options: ['default', 'solid'],
+        },
+        ...tableDisable,
+    },
+    show: { control: 'none', ...tableDisable },
+    onClose: { ...tableDisable },
 };
 
-const Template = (args) => <Alert></Alert>;
+/**
+ * Storybook controls do not allow an arg/prop to be set to undefined once a value has been selected
+ * Workaround is to define a value that represents the default state
+ * i.e. alertStyle = 'default' really means alertStyle = undefined
+ */
+function alertArgs(args) {
+    const output = { ...args };
 
+    if (args.alertStyle === 'default') {
+        output.alertStyle = undefined;
+    }
+
+    return output;
+}
+
+/* -------- ALL PROPS ---------------- */
+export const AllProps = (args) => {
+    const props = alertArgs(args);
+
+    return <Alert {...props}>Try updating the props in the controls below</Alert>;
+};
+
+AllProps.args = {
+    color: 'primary',
+    alertStyle: 'default',
+};
+
+AllProps.argTypes = {
+    color: { ...tableEnable },
+    alertStyle: { ...tableEnable },
+    show: { ...tableEnable },
+    onClose: { ...tableEnable },
+};
+
+AllProps.Name = 'All Properties';
+
+/* --------  COLORS ---------------- */
 export const Colors = (args) => (
     <>
         <Alert color="primary">This is a primary alert</Alert>
@@ -18,6 +72,7 @@ export const Colors = (args) => (
     </>
 );
 
+/* --------  SOLID COLORS ---------------- */
 export const Solid = (args) => (
     <>
         <Alert color="primary" alertStyle="solid">
@@ -41,18 +96,33 @@ export const Solid = (args) => (
     </>
 );
 
+/* --------  Close Button ---------------- */
 export const CloseButton = (args) => (
-    <Alert color="primary" onClose={true}>
+    <Alert color="primary" closeBtn={true}>
         This Alert has a close button
     </Alert>
 );
 
-export const Controlled = (args) => (
-    <Alert color="error" {...args}>
-        Use the show prop to toggle the alert
-    </Alert>
-);
+/* --------  Controlled ---------------- */
+export const Controlled = (args) => {
+    const [show, setShow] = useState(true);
 
-Controlled.args = {
-    show: true,
+    return (
+        <>
+            <Button onClick={() => setShow(false)}>Hide</Button>
+            <Button onClick={() => setShow(true)}>Show</Button>
+
+            <Alert color="error" show={show} onClose={() => setShow(false)} closeBtn={true}>
+                Use the buttons to show or hide the alert
+            </Alert>
+        </>
+    );
+};
+
+Controlled.parameters = {
+    docs: {
+        source: {
+            type: 'code', // shows event handlers correcly in the docs
+        },
+    },
 };

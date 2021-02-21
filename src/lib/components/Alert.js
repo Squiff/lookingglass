@@ -2,18 +2,23 @@ import React, { useState } from 'react';
 import CloseButton from './CloseButton';
 import PropTypes from 'prop-types';
 
-function Alert({ children, color, alertStyle, show, onClose, ...props }) {
+/**
+ * Displays a message with the supplied color scheme
+ */
+function Alert({ children, color, alertStyle, show, closeBtn, onClose, ...props }) {
     const [closed, setClosed] = useState(false);
 
     if ((!show && show !== undefined) || closed === true) {
         return null;
     }
 
+    // if onClose provided then this is a controlled component and needs
+    // to run the onClose callback for use to handle the state change
     function handleClick() {
-        if (onClose === true) {
-            setClosed(true);
-        } else if (onClose) {
+        if (onClose) {
             onClose();
+        } else {
+            setClosed(true);
         }
     }
 
@@ -25,9 +30,9 @@ function Alert({ children, color, alertStyle, show, onClose, ...props }) {
         classes.push(`alert-${color}`);
     }
 
-    let closeBtn;
-    if (onClose) {
-        closeBtn = <CloseButton onClick={handleClick} />;
+    let alertCloseBtn;
+    if (closeBtn) {
+        alertCloseBtn = <CloseButton onClick={handleClick} />;
         classes.push('alert--close');
     }
 
@@ -36,15 +41,19 @@ function Alert({ children, color, alertStyle, show, onClose, ...props }) {
     return (
         <div className={classStr} {...props}>
             {children}
-            {closeBtn}
+            {alertCloseBtn}
         </div>
     );
 }
 
 Alert.propTypes = {
-    color: PropTypes.string,
+    /** The color scheme of the alert */
+    color: PropTypes.string.isRequired,
+    /** The color scheme modifier */
     alertStyle: PropTypes.oneOf(['solid']),
+    /** show or hide the story */
     show: PropTypes.bool,
+    /** Callback fired when Alert is closed */
     onClose: PropTypes.func,
 };
 
