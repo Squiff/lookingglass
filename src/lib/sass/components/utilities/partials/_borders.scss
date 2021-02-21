@@ -31,8 +31,8 @@ $border-colors: map.merge(config.$colors, config.$theme) !default;
 $_direction-map: directions.getDirections($border-directions);
 
 @mixin borderWidth() {
-    @each $width-id, $width in $border-widths {
-        @each $direction in $border-directions {
+    @each $direction in $border-directions {
+        @each $width-id, $width in $border-widths {
             $direction-props: map.get($_direction-map, $direction);
             $direction-prefix: map.get($direction-props, 'classPrefix');
             $direction-suffixes: map.get($direction-props, 'propSuffixes');
