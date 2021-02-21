@@ -2,13 +2,7 @@ import React from 'react';
 import { prefixClasses, prefixClass, isBreakpoint } from '../utilities/utils';
 import PropTypes from 'prop-types';
 
-// type: equal | stack | auto
-// cols - should not be able to specify above + columns
-//
-// justify
-// align
-// flex-equal, flex-stack, flex-auto,
-
+/** A utility for creating responsive flexbox layouts */
 export default function Flex(props) {
     let { children, className, type, cols, justify, align, ...otherProps } = props;
 
@@ -17,6 +11,15 @@ export default function Flex(props) {
     const addClasses = FlexPropResolver({ type, cols, justify, align });
 
     classes = [...classes, ...addClasses];
+
+    if (typeof cols === 'object') {
+        for (const b in cols) {
+            const breakpointValue = `flex-${cols[b]}`;
+            const prefixedClasses = prefixClass(b, breakpointValue);
+
+            classes.push(prefixedClasses);
+        }
+    }
 
     // get responsive class names
     for (const p in otherProps) {
@@ -42,16 +45,25 @@ Flex.Child = (props) => {
 
     let classes = [];
 
-    if (cols) classes.push(`fx-${cols}`);
+    if (typeof cols === 'object') {
+        // no need to provide object to breakpoint prop as there is only 'cols' option
+        // for (const p in otherProps) {
+        //     if (isBreakpoint(p) === true) {
+        //         const breakpointClass = `fx-${otherProps[p]}`;
+        //         const prefixedClass = prefixClass(p, breakpointClass);
 
-    // no need to provide object to breakpoint prop as there is only 'cols' option
-    for (const p in otherProps) {
-        if (isBreakpoint(p) === true) {
-            const breakpointClass = `fx-${otherProps[p]}`;
-            const prefixedClass = prefixClass(p, breakpointClass);
+        //         classes.push(prefixedClass);
+        //     }
+        // }
 
-            classes.push(prefixedClass);
+        for (const b in cols) {
+            const breakpointValue = `fx-${cols[b]}`;
+            const prefixedClasses = prefixClass(b, breakpointValue);
+
+            classes.push(prefixedClasses);
         }
+    } else {
+        classes.push(`fx-${cols}`);
     }
 
     const classStr = classes.join(' ');
@@ -77,10 +89,10 @@ function FlexClassResolver(property, value) {
     if (value === undefined) return undefined;
 
     switch (property) {
-        case 'type':
-            return `flex-${value}`;
         case 'cols':
-            return `flex-cols-${value}`;
+            if (typeof value !== 'object') {
+                return `flex-${value}`;
+            }
         case 'justify':
             return `justify-${value}`;
         case 'align':
@@ -91,14 +103,22 @@ function FlexClassResolver(property, value) {
 }
 
 Flex.propTypes = {
-    type: PropTypes.oneOf(['equal', 'stack', 'auto']),
-    cols: PropTypes.oneOf(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']),
+    /** Default columns for flex children */
+    cols: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.oneOf(['equal', 'auto', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']),
+    ]),
+    /** Justify content */
     justify: PropTypes.oneOf(['center', 'start', 'end', 'between', 'around', 'evenly']),
+    /** Align items */
     align: PropTypes.oneOf(['start', 'end', 'center', 'baseline']),
 };
 
 Flex.Child.propTypes = {
-    cols: PropTypes.oneOf(['auto', 'equal', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']),
+    cols: PropTypes.oneOfType([
+        PropTypes.object,
+        PropTypes.oneOf(['equal', 'auto', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']),
+    ]),
 };
 
 Flex.Child.displayName = 'Flex.Child';

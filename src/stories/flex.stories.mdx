@@ -1,0 +1,98 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './flex.stories.js';
+import Flex from '../lib/components/Flex';
+
+<Meta title="FlexMDX" component={Flex} argTypes={stories.argTypes} />
+
+# Flex
+
+<Description of={Flex} />
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+## Props
+
+<ArgsTable story="All Props" />
+
+## Basics
+
+-   Flexbox is implemented with two components `Flex` and `Flex.Child`.
+-   Any value applied to `Flex` will be applied to all children unless overridden on `Flex.Child`
+-   A flex item can be given a `col` value of `Auto`, `Equal` or numbers `1 - 12`
+
+`Equal`: Space is shared equally amongst all children set as `Auto`. This is the default for `Flex` if nothing is specified.
+
+`Auto` : The item will only take up the neccessary space to fit it's content
+
+`1 - 12 Flex`: will create a 'grid' with this many columns. This is done by giving children a width of `100%/#columns`
+
+`1 - 12 Flex.Child`: A numeric value based on a 12 column row. so `col="12"` is 100% width, `col="9"` is 75% width, `col="4"` is 33% width
+
+-   `Flex` will wrap when content is to large
+-   Responsive classes are provided for layouts at different breakpoints
+
+## Flex Examples
+
+#### Equal Width
+
+All columns are equal width by default
+
+<Canvas>
+    <Story story={stories.Equal} />
+</Canvas>
+
+#### Set Columns
+
+Setting `cols="2"` on `Flex` will create a 'grid' of two columns
+
+<Canvas>
+    <Story story={stories.Columns} />
+</Canvas>
+
+#### Auto
+
+Setting `cols="Auto"` on `Flex` will tell all children to only take up the neccessary space. Use along with Justify to center the content.
+
+<Canvas>
+    <Story story={stories.Auto} />
+</Canvas>
+
+#### Responsive
+
+`Flex` also allows responsive layouts. This is accomplished by setting the value of `col` to an object of shape `{[breakpoint] : [Value]}`.
+
+Below we have set `{s: "1", m: "equal"}`, which means at the small breakpoint the 'grid' will be 1 column wide, but will change at the medium breakpoint to be equal columns.
+
+Note that values are applied for the specified breakpoint **upwards**
+
+<Canvas>
+    <Story story={stories.Responsive} />
+</Canvas>
+
+## Flex Child Examples
+
+#### Set Flex Child Columns
+
+Any value applied to `Flex` will be applied to all children unless overridden on `Flex.Child`. Here `Flex cols="1"` so all children default to 100% wide, except Child 2 `Flex.Child cols="8"` and Child 3 `Flex.Child cols="4"`
+
+<Canvas>
+    <Story story={stories.ChildrenColumns} />
+</Canvas>
+
+#### Responsive Child
+
+As with `Flex`, `Flex.Child` can also accept a `cols` of shape `{[breakpoint] : [Value]}`.
+
+Here we have set
+
+-   `Flex` to be `col="1"`
+-   Child 2 to be `col={{m:'6'}}`
+-   Child 3 to be `col={{m:'6'}}`
+
+This means all columns default to 100%. At the medium breakpoint Child 2 and Child 3 will become 6 columns wide
+
+<Canvas>
+    <Story story={stories.ResponsiveChildren} />
+</Canvas>

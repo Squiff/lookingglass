@@ -7,67 +7,59 @@ $breakpoints: config.$breakpoints;
 $columns: 12;
 
 // Options to enable/disable responsive classes for certain components
-$justify-responsive: true !default; 
+$justify-responsive: true !default;
 $align-responsive: true !default;
 
 // ----- FLEX ----
 // Top Level API
 // - flex-equal: children share all space equally (DEFAULT)
-// - flex-stack: children stack. Each child defaults to width 100%
-// - flex-columns-{#columns}: each child is given width of 100%/#columns
 // - flex-auto: each childs width is based on its content
+// - flex-{#columns}: each child is given width of 100%/#columns
 
 // Flex Child API
-// each child will take its default width from the flex container (details above). 
+// each child will take its default width from the flex container (details above).
 // But can be overridden with the below options
 // - fx-{#columns}: a flex child can set its width (or 'column span') based on a 12 column grid
-//                             width = 100%/12 * #columns   
+//                             width = 100%/12 * #columns
 // - fx-auto: width will be base on it's contents
 
 // [flex-grow] [flex-shrink] [flex-basis]
 
 // Default: equal width (share remaining space equally)
-@mixin flex-equal($prefix){
+@mixin flex-equal($prefix) {
     .#{$prefix}flex-equal > * {
         flex: 1 0 0;
     }
 }
 
-// stack children on top of eachother
-@mixin flex-stack($prefix){
-    .#{$prefix}flex-stack > * {
-        flex: 0 0 100%;
-    }
-}
-
-@mixin flex-cols($prefix){
-    @for $i from 1 through $columns{
-        .#{$prefix}flex-cols-#{$i} > * {
+@mixin flex-cols($prefix) {
+    @for $i from 1 through $columns {
+        .#{$prefix}flex-#{$i} > * {
             flex: 0 0 utils.round(100% / $i, 5, down);
         }
     }
 }
 
 // size based on content
-@mixin flex-auto($prefix){
+@mixin flex-auto($prefix) {
     .#{$prefix}flex-auto > * {
         flex: 0 0 auto;
     }
 }
 
 // Child columns/auto
-@mixin flex-child($prefix){
+@mixin flex-child($prefix) {
     @for $i from 1 through $columns {
-        .#{$prefix}fx-#{$i}{
-            flex: 0 0 utils.round((100% / $columns) * $i, 5, down)
+        .#{$prefix}fx-#{$i} {
+            flex: 0 0 utils.round((100% / $columns) * $i, 5, down);
         }
     }
 
-    .#{$prefix}fx-auto{
+    .#{$prefix}fx-auto {
         flex: 0 0 auto;
     }
 
-    .#{$prefix}fx-equal{
+    .#{$prefix}fx-equal {
         flex: 1 0 0;
     }
 }
@@ -78,24 +70,24 @@ $align-responsive: true !default;
         .#{$prefix}justify-center {
             justify-content: center;
         }
-        
+
         .#{$prefix}justify-start {
             justify-content: flex-start;
         }
-        
+
         .#{$prefix}justify-end {
             justify-content: flex-end;
         }
-        
+
         .#{$prefix}justify-between {
             justify-content: space-between;
         }
-        
-        .#{$prefix}justify-around	{
+
+        .#{$prefix}justify-around {
             justify-content: space-around;
         }
-        
-        .#{$prefix}justify-evenly	{
+
+        .#{$prefix}justify-evenly {
             justify-content: space-evenly;
         }
     }
@@ -107,27 +99,26 @@ $align-responsive: true !default;
         .#{$prefix}align-start {
             align-items: start;
         }
-        
+
         .#{$prefix}align-end {
             align-items: end;
         }
-        
+
         .#{$prefix}align-center {
-            align-items: center
+            align-items: center;
         }
-        
+
         .#{$prefix}align-baseline {
-            align-items: baseline
+            align-items: baseline;
         }
     }
 }
 
-@mixin flex-breakpoints($breakpoint){
+@mixin flex-breakpoints($breakpoint) {
     $prefix: breakpoint.prefix($breakpoint);
     $isDefault: breakpoint.isDefault($breakpoint);
 
     @include flex-equal($prefix);
-    @include flex-stack($prefix);    
     @include flex-auto($prefix);
     @include flex-cols($prefix);
 
@@ -136,7 +127,6 @@ $align-responsive: true !default;
     @include justify($prefix, $isDefault);
     @include align($prefix, $isDefault);
 }
-
 
 // MAIN FELX CONTAINER.
 .flex {
@@ -151,8 +141,7 @@ $align-responsive: true !default;
 
 // GENERATE RESPONSIVE FLEX CLASSES
 @each $bk, $bk-size in $breakpoints {
-    @include breakpoint.media($bk){
-        @include flex-breakpoints($bk)
-    };
+    @include breakpoint.media($bk) {
+        @include flex-breakpoints($bk);
+    }
 }
-
