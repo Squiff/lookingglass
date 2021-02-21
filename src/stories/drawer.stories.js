@@ -2,56 +2,83 @@ import { useState } from 'react';
 import Button from '../lib/components/Button';
 import Drawer from '../lib/components/Drawer';
 
-export default {
-    component: Drawer,
-    title: 'Drawer',
+export const argTypes = {
+    show: { control: null },
+    onClose: {
+        table: {
+            category: 'Events',
+        },
+    },
+    onClosed: {
+        table: {
+            category: 'Events',
+        },
+    },
+    onOpened: {
+        table: {
+            category: 'Events',
+        },
+    },
 };
 
-const TemplateBasic = (args) => (
-    <>
-        <h5>Toggle show prop and review callbacks in the Action tab</h5>
-        <Drawer {...args}>
-            <div className="p--2">
-                <h2>DRAWER CONTENT</h2>
-            </div>
-        </Drawer>
-    </>
-);
-
-const TemplateButton = (args) => {
+/* -------- ALL PROPS ---------------- */
+export const AllProps = (args) => {
     const [open, setOpen] = useState(false);
 
     return (
         <>
-            <Button onClick={() => setOpen(true)}>Open Drawer</Button>
-
-            <Drawer show={open} onClose={() => setOpen(!open)} {...args}>
+            <Button onClick={() => setOpen(true)} btnStyle="none">
+                Open Drawer
+            </Button>
+            <Drawer {...args} show={open} onClose={() => setOpen(false)}>
                 <div className="p--2">
                     <h2>DRAWER CONTENT</h2>
+                    <Button onClick={() => setOpen(false)} block={true} color="primary">
+                        Close Drawer
+                    </Button>
                 </div>
             </Drawer>
         </>
     );
 };
 
-export const Basic = TemplateButton.bind({});
-Basic.args = {
+AllProps.args = {
     direction: 'left',
 };
 
-Basic.argTypes = {
-    closeOnClick: { table: { disable: true } },
+AllProps.parameters = {
+    docs: {
+        source: {
+            type: 'code', // shows event handlers correcly in the docs
+        },
+    },
 };
 
-export const Callbacks = TemplateBasic.bind({});
+/* -------- Scrolling ---------------- */
+export const Scrolling = (args) => {
+    const [open, setOpen] = useState(false);
 
-Callbacks.args = {
-    direction: 'left',
-    show: false,
+    return (
+        <>
+            <Button onClick={() => setOpen(true)} btnStyle="none">
+                Open Drawer
+            </Button>
+            <Drawer direction="left" show={open} onClose={() => setOpen(false)}>
+                <div style={{ height: '150vh', backgroundColor: '#eeeeee', padding: '20px' }}>
+                    <h2>DRAWER CONTENT</h2>
+                </div>
+                <Button onClick={() => setOpen(false)} block={true} color="primary">
+                    Close Drawer
+                </Button>
+            </Drawer>
+        </>
+    );
 };
 
-Callbacks.argTypes = {
-    onClose: { action: 'OnClose Fired' },
-    onClosed: { action: 'onClosed Fired' },
-    onOpened: { action: 'onOpened Fired' },
+Scrolling.parameters = {
+    docs: {
+        source: {
+            type: 'code', // shows event handlers correcly in the docs
+        },
+    },
 };

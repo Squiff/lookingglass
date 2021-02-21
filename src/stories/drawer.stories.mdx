@@ -1,0 +1,35 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './drawer.stories.js';
+import Drawer from '../lib/components/Drawer';
+
+<Meta title="Drawers" component={Drawer} argTypes={stories.argTypes} />
+
+# Drawers
+
+<Description of={Drawer} />
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+## Props
+
+<ArgsTable story="All Props" />
+
+## Basics
+
+A drawer can be configured to appear from any direction using the `direction` prop.
+
+-   Left and right drawers will size to their content width
+-   Top and bottom drawers will size to their content height
+
+#### Scrolling
+
+Overflow is set to auto depening on direction:
+
+-   Left and right have `overflow-y: auto`
+-   Top and Bottom have `overflow-x: auto`
+
+<Canvas>
+    <Story story={stories.Scrolling} />
+</Canvas>

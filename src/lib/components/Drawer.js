@@ -10,6 +10,9 @@ import PropTypes from 'prop-types';
 //          will not close itself - user has to use this to set the 'show' prop to false when this is fired
 // onClosed/onOpened events fired when the open/close transitions have completed
 
+/**
+ * A modal component that slides content into and out of view
+ */
 function Drawer({ children, direction, show, onClose, onClosed, onOpened, closeOnClick }) {
     const drawerRef = useRef();
     const transitionEnd = useTransitionEnd(drawerRef);
@@ -54,16 +57,23 @@ function transitionClasses(direction) {
 }
 
 Drawer.propTypes = {
+    /** The direction the  drawer appears from*/
     direction: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
+    /** used to show or hide the drawer */
     show: PropTypes.bool,
+    /** Callback fired when close starts */
     onClose: PropTypes.func,
+    /** Callback fired when finished closing */
     onClosed: PropTypes.func,
+    /** Callback fired when opening starts */
     onOpened: PropTypes.func,
+    /** Control whether clicking on the overlay triggers the onClose callback */
     closeOnClick: PropTypes.bool,
 };
 
 Drawer.defaultProps = {
     closeOnClick: true,
+    direction: 'left',
 };
 
 export default Drawer;
