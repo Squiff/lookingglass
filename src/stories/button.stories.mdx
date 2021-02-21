@@ -1,0 +1,51 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './button.stories.js';
+import Button from '../lib/components/Button';
+
+<Meta title="ButtonsMDX" component={Button} argTypes={stories.argTypes} />
+
+# Buttons
+
+<Description of={Button} />
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+## Props
+
+<ArgsTable story="All Props" />
+
+## Colors and Styles
+
+Buttons default to solid color with a darken hover effect
+
+<Canvas>
+    <Story story={stories.SolidColors} />
+</Canvas>
+
+Setting `btnStyle="outline"` will apply the color to the border/text with a 'fill' hover effect
+
+<Canvas>
+    <Story story={stories.OutlineColors} />
+</Canvas>
+
+You can set `bynStyle="none"` to remove any default coloring. A cursor and grey out hover effect will still be applied.
+
+<Canvas>
+    <Story story={stories.NoStyle} />
+</Canvas>
+
+## Sizes
+
+Use the `size` prop to apply size variations
+
+<Canvas>
+    <Story story={stories.Sizes} />
+</Canvas>
+
+Set `block = true` to apply `display: block` to the button
+
+<Canvas>
+    <Story story={stories.Block} />
+</Canvas>

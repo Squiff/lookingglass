@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Button({ children, color, size, btnStyle, shadow, block, ...props }) {
+function Button({ children, color, size, btnStyle, block, ...props }) {
     const classes = ['btn'];
 
     if (btnStyle === 'none') {
@@ -32,10 +32,7 @@ function Button({ children, color, size, btnStyle, shadow, block, ...props }) {
             break;
         default:
             classes.push(`btn--clr-${color}`);
-            // include shadow by default
-            if (shadow !== false) {
-                classes.push('btn--shadow');
-            }
+            classes.push('btn--shadow');
     }
 
     const classStr = classes.join(' ');
@@ -48,10 +45,13 @@ function Button({ children, color, size, btnStyle, shadow, block, ...props }) {
 }
 
 Button.propTypes = {
-    color: PropTypes.oneOf(['primary', 'secondary', 'success', 'error', 'warning', 'info']),
+    /** theme color to apply to the button */
+    color: PropTypes.string,
+    /** button size variation */
     size: PropTypes.oneOf(['s', 'l']),
+    /** button style variations */
     btnStyle: PropTypes.oneOf(['none', 'outline']),
-    shadow: PropTypes.bool,
+    /** apply display block */
     block: PropTypes.bool,
 };
 

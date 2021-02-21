@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Alert from '../lib/components/Alert';
 import Button from '../lib/components/Button';
+import { themeColors } from './helpers/utils';
 
 const tableDisable = { table: { disable: true } };
 const tableEnable = { table: { disable: false } };
@@ -9,7 +10,7 @@ export const argTypes = {
     color: {
         control: {
             type: 'select',
-            options: ['primary', 'secondary', 'success', 'error', 'warning', 'info'],
+            options: themeColors,
         },
         ...tableDisable,
     },
