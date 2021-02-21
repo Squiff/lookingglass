@@ -1,6 +1,8 @@
 import React, { Children } from 'react';
 import Spinner from './Spinner';
+import PropTypes from 'prop-types';
 
+/** A switch for showing loading/error/complete component states */
 function Loader({ status, children }) {
     let displayComponent;
 
@@ -49,6 +51,11 @@ const LoadingDefault = () => {
             <Spinner />
         </div>
     );
+};
+
+Loader.propTypes = {
+    /** The component status */
+    status: PropTypes.oneOf(['complete', 'error', 'loading']),
 };
 
 Loader.Loading.displayName = 'Loader.Loading';

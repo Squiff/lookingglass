@@ -1,34 +1,76 @@
 import { useState } from 'react';
 import Loader from '../lib/components/Loader';
 import Alert from '../lib/components/Alert';
+import Button from '../lib/components/Button';
+import Spinner from '../lib/components/Spinner';
 
-export default {
-    component: Loader,
-    title: 'Loader',
-};
-
-export const Basic = (args) => (
-    <Loader {...args}>
-        <h4>I display when status is complete!</h4>
-    </Loader>
-);
-
-Basic.args = {
-    status: 'loading',
-};
-
-export const CustomComponents = (args) => (
+/* -------- All Props ---------------- */
+export const AllProps = (args) => (
     <Loader {...args}>
         <Loader.Complete>
-            <Alert color="success">Status Complete</Alert>
+            <h1>Status Complete</h1>
         </Loader.Complete>
-        <Loader.Loading>Loading</Loader.Loading>
         <Loader.Error>
-            <Alert color="error">Status Error</Alert>
+            <h1>Status Error</h1>
         </Loader.Error>
     </Loader>
 );
 
-CustomComponents.args = {
+AllProps.args = {
     status: 'loading',
+};
+
+/* -------- Basic ---------------- */
+export const basic = (args) => (
+    <Loader>
+        <h1>Success!</h1>
+    </Loader>
+);
+
+/* -------- With Components ---------------- */
+export const CustomComponents = (args) => {
+    const [status, setStatus] = useState(null);
+
+    const handleClick = (status) => {
+        if (status !== 'loading') {
+            setStatus('loading');
+            setTimeout(() => {
+                setStatus(status);
+            }, 1000);
+        }
+    };
+
+    return (
+        <>
+            <div>
+                <Button
+                    color="success"
+                    onClick={() => {
+                        handleClick('complete');
+                    }}
+                >
+                    Succeed at Something
+                </Button>
+                <Button
+                    color="error"
+                    onClick={() => {
+                        handleClick('error');
+                    }}
+                >
+                    Fail at Something
+                </Button>
+            </div>
+            <Loader status={status}>
+                <Loader.Complete>
+                    <Alert color="success">SUCCESS!</Alert>
+                </Loader.Complete>
+                <Loader.Loading>
+                    <Spinner size="l" />
+                </Loader.Loading>
+                <Loader.Error>
+                    <Alert color="error">Oops!</Alert>
+                </Loader.Error>
+            </Loader>
+        </>
+    );
 };

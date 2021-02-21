@@ -26,7 +26,7 @@ function Spinner({ className, style, halo, color, size }) {
     return (
         <svg className={classStr} style={style} viewBox="0 0 100 100">
             {haloCircle}
-            <circle class="spinner__circle" cx="50" cy="50" r="40"></circle>
+            <circle className="spinner__circle" cx="50" cy="50" r="40"></circle>
         </svg>
     );
 }
