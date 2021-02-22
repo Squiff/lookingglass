@@ -4,12 +4,6 @@ import { CSSTransition } from 'react-transition-group';
 import useTransitionEnd from '../utilities/hooks/useTransitionEnd';
 import PropTypes from 'prop-types';
 
-// direction: orientation of the drawer
-// show: to open/close the drawer
-// onClose: called when the overlay is clicked or escape key pressed
-//          will not close itself - user has to use this to set the 'show' prop to false when this is fired
-// onClosed/onOpened events fired when the open/close transitions have completed
-
 /**
  * A modal component that slides content into and out of view
  */

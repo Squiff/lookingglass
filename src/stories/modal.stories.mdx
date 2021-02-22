@@ -1,0 +1,26 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './modal.stories.js';
+import Modal from '../lib/components/Modal';
+
+<Meta title="Modal" component={Modal} argTypes={stories.argTypes}/>
+
+# Modals
+
+<Description of={Modal} />
+
+## Basics
+A Modal will become visible when `show = true`. During it's opening and closing Transitions it will fire the following callback:
+
+- `onClose`: When closing first starts
+- `onClosed`: When closing is finished
+- `onOpened`: When opening transition starts
+
+Modals will be centered and should be sized using the sizing utilities (i.e. 50vw for half width )
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />
+
+

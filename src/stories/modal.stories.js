@@ -2,67 +2,65 @@ import { useState } from 'react';
 import Button from '../lib/components/Button';
 import Modal from '../lib/components/Modal';
 
-export default {
-    component: Modal,
-    title: 'Modal',
-};
+// export default {
+//     component: Modal,
+//     title: 'Modal',
+// };
 
-const StoryBookContent = () => (
-    <div>
-        <h3>Modal Content</h3>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi unde nulla est aspernatur iusto ex cum magni
-            nihil vitae! A.
-        </p>
-    </div>
-);
+export const argTypes = {
+    show: { control: null },
+    onClose: {
+        table: {
+            category: 'Events',
+        },
+    },
+    onClosed: {
+        table: {
+            category: 'Events',
+        },
+    },
+    onOpened: {
+        table: {
+            category: 'Events',
+        },
+    },
+}
 
-const TemplateButton = (args) => {
+export const AllProps = (args) => {
     const [show, setShow] = useState(false);
 
     return (
         <>
             <Modal
+                {...args}
                 show={show}
-                onClose={() => {
-                    setShow(false);
-                }}
-            >
-                <StoryBookContent />
+                onClose={() => {setShow(false)}}>
+
+                <h3>Modal Content</h3>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi unde nulla est aspernatur iusto ex cum magni
+                    nihil vitae! A.
+                </p>
+                <Button 
+                    btnStyle="none"
+                    block={true}
+                    onClick={() => {setShow(false)}}>
+                        Close
+                </Button>
             </Modal>
             <Button
-                onClick={() => {
-                    setShow(true);
-                }}
-            >
+                onClick={() => {setShow(true)}}>
                 Show Modal
             </Button>
         </>
     );
 };
 
-const Template = (args) => (
-    <>
-        <h5>Toggle the show prop and review callbacks in the Actions tab</h5>
-        <Modal {...args}>
-            <StoryBookContent />
-        </Modal>
-    </>
-);
-
-export const Basic = TemplateButton.bind({});
-Basic.argTypes = {
-    closeOnClick: { table: { disable: true } },
+AllProps.parameters = {
+    docs: {
+        source: {
+            type: 'code', // shows event handlers correcly in the docs
+        },
+    },
 };
 
-export const Callbacks = Template.bind({});
-
-Callbacks.args = {
-    show: false,
-};
-
-Callbacks.argTypes = {
-    onClose: { action: 'OnClose Fired' },
-    onClosed: { action: 'onClosed Fired' },
-    onOpened: { action: 'onOpened Fired' },
-};

@@ -4,6 +4,7 @@ import useTransitionEnd from '../utilities/hooks/useTransitionEnd';
 import Overlay from './Overlay';
 import PropTypes from 'prop-types';
 
+/** A pop up dialog that needs to be interacted with before other content */
 function Modal({ children, show, onClose, onClosed, onOpened, closeOnClick }) {
     const modalRef = useRef();
     const transitionEnd = useTransitionEnd(modalRef);
@@ -48,10 +49,15 @@ function transitionClasses() {
 }
 
 Modal.propTypes = {
+    /** Show or hide the modal */
     show: PropTypes.bool,
+    /** Callback fired when close starts */
     onClose: PropTypes.func,
+    /** Callback fired when finished closing */
     onClosed: PropTypes.func,
+    /** Callback fired when opening starts */
     onOpened: PropTypes.func,
+    /** Control whether clicking on the overlay triggers the onClose callback */
     closeOnClick: PropTypes.bool,
 };
 
