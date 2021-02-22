@@ -1,6 +1,7 @@
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 
+/** Provides styling options for Tables */
 function Table({ children, size, border, hover, removeHeadColor }) {
     const classes = ['table'];
 
@@ -26,9 +27,13 @@ function Table({ children, size, border, hover, removeHeadColor }) {
 }
 
 Table.propTypes = {
+    /** Where to apply borders */
     border: PropTypes.oneOf(['all', 'none']),
+    /** Enable row hover effect */
     hover: PropTypes.bool,
+    /** Add Background Color to Header row */
     removeHeadColor: PropTypes.bool,
+    /** Padding modifier to provide to td/th elements */
     size: PropTypes.oneOf(['s', 'l']),
 };
 

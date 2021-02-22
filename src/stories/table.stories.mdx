@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './table.stories.js';
+import Table from '../lib/components/Table';
+
+<Meta title="Table" component={Table} argTypes={stories.argTypes} 
+/>
+
+# Tables
+
+<Description of={Table} />
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />
+
+## Borders
+
+Set border to change the border style
+
+<Canvas>
+    <Story story={stories.Borders} />
+</Canvas>
+
+
+## Sizes
+
+Setting size will increase or decrease the padding of each `<td>` and `<th>` element
+
+<Canvas>
+    <Story story={stories.Sizes} />
+</Canvas>
+
+## Hover
+
+Remove hover effect by setting `hover = false`
+
+<Canvas>
+    <Story story={stories.Hover} />
+</Canvas>
+
+
+## Remove heading Background
+
+Remove the heading background by setting `removeHeadColor = true`
+
+<Canvas>
+    <Story story={stories.HeadingColor} />
+</Canvas>
