@@ -1,17 +1,47 @@
 import Spinner from '../lib/components/Spinner';
+import {cleanArgs} from './helpers/utils'
 
-export default {
-    component: Spinner,
-    title: 'Spinner',
-};
+const tableDisable = { table: { disable: true } };
+const tableEnable = { table: { disable: false } };
 
-export const All = (args) => <Spinner {...args} />;
+export const argTypes = {
+    size: {control: {type: 'radio', options: ['default','s','l']},
+            ...tableDisable
+        },
+    color: {control: 'color',
+            table: {category: 'Helpers',
+                    disable: true            
+                },
+        },
+    halo: {...tableDisable},
+    
+}
+
+/* --------  All Props ---------------- */
+export const All = (args) => {
+    const cArgs =  cleanArgs(args);
+    const {color, ...spinnerArgs} = cArgs
+
+    // ensures style only shows in source if color has been defined
+    if (color) {
+        spinnerArgs.style = {color}
+    }
+ 
+    return (<Spinner {...spinnerArgs}/>)
+}
+
 All.args = {
-    color: 'primary',
-    size: 'l',
+    size: 'default',
     halo: false,
 };
 
+All.argTypes = {
+    size: {...tableEnable},
+    halo: {...tableEnable},
+    color: {...tableEnable}
+}
+
+/* --------  Sizes ---------------- */
 export const Sizes = (args) => (
     <>
         <Spinner size="s" />
@@ -20,16 +50,12 @@ export const Sizes = (args) => (
     </>
 );
 
-export const Halo = (args) => (
-    <>
-        <Spinner color="primary" halo={true} />
-        <Spinner color="secondary" halo={true} />
-        <Spinner color="info" halo={true} />
-    </>
-);
+/* --------  Halo ---------------- */
+export const Halo = (args) => <Spinner halo={true} />;
 
-export const Styled = (args) => <Spinner {...args} />;
+/* --------  Custom Styles ---------------- */
+export const Styled = (args) => <Spinner halo={true} {...args}/>;
 Styled.args = {
-    style: { color: 'hotpink', width: '75px', height: '75px' },
+    style: { color: 'purple', width: '100px', height: '100px' },
     size: 'l',
 };

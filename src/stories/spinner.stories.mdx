@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './spinner.stories.js';
+import Spinner from '../lib/components/Spinner';
+
+<Meta title="Spinner" component={Spinner} argTypes={stories.argTypes}/>
+
+# Spinner
+
+<Description of={Spinner} />
+
+<Canvas>
+    <Story story={stories.All} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />
+
+## Sizes
+The spinner has three preset sizes
+
+<Canvas>
+    <Story story={stories.Sizes} />
+</Canvas>
+
+## Halo
+You can enable/disable a spinner track by setting `halo` to true or false.
+
+<Canvas>
+    <Story story={stories.Halo} />
+</Canvas>
+
+## Custom Styles
+Custom styles can be applied to spinners by setting className or the relevant style.
+
+- **Color**:  Spinners use `currentcolor`, so you can assign any class/style that sets color
+- **Size**: assign a class/style that sets the `height` and `width`
+
+Note that when setting size, you should still use the size prop to get the most appropiate stroke width to size ratio i.e. larger spinners should use `size="l"`
+
+<Canvas>
+    <Story story={stories.Styled} />
+</Canvas>

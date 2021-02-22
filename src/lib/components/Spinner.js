@@ -2,14 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-function Spinner({ className, style, halo, color, size }) {
+/**  Spinners for indicating loading state */
+function Spinner({ className, style, halo, size }) {
     const classes = ['spinner'];
-
-    // Spinner uses currentColor
-    // this prop is only a helper to set the utility color class
-    if (color) {
-        classes.push(`clr--${color}`);
-    }
 
     if (['s', 'l'].includes(size)) {
         classes.push(`spinner--${size}`);
@@ -32,7 +27,9 @@ function Spinner({ className, style, halo, color, size }) {
 }
 
 Spinner.propTypes = {
+    /** Show a translucent background track */
     halo: PropTypes.bool,
+    /** Size modifier */
     size: PropTypes.oneOf(['s', 'l']),
 };
 
