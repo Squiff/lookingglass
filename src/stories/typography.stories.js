@@ -1,8 +1,4 @@
-export default {
-    title: 'Typography',
-};
-
-const HeadersTemplate = (args) => {
+export const Headers = (args) => {
     return (
         <>
             <h1>This is a H1 Heading</h1>
@@ -15,7 +11,7 @@ const HeadersTemplate = (args) => {
     );
 };
 
-const PTemplate = (args) => (
+export const Paragraph = (args) => (
     <div>
         <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, officiis! Neque, nostrum natus ipsum dicta
@@ -39,6 +35,3 @@ const PTemplate = (args) => (
         </p>
     </div>
 );
-
-export const Headers = HeadersTemplate.bind({});
-export const Paragraph = PTemplate.bind({});

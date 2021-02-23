@@ -1,3 +1,4 @@
+@use './components/reset';
 @use './components/container';
 @use './components/flex';
 @use './components/alerts';
@@ -13,12 +14,3 @@
 
 @use './components/utilities';
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-}
