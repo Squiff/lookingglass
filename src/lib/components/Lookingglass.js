@@ -1,19 +1,28 @@
 import React from 'react';
 import classNames from 'classnames';
 import { prefixClass } from '../utilities/utils';
+import { classNameResolver } from '../utilities/classes';
 import PropTypes from 'prop-types';
 
-// component generates classes from props and merges them with classes on the child
-// should have a single child
+/** A Utility Class Generator */
 function Lookingglass({ children, className, ...props }) {
     const classes1 = classNameResolver(props, classPrefix, classValueMapping);
     const classes2 = miscClassResolver(props);
 
-    const child = React.Children.only(children);
-    const mergedClasses = classNames(classes1, classes2, className, child.props.className);
-    const childWithClass = React.cloneElement(child, { className: mergedClasses });
+    const classes = classNames(classes1, classes2, className)
 
-    return <>{childWithClass}</>;
+    // if props.div then wrap children in a div that has the generated classes applied
+    // otherwise There should be a single child that will be passed the generated classNames
+    let child;
+    if (props.div === true) {
+        child = <div className={classes}>{children}</div>
+    } else {
+        const onlyChild = React.Children.only(children);
+        const mergedClasses = classNames(classes, onlyChild.props.className);
+        child =  React.cloneElement(onlyChild, { className: mergedClasses });
+    }
+
+    return <>{child}</>;
 }
 
 const classPrefix = {
@@ -68,31 +77,6 @@ const classValueMapping = {
     borderColor: { current: 'current-color' },
     textDecoration: { 'line-through': 'strike' },
 };
-
-// a generic function to resolve props to class names
-// provide a list of properties {prop: value}
-// provide a class name mapping {prop: classPrefix}
-// provide a value mapping {prop: {value: mappedValue}}
-// return a list of class Names in format [classPrefix][separator][value]
-function classNameResolver(props, classMapping, valueMapping, separator = '--') {
-    const output = [];
-
-    for (const key in props) {
-        const value = props[key];
-        if (value !== undefined && typeof value !== 'object') {
-            const prefix = classMapping[key];
-            let classNameSuffix = value;
-
-            if (valueMapping && valueMapping[key] && valueMapping[key][value]) {
-                classNameSuffix = valueMapping[key][value];
-            }
-
-            output.push(`${prefix}${separator}${classNameSuffix}`);
-        }
-    }
-
-    return output;
-}
 
 // function for class Names that do not fit into the classNameResolver pattern
 function miscClassResolver(props) {
@@ -161,7 +145,10 @@ Lookingglass.propTypes = {
     top: PropTypes.string,
     bottom: PropTypes.string,
     absolute: PropTypes.string,
-    display: PropTypes.string,
+    display: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ]),       
     overflow: PropTypes.string,
     overflowX: PropTypes.string,
     overflowY: PropTypes.string,
