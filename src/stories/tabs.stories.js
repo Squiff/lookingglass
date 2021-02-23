@@ -2,12 +2,19 @@ import { useState } from 'react';
 import Tabs from '../lib/components/Tabs';
 import Button from '../lib/components/Button';
 
-export default {
-    component: Tabs,
-    title: 'Tabs',
-};
 
-export const Basic = (args) => (
+export const argTypes = {
+    active: {control: null},
+    tabId: {control: true, 
+        description:'ID set on the Tab and Panel Subcomponents',
+        table: {
+        category: 'Subcomponent',
+        type: {summary: 'any'}
+    },}
+}
+
+/* -------- ALL PROPS ---------------- */
+export const AllProps = (args) => (
     <Tabs>
         <Tabs.Tab tabId="1">Tab 1</Tabs.Tab>
         <Tabs.Tab tabId="2">Tab 2</Tabs.Tab>
@@ -39,6 +46,12 @@ export const Basic = (args) => (
     </Tabs>
 );
 
+AllProps.parameters = {
+    options: {showPanel: true}
+}
+
+
+/* -------- CONTROLLED ---------------- */
 export const Controlled = (args) => {
     const [activeTab, setActiveTab] = useState('1');
 
@@ -48,41 +61,24 @@ export const Controlled = (args) => {
             <Tabs.Tab tabId="2">Tab 2</Tabs.Tab>
             <Tabs.Tab tabId="3">Tab 3</Tabs.Tab>
             <Tabs.Panel tabId="1">
-                <div>Click Tab or the button</div>
-                <Button
-                    onClick={() => {
-                        setActiveTab('2');
-                    }}
-                >
-                    Go to tab 2
-                </Button>
+                <h5>Click Tab or the button</h5>
+                <Button onClick={() => {setActiveTab('2')}} color="primary">Go to tab 2</Button>
             </Tabs.Panel>
             <Tabs.Panel tabId="2">
-                <div>Click Tab or the button</div>
-                <Button
-                    onClick={() => {
-                        setActiveTab('3');
-                    }}
-                >
-                    Go to tab 3
-                </Button>
+                <h5>Click Tab or the button</h5>
+                <Button onClick={() => {setActiveTab('3')}} color="primary">Go to tab 3</Button>
             </Tabs.Panel>
             <Tabs.Panel tabId="3">
-                <div>Click Tab or the button</div>
-                <Button
-                    onClick={() => {
-                        setActiveTab('1');
-                    }}
-                >
-                    Go to tab 1
-                </Button>
+                <h5>Click Tab or the button</h5>
+                <Button onClick={() => {setActiveTab('1')}} color="primary">Go to tab 1</Button>
             </Tabs.Panel>
         </Tabs>
     );
 };
 
-// show hooks
 Controlled.parameters = {
+    options: {showPanel: false},
+    // show hooks in source view
     docs: {
         source: {
             type: 'code',

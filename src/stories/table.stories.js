@@ -1,4 +1,3 @@
-import Lookingglass from '../lib/components/Lookingglass';
 import Table from '../lib/components/Table';
 
 export const argTypes = {

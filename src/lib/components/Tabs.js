@@ -1,6 +1,7 @@
 import React, { Children, useState } from 'react';
 import PropTypes from 'prop-types';
 
+/** Navigate between multiple panes of content. Tabs have opinionated styling applied. */
 function Tabs({ children, active, onChange }) {
     const ChildrenArr = Children.toArray(children);
     const tabs = ChildrenArr.filter((c) => c.type === Tabs.Tab);
@@ -71,17 +72,18 @@ Tabs.Panel = ({ children, tabId }) => {
 };
 
 Tabs.propTypes = {
-    tabId: PropTypes.string,
-    active: PropTypes.string,
+    /** The id of the currently active tab */
+    active: PropTypes.any,
+    /** Callback fired when a tab is clicked */
     onChange: PropTypes.func,
 };
 
-Tabs.Tab = {
-    tabId: PropTypes.string,
+Tabs.Tab.propTypes = {
+    tabId: PropTypes.any.isRequired,
 };
 
-Tabs.Panel = {
-    tabId: PropTypes.string,
+Tabs.Panel.propTypes = {
+    tabId: PropTypes.any.isRequired,
 };
 
 Tabs.Tab.displayName = 'Tabs.Tab';

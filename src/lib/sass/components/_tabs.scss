@@ -20,6 +20,7 @@ $panel-padding: 12px;
 
     &__nav {
         display: flex;
+        flex-wrap: wrap-reverse;
         background-color: $background-nav;
     }
 
