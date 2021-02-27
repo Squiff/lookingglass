@@ -5,25 +5,29 @@ import { classNameResolver } from '../utilities/classes';
 import PropTypes from 'prop-types';
 
 /** A Utility Class Generator */
-function Lookingglass({ children, className, ...props }) {
+const Lookingglass = React.forwardRef(({ children, className, style, ...props }, ref) => {
     const classes1 = classNameResolver(props, classPrefix, classValueMapping);
     const classes2 = miscClassResolver(props);
 
-    const classes = classNames(classes1, classes2, className)
+    const classes = classNames(classes1, classes2, className);
 
     // if props.div then wrap children in a div that has the generated classes applied
     // otherwise There should be a single child that will be passed the generated classNames
     let child;
     if (props.div === true) {
-        child = <div className={classes}>{children}</div>
+        child = (
+            <div className={classes} style={style} ref={ref}>
+                {children}
+            </div>
+        );
     } else {
         const onlyChild = React.Children.only(children);
         const mergedClasses = classNames(classes, onlyChild.props.className);
-        child =  React.cloneElement(onlyChild, { className: mergedClasses });
+        child = React.cloneElement(onlyChild, { className: mergedClasses });
     }
 
     return <>{child}</>;
-}
+});
 
 const classPrefix = {
     backgroundColor: 'bg',
@@ -145,10 +149,7 @@ Lookingglass.propTypes = {
     top: PropTypes.string,
     bottom: PropTypes.string,
     absolute: PropTypes.string,
-    display: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.object
-    ]),       
+    display: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     overflow: PropTypes.string,
     overflowX: PropTypes.string,
     overflowY: PropTypes.string,
