@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Button({ children, color, size, btnStyle, block, ...props }) {
+const Button = React.forwardRef(({ children, color, size, btnStyle, block, ...props }, ref) => {
     const classes = ['btn'];
 
     if (btnStyle === 'none') {
@@ -38,11 +38,11 @@ function Button({ children, color, size, btnStyle, block, ...props }) {
     const classStr = classes.join(' ');
 
     return (
-        <button className={classStr} {...props}>
+        <button className={classStr} {...props} ref={ref}>
             {children}
         </button>
     );
-}
+});
 
 Button.propTypes = {
     /** theme color to apply to the button */

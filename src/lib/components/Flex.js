@@ -1,10 +1,11 @@
 import React from 'react';
 import { prefixClasses, prefixClass, isBreakpoint } from '../utilities/utils';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /** A utility for creating responsive flexbox layouts */
-export default function Flex(props) {
-    let { children, className, type, cols, justify, align, ...otherProps } = props;
+const Flex = React.forwardRef((props, ref) => {
+    let { children, className, style, type, cols, justify, align, ...otherProps } = props;
 
     // get class names
     let classes = ['flex'];
@@ -32,12 +33,14 @@ export default function Flex(props) {
     }
 
     // get class string
-    const classStr = classes.join(' ');
-    // forward passed in via className
-    const classNameStr = className ? className : '';
+    const classNameStr = classNames(classes, className);
 
-    return <div className={`${classStr} ${classNameStr}`}>{children}</div>;
-}
+    return (
+        <div className={classNameStr} style={style} ref={ref}>
+            {children}
+        </div>
+    );
+});
 
 // fx-{#}, fx-auto, fx-equal
 Flex.Child = (props) => {
@@ -122,3 +125,5 @@ Flex.Child.propTypes = {
 };
 
 Flex.Child.displayName = 'Flex.Child';
+
+export default Flex;
