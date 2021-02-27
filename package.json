@@ -42,9 +42,11 @@
     },
     "dependencies": {
         "@babel/runtime": "^7.12.13",
+        "@popperjs/core": "^2.8.3",
         "classnames": "^2.2.6",
         "focus-trap-react": "^8.4.1",
         "prop-types": "^15.7.2",
+        "react-popper": "^2.2.4",
         "react-transition-group": "^4.4.1"
     }
 }

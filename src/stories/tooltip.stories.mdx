@@ -1,0 +1,75 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './tooltip.stories.js';
+import Tooltip from '../lib/components/Tooltip';
+
+<Meta title="Tooltip" component={Tooltip} argTypes={stories.argTypes} />
+
+# Tooltips
+
+<Description of={Tooltip} />
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />
+
+## Basics
+
+Tooltips are powered by [popper](https://popper.js.org/) for optimal placement. A tooltip will switch locations and make adjustments when scrolling to prevent overflow.
+
+If you are using a scrolling container that is not the the window, then you need to ensure the container has a non-static `position`
+
+<Canvas>
+    <Story story={stories.Scrolling} />
+</Canvas>
+
+### Refs
+
+A Tooltip requires access to the target's DOM node to position correctly, so the first step of setting up is to get a ref to the target element. This ref can then be passed to `<Tooltip>` using the `targetRef` prop.
+
+```jsx
+ const targetRef = useRef(null);
+...
+<button ref={targetRef}>Target Button</button>
+...
+<Tooltip targetRef={targetRef} ... >Tooltip Content</Tooltip>
+```
+
+## Placement
+
+-   `placement` can be positioned in one of twelve locations
+-   `distance` specifies the distance in pixels from the target element. If the tooltip includes an arrow, then this is measured from the point of the arrow.
+    The default is 0 for arrow tooltips and 5 for non-arrow tooltips
+
+Examples of some of the different placements. The `distance` for the "bottom" example is set to `0` - notice how this positions the tooltip right up against the element
+
+<Canvas>
+    <Story story={stories.Placements} />
+</Canvas>
+
+## Triggers
+
+By setting `trigger` you can specify whether a tooltip is shown when the target is hovered or when it gains focus - Hover is the default.
+
+`triggerDelay` is how long after the action the should tooltip appear (in ms).
+
+<Canvas>
+    <Story story={stories.Triggers} />
+</Canvas>
+
+## Controlled
+
+By passing in the `show` prop, `<Tooltip>` becomes a **_controlled_** component. This passes responsibility for showing/hiding the tooltip to the user.
+
+<Canvas>
+    <Story story={stories.Controlled} />
+</Canvas>
+
+## Styles
+
+`className` and `style` props can be passed to `<Tooltip>` to apply custom styling.
+
+<Canvas>
+    <Story story={stories.Styled} />
+</Canvas>
