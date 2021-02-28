@@ -1,8 +1,10 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
 <Meta title="Global Styles/Resets" />
 
 # Global Styles
 
-The following reset should be defined in order for component sizing to work as expected. This has already been included in the main SASS entry point. 
+The following reset should be defined in order for component sizing to work as expected. This has already been included in the main SASS entry point.
 You will need to include this in your style if you are not using all styles.
 
 ```css
@@ -10,5 +12,18 @@ You will need to include this in your style if you are not using all styles.
 *::before,
 *::after {
     box-sizing: border-box;
+}
+```
+
+## Lists
+
+Lists use the following global styles.
+
+```css
+ol,
+ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
 }
 ```

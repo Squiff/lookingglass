@@ -75,6 +75,8 @@ const classPrefix = {
     scrollbarSize: 'scrl',
     scrollbarStyle: 'scrl',
     scrollbarTrack: 'scrl__track',
+    listStyleType: 'lst',
+    listPosition: 'list-pos',
 };
 
 const classValueMapping = {
@@ -157,6 +159,8 @@ Lookingglass.propTypes = {
     scrollbarSize: PropTypes.oneOf(['s', 'l']),
     scrollbarStyle: PropTypes.oneOf(['none', 'rounded']),
     scrollbarTrack: PropTypes.oneOf(['none']),
+    listStyleType: PropTypes.string,
+    listPosition: PropTypes.oneOf(['inside']),
 };
 
 export default Lookingglass;

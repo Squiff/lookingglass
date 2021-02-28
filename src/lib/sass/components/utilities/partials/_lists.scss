@@ -1,0 +1,21 @@
+$lists: true !default;
+
+$list-styles: (none, circle, disc, square, decimal, lower-latin, upper-latin, lower-roman, upper-roman) !default;
+
+@mixin lists() {
+    /* list style type */
+    @each $style in $list-styles {
+        .lst--#{$style} {
+            list-style-type: $style !important;
+        }
+    }
+
+    /* position */
+    .list-pos--inside {
+        list-style-position: inside !important;
+    }
+}
+
+@if $lists {
+    @include lists();
+}
