@@ -1,0 +1,49 @@
+@use './config';
+@use 'sass:map';
+
+$default-background: map.get(config.$theme, 'info') !default;
+$overlay-opacity: 0.8 !default;
+
+.progress {
+    height: 5px;
+    background-color: $default-background;
+    position: relative;
+    overflow: hidden;
+
+    /* provides an overlay with opacity so background is 'lightened' */
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        height: 100%;
+        width: 100%;
+        display: block;
+        background-color: #ffffff;
+        opacity: $overlay-opacity;
+    }
+
+    &__bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: inherit;
+        transition: width 150ms linear;
+    }
+
+    &--indeterminate &__bar {
+        width: 50% !important;
+        animation: progress-indeterminate 1.75s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+    }
+}
+
+/* simple indeterminate animation - note that width is fixed as 50% */
+@keyframes progress-indeterminate {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(200%);
+    }
+}

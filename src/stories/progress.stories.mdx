@@ -1,0 +1,42 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './progress.stories.js';
+import Progress from '../lib/components/Progress';
+
+<Meta title="Progress" component={Progress} argTypes={stories.argTypes} />
+
+# Progress Bars
+
+<Description of={Progress} />
+
+<Canvas>
+    <Story story={stories.allProps} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />
+
+## Setting Progress
+
+Set the percentage completion using the `progress` prop. It expects a value between 0 and 100.
+When the progress is updated it will transition to the new value.
+
+<Canvas>
+    <Story story={stories.setProgress} />
+</Canvas>
+
+## Indeterminate Progress
+
+You can set the `indeterminate` flag to enable an animation on the progress bar.
+This is useful when the current progress of an operation is unknown.
+
+<Canvas>
+    <Story story={stories.Indeterminate} />
+</Canvas>
+
+## Customizations
+
+`Progress` can be customized via `className` and `Style` properties.
+Here we set the `height` and `background-color`.
+
+<Canvas>
+    <Story story={stories.Customized} />
+</Canvas>
