@@ -14,10 +14,10 @@ A variety of components used for building forms. Including inputs, selects, spac
 
 ## Summary
 
-`Input`, `Select`, `TextArea`, `Label` are the main components and are styled wrappers around their standard HTML counterparts.
+`Input`, `Select`, `TextArea` and `Label` are the main components that make up a form. These components are styled wrappers around their standard HTML counterparts.
 All props are passed on, so you can make use of these components as you would the standard elements.
 
-`Input`, `Select`, `TextArea` are all `display: block` by default, but this can be changed using the `inline` prop
+`Input`, `Select`, `TextArea` all default to `display: block`. This can be changed using the `inline` prop
 
 #### FormGroup
 
@@ -40,7 +40,8 @@ No special styling has been provided for `type="submit"`. It is recommended to u
 Styling is provided for read only and disabled fields.
 
 -   Disabled fields are greyed out and cannot be interacted with
--   Read Only fields have a greyed border, but can still be focused, however the value cannot be changed
+-   Read Only fields have a dulled border. The value cannot be changed, but the field can be focused.
+-   Setting `<Label disabled>` will add opacity to the label
 
 <Canvas>
     <Story story={stories.States} />
@@ -48,16 +49,18 @@ Styling is provided for read only and disabled fields.
 
 ## Validation
 
-Setting `invalid` on an input will apply a red border
+Validation styles are available for highlighting the field that has an issue and displaying any error information.
 
-The `<InputValidation>` component is provided to show any related error messages.
-Note how they are all in the same `<FormGroup>` for correct spacing.
+-   Setting `<Input invalid>` will apply an error border to the field
+-   Setting `<Label invalid>` will apply an error color to the label
+-   The `<InputValidation>` component is provided to show any related error messages.
+    Note how they are all in the same `<FormGroup>` for correct spacing.
 
 <Canvas>
     <Story story={stories.Validation} />
 </Canvas>
 
-The `:invalid` pseudo selector will also be given the same styles
+`Inputs` matching the `:invalid` pseudo selector will also be given the same styles as the `<Input invalid>` prop.
 
 ## Sizes
 
@@ -65,6 +68,24 @@ Set the `size` prop to modify the field size
 
 <Canvas>
     <Story story={stories.Sizes} />
+</Canvas>
+
+## Checkboxes and Radios
+
+Checkboxes and Radios will display inline. They have a `margin-right` applied by default for inline spacing.
+
+If you want to place them on separate lines, they can be wrapped in a `<FormGroup>`.
+
+#### Checkboxes
+
+<Canvas>
+    <Story story={stories.Checkbox} />
+</Canvas>
+
+#### Radios
+
+<Canvas>
+    <Story story={stories.Radio} />
 </Canvas>
 
 ## Selects
@@ -85,7 +106,7 @@ As with `Select`, the `TextArea` component uses the same props as `Input`.
 
 ## Help Text
 
-`InputHelp` is available for displaying helpful messages next to the field.
+`InputHelp` will display a helpful messages below the field.
 
 <Canvas>
     <Story story={stories.HelpText} />

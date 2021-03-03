@@ -68,6 +68,21 @@ export const Form = (args) => {
                     obcaecati? Maiores laborum inventore fuga. Dignissimos, blanditiis perferendis.
                 </TextArea>
             </FormGroup>
+            <FormGroup type="checkbox">
+                <Label htmlFor="checkboxInput1">Checkbox 1</Label>
+                <Input type="checkbox" name="checkboxInput1" id="checkboxInput1" />
+                <Label htmlFor="checkboxInput2">Checkbox 2</Label>
+                <Input type="checkbox" name="checkboxInput2" id="checkboxInput2" />
+                <Label htmlFor="checkboxInput3">Checkbox 3</Label>
+                <Input type="checkbox" name="checkboxInput3" id="checkboxInput3" />
+            </FormGroup>
+
+            <FormGroup type="radio">
+                <Label htmlFor="radioInput1">radio option 1</Label>
+                <Input type="radio" name="radioGroup1" id="radioInput1" />
+                <Label htmlFor="radioInput2">radio option 2</Label>
+                <Input type="radio" name="radioGroup1" id="radioInput2" />
+            </FormGroup>
             <Button block={true} color="primary">
                 Submit
             </Button>
@@ -100,9 +115,15 @@ export const Validation = (args) => (
             <Input type="text" placeholder="Placeholder" id="validation1" />
         </FormGroup>
         <FormGroup>
-            <Label htmlFor="validation2">Invalid Input</Label>
+            <Label htmlFor="validation2">Invalid Input with Message</Label>
             <Input type="text" placeholder="Placeholder" id="validation2" invalid />
-            <InputValidation msg="Invalid value!" />
+            <InputValidation msg="The value supplied was not valid" />
+        </FormGroup>
+        <FormGroup>
+            <Label htmlFor="validation3" invalid>
+                Invalid Label
+            </Label>
+            <Input type="text" placeholder="Placeholder" id="validation3" invalid />
         </FormGroup>
     </>
 );
@@ -122,6 +143,12 @@ export const States = (args) => (
             <Label htmlFor="state3">Read Only Input</Label>
             <Input type="text" placeholder="Placeholder" id="state3" readOnly />
         </FormGroup>
+        <FormGroup>
+            <Label htmlFor="state4" disabled>
+                Disabled Label
+            </Label>
+            <Input type="text" placeholder="Placeholder" id="state4" disabled />
+        </FormGroup>
     </>
 );
 
@@ -132,6 +159,84 @@ export const Sizes = (args) => (
             <Input type="text" size="s" placeholder="Small" />
             <Input type="text" placeholder="Default" />
             <Input type="text" size="l" placeholder="Large" />
+        </FormGroup>
+    </>
+);
+
+/* --------- Checkbox ---------------*/
+export const Checkbox = (args) => (
+    <>
+        <h6>Inline</h6>
+        <FormGroup>
+            <Label htmlFor="checkbox1">Checkbox 1</Label>
+            <Input type="checkbox" id="checkbox1" />
+            <Label htmlFor="checkbox2">Checkbox 2</Label>
+            <Input type="checkbox" id="checkbox2" />
+            <Label htmlFor="checkbox3">Checkbox 3</Label>
+            <Input type="checkbox" id="checkbox3" />
+        </FormGroup>
+        <h6>Using Form Groups</h6>
+        <FormGroup>
+            <Label htmlFor="checkbox4">Checkbox 4</Label>
+            <Input type="checkbox" id="checkbox4" />
+        </FormGroup>
+        <FormGroup>
+            <Label htmlFor="checkbox5">Checkbox 5</Label>
+            <Input type="checkbox" id="checkbox5" />
+        </FormGroup>
+        <FormGroup>
+            <Label htmlFor="checkbox6">Checkbox 6</Label>
+            <Input type="checkbox" id="checkbox6" />
+        </FormGroup>
+        <h6>Disabled</h6>
+        <FormGroup>
+            <Label htmlFor="checkbox7" disabled>
+                Disabled Checkbox
+            </Label>
+            <Input type="checkbox" id="checkbox7" disabled />
+            <Label htmlFor="checkbox8">Checkbox 2</Label>
+            <Input type="checkbox" id="checkbox8" />
+            <Label htmlFor="checkbox9">Checkbox 3</Label>
+            <Input type="checkbox" id="checkbox9" />
+        </FormGroup>
+    </>
+);
+
+/* --------- Checkbox ---------------*/
+export const Radio = (args) => (
+    <>
+        <h6>Inline</h6>
+        <FormGroup>
+            <Label htmlFor="radio1">radio 1</Label>
+            <Input type="radio" id="radio1" name="radioGroup1" />
+            <Label htmlFor="radio2">radio 2</Label>
+            <Input type="radio" id="radio2" name="radioGroup1" />
+            <Label htmlFor="radio3">radio 3</Label>
+            <Input type="radio" id="radio3" name="radioGroup1" />
+        </FormGroup>
+        <h6>Using Form Groups</h6>
+        <FormGroup>
+            <Label htmlFor="radio4">radio 4</Label>
+            <Input type="radio" id="radio4" name="radioGroup2" />
+        </FormGroup>
+        <FormGroup>
+            <Label htmlFor="radio5">radio 5</Label>
+            <Input type="radio" id="radio5" name="radioGroup2" />
+        </FormGroup>
+        <FormGroup>
+            <Label htmlFor="radio6">radio 6</Label>
+            <Input type="radio" id="radio6" name="radioGroup2" />
+        </FormGroup>
+        <h6>Disabled</h6>
+        <FormGroup>
+            <Label htmlFor="radio7" disabled>
+                Disabled radio
+            </Label>
+            <Input type="radio" id="radio7" name="radioGroup3" disabled />
+            <Label htmlFor="radio8">radio 8</Label>
+            <Input type="radio" id="radio8" name="radioGroup3" />
+            <Label htmlFor="radio9">radio 9</Label>
+            <Input type="radio" id="radio9" name="radioGroup3" />
         </FormGroup>
     </>
 );
