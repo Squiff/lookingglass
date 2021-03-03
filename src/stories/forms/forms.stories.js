@@ -40,20 +40,16 @@ export const Form = (args) => {
     return (
         <>
             <FormGroup>
-                <Label htmlFor="textInput">Text Input</Label>
-                <Input type="text" placeholder="Placeholder" id="textInput" />
+                <Label htmlFor="formText">Text Input</Label>
+                <Input type="text" placeholder="Placeholder" id="formText" />
             </FormGroup>
             <FormGroup>
-                <Label htmlFor="numInput">Number Input</Label>
-                <Input type="number" name="number" placeholder="Number" id="numInput" />
+                <Label htmlFor="formNumber">Number Input</Label>
+                <Input type="number" name="number" placeholder="Number" id="formNumber" />
             </FormGroup>
             <FormGroup>
-                <Label htmlFor="dateInput">Date Input</Label>
-                <Input type="date" name="number" placeholder="Number" id="dateInput" />
-            </FormGroup>
-            <FormGroup>
-                <Label htmlFor="selectInput">Select</Label>
-                <Select id="selectInvalid" placeholder="ddd">
+                <Label htmlFor="formSelect">Select</Label>
+                <Select id="formSelect" placeholder="ddd">
                     <option>Option 1</option>
                     <option>Option 2</option>
                     <option>Option 3</option>
@@ -62,26 +58,28 @@ export const Form = (args) => {
                 <InputHelp>Select an option from the dropdown</InputHelp>
             </FormGroup>
             <FormGroup>
-                <Label htmlFor="selectInput">Text Area</Label>
-                <TextArea rows="3">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, voluptas culpa! Laboriosam,
-                    obcaecati? Maiores laborum inventore fuga. Dignissimos, blanditiis perferendis.
-                </TextArea>
+                <Label htmlFor="formTextArea">Text Area</Label>
+                <TextArea
+                    rows="3"
+                    id="formTextArea"
+                    defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, voluptas culpa! Laboriosam,
+                obcaecati? Maiores laborum inventore fuga. Dignissimos, blanditiis perferendis."
+                />
             </FormGroup>
-            <FormGroup type="checkbox">
-                <Label htmlFor="checkboxInput1">Checkbox 1</Label>
-                <Input type="checkbox" name="checkboxInput1" id="checkboxInput1" />
-                <Label htmlFor="checkboxInput2">Checkbox 2</Label>
-                <Input type="checkbox" name="checkboxInput2" id="checkboxInput2" />
-                <Label htmlFor="checkboxInput3">Checkbox 3</Label>
-                <Input type="checkbox" name="checkboxInput3" id="checkboxInput3" />
+            <FormGroup>
+                <Label htmlFor="formCheckbox1">Checkbox 1</Label>
+                <Input type="checkbox" name="formCheckbox1" id="formCheckbox1" />
+                <Label htmlFor="formCheckbox2">Checkbox 2</Label>
+                <Input type="checkbox" name="formCheckbox1" id="formCheckbox2" />
+                <Label htmlFor="formCheckbox3">Checkbox 3</Label>
+                <Input type="checkbox" name="formCheckbox1" id="formCheckbox3" />
             </FormGroup>
 
             <FormGroup type="radio">
-                <Label htmlFor="radioInput1">radio option 1</Label>
-                <Input type="radio" name="radioGroup1" id="radioInput1" />
-                <Label htmlFor="radioInput2">radio option 2</Label>
-                <Input type="radio" name="radioGroup1" id="radioInput2" />
+                <Label htmlFor="formRadio1">Option 1</Label>
+                <Input type="radio" name="formRadio" id="formRadio1" />
+                <Label htmlFor="formRadio2">Option 2</Label>
+                <Input type="radio" name="formRadio" id="formRadio2" />
             </FormGroup>
             <Button block={true} color="primary">
                 Submit
@@ -96,8 +94,8 @@ export const AllProps = (args) => {
 
     return (
         <FormGroup>
-            <Label htmlFor="textProps">Text Input</Label>
-            <Input placeholder="Placeholder" id="textProps" {...cArgs} />
+            <Label htmlFor="props">Text Input</Label>
+            <Input placeholder="Placeholder" id="props" {...cArgs} />
         </FormGroup>
     );
 };
@@ -245,8 +243,8 @@ export const Radio = (args) => (
 export const Selects = (args) => (
     <>
         <FormGroup>
-            <Label htmlFor="selectInput">Select an Option</Label>
-            <Select id="selectInput">
+            <Label htmlFor="select1">Select an Option</Label>
+            <Select id="select1">
                 <option>Option 1</option>
                 <option>Option 2</option>
                 <option>Option 3</option>
@@ -280,18 +278,18 @@ export const TextAreas = (args) => {
 
     return (
         <>
-            <Label>Text Area</Label>
-            <TextArea rows="3" defaultValue={dummyText} />
-            <Label>Invalid</Label>
-            <TextArea rows="3" defaultValue={dummyText} invalid />
-            <Label>Disabled</Label>
-            <TextArea rows="3" defaultValue={dummyText} disabled />
-            <Label>Read Only</Label>
-            <TextArea rows="3" defaultValue={dummyText} readOnly />
+            <Label htmlFor="textArea1">Text Area</Label>
+            <TextArea rows="3" defaultValue={dummyText} id="textArea1" />
+            <Label htmlFor="textAreaInvalid">Invalid</Label>
+            <TextArea rows="3" defaultValue={dummyText} invalid id="textAreaInvalid" />
+            <Label htmlFor="textAreaDisabled">Disabled</Label>
+            <TextArea rows="3" defaultValue={dummyText} disabled id="textAreaDisabled" />
+            <Label htmlFor="textAreaReadOnly">Read Only</Label>
+            <TextArea rows="3" defaultValue={dummyText} readOnly id="textAreaReadOnly" />
             <div>
-                <Label>Inline</Label>
+                <Label htmlFor="textAreaInline">Inline</Label>
             </div>
-            <TextArea rows="3" defaultValue={dummyText} inline />
+            <TextArea htmlFor="textArea1" rows="3" defaultValue={dummyText} inline id="textAreaInline" />
         </>
     );
 };
@@ -300,10 +298,10 @@ export const TextAreas = (args) => {
 export const Miscellaneous = (args) => (
     <>
         <FormGroup>
-            <Label htmlFor="fileInput">File Input</Label>
-            <Input type="file" id="fileInput" />
-            <Label htmlFor="colorInput">Color Input</Label>
-            <Input type="color" id="colorInput" defaultValue="#800080" />
+            <Label htmlFor="miscFile">File Input</Label>
+            <Input type="file" id="miscFile" />
+            <Label htmlFor="miscColor">Color Input</Label>
+            <Input type="color" id="miscColor" defaultValue="#800080" />
         </FormGroup>
     </>
 );
@@ -311,8 +309,8 @@ export const Miscellaneous = (args) => (
 /* --------- File ---------------*/
 export const HelpText = (args) => (
     <>
-        <Label>Text Input</Label>
-        <Input type="text" placeholder="..." />
+        <Label htmlFor="helpText">Text Input</Label>
+        <Input type="text" placeholder="..." id="helpText" />
         <InputHelp>This is some helpful text to indicate how to fill in the field</InputHelp>
     </>
 );
