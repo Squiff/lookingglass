@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const Button = React.forwardRef(({ children, color, size, btnStyle, block, ...props }, ref) => {
+const Button = React.forwardRef(({ children, color, size, btnStyle, block, className, hoverEffect, ...props }, ref) => {
     const classes = ['btn'];
 
     if (btnStyle === 'none') {
@@ -26,6 +27,7 @@ const Button = React.forwardRef(({ children, color, size, btnStyle, block, ...pr
     switch (btnStyle) {
         case 'none':
             classes.push('btn--none');
+            if (hoverEffect) classes.push(`btn--none--hover-${hoverEffect}`);
             break;
         case 'outline':
             classes.push(`btn--outline-${color}`);
@@ -35,7 +37,7 @@ const Button = React.forwardRef(({ children, color, size, btnStyle, block, ...pr
             classes.push('btn--shadow');
     }
 
-    const classStr = classes.join(' ');
+    const classStr = classNames(classes, className);
 
     return (
         <button className={classStr} {...props} ref={ref}>

@@ -49,7 +49,6 @@ $shadow: 1 !default;
 
 /********** GENERATE CSS *************/
 .btn {
-    display: inline-block;
     padding: $padding;
     border-radius: $borderRadius;
     font-size: $font-size;
@@ -58,11 +57,14 @@ $shadow: 1 !default;
     border: none;
     transition: background-color 250ms;
     font-family: inherit;
-    // letter-spacing: 1px;
 
     &:disabled {
         cursor: default;
         opacity: 0.7;
+    }
+
+    &:focus:not(:focus-visible) {
+        outline: none;
     }
 
     /* Size Variants */
@@ -76,6 +78,11 @@ $shadow: 1 !default;
         font-size: $font-size-large;
     }
 
+    &--block {
+        display: block;
+        width: 100%;
+    }
+
     /* Shadow */
     &--shadow {
         @include shadows.shadow($shadow);
@@ -83,19 +90,21 @@ $shadow: 1 !default;
 
     /* no styling */
     &--none {
-        & {
-            background-color: transparent;
-            color: currentColor;
-        }
+        background-color: transparent;
+        color: currentColor;
 
-        &:hover:not(:disabled) {
+        /* additional hover effect can be added */
+        &--hover-dark:hover:not(:disabled) {
             background-color: rgba(0, 0, 0, 0.15);
         }
-    }
 
-    &--block {
-        display: block;
-        width: 100%;
+        &--hover-light:hover:not(:disabled) {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        &--hover-opacity:hover:not(:disabled) {
+            opacity: 0.85;
+        }
     }
 }
 
