@@ -32,13 +32,15 @@ $colors: (
 $colorVariants: ('primary', 'secondary') !default;
 $colorVariantCount: 4 !default;
 
-// Text color to be used on light backgrounds
-$darkTextColor: #222222 !default;
+$background-color: #fff !default; // default background for the body
+$text-color: #222222 !default; // default color for the body
+$darkTextColor: #222222 !default; // Text color to be used on light backgrounds
 
 // ********** OTHER **********
 $z-index: (
     'overlay': 500,
-    'tooltip': 600,
+    'popup': 600,
+    'tooltip': 700,
 );
 
 $overlay-animation-duration: 300ms !default;

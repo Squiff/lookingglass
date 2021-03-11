@@ -1,0 +1,6 @@
+@use './config';
+@use 'sass:map';
+
+.popup {
+    z-index: map.get(config.$z-index, 'popup');
+}

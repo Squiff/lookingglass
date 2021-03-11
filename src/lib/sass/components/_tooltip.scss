@@ -1,4 +1,5 @@
 @use './config';
+@use './popup';
 @use 'sass:map';
 
 $background-color: #333333 !default;
