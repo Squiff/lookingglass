@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import useClickAway from '../utilities/hooks/useClickAway';
@@ -47,13 +48,15 @@ function Popup({
 
     if (!show) return null;
 
+    const popupClasses = classNames('popup', popupClassName);
+
     return (
         <>
             <div
                 ref={setPopperElement}
                 style={{ ...popupStyles, ...styles.popper }}
                 {...attributes.popper}
-                className={popupClassName}
+                className={popupClasses}
             >
                 {children}
                 {arrow && <div style={styles.arrow} className={arrowClassName} data-popper-arrow />}
@@ -61,6 +64,11 @@ function Popup({
         </>
     );
 }
+
+Popup.defaultProps = {
+    clickAway: true,
+    escape: true,
+};
 
 function getPopperOptions(options) {
     // padding prevents arrow spilling into borderRadius
