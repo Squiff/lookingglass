@@ -1,0 +1,99 @@
+@use './config';
+@use '../utilities/shadows';
+@use './popup';
+@use 'sass:map';
+
+// navbar options
+$padding: 0 20px !default;
+$margin: 0 0 16px 0 !default;
+$shadow: 3 !default;
+// navitem options
+$nav-item-padding: 10px 12px;
+$nav-item-font-size: 0.875rem;
+$nav-item-font-weight: 500;
+$nav-item-hover-background: rgba(0, 0, 0, 0.1);
+// dropdown options
+$dropdown-border: 1px solid #ccc;
+$dropdown-background: config.$background-color;
+// tray options
+$tray-background-color: config.$background-color;
+$tray-padding-bottom: 11px !default;
+$tray-transition-duration: 200ms !default;
+
+.navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $padding;
+    margin: $margin;
+    @include shadows.shadow($shadow);
+
+    // main link/button nav element in the navbar
+    &__nav {
+        list-style-type: none;
+        display: flex;
+        align-items: stretch;
+    }
+
+    // items in the nav element
+    // navitem could be a button or a link
+    &__navitem {
+        padding: $nav-item-padding;
+        font-size: $nav-item-font-size;
+        font-weight: $nav-item-font-weight;
+        height: 100%;
+        background-color: transparent;
+        display: block;
+        cursor: pointer;
+        border: none;
+        font-family: inherit;
+        color: inherit;
+        text-decoration: none;
+
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        &:hover,
+        &--active {
+            background-color: $nav-item-hover-background;
+        }
+    }
+
+    // The container for dropdown content
+    &__dropdown {
+        border: $dropdown-border;
+        background-color: $dropdown-background;
+    }
+
+    // a full width vertical sliding drawer for the navbar
+    &__tray {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        padding-bottom: $tray-padding-bottom; // accomodate the shadow on the content
+
+        &__content {
+            display: none;
+            background-color: $tray-background-color;
+            transition: transform;
+            transition-duration: $tray-transition-duration;
+            transition-timing-function: ease-in-out;
+            @include shadows.shadow($shadow);
+        }
+
+        &--opening,
+        &--closing {
+            display: block;
+            transform: translateY(-100%);
+        }
+
+        &--open {
+            display: block;
+            transform: translateY(0);
+        }
+    }
+}
