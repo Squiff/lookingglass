@@ -5,20 +5,22 @@
 
 // navbar options
 $padding: 0 20px !default;
-$margin: 0 0 16px 0 !default;
+$margin: 0 0 32px 0 !default;
 $shadow: 3 !default;
 // navitem options
-$nav-item-padding: 10px 12px;
-$nav-item-font-size: 0.875rem;
-$nav-item-font-weight: 500;
-$nav-item-hover-background: rgba(0, 0, 0, 0.1);
+$nav-item-padding: 10px 12px !default;
+$nav-item-font-size: 0.875rem !default;
+$nav-item-font-weight: 500 !default;
+$nav-item-hover-background: rgba(0, 0, 0, 0.1) !default;
 // dropdown options
-$dropdown-border: 1px solid #ccc;
-$dropdown-background: config.$background-color;
+$dropdown-background: config.$background-color !default;
+$dropdown-border: 1px solid #ccc !default;
+$dropdown-shadow: 5 !default;
 // tray options
-$tray-background-color: config.$background-color;
-$tray-padding-bottom: 11px !default;
+$tray-background-color: config.$background-color !default;
+$tray-margin-bottom: 11px !default;
 $tray-transition-duration: 200ms !default;
+$tray-shadow: $shadow !default;
 
 .navbar {
     position: relative;
@@ -65,6 +67,7 @@ $tray-transition-duration: 200ms !default;
     &__dropdown {
         border: $dropdown-border;
         background-color: $dropdown-background;
+        @include shadows.shadow($dropdown-shadow);
     }
 
     // a full width vertical sliding drawer for the navbar
@@ -74,15 +77,13 @@ $tray-transition-duration: 200ms !default;
         left: 0;
         width: 100%;
         overflow: hidden;
-        padding-bottom: $tray-padding-bottom; // accomodate the shadow on the content
 
         &__content {
             display: none;
             background-color: $tray-background-color;
-            transition: transform;
-            transition-duration: $tray-transition-duration;
-            transition-timing-function: ease-in-out;
+            margin-bottom: $tray-margin-bottom; // allows shadow to remain visible in hidden container
             @include shadows.shadow($shadow);
+            transition: transform ease-in-out $tray-transition-duration;
         }
 
         &--opening,

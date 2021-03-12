@@ -58,7 +58,7 @@ NavBar.Tray = ({ children, show, onClose, className, onClosed, onOpened, clickAw
     const clickAwayActive = show && clickAway;
     useClickAway(clickAwayActive, trayElement, onClose);
 
-    const classes = classNames(navbar__tray, className);
+    const classes = classNames('navbar__tray__content', className);
 
     return (
         <CSSTransition
@@ -69,13 +69,17 @@ NavBar.Tray = ({ children, show, onClose, className, onClosed, onOpened, clickAw
             onExited={onClosed}
             onEntered={onOpened}
         >
-            <div className={classes}>
-                <div className="navbar__tray__content" ref={setTrayElement}>
+            <div className="navbar__tray">
+                <div className={classes} ref={setTrayElement}>
                     {children}
                 </div>
             </div>
         </CSSTransition>
     );
+};
+
+NavBar.Tray.defaultProps = {
+    clickAway: true,
 };
 
 const trayTransitionClasses = {
