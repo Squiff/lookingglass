@@ -55,7 +55,7 @@ $shadow: 1 !default;
     font-weight: $font-weight;
     cursor: pointer;
     border: none;
-    transition: background-color 250ms;
+    transition: background-color 200ms;
     font-family: inherit;
 
     &:disabled {
@@ -95,15 +95,15 @@ $shadow: 1 !default;
 
         /* additional hover effect can be added */
         &--hover-dark:hover:not(:disabled) {
-            background-color: rgba(0, 0, 0, 0.15);
+            background-color: rgba(0, 0, 0, 0.2);
         }
 
         &--hover-light:hover:not(:disabled) {
-            background-color: rgba(255, 255, 255, 0.15);
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         &--hover-opacity:hover:not(:disabled) {
-            opacity: 0.85;
+            opacity: 0.75;
         }
     }
 }

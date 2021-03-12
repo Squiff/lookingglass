@@ -16,24 +16,43 @@ import Button from '../lib/components/Button';
 
 <ArgsTable story="All Props" />
 
-## Colors and Styles
+## Colors
 
-Buttons default to solid color with a darken hover effect
+Apply color by setting the `color` prop to one of the theme color names.
+A button will default to solid color with the appropriate dark/white text.
+
+A darkening effect will be applied on hover.
 
 <Canvas>
     <Story story={stories.SolidColors} />
 </Canvas>
 
-Setting `btnStyle="outline"` will apply the color to the border/text with a 'fill' hover effect
+## Outline
+
+Adding `btnStyle="outline"` will apply the color to the border/text with and will fill on hover.
 
 <Canvas>
     <Story story={stories.OutlineColors} />
 </Canvas>
 
-You can set `bynStyle="none"` to remove any default coloring. A cursor and grey out hover effect will still be applied.
+## No Style
+
+Set `btnStyle="none"` for an 'unstyled' button. Base `Button` styles such as font-size and pointer cursor are still retained, so technically it is still styled!
 
 <Canvas>
     <Story story={stories.NoStyle} />
+</Canvas>
+
+#### Adding Hover Effect
+
+When `bynStyle="none"` a `hoverEffect` can be added. Three effects are provided:
+
+-   **dark**: Translucent dark background applied
+-   **light**: Translucent white background applied
+-   **opacity**: Opacity added
+
+<Canvas>
+    <Story story={stories.Hover} />
 </Canvas>
 
 ## Sizes
