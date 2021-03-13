@@ -1,5 +1,5 @@
 $padding: 4px 8px !default;
-$hover-background-color: rgba(0, 0, 0, 0.05) !default;
+$hover-background-color: rgba(0, 0, 0, 0.1) !default;
 
 .list {
     margin: 0;
@@ -11,10 +11,11 @@ $hover-background-color: rgba(0, 0, 0, 0.05) !default;
 
     &__item {
         padding: $padding;
+        margin: 0;
         display: block;
         width: 100%;
         background-color: transparent;
-        border: none;
+        border-width: 0;
         color: inherit;
         text-align: left;
         font-size: inherit;
