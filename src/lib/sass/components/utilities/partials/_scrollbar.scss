@@ -48,6 +48,7 @@ $_default-color: map.get($scrollbar-colors, $scrollbar-default-color);
 
         &::-webkit-scrollbar {
             width: 13px;
+            height: 13px;
         }
 
         &::-webkit-scrollbar-track {
@@ -67,14 +68,18 @@ $_default-color: map.get($scrollbar-colors, $scrollbar-default-color);
 
         &::-webkit-scrollbar {
             width: 10px;
+            height: 10px;
         }
     }
 
     .scrl--l::-webkit-scrollbar {
         width: 16px;
+        height: 16px;
     }
 
     .scrl--none {
+        scrollbar-width: none;
+
         &::-webkit-scrollbar {
             display: none;
         }
