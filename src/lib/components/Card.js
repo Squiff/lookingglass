@@ -2,9 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 
 /** A Content container suitable for most element types  */
-function Card({ children, style }) {
+function Card({ children, className, style }) {
+    const classes = classNames('card', className);
+
     return (
-        <div className="card" style={style}>
+        <div className={classes} style={style}>
             {children}
         </div>
     );
@@ -22,13 +24,11 @@ Card.Body = ({ children }) => {
     return <div className="card__body">{children}</div>;
 };
 
-Card.Img = (props) => {
-    const { children, className, ...otherProps } = props;
-
-    const classStr = classNames('card__img-container', className);
+Card.Img = ({ children, className, ...props }) => {
+    const classes = classNames('card__img-container', className);
 
     return (
-        <div className={classStr} {...otherProps}>
+        <div className={classes} {...props}>
             {children}
         </div>
     );
