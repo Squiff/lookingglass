@@ -1,0 +1,165 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './navbar.stories.js';
+import NavBar from '../lib/components/NavBar';
+
+<Meta title="NavBar" component={NavBar} argTypes={stories.argTypes} parameters={stories.parameters} />
+
+# NavBar
+
+<Description of={NavBar} />
+
+<Canvas>
+    <Story story={stories.All} />
+</Canvas>
+
+## Summary
+
+Throughout this section we will see different ways we can setup a `NavBar`.
+First let's cover the main style properties of a nav bar:
+
+-   `display: flex`
+-   `justify-content: space-between` for easy spacing of children
+-   `align-items: center` for vertical alignment of children
+-   `padding` on the left and right to prevent children being pushed directly to the edges
+
+### Sub Components
+
+A `NavBar` is comprised of several subcomponents
+
+-   `NavBar.Nav` - This is the main `<nav>` element that should wrap the list of links
+-   `NavBar.NavItem` - is an individual link or button that makes up part of the main `<nav>`.
+    They should be children of `NavBar.Nav`
+-   `NavBar.Dropdown` Contains dropdown content such as additional links or login forms.
+-   `NavBar.Tray` is a full width dropdown that slides down from the navbar. It can contain most content types.
+
+### Other Components
+
+You are not restricted to only using the above sub components.
+Useful components to combine with `NavBar` include:
+
+-   **Breakpoints** - Hide or show content at certain breakpoints using the `<Lookingglass display={...} ..>` utility
+-   **Color** - Add color to `NavBar` using the `className` prop or the `<Lookingglass backgroundColor="..." ..>` utility
+-   **Lists** - use the `<List>` component to give structure to dropdown content
+-   **Drawers** - Add a `<Drawer>` for small screens to display navigation links
+-   **Buttons** - The `<Button>` component provides an unstyled variation with configurable hover effects that make it ideal for use in a navbar
+
+## Color
+
+By default a `NavBar` will have no distinctive colors applied.
+Apply colors by setting `className`, `style` or using the `<Lookingglass>` Utility.
+
+<Canvas>
+    <Story story={stories.Color} />
+</Canvas>
+
+## Spacing and Breakpoints
+
+`NavBar` has `display: flex` and `justify-content: space-between` so content is spaced evenly.
+Here the NavBar has two children, The logo and `NavBar.Nav`, which get pushed to oposite ends of the `NavBar`.
+
+You can control the spacing using the margin utilities
+
+<Canvas>
+    <Story story={stories.Spacing} />
+</Canvas>
+
+### Breakpoints
+
+Hide and show content at a specified breakpoint using the `<Lookingglass display={...} ..>` utility
+
+Here we hide the navigation links at the small breakpoint and show them from the medium breakpoint. We will use the same technique when we look at using `<Drawers>`
+
+<Canvas>
+    <Story story={stories.Breakpoints} />
+</Canvas>
+
+## Buttons
+
+use `<Button btnStyle="none" ...>` as a utility button. You can set `hoverEffect` for an appropriate hover style for your background choice.
+
+<Canvas>
+    <Story story={stories.Buttons} />
+</Canvas>
+
+## Dropdowns
+
+Use `Nav.Dropdown` to add dropdown content.
+It has been built using the `<Popup>` component and simply adds a few basic styles on top of it.
+
+#### Popup Summary
+
+Any props `Nav.Dropdown` receives are passed onto `<Popup>` - You can read more in depth about `<Popup>` in the docs, but for the application of a simple dropdown here's what you should know:
+
+-   The dropdown needs to be passed a `targetRef` so it knows which element it needs to position itself below.
+    This will commonly be the button that triggers the dropdown to show.
+-   set `show={true}` to show the dropdown and `show={false}` to hide it.
+-   pass an `onClose` callback, which the dropdown will trigger when it wants to close (i.e. when the user clicks away or presses ESC)
+
+#### Lists
+
+Use a `<List>` to create a simple navigation dropdown. This provides the styling for lists of items as well as hover effects for `<a>` and `<button>` elements.
+
+<Canvas>
+    <Story story={stories.Dropdown} />
+</Canvas>
+
+#### Other Dropdown Content
+
+Dropdowns are not limited to lists. They can contain any content, such as a login form.
+
+<Canvas>
+    <Story story={stories.DropdownLogin} />
+</Canvas>
+
+## Navigation Tray
+
+A tray is a full width dropdown that slides out from the NavBar.
+It can contain any type of content such as navigation options that cannot fit on the main `NavBar`.
+
+### Tray Props
+
+`Navbar.Tray` exposes the following props:
+
+| Prop      | Data Type | Description                                                                    |
+| :-------- | :-------: | :----------------------------------------------------------------------------- |
+| show      |   bool    | show or hide the tray                                                          |
+| onClose   |   Func    | callback fired when the Tray wants to close                                    |
+| onClosed  |   Func    | callback fired when the close transition is complete                           |
+| onOpened  |   Func    | callback fired when the open transition is complete                            |
+| clickAway |   bool    | Run the onClose Callback when user clicks away from the tray. Defaults to True |
+| escape    |   bool    | Run the onClose Callback when user hits escape. Defaults to True               |
+
+### Tray Styles
+
+The Tray only comes with very basic styling out of the box.
+Use the `className` prop or `<Lookingglass>` utility to apply further styles.
+
+In the below example we have setup the "Open Tray" button to toggle the `show` prop.
+
+The contents of the `<Nav.Tray>` is a set of Cards (but the content could be anything you like!).
+They have been wrapped in `<Lookingglass padding="2" backgroundColor="primary-d1">` to provide padding
+and a background color.
+
+<Canvas>
+    <Story story={stories.Tray} />
+</Canvas>
+
+## Drawers
+
+You may choose to put your navigation links in a `<Drawer>` after a certain breakpoint.
+This is a simple setup when using the display utility.
+If you are unfamiliar with `<Drawer>`, then you can read the docs [here](/?path=/story/drawers--all-props)
+
+#### Responsive Drawer
+
+1. Wrap `NavBar.Nav` in a div with a display value of `{s: 'none', m:'block'}`.
+   This will hide the navigation on the navbar at the small breakpoint, but show it on the medium breakpoint upwards.
+
+2. Give the drawer button a display value of `{s: 'block', m:'none'}`.
+   This will show the button at the small breakpoint, but hide it on medium upwards.
+
+3. Add a `<List>` into `<Drawer>`. This should contain the same Links as `NavBar.Nav`
+
+<Canvas>
+    <Story story={stories.NavDrawer} />
+</Canvas>

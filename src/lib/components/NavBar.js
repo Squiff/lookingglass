@@ -5,6 +5,7 @@ import useClickAway from '../utilities/hooks/useClickAway';
 import useTransitionEnd from '../utilities/hooks/useTransitionEnd';
 import Popup from './Popup';
 
+/** The main navigation area found at the top of a page */
 function NavBar({ children, className, ...props }) {
     const classes = classNames('navbar', className);
 
@@ -25,6 +26,8 @@ NavBar.Nav = ({ children, className, ...props }) => {
     );
 };
 
+NavBar.Nav.displayName = 'NavBar.Nav';
+
 NavBar.NavItem = ({ children, ...props }) => {
     const onlyChild = React.Children.only(children);
     const mergedClasses = classNames('navbar__navitem', onlyChild.props.className);
@@ -32,6 +35,8 @@ NavBar.NavItem = ({ children, ...props }) => {
 
     return <li {...props}>{child}</li>;
 };
+
+NavBar.NavItem.displayName = 'NavBar.NavItem';
 
 NavBar.Dropdown = ({ children, className, style, ...props }) => {
     const classes = classNames('navbar__dropdown', className);
@@ -46,6 +51,8 @@ NavBar.Dropdown = ({ children, className, style, ...props }) => {
         </>
     );
 };
+
+NavBar.Dropdown.displayName = 'NavBar.Dropdown';
 
 NavBar.Tray = ({ children, show, onClose, className, onClosed, onOpened, clickAway }) => {
     const [trayElement, setTrayElement] = useState();
@@ -77,6 +84,8 @@ NavBar.Tray = ({ children, show, onClose, className, onClosed, onOpened, clickAw
         </CSSTransition>
     );
 };
+
+NavBar.Tray.displayName = 'NavBar.Tray';
 
 NavBar.Tray.defaultProps = {
     clickAway: true,

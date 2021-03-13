@@ -14,10 +14,12 @@ $nav-item-font-weight: 500 !default;
 $nav-item-hover-background: rgba(0, 0, 0, 0.1) !default;
 // dropdown options
 $dropdown-background: config.$background-color !default;
+$dropdown-color: config.$text-color !default;
 $dropdown-border: 1px solid #ccc !default;
 $dropdown-shadow: 5 !default;
 // tray options
 $tray-background-color: config.$background-color !default;
+$tray-color: config.$text-color !default;
 $tray-margin-bottom: 11px !default;
 $tray-transition-duration: 200ms !default;
 $tray-shadow: $shadow !default;
@@ -25,6 +27,7 @@ $tray-shadow: $shadow !default;
 .navbar {
     position: relative;
     display: flex;
+
     align-items: center;
     justify-content: space-between;
     padding: $padding;
@@ -65,8 +68,9 @@ $tray-shadow: $shadow !default;
 
     // The container for dropdown content
     &__dropdown {
-        border: $dropdown-border;
         background-color: $dropdown-background;
+        color: $dropdown-color;
+        border: $dropdown-border;
         @include shadows.shadow($dropdown-shadow);
     }
 
@@ -81,6 +85,7 @@ $tray-shadow: $shadow !default;
         &__content {
             display: none;
             background-color: $tray-background-color;
+            color: $tray-color;
             margin-bottom: $tray-margin-bottom; // allows shadow to remain visible in hidden container
             @include shadows.shadow($shadow);
             transition: transform ease-in-out $tray-transition-duration;
