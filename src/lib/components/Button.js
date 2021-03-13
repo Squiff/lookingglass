@@ -55,6 +55,8 @@ Button.propTypes = {
     btnStyle: PropTypes.oneOf(['none', 'outline']),
     /** apply display block */
     block: PropTypes.bool,
+    /** Add hover effect when btnStyle="none" */
+    hoverEffect: PropTypes.oneOf(['dark', 'light', 'opacity']),
 };
 
 export default Button;
