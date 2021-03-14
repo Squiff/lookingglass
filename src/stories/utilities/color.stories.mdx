@@ -1,22 +1,40 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './color.stories.js';
+import Lookingglass from '../../lib/components/Lookingglass';
+
+<Meta title="Utilities/Color" component={Lookingglass} argTypes={stories.argTypes} />
 
 # Colors
-Background and Text Color Utilities
 
-PREVIEW
-TABLE
+Color Utilities for Background and Text
+
+<Canvas>
+    <Story story={stories.ColorProps} name="Color Props" />
+</Canvas>
+
+<ArgsTable story="Color Props" />
 
 ## Theme Colors
 
-Colors Are Available for each of the main theme colors;
-ThemeColors Story
+Each of the Theme colors can be used as a background or text color by setting `backgroundColor` and `color` respectively.
+
+<Canvas>
+    <Story story={stories.ThemeColors} />
+</Canvas>
 
 ## Additional Colors
-As well as the theme colors there are additional colors that are available for
-background and text colors.
 
-Additional Colors Story
+As well as the main theme colors there are additional colors that are available only for the background and color utilities.
+
+<Canvas>
+    <Story story={stories.AdditionalColors} />
+</Canvas>
 
 ## Tints and Shades
 
 Light and dark variations are generated for the primary color.
-4 variations of each are created and can be accessed by using a "-l#" and "-d#" suffix.
+Four variations of each are created and can be accessed by using a "-l" or "-d" suffix followed by a number 1 through 4.
+
+<Canvas>
+    <Story story={stories.TintsAndShades} />
+</Canvas>
