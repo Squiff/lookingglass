@@ -111,55 +111,103 @@ function miscClassResolver(props) {
     }
 
     return output;
+    
 }
 
 Lookingglass.propTypes = {
+    /** Background Color */
     backgroundColor: PropTypes.string,
+    /** Text Color */
     color: PropTypes.string,
+    /** Border Width */
     border: PropTypes.string,
+    /** Border Top Width */
     borderTop: PropTypes.string,
+    /** Border Right Width */
     borderRight: PropTypes.string,
+    /** Border Bottom Width */
     borderBottom: PropTypes.string,
+    /** Border Left Width */
     borderLeft: PropTypes.string,
+    /** Border Color */
     borderColor: PropTypes.string,
+    /** Border Radius */
     borderRadius: PropTypes.string,
+    /* Margin */
     margin: PropTypes.string,
+    /** Margin Top */
     marginTop: PropTypes.string,
+    /** Margin Right */
     marginRight: PropTypes.string,
+    /** Margin Bottom */
     marginBottom: PropTypes.string,
+    /** Margin Left */
     marginLeft: PropTypes.string,
+    /** Margin Left and Right */
     marginX: PropTypes.string,
+    /** Margin Top and Bottom */
     marginY: PropTypes.string,
+    /** Padding */
     padding: PropTypes.string,
+    /** Padding top */
     paddingTop: PropTypes.string,
+    /** Padding Right */
     paddingRight: PropTypes.string,
+    /** Padding Bottom */
     paddingBottom: PropTypes.string,
+    /** Padding Left */
     paddingLeft: PropTypes.string,
+    /** Padding Left and Right */
     paddingX: PropTypes.string,
+    /** Padding Top and Bottom */
     paddingY: PropTypes.string,
+    /** Shadow (elevation number) */
     shadow: PropTypes.string,
+    /** Font Size rem */
     fontSize: PropTypes.string,
+    /** font Weight */
     fontWeight: PropTypes.string,
+    /** Text Decoration */
     textDecoration: PropTypes.string,
+    /** text Transformation */
     textTransform: PropTypes.string,
+    /** Text Align */
     textAlign: PropTypes.string,
+    /** Width */
     width: PropTypes.string,
+    /** Height */
     height: PropTypes.string,
+    /** Position */
     position: PropTypes.string,
+    /** Left Position */
     left: PropTypes.string,
+    /** Right Position */
     right: PropTypes.string,
+    /** top Position */
     top: PropTypes.string,
+    /** bottom Position */
     bottom: PropTypes.string,
+    /** Pre defined absolute positions */
     absolute: PropTypes.string,
+    /** Display */
     display: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    /** Overflow */
     overflow: PropTypes.string,
+    /** Overflow X */
     overflowX: PropTypes.string,
+    /** Overflow Y */
     overflowY: PropTypes.string,
+    /** Scrollbar Color */
     scrollbarColor: PropTypes.string,
+    /** Scrollbar Size */
     scrollbarSize: PropTypes.oneOf(['s', 'l']),
+    /** Scrollbar Style */
     scrollbarStyle: PropTypes.oneOf(['none', 'rounded']),
+    /** Scrollbar Track */
     scrollbarTrack: PropTypes.oneOf(['none']),
+    /** List Style Type */
     listStyleType: PropTypes.string,
+    /** List Position */
     listPosition: PropTypes.oneOf(['inside']),
 };
 
