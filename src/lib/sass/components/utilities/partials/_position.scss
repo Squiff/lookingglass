@@ -4,9 +4,9 @@ $absolute-transforms: true !default;
 $positions: (fixed, relative, absolute, sticky) !default;
 $position-directions: (top, bottom, left, right) !default;
 
+// left/top/right/bottom
 $position-distance: (
     0: 0,
-    50: 50%,
     100: 100%,
 ) !default;
 
