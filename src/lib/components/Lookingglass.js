@@ -111,7 +111,6 @@ function miscClassResolver(props) {
     }
 
     return output;
-    
 }
 
 Lookingglass.propTypes = {
@@ -133,7 +132,7 @@ Lookingglass.propTypes = {
     borderColor: PropTypes.string,
     /** Border Radius */
     borderRadius: PropTypes.string,
-    /* Margin */
+    /** Margin */
     margin: PropTypes.string,
     /** Margin Top */
     marginTop: PropTypes.string,
