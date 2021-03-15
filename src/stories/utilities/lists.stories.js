@@ -1,48 +1,98 @@
 import Lookingglass from '../../lib/components/Lookingglass';
 import { cleanArgs } from '../helpers/utils';
+import { UpdateArgTable } from '../helpers/utils';
+import { argTypes as lookingglassArgs } from './lookingglass.storyconfig';
 
-const argTypes = {
-    listStyleType: {
-        control: {
-            type: 'select',
-            options: [
-                'default',
-                'none',
-                'circle',
-                'disc',
-                'square',
-                'decimal',
-                'lower-latin',
-                'upper-latin',
-                'lower-roman',
-                'upper-roman',
-            ],
-        },
-    },
-    listPosition: { control: { type: 'radio', options: ['default', 'inside'] } },
-};
+// Note: directly exporting from a function is an issue for storybook
+const _argTypes = UpdateArgTable(lookingglassArgs, {
+    enable: ['listStyleType', 'listPosition'],
+});
 
-export default {
-    component: Lookingglass,
-    title: 'Utilities/Lists',
-    argTypes: argTypes,
-};
+export const argTypes = _argTypes;
 
-export const Lists = (args) => {
+/* -------- List Props -------- */
+export const ListProps = (args) => {
     const cArgs = cleanArgs(args);
     return (
-        <Lookingglass {...cArgs}>
+        <>
+            <h6>Unordered List</h6>
+            <p>Paragraph Text</p>
+            <Lookingglass {...cArgs}>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                </ul>
+            </Lookingglass>
+        </>
+    );
+};
+
+/* --------Ordered Unordered -------- */
+export const OrderedUnordered = (args) => {
+    return (
+        <>
+            <h6>Unordered List</h6>
+            <Lookingglass listStyleType="circle">
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                </ul>
+            </Lookingglass>
+            <h6>Ordered List</h6>
+            <Lookingglass listStyleType="lower-latin">
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                </ul>
+            </Lookingglass>
+        </>
+    );
+};
+
+/* -------- Examples -------- */
+export const ListExamples = (args) => {
+    return (
+        <>
+            <h6>Standard List</h6>
+            <p>A List with no modifications</p>
             <ul>
                 <li>Item 1</li>
                 <li>Item 2</li>
                 <li>Item 3</li>
                 <li>Item 4</li>
             </ul>
-        </Lookingglass>
-    );
-};
 
-Lists.args = {
-    listStyleType: 'default',
-    listPosition: 'default',
+            <hr />
+
+            <h6>Align Marker Position</h6>
+            <p>Set position inside and remove padding to left align markers</p>
+            <Lookingglass listStyleType="disc" listPosition="inside" padding="0">
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                </ul>
+            </Lookingglass>
+
+            <hr />
+
+            <h6>Remove Markers</h6>
+            <p>Remove list style</p>
+            <Lookingglass listStyleType="none" padding="0" listPosition="inside">
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                </ul>
+            </Lookingglass>
+        </>
+    );
 };
