@@ -1,6 +1,6 @@
 export const themeColors = ['primary', 'secondary', 'success', 'error', 'warning', 'info'];
 
-/** remove any key where value = 'default' */
+/** remove any key where value = removeValue */
 export function cleanArgs(args, removeValue = 'default') {
     const output = { ...args };
 
