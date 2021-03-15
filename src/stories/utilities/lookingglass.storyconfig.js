@@ -27,7 +27,6 @@ const allColors = [
 const borders = ['0', '1', '2', '3', '4'];
 
 const borderColors = [
-    'current',
     'primary',
     'secondary',
     'success',
@@ -38,6 +37,7 @@ const borderColors = [
     'white',
     'light',
     'dark',
+    'currentColor',
 ];
 
 const borderRadius = ['0', '1', '2', '3', 'rounded'];
