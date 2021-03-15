@@ -80,7 +80,7 @@ const classPrefix = {
 };
 
 const classValueMapping = {
-    borderColor: { current: 'current-color' },
+    borderColor: { currentColor: 'current-color' },
     textDecoration: { 'line-through': 'strike' },
 };
 

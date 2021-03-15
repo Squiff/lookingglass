@@ -61,7 +61,7 @@ $_direction-map: directions.getDirections($border-directions);
 
     // also include current color
     .bdr-clr--current-color {
-        border-color: currentColor;
+        border-color: currentColor !important;
     }
 }
 
