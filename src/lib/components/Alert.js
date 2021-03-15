@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import CloseButton from './CloseButton';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 /**
  * Displays a message with the supplied color scheme
  */
-function Alert({ children, color, alertStyle, show, closeBtn, onClose, ...props }) {
+function Alert({ children, className, color, alertStyle, show, closeBtn, onClose, ...props }) {
     const [closed, setClosed] = useState(false);
 
     if ((!show && show !== undefined) || closed === true) {
@@ -36,7 +37,7 @@ function Alert({ children, color, alertStyle, show, closeBtn, onClose, ...props 
         classes.push('alert--close');
     }
 
-    const classStr = classes.join(' ');
+    const classStr = classNames(classes, className);
 
     return (
         <div className={classStr} {...props}>
