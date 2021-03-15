@@ -1,9 +1,10 @@
 import Lookingglass from '../../lib/components/Lookingglass';
+import { UpdateArgTable } from '../helpers/utils';
+import { argTypes as lookingglassArgs } from './lookingglass.storyconfig';
 
-export default {
-    component: Lookingglass,
-    title: 'Utilities/Display',
-};
+// Note: directly exporting from a function is an issue for storybook
+const _argTypes = UpdateArgTable(lookingglassArgs, { enable: ['display'] });
+export const argTypes = _argTypes;
 
 const Template = (args) => (
     <Lookingglass {...args} padding="2">
@@ -11,17 +12,22 @@ const Template = (args) => (
     </Lookingglass>
 );
 
-export const Basic = Template.bind({});
+/* --------- Display Props --------- */
+export const DisplayProps = Template.bind({});
 
-Basic.args = {
+DisplayProps.args = {
     display: 'block',
+    backgroundColor: 'light',
 };
 
-Basic.argTypes = {
-    display: { control: { type: 'select', options: ['none', 'block', 'inline-block'] } },
-};
-
-export const Responsive = Template.bind({});
-Responsive.args = {
-    display: { s: 'none', m: 'block' },
-};
+/* --------- Display Breakpoints --------- */
+export const Responsive = (args) => (
+    <>
+        <Lookingglass display={{ s: 'none', l: 'block' }} backgroundColor="light" color="dark" padding="2" div>
+            Small: None | Large: Block
+        </Lookingglass>
+        <Lookingglass display={{ s: 'block', l: 'none' }} backgroundColor="dark" color="light" padding="2" div>
+            Small: Block | Large: None
+        </Lookingglass>
+    </>
+);

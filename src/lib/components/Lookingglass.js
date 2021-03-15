@@ -188,7 +188,7 @@ Lookingglass.propTypes = {
     bottom: PropTypes.string,
     /** Pre defined absolute positions */
     absolute: PropTypes.string,
-    /** Display */
+    /** Display string or object of breakpoint values*/
     display: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     /** Overflow */
     overflow: PropTypes.string,
