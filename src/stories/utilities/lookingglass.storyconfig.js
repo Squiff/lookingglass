@@ -84,9 +84,10 @@ const textAligns = ['left', 'right', 'center'];
 
 const display = ['none', 'block', 'inline-block'];
 
-const positions = ['fixed', 'relative', 'absolute', 'sticky'];
-const positionDistance = ['0', '100'];
+const positions = ['default', 'fixed', 'relative', 'absolute', 'sticky'];
+const positionDistance = ['default', '0', '100'];
 const absoluteTransforms = [
+    'default',
     'top-left',
     'top-middle',
     'top-right',
