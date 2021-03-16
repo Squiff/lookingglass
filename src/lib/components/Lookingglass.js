@@ -165,7 +165,7 @@ Lookingglass.propTypes = {
     paddingX: PropTypes.string,
     /** Padding Top and Bottom */
     paddingY: PropTypes.string,
-    /** Shadow (elevation number) */
+    /** Shadow */
     shadow: PropTypes.string,
     /** Font Size in Rem */
     fontSize: PropTypes.string,
