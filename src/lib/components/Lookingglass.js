@@ -54,7 +54,7 @@ const classPrefix = {
     paddingX: 'p-x',
     paddingY: 'p-y',
     shadow: 'shadow',
-    fontSize: 'fs',
+    // fontSize: 'fs',
     fontWeight: 'fw',
     textDecoration: 'text-decoration',
     textTransform: 'text-transform',
@@ -92,6 +92,11 @@ function miscClassResolver(props) {
     // add base border style if at least ones of these props is defined
     if ([border, borderTop, borderRight, borderBottom, borderLeft].some((a) => a !== undefined)) {
         output.push('bdr');
+    }
+
+    // font-size replace '.' with '-'
+    if (props.fontSize) {
+        output.push(`fs--${props.fontSize.replace('.', '-')}`);
     }
 
     // add base scrollbar style if at least one of these props is defined
@@ -162,13 +167,13 @@ Lookingglass.propTypes = {
     paddingY: PropTypes.string,
     /** Shadow (elevation number) */
     shadow: PropTypes.string,
-    /** Font Size rem */
+    /** Font Size in Rem */
     fontSize: PropTypes.string,
-    /** font Weight */
+    /** Font Weight */
     fontWeight: PropTypes.string,
     /** Text Decoration */
     textDecoration: PropTypes.string,
-    /** text Transformation */
+    /** Text Transformation */
     textTransform: PropTypes.string,
     /** Text Align */
     textAlign: PropTypes.string,

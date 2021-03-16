@@ -75,7 +75,7 @@ const shadows = [
     '24',
 ];
 
-const fontSizes = ['075', '0875', '1', '1125', '125', '15', '2', '25', '3'];
+const fontSizes = ['0.75', '0.875', '1', '1.125', '1.25', '1.5', '2', '2.5', '3'];
 
 const fontWeights = ['100', '200', '300', '400', '500', '600', '700', '800', '900'];
 const textDecorations = ['none', 'underline', 'line-through'];
