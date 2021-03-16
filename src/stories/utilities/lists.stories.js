@@ -15,8 +15,6 @@ export const ListProps = (args) => {
     const cArgs = cleanArgs(args);
     return (
         <>
-            <h6>Unordered List</h6>
-            <p>Paragraph Text</p>
             <Lookingglass {...cArgs}>
                 <ul>
                     <li>Item 1</li>
