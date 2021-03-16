@@ -214,9 +214,9 @@ Lookingglass.propTypes = {
     /** Scrollbar Color */
     scrollbarColor: PropTypes.string,
     /** Scrollbar Size */
-    scrollbarSize: PropTypes.oneOf(['s', 'l']),
+    scrollbarSize: PropTypes.oneOf(['s', 'none']),
     /** Scrollbar Style */
-    scrollbarStyle: PropTypes.oneOf(['none', 'rounded']),
+    scrollbarStyle: PropTypes.oneOf(['rounded']),
     /** Scrollbar Track */
     scrollbarTrack: PropTypes.oneOf(['none']),
     /** List Style Type */

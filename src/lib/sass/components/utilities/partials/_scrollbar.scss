@@ -1,12 +1,10 @@
 @use 'sass:map';
 @use 'sass:color';
-@use '../../config';
 
 $scrollbar: true !default;
 
 $scrollbar-colors: (
-    'primary': map.get(config.$theme, 'primary'),
-    'dark': #555555,
+    'dark': #666666,
     'light': #c1c1c1,
 ) !default;
 
@@ -47,12 +45,12 @@ $_default-color: map.get($scrollbar-colors, $scrollbar-default-color);
         }
 
         &::-webkit-scrollbar {
-            width: 13px;
-            height: 13px;
+            width: 12px;
+            height: 12px;
         }
 
         &::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.35);
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15);
             background-color: $scrollbar-track-color;
         }
 
@@ -67,14 +65,9 @@ $_default-color: map.get($scrollbar-colors, $scrollbar-default-color);
         scrollbar-width: thin;
 
         &::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
         }
-    }
-
-    .scrl--l::-webkit-scrollbar {
-        width: 16px;
-        height: 16px;
     }
 
     .scrl--none {

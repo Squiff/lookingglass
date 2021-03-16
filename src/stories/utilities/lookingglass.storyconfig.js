@@ -367,21 +367,23 @@ const baseArgTypes = {
     scrollbarColor: {
         control: {
             type: 'select',
-            options: ['primary', 'dark', 'light'],
+            options: ['dark', 'light'],
         },
     },
     scrollbarSize: {
         control: {
             type: 'radio',
-            options: ['default', 's', 'l'],
+            options: ['default', 's', 'none'],
         },
     },
+    /* webkit only */
     scrollbarStyle: {
         control: {
             type: 'radio',
-            options: ['default', 'none', 'rounded'],
+            options: ['default', 'rounded'],
         },
     },
+    /* webkit only */
     scrollbarTrack: {
         control: {
             type: 'radio',
