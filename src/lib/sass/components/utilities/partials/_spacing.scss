@@ -19,7 +19,8 @@ $sizes: (
 ) !default;
 
 // direction prefix and property modifiers
-$directions: ('all', 't', 'b', 'r', 'l', 'y', 'x') !default;
+// order is important! all -> x/y -> direction (lowest -> highest priority)
+$directions: ('all', 'x', 'y', 't', 'b', 'r', 'l') !default;
 
 // returns shape ('y': (classsPrefix: '-y', propSuffixes: ('-top','-bottom'))
 $direction-map: directions.getDirections($directions);
