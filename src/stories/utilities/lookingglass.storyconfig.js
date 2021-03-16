@@ -43,6 +43,7 @@ const borderColors = [
 const borderRadius = ['0', '1', '2', '3', 'rounded'];
 
 const spacing = ['0', '1', '2', '3', '4', '5'];
+const marginSpacing = [...spacing, 'auto'];
 
 const widths = ['25', '50', '75', '100', '25vw', '50vw', '75vw', '100vw'];
 const heights = ['25', '50', '75', '100', '25vh', '50vh', '75vh', '100vh'];
@@ -172,46 +173,59 @@ const baseArgTypes = {
     margin: {
         control: {
             type: 'select',
-            options: spacing,
-        },
-    },
-    marginTop: {
-        control: {
-            type: 'select',
-            options: spacing,
-        },
-    },
-    marginRight: {
-        control: {
-            type: 'select',
-            options: spacing,
-        },
-    },
-    marginBottom: {
-        control: {
-            type: 'select',
-            options: spacing,
-        },
-    },
-    marginLeft: {
-        control: {
-            type: 'select',
-            options: spacing,
+            options: marginSpacing,
         },
     },
     marginX: {
         control: {
             type: 'select',
-            options: spacing,
+            options: marginSpacing,
         },
     },
     marginY: {
         control: {
             type: 'select',
+            options: marginSpacing,
+        },
+    },
+    marginTop: {
+        control: {
+            type: 'select',
+            options: marginSpacing,
+        },
+    },
+    marginRight: {
+        control: {
+            type: 'select',
+            options: marginSpacing,
+        },
+    },
+    marginBottom: {
+        control: {
+            type: 'select',
+            options: marginSpacing,
+        },
+    },
+    marginLeft: {
+        control: {
+            type: 'select',
+            options: marginSpacing,
+        },
+    },
+
+    padding: {
+        control: {
+            type: 'select',
             options: spacing,
         },
     },
-    padding: {
+    paddingX: {
+        control: {
+            type: 'select',
+            options: spacing,
+        },
+    },
+    paddingY: {
         control: {
             type: 'select',
             options: spacing,
@@ -241,18 +255,7 @@ const baseArgTypes = {
             options: spacing,
         },
     },
-    paddingX: {
-        control: {
-            type: 'select',
-            options: spacing,
-        },
-    },
-    paddingY: {
-        control: {
-            type: 'select',
-            options: spacing,
-        },
-    },
+
     width: {
         control: {
             type: 'select',

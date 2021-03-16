@@ -1,0 +1,32 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './spacing.stories.js';
+import Lookingglass from '../../lib/components/Lookingglass';
+
+<Meta title="Utilities/Spacing" component={Lookingglass} argTypes={stories.argTypes} />
+
+# Spacing
+
+Utilities for margin and padding
+
+<Canvas>
+    <Story story={stories.SpacingProps} name="Spacing Props" />
+</Canvas>
+
+<ArgsTable story="Spacing Props" />
+
+# Using Spacing
+
+Margin and padding can be adjusted using values `0` to `5`, which range from `0` to `32px`.
+Margin props also accept a value of `auto`.
+
+If more than one prop is passed that affects a particular direction, then they will be prioritized, from lowest to highest:
+
+margin/padding -> Direction X/Y -> Direction Left/Top/Right/Bottom
+
+### Margin Auto
+
+Example of using margin auto inside a flex container
+
+<Canvas>
+    <Story story={stories.MarginAuto} />
+</Canvas>
