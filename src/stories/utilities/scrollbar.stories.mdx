@@ -1,0 +1,64 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './scrollbar.stories.js';
+import Lookingglass from '../../lib/components/Lookingglass';
+import Alert from '../../lib/components/Alert';
+
+<Meta title="Utilities/Scrollbar" component={Lookingglass} argTypes={stories.argTypes} />
+
+# Scrollbar
+
+Utilities for scrollbar styling
+
+<Canvas>
+    <Story story={stories.ScrollbarProps} name="Scrollbar Props" />
+</Canvas>
+
+<ArgsTable story="Scrollbar Props" />
+
+## Support
+
+Scrollbar utilities use the following CSS Properties for styling
+
+-   **:-webkit-\***
+-   **scrollbar-color**
+-   **scrollbar-width**
+
+As such, support is only available for Webkit browsers and browsers that support standard CSS styling
+(Currently only firefox - see [CanIUse](https://caniuse.com/?search=scrollbar-color))
+
+## Scrollbar Color
+
+A Dark and Light variant can be selected via the `scrollbarColor` prop.
+
+<Canvas>
+    <Story story={stories.Colors} />
+</Canvas>
+
+## Scrollbar Size
+
+Set `scrollbarSize="s"` for a small scrollbar.
+`scrollbarSize="none"` will remove the scrollbar altogether (but the container will remain scrollable)
+
+<Canvas>
+    <Story story={stories.Sizes} />
+</Canvas>
+
+## Rounded
+
+Setting `scrollbarStyle="rounded` will round the scrollbar thumb
+
+<Canvas>
+    <Story story={stories.Rounded} />
+</Canvas>
+
+<Alert color="warning">Rounded Scrollbars are only available on webkit browsers</Alert>
+
+## Track
+
+Setting `scrollbarTrack="none"` will remove the scrollbar track
+
+<Canvas>
+    <Story story={stories.Track} />
+</Canvas>
+
+<Alert color="warning">scrollbarTrack is only available on webkit browsers</Alert>

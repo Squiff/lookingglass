@@ -1,11 +1,16 @@
 import Lookingglass from '../../lib/components/Lookingglass';
+import Flex from '../../lib/components/Flex';
+import { cleanArgs, UpdateArgTable } from '../helpers/utils';
+import { argTypes as lookingglassArgs } from './lookingglass.storyconfig';
 
-export default {
-    component: Lookingglass,
-    title: 'Utilities/Scrollbar',
-};
+// Note: directly exporting from a function is an issue for storybook
+const _argTypes = UpdateArgTable(lookingglassArgs, {
+    enable: ['scrollbarColor', 'scrollbarSize', 'scrollbarStyle', 'scrollbarTrack'],
+});
 
-const StorybookContent = ({ children, className }) => {
+export const argTypes = _argTypes;
+
+const ScrollContainer = ({ children, className }) => {
     const parentStyle = {
         height: '300px',
         width: '50px',
@@ -25,72 +30,71 @@ const StorybookContent = ({ children, className }) => {
     );
 };
 
+/*----------- Scrollbar Props --------- */
+export const ScrollbarProps = (args) => {
+    const cArgs = cleanArgs(args);
+
+    return (
+        <Lookingglass {...cArgs}>
+            <ScrollContainer />
+        </Lookingglass>
+    );
+};
+
+ScrollbarProps.args = {};
+
+/*----------- Scrollbar Colors --------- */
 export const Colors = (args) => {
     return (
-        <div style={{ display: 'flex' }}>
+        <Flex cols="auto">
             <Lookingglass scrollbarColor="light">
-                <StorybookContent />
+                <ScrollContainer />
             </Lookingglass>
             <Lookingglass scrollbarColor="dark">
-                <StorybookContent />
+                <ScrollContainer />
             </Lookingglass>
-            <Lookingglass scrollbarColor="primary">
-                <StorybookContent />
-            </Lookingglass>
-        </div>
+        </Flex>
     );
 };
 
+/*----------- Scrollbar Sizes --------- */
 export const Sizes = (args) => {
     return (
-        <div style={{ display: 'flex' }}>
-            <Lookingglass scrollbarSize="s" {...args}>
-                <StorybookContent />
+        <Flex cols="auto">
+            <ScrollContainer />
+            <Lookingglass scrollbarSize="s">
+                <ScrollContainer />
             </Lookingglass>
-            <Lookingglass scrollbarSize="m" {...args}>
-                <StorybookContent />
+            <Lookingglass scrollbarSize="none">
+                <ScrollContainer>Scroll Me!</ScrollContainer>
             </Lookingglass>
-            <Lookingglass scrollbarSize="l" {...args}>
-                <StorybookContent />
-            </Lookingglass>
-        </div>
+        </Flex>
     );
 };
 
-Sizes.args = {
-    scrollbarColor: 'dark',
-};
-
-export const Style = (args) => (
-    <div style={{ display: 'flex' }}>
-        <Lookingglass {...args}>
-            <StorybookContent />
+/*----------- Rounded --------- */
+export const Rounded = (args) => (
+    <Flex cols="auto">
+        <Lookingglass scrollbarColor="light">
+            <ScrollContainer />
         </Lookingglass>
-        <Lookingglass scrollbarStyle="rounded" {...args}>
-            <StorybookContent />
+        <Lookingglass scrollbarStyle="rounded">
+            <ScrollContainer />
         </Lookingglass>
-        <Lookingglass scrollbarStyle="none" {...args}>
-            <StorybookContent>Lorem ipsum dolor sit amet consectetur adipisicing elit.</StorybookContent>
+        <Lookingglass scrollbarStyle="rounded" scrollbarSize="s">
+            <ScrollContainer />
         </Lookingglass>
-    </div>
+    </Flex>
 );
 
-Style.args = {
-    scrollbarColor: 'dark',
-    scrollbarSize: 's',
-};
-
+/*----------- Track --------- */
 export const Track = (args) => (
     <div style={{ display: 'flex' }}>
         <Lookingglass {...args}>
-            <StorybookContent />
+            <ScrollContainer />
         </Lookingglass>
         <Lookingglass scrollbarTrack="none" {...args}>
-            <StorybookContent />
+            <ScrollContainer />
         </Lookingglass>
     </div>
 );
-
-Track.args = {
-    scrollbarColor: 'light',
-};
