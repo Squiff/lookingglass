@@ -25,9 +25,6 @@ export const ThemeColors = (args) => (
         <Lookingglass div padding="3" margin="1" backgroundColor="primary" color="white">
             Primary
         </Lookingglass>
-        <Lookingglass div padding="3" margin="1" backgroundColor="secondary" color="white">
-            Secondary
-        </Lookingglass>
         <Lookingglass div padding="3" margin="1" backgroundColor="success">
             Success
         </Lookingglass>
