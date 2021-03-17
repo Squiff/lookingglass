@@ -211,7 +211,7 @@ export const Color = (args) => (
             </NavBar>
         </Lookingglass>
 
-        <Lookingglass backgroundColor="secondary" color="white">
+        <Lookingglass backgroundColor="primary-d3" color="white">
             <NavBar>
                 <Logo />
                 <NavBar.Nav>

@@ -12,12 +12,11 @@ $breakpoints: (
 
 // themes: generate component variants
 $theme: (
-    'primary': #3a6b7e,
-    'secondary': #07212b,
-    'success': #2a9d8f,
-    'error': #e76f51,
-    'warning': #e9c46a,
-    'info': #56939f,
+    'primary': #0c837b,
+    'success': #1b881f,
+    'error': #dd2b0e,
+    'warning': #f5b700,
+    'info': #1d77d1,
 ) !default;
 
 // $colors only used for text/border/bakground - not component variants
@@ -29,7 +28,7 @@ $colors: (
 ) !default;
 
 // generate [variantCount] light/dark variations for specified colors
-$colorVariants: ('primary', 'secondary') !default;
+$colorVariants: ('primary') !default;
 $colorVariantCount: 4 !default;
 
 $background-color: #fff !default; // default background for the body

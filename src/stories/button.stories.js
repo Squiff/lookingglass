@@ -58,9 +58,8 @@ AllProps.argTypes = {
 /* -------- SOLID ---------------- */
 export const SolidColors = (args) => (
     <>
-        <Button color="primary">Primary</Button> <Button color="secondary">Secondary</Button>{' '}
-        <Button color="success">Success</Button> <Button color="warning">Warning</Button>{' '}
-        <Button color="error">Error</Button> <Button color="info">Info</Button>{' '}
+        <Button color="primary">Primary</Button> <Button color="success">Success</Button>{' '}
+        <Button color="warning">Warning</Button> <Button color="error">Error</Button> <Button color="info">Info</Button>{' '}
     </>
 );
 
@@ -69,9 +68,6 @@ export const OutlineColors = (args) => (
     <>
         <Button color="primary" btnStyle="outline">
             Primary
-        </Button>{' '}
-        <Button color="secondary" btnStyle="outline">
-            Secondary
         </Button>{' '}
         <Button color="success" btnStyle="outline">
             Success
@@ -145,7 +141,7 @@ export const Sizes = (args) => (
 
 /* -------- Block ---------------- */
 export const Block = (args) => (
-    <Button block={true} color="secondary">
+    <Button block={true} color="success">
         Block Button
     </Button>
 );

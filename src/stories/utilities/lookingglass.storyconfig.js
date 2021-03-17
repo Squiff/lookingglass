@@ -5,7 +5,6 @@ import { UpdateArgTable } from '../helpers/utils';
 
 const allColors = [
     'primary',
-    'secondary',
     'success',
     'error',
     'warning',
@@ -28,7 +27,6 @@ const borders = ['0', '1', '2', '3', '4'];
 
 const borderColors = [
     'primary',
-    'secondary',
     'success',
     'error',
     'warning',

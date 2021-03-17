@@ -35,11 +35,11 @@ export const BorderColor = (args) => (
         <Lookingglass border="2" borderColor="primary" padding="2" margin="1">
             <div>Primary</div>
         </Lookingglass>
-        <Lookingglass border="2" borderColor="secondary" padding="2" margin="1">
-            <div>Secondary</div>
-        </Lookingglass>
         <Lookingglass border="2" borderColor="success" padding="2" margin="1">
             <div>Success</div>
+        </Lookingglass>
+        <Lookingglass border="2" borderColor="Warning" padding="2" margin="1">
+            <div>Warning</div>
         </Lookingglass>
         <Lookingglass border="2" borderColor="error" padding="2" margin="1">
             <div>Error</div>
