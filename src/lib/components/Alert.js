@@ -25,11 +25,7 @@ function Alert({ children, className, color, alertStyle, show, closeBtn, onClose
 
     let classes = ['alert', `alert-${color}`];
 
-    if (alertStyle === 'solid') {
-        classes.push(`alert-${color}-solid`);
-    } else {
-        classes.push(`alert-${color}`);
-    }
+    classes.push(`alert-${color}`);
 
     let alertCloseBtn;
     if (closeBtn) {
@@ -50,8 +46,6 @@ function Alert({ children, className, color, alertStyle, show, closeBtn, onClose
 Alert.propTypes = {
     /** The color scheme of the alert */
     color: PropTypes.string.isRequired,
-    /** The color scheme modifier */
-    alertStyle: PropTypes.oneOf(['solid']),
     /** show or hide the story */
     show: PropTypes.bool,
     /** Callback fired when Alert is closed */

@@ -18,30 +18,24 @@ import Alert from '../lib/components/Alert';
 
 ## Colors
 
-use the `color` prop to assign one of the theme colors
+use the `color` prop to assign one of the theme colors.
+By default alert will take the supplied theme color and lighten the background and darken the text.
 
 <Canvas>
     <Story story={stories.Colors} />
 </Canvas>
 
-By default alert will take the supplied theme color and lighten the background and darken the text.
-You can specify `alertStyle = "solid"` to use the true theme color as the background with white/dark text.
-
-<Canvas>
-    <Story story={stories.Solid} />
-</Canvas>
-
 ## Opening and Closing
 
-An alert is visible by default. You can add a close button setting `closeBtn = true`. When the close button is clicked the component will unmount.
+An alert is visible by default. You can add a close button by setting `closeBtn = true`. When the close button is clicked the component will unmount.
 
 <Canvas>
     <Story story={stories.CloseButton} />
 </Canvas>
 
-### controlled
+### Controlled
 
-When you specify an `onclose` callback, Alert become a 'controlled' component. When using a conrolled Alert you should set `show` to true/false to hide and show the alert. Clicking the close button on a controlled alert will fire the `onClose` callback.
+When you specify an `onclose` callback, Alert become a 'controlled' component. When using a controlled `Alert` you should set `show` to true/false to hide and show the alert. Clicking the close button on a controlled alert will fire the `onClose` callback.
 
 <Canvas>
     <Story story={stories.Controlled} />
