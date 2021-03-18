@@ -31,21 +31,22 @@ export const argTypes = {
             options: ['default', 'dark', 'light', 'opacity'],
         },
     },
+    disabled: {
+        description: 'Standard HTML Attribute',
+        control: { type: 'boolean' },
+    },
 };
 
-//const Template = (args) => <Button {...args}>Click</Button>;
+const Spacer = () => <Lookingglass marginBottom="2" div />;
 
 /* -------- ALL PROPS ---------------- */
 export const AllProps = (args) => {
     const cArgs = cleanArgs(args);
-    return <Button {...cArgs}>Click</Button>;
+    return <Button {...cArgs}>Click Me!</Button>;
 };
 
 AllProps.args = {
-    color: 'primary',
-    btnStyle: 'default',
-    block: false,
-    size: 'default',
+    color: 'info',
 };
 
 AllProps.argTypes = {
@@ -129,11 +130,11 @@ export const Hover = (args) => (
 /* -------- Sizes ---------------- */
 export const Sizes = (args) => (
     <>
-        <Button color="primary" size="s">
+        <Button color="info" size="s">
             Small
         </Button>{' '}
-        <Button color="primary">Default</Button>{' '}
-        <Button color="primary" size="l">
+        <Button color="info">Default</Button>{' '}
+        <Button color="info" size="l">
             Large
         </Button>
     </>
@@ -141,7 +142,34 @@ export const Sizes = (args) => (
 
 /* -------- Block ---------------- */
 export const Block = (args) => (
-    <Button block={true} color="success">
+    <Button block={true} color="info">
         Block Button
     </Button>
+);
+
+/* -------- Disabled ---------------- */
+export const Disabled = (args) => (
+    <>
+        <Button color="success">Button Enabled</Button>
+        <Spacer />
+        <Button color="success" disabled>
+            Button Disabled
+        </Button>
+        <Spacer />
+        <Button color="error" btnStyle="outline">
+            Button Enabled
+        </Button>
+        <Spacer />
+        <Button color="error" btnStyle="outline" disabled>
+            Button Disabled
+        </Button>
+        <Spacer />
+        <Button block={true} color="info">
+            Button Enabled
+        </Button>
+        <Spacer />
+        <Button color="info" block disabled>
+            Button Disabled
+        </Button>
+    </>
 );

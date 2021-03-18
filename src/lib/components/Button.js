@@ -34,7 +34,6 @@ const Button = React.forwardRef(({ children, color, size, btnStyle, block, class
             break;
         default:
             classes.push(`btn--clr-${color}`);
-            classes.push('btn--shadow');
     }
 
     const classStr = classNames(classes, className);

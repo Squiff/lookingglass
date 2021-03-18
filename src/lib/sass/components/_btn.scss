@@ -4,28 +4,27 @@
 @use '../utilities/shadows';
 
 $colors: colors.componentColors();
-
-$font-weight: 600 !default;
-$font-size: 1rem !default;
-$padding: 6px 12px !default;
-$padding-small: 4px 8px !default;
+$font-weight: 400 !default;
+$font-size: 0.875rem !default;
+$padding: 0.375rem 0.75rem !default;
+// Small button Variant
+$padding-small: 0.25rem 0.625rem !default;
 $font-size-small: 0.875rem !default;
-$padding-large: 8px 16px !default;
-$font-size-large: 1.125rem !default;
+// Large button Variant
+$padding-large: 0.625rem 1.25rem !default;
+$font-size-large: 1rem !default;
 $borderRadius: 2px !default;
 $shadow: 1 !default;
 
 // ========= Solid Color  ============
 @mixin buttonSolid($colorName, $color) {
     .btn--clr-#{$colorName} {
-        & {
-            // border: 1px solid $color;
-            background-color: $color;
-            color: colors.textColor($color);
-        }
+        background-color: $color;
+        color: colors.textColor($color);
+        @include shadows.shadow($shadow);
 
         &:hover:not(:disabled) {
-            background-color: color.scale($color, $lightness: -20%);
+            background-color: color.scale($color, $lightness: -10%);
         }
     }
 }
@@ -33,16 +32,14 @@ $shadow: 1 !default;
 // ========= Outline Color  ============
 @mixin buttonOutline($colorName, $color) {
     .btn--outline-#{$colorName} {
-        & {
-            background-color: transparent;
-            border: 1px solid $color;
-            color: $color;
-        }
+        background-color: transparent;
+        border: 1px solid $color;
+        color: $color;
+        outline-color: $color;
 
         &:hover:not(:disabled) {
-            background-color: $color;
-            color: colors.textColor($color);
-            border-color: $color;
+            background-color: color.scale($color, $lightness: 95%);
+            color: color.scale($color, $lightness: -20%);
         }
     }
 }
@@ -83,11 +80,6 @@ $shadow: 1 !default;
         width: 100%;
     }
 
-    /* Shadow */
-    &--shadow {
-        @include shadows.shadow($shadow);
-    }
-
     /* no styling */
     &--none {
         background-color: transparent;
@@ -116,18 +108,23 @@ $shadow: 1 !default;
 /********** Additional Tool Buttons *************/
 .close-btn {
     font-size: 24px;
-    width: 40px;
-    height: 32px;
+    line-height: 1;
+    // width: 40px;
+    // height: 32px;
     border: none;
     cursor: pointer;
     background-color: transparent;
-    position: absolute;
-    top: 0;
-    right: 0;
-    outline: none;
-    color: currentColor;
-}
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    // outline: none;
+    // color: currentColor;
 
-.close-btn:hover {
-    opacity: 0.7;
+    :hover {
+        opacity: 0.7;
+    }
+
+    &:focus:not(:focus-visible) {
+        outline: none;
+    }
 }

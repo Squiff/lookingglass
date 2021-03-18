@@ -18,10 +18,8 @@ import Button from '../lib/components/Button';
 
 ## Colors
 
-Apply color by setting the `color` prop to one of the theme color names.
-A button will default to solid color with the appropriate dark/white text.
-
-A darkening effect will be applied on hover.
+Apply color by setting the `color` prop.
+A button will default to solid color with the appropriate dark/white text. A darkening effect will be applied on hover.
 
 <Canvas>
     <Story story={stories.SolidColors} />
@@ -29,7 +27,7 @@ A darkening effect will be applied on hover.
 
 ## Outline
 
-Adding `btnStyle="outline"` will apply the color to the border/text with and will fill on hover.
+Set `btnStyle="outline"` to use an outline button variant.
 
 <Canvas>
     <Story story={stories.OutlineColors} />
@@ -37,7 +35,8 @@ Adding `btnStyle="outline"` will apply the color to the border/text with and wil
 
 ## No Style
 
-Set `btnStyle="none"` for an 'unstyled' button. Base `Button` styles such as font-size and pointer cursor are still retained, so technically it is still styled!
+Set `btnStyle="none"` for an 'unstyled' button.
+Base `Button` styles such as font-size and pointer cursor are still retained (so technically it is still styled!).
 
 <Canvas>
     <Story story={stories.NoStyle} />
@@ -67,4 +66,12 @@ Set `block = true` to apply `display: block` to the button
 
 <Canvas>
     <Story story={stories.Block} />
+</Canvas>
+
+## Disabled
+
+Setting the standard `disabled` attribute will add `opacity` to the button and remove any hover styles.
+
+<Canvas>
+    <Story story={stories.Disabled} />
 </Canvas>
