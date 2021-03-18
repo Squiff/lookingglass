@@ -49,7 +49,8 @@ function Overlay({ children, show, onClose, closeOnClick, center }) {
         }
     }, [show]);
 
-    // cannot immediately use 'show' prop for the focus trap 'active' prop as it requires at least one focusable element.
+    // cannot immediately use 'show' prop for the focus trap 'active'
+    // prop as it requires at least one focusable element.
     // When switching from show false -> true the overlay will be display: none and therefore not focusable.
     // This effect delays turning on focus trap until element is visible/focusable
     useEffect(() => {
@@ -58,7 +59,7 @@ function Overlay({ children, show, onClose, closeOnClick, center }) {
 
     // handle click on overlay (only if directly clicked)
     function handleClick(e) {
-        if (e.target === overlayRef.current && onClose && closeOnClick) {
+        if (show && e.target === overlayRef.current && onClose && closeOnClick) {
             onClose();
         }
     }
@@ -78,13 +79,7 @@ function Overlay({ children, show, onClose, closeOnClick, center }) {
             addEndListener={transitionEnd}
         >
             <FocusTrap active={focusTrapActive} focusTrapOptions={FocusOptions}>
-                <div
-                    className={classStr}
-                    onClick={handleClick}
-                    ref={overlayRef}
-                    role="dialog"
-                    aria-modal="true"
-                >
+                <div className={classStr} onClick={handleClick} ref={overlayRef} role="dialog" aria-modal="true">
                     <div
                         className="overlay__content"
                         tabIndex="0" //ensures focus trap always has something to focus
