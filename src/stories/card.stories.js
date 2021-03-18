@@ -16,12 +16,12 @@ export const Basic = (args) => (
     </Card>
 );
 
-export const AdditionalControls = (args) => (
+export const AdditionalComponent = (args) => (
     <Card>
         <Card.Content>
             <Card.Header>Card Header</Card.Header>
             <Card.Body>
-                <Lookingglass marginBottom="2">
+                <Lookingglass marginBottom="3">
                     <div>
                         Any additional components can be added directly into the card content. For instance adding
                         buttons.
@@ -36,18 +36,29 @@ export const AdditionalControls = (args) => (
 );
 
 export const Img = (args) => (
-    <Card style={{ width: '350px' }}>
-        <Card.Img>
-            <img src={puppyjpg} alt="puppy" />
-        </Card.Img>
-        <Card.Content>
-            <Card.Header>Header</Card.Header>
-            <Card.Body>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque officia error debitis delectus. Illum
-                fugit dolorum rem, labore laudantium non veniam natus ducimus magni in aliquid blanditiis consectetur
-                vel ratione amet optio dicta? Enim voluptatum quisquam assumenda voluptatem odit quasi, ut aspernatur
-                sapiente, consectetur laboriosam, eaque nisi ipsum fuga est?
-            </Card.Body>
-        </Card.Content>
-    </Card>
+    <>
+        <Card style={{ width: '250px' }}>
+            <Card.Img src={puppyjpg} alt="puppy" />
+            <Card.Content>
+                <Card.Header>Header</Card.Header>
+                <Card.Body>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque officia error debitis delectus.
+                    Illum fugit dolorum rem, labore laudantium non veniam natus ducimus magni in aliquid blanditiis
+                </Card.Body>
+            </Card.Content>
+        </Card>
+        <Lookingglass marginTop="3">
+            <h6>Adjust Image Height (Object Fit)</h6>
+        </Lookingglass>
+        <Card style={{ width: '250px' }}>
+            <Card.Img src={puppyjpg} alt="puppy" style={{ height: '125px' }} />
+            <Card.Content>
+                <Card.Header>Header</Card.Header>
+                <Card.Body>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque officia error debitis delectus.
+                    Illum fugit dolorum rem, labore laudantium non veniam natus ducimus magni in aliquid blanditiis
+                </Card.Body>
+            </Card.Content>
+        </Card>
+    </>
 );

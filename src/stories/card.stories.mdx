@@ -10,27 +10,32 @@ A Card is a container suitable for most element types. Cards are split up into m
 
 -   `Card` : Parent container that wraps all the content and provides elevation
 -   `Card.Content`: provides padding for the card content
--   `Card.Header`
--   `Card.Body`
+-   `Card.Header`: A Card's Header
+-   `Card.Body`: A Card's main body text
 -   `Card.Img` : A container for images
 
 ## Basic
 
-A Basic example of a card with a Header and Body
+An example of a basic card with a Header and Body
 
 <Canvas>
     <Story story={stories.Basic} />
 </Canvas>
 
-Content can be added directly into the card content
+## Additional Components
+
+Additional components can be added directly into the card content
 
 <Canvas>
-    <Story story={stories.AdditionalControls} />
+    <Story story={stories.AdditionalComponent} />
 </Canvas>
 
-## Image
+## Images
 
-Images can be added directly into the `Card.Img` component. An appropriate width and height should be set. The image will be scaled to the `Card.Img` container and uses the `object-fit: cover` css prop to deal any aspect ratio discrepencies.
+Images can be added using the `Card.Img` subcomponent. This can be used as you would a normal `<img>` tag.
+
+`Card.Img` defaults to 100% width. The CSS property `object-fit: cover` is used to deal any aspect ratio discrepencies
+(i.e. when changing the image height).
 
 <Canvas>
     <Story story={stories.Img} />

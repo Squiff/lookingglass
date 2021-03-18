@@ -17,7 +17,7 @@ Card.Content = ({ children }) => {
 };
 
 Card.Header = ({ children }) => {
-    return <div className="card__header">{children}</div>;
+    return <h3 className="card__header">{children}</h3>;
 };
 
 Card.Body = ({ children }) => {
@@ -25,13 +25,9 @@ Card.Body = ({ children }) => {
 };
 
 Card.Img = ({ children, className, ...props }) => {
-    const classes = classNames('card__img-container', className);
+    const classes = classNames('card__img', className);
 
-    return (
-        <div className={classes} {...props}>
-            {children}
-        </div>
-    );
+    return <img className={classes} {...props} />;
 };
 
 Card.Content.displayName = 'Card.Content';
