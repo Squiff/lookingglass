@@ -9,12 +9,12 @@ import Alert from '../lib/components/Alert';
 <Description of={Alert} />
 
 <Canvas>
-    <Story story={stories.AllProps} name="All Props" />
+    <Story story={stories.AlertProps} name="Alert Props" />
 </Canvas>
 
 ## Props
 
-<ArgsTable story="All Props" />
+<ArgsTable story="Alert Props" />
 
 ## Colors
 
@@ -25,9 +25,18 @@ By default alert will take the supplied theme color and lighten the background a
     <Story story={stories.Colors} />
 </Canvas>
 
+## Alert Heading
+
+Use the `<Alert.Header>` subcomponent to add an alert header.
+
+<Canvas>
+    <Story story={stories.Header} />
+</Canvas>
+
 ## Opening and Closing
 
-An alert is visible by default. You can add a close button by setting `closeBtn = true`. When the close button is clicked the component will unmount.
+You can add a close button by setting `closeBtn = true`.
+When the close button is clicked the `Alert` will transition out and unmount.
 
 <Canvas>
     <Story story={stories.CloseButton} />
@@ -35,7 +44,12 @@ An alert is visible by default. You can add a close button by setting `closeBtn 
 
 ### Controlled
 
-When you specify an `onclose` callback, Alert become a 'controlled' component. When using a controlled `Alert` you should set `show` to true/false to hide and show the alert. Clicking the close button on a controlled alert will fire the `onClose` callback.
+By passing in the `show` prop, `<Alert>` becomes a **_controlled_** component. This passes responsibility for showing/hiding the alert to the user.
+
+Set `show` to true/false to hide/show the alert.
+
+When using `closeBtn` with a controlled `Alert`, it will trigger the `onClose` callback, which should be used to
+set your state.
 
 <Canvas>
     <Story story={stories.Controlled} />

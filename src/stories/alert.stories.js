@@ -16,29 +16,47 @@ export const argTypes = {
         ...tableDisable,
     },
     show: { control: 'none', ...tableDisable },
-    onClose: { ...tableDisable },
+    onClose: {
+        table: {
+            category: 'Events',
+        },
+    },
+    onClosed: {
+        table: {
+            category: 'Events',
+        },
+    },
+    onOpened: {
+        table: {
+            category: 'Events',
+        },
+    },
 };
 
 const Spacer = () => <Lookingglass div margin="2" />;
 
 /* -------- ALL PROPS ---------------- */
-export const AllProps = (args) => {
+export const AlertProps = (args) => {
     const props = cleanArgs(args);
 
-    return <Alert {...props}>Try updating the props in the controls below</Alert>;
+    return (
+        <Alert {...props}>
+            <Alert.Header>Alert Header</Alert.Header>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat adipisci eligendi tempore, ullam sapiente
+            officiis!
+        </Alert>
+    );
 };
 
-AllProps.args = {
+AlertProps.args = {
     color: 'success',
 };
 
-AllProps.argTypes = {
+AlertProps.argTypes = {
     color: { ...tableEnable },
     show: { ...tableEnable },
     onClose: { ...tableEnable },
 };
-
-AllProps.Name = 'All Properties';
 
 /* --------  COLORS ---------------- */
 export const Colors = (args) => (
@@ -52,6 +70,16 @@ export const Colors = (args) => (
         <Alert color="info">This is an info alert</Alert>
         <Spacer />
         <Alert color="primary">This is a primary alert</Alert>
+    </>
+);
+
+/* --------  Headers ---------------- */
+export const Header = (args) => (
+    <>
+        <Alert color="info">
+            <Alert.Header>Info Alert Heading</Alert.Header>
+            This is a success alert
+        </Alert>
     </>
 );
 
@@ -74,8 +102,8 @@ export const Controlled = (args) => {
             <Button btnStyle="none" hoverEffect="dark" onClick={() => setShow(true)}>
                 Show
             </Button>
-
-            <Alert color="error" show={show} onClose={() => setShow(false)} closeBtn={true}>
+            <Spacer />
+            <Alert color="error" show={show} onClose={() => setShow(false)} closeBtn>
                 Use the buttons to show or hide the alert
             </Alert>
         </>

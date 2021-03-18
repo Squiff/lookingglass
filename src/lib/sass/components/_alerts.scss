@@ -4,11 +4,18 @@
 
 $colors: colors.componentColors();
 
-$border-radius: 5px !default;
+$border-radius: 2px !default;
 $border-width: 0 !default;
-$padding: 10px !default;
+$padding: 0.75rem 1rem !default;
+$font-size: 0.875rem !default;
+
 $colorLightness: -80% !default; // color scale factor
 $bgLightness: 85% !default; // background color scale factor
+
+// Header
+$header-font-size: 0.875rem !default;
+$header-font-weight: 600 !default;
+$header-margin: 0 0 0.5rem 0 !default;
 
 @mixin alert($colorName, $color) {
     .alert-#{$colorName} {
@@ -22,21 +29,45 @@ $bgLightness: 85% !default; // background color scale factor
 }
 
 .alert {
-    padding: $padding;
     border-radius: $border-radius;
+    border-width: $border-width;
+    border-style: solid;
+    font-size: $font-size;
+    display: flex;
+    align-items: flex-start;
+    transition: opacity 150ms ease-in-out;
 
-    @if $border-width > 0 {
-        border-width: $border-width;
-        border-style: solid;
+    &--closebtn {
+        & .alert__content {
+            padding-right: 0;
+        }
+    }
+
+    &__content {
+        padding: $padding;
+        flex-grow: 1;
+    }
+
+    &__header {
+        font-size: $header-font-size;
+        font-weight: $header-font-weight;
+        margin: $header-margin;
+    }
+
+    &__closebtn {
+        padding: 0.5rem 0.75rem;
+    }
+
+    &--opening,
+    &--closing {
+        opacity: 0;
+    }
+
+    &--open {
+        opacity: 1;
     }
 }
 
 @each $colorName, $color in $colors {
     @include alert($colorName, $color);
-}
-
-// close button will be positioned in top right
-.alert--close {
-    position: relative;
-    padding-right: 50px;
 }
