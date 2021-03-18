@@ -1,8 +1,11 @@
+import classNames from 'classnames';
 import React from 'react';
 
-function CloseButton({ ...btnProps }) {
+function CloseButton({ className, ...btnProps }) {
+    const classes = classNames('close-btn', className);
+
     return (
-        <button {...btnProps} className="close-btn">
+        <button {...btnProps} className={classes}>
             &times;
         </button>
     );
