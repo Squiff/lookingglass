@@ -64,6 +64,13 @@ $align-responsive: true !default;
     }
 }
 
+// flex-direction columns
+@mixin flex-direction() {
+    .flex--dir-columns {
+        flex-direction: column;
+    }
+}
+
 // JUSTIFY CONTENT
 @mixin justify($prefix, $defaultBreakpoint) {
     @if $defaultBreakpoint or $justify-responsive {
@@ -126,6 +133,10 @@ $align-responsive: true !default;
 
     @include justify($prefix, $isDefault);
     @include align($prefix, $isDefault);
+
+    @if $isDefault {
+        @include flex-direction();
+    }
 }
 
 // MAIN FELX CONTAINER.

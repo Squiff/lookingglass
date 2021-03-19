@@ -4,61 +4,51 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 /** A utility for creating responsive flexbox layouts */
-const Flex = React.forwardRef((props, ref) => {
-    let { children, className, style, type, cols, justify, align, ...otherProps } = props;
+const Flex = React.forwardRef(
+    ({ children, className, style, type, cols, justify, align, direction, ...otherProps }, ref) => {
+        // get class names
+        let classes = ['flex'];
+        const addClasses = FlexPropResolver({ type, cols, justify, align });
 
-    // get class names
-    let classes = ['flex'];
-    const addClasses = FlexPropResolver({ type, cols, justify, align });
+        classes = [...classes, ...addClasses];
 
-    classes = [...classes, ...addClasses];
+        if (typeof cols === 'object') {
+            for (const b in cols) {
+                const breakpointValue = `flex-${cols[b]}`;
+                const prefixedClasses = prefixClass(b, breakpointValue);
 
-    if (typeof cols === 'object') {
-        for (const b in cols) {
-            const breakpointValue = `flex-${cols[b]}`;
-            const prefixedClasses = prefixClass(b, breakpointValue);
-
-            classes.push(prefixedClasses);
+                classes.push(prefixedClasses);
+            }
         }
-    }
 
-    // get responsive class names
-    for (const p in otherProps) {
-        if (isBreakpoint(p) === true) {
-            const breakpointClasses = FlexPropResolver(otherProps[p]);
-            const prefixedClasses = prefixClasses(p, breakpointClasses);
+        // get responsive class names
+        for (const p in otherProps) {
+            if (isBreakpoint(p) === true) {
+                const breakpointClasses = FlexPropResolver(otherProps[p]);
+                const prefixedClasses = prefixClasses(p, breakpointClasses);
 
-            classes = [...classes, ...prefixedClasses];
+                classes = [...classes, ...prefixedClasses];
+            }
         }
+
+        if (direction) classes.push(`flex--dir-${direction}`);
+
+        // get class string
+        const classNameStr = classNames(classes, className);
+
+        return (
+            <div className={classNameStr} style={style} ref={ref}>
+                {children}
+            </div>
+        );
     }
-
-    // get class string
-    const classNameStr = classNames(classes, className);
-
-    return (
-        <div className={classNameStr} style={style} ref={ref}>
-            {children}
-        </div>
-    );
-});
+);
 
 // fx-{#}, fx-auto, fx-equal
-Flex.Child = (props) => {
-    let { children, cols, ...otherProps } = props;
-
+Flex.Child = ({ children, cols, ...props }) => {
     let classes = [];
 
     if (typeof cols === 'object') {
-        // no need to provide object to breakpoint prop as there is only 'cols' option
-        // for (const p in otherProps) {
-        //     if (isBreakpoint(p) === true) {
-        //         const breakpointClass = `fx-${otherProps[p]}`;
-        //         const prefixedClass = prefixClass(p, breakpointClass);
-
-        //         classes.push(prefixedClass);
-        //     }
-        // }
-
         for (const b in cols) {
             const breakpointValue = `fx-${cols[b]}`;
             const prefixedClasses = prefixClass(b, breakpointValue);
@@ -71,7 +61,11 @@ Flex.Child = (props) => {
 
     const classStr = classes.join(' ');
 
-    return <div className={`${classStr}`}>{children}</div>;
+    return (
+        <div className={classStr} {...props}>
+            {children}
+        </div>
+    );
 };
 
 // resolve property object to a list of classes
@@ -115,6 +109,7 @@ Flex.propTypes = {
     justify: PropTypes.oneOf(['center', 'start', 'end', 'between', 'around', 'evenly']),
     /** Align items */
     align: PropTypes.oneOf(['start', 'end', 'center', 'baseline']),
+    direction: PropTypes.oneOf(['columns']),
 };
 
 Flex.Child.propTypes = {
