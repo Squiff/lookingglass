@@ -68,11 +68,15 @@ export const Indeterminate = (args) => <Progress indeterminate />;
 export const Customized = (args) => (
     <>
         <h6>Colors</h6>
-        <Progress progress={10} style={{ backgroundColor: 'red' }} />
+        <Lookingglass backgroundColor="error">
+            <Progress progress={10} />
+        </Lookingglass>
         <Spacer />
-        <Progress progress={20} style={{ backgroundColor: 'purple' }} />
+        <Lookingglass backgroundColor="success">
+            <Progress progress={20} />
+        </Lookingglass>
         <Spacer />
-        <Progress progress={30} style={{ backgroundColor: 'green' }} />
+        <Progress progress={30} style={{ backgroundColor: 'purple' }} />
         <Spacer />
         <h6>Height</h6>
         <Progress progress={40} style={{ height: '2px' }} />
