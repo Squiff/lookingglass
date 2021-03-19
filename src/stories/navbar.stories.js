@@ -17,18 +17,10 @@ export const parameters = {
 
 const DropdownContent = () => (
     <List>
-        <List.Item>
-            <button>Dropdown Item 1</button>
-        </List.Item>
-        <List.Item>
-            <button>Dropdown Item 2</button>
-        </List.Item>
-        <List.Item>
-            <button>Dropdown Item 3</button>
-        </List.Item>
-        <List.Item>
-            <button>Dropdown Item 4</button>
-        </List.Item>
+        <List.Button>Dropdown Item 1</List.Button>
+        <List.Button>Dropdown Item 2</List.Button>
+        <List.Button>Dropdown Item 3</List.Button>
+        <List.Button>Dropdown Item 4</List.Button>
     </List>
 );
 
@@ -40,36 +32,20 @@ const TrayContent = () => (
                     <List.Item>
                         <h6>Tray List 1</h6>
                     </List.Item>
-                    <List.Item>
-                        <button>Dropdown Item 1</button>
-                    </List.Item>
-                    <List.Item>
-                        <button>Dropdown Item 2</button>
-                    </List.Item>
-                    <List.Item>
-                        <button>Dropdown Item 3</button>
-                    </List.Item>
-                    <List.Item>
-                        <button>Dropdown Item 4</button>
-                    </List.Item>
+                    <List.Button>Dropdown Item 1</List.Button>
+                    <List.Button>Dropdown Item 2</List.Button>
+                    <List.Button>Dropdown Item 3</List.Button>
+                    <List.Button>Dropdown Item 4</List.Button>
                 </List>
             </Lookingglass>
             <List>
                 <List.Item>
                     <h6>Tray List 2</h6>
                 </List.Item>
-                <List.Item>
-                    <button>Dropdown Item 1</button>
-                </List.Item>
-                <List.Item>
-                    <button>Dropdown Item 2</button>
-                </List.Item>
-                <List.Item>
-                    <button>Dropdown Item 3</button>
-                </List.Item>
-                <List.Item>
-                    <button>Dropdown Item 4</button>
-                </List.Item>
+                <List.Button>Dropdown Item 1</List.Button>
+                <List.Button>Dropdown Item 2</List.Button>
+                <List.Button>Dropdown Item 3</List.Button>
+                <List.Button>Dropdown Item 4</List.Button>
             </List>
         </Flex>
     </Lookingglass>
@@ -420,26 +396,20 @@ export const Dropdown = (args) => {
                 >
                     <List>
                         <List.Item>
-                            <h6>Actions</h6>
+                            <Lookingglass margin="0">
+                                <h6>Actions</h6>
+                            </Lookingglass>
                         </List.Item>
+                        <List.Button>Button 1</List.Button>
+                        <List.Button>Button 2</List.Button>
                         <List.Item>
-                            <button>Button 1</button>
+                            <Lookingglass margin="0">
+                                <h6>Links</h6>
+                            </Lookingglass>
                         </List.Item>
-                        <List.Item>
-                            <button>Button 2</button>
-                        </List.Item>
-                        <List.Item>
-                            <h6>Links</h6>
-                        </List.Item>
-                        <List.Item>
-                            <button>Link 1</button>
-                        </List.Item>
-                        <List.Item>
-                            <button>Link 2</button>
-                        </List.Item>
-                        <List.Item>
-                            <button>Link with longer text</button>
-                        </List.Item>
+                        <List.Link>Link 1</List.Link>
+                        <List.Link>Link 2</List.Link>
+                        <List.Link>Link with longer text</List.Link>
                     </List>
                 </NavBar.Dropdown>
             </NavBar>
@@ -629,18 +599,10 @@ export const NavDrawer = (args) => {
                 }}
             >
                 <List style={{ width: '200px' }}>
-                    <List.Item>
-                        <a>Link 1</a>
-                    </List.Item>
-                    <List.Item>
-                        <a>Link 2</a>
-                    </List.Item>
-                    <List.Item>
-                        <a>Link 3</a>
-                    </List.Item>
-                    <List.Item>
-                        <a>Link 4</a>
-                    </List.Item>
+                    <List.Link>Link 1</List.Link>
+                    <List.Link>Link 2</List.Link>
+                    <List.Link>Link 3</List.Link>
+                    <List.Link>Link 4</List.Link>
                 </List>
             </Drawer>
         </>

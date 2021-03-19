@@ -10,20 +10,23 @@ import List from '../lib/components/List';
 
 <hr />
 
-### Standard
-
-A `List` represent an unordered list with `margin` and `padding` removed and has no list style.
-
-A List is made up of `List.Item` components, which add spacing to their children.
-
 <Canvas>
     <Story story={stories.Standard} />
 </Canvas>
 
-### Links and buttons
+A `List` is an unordered list with opinionated styles. A `List` is made up of the following subcomponents:
 
-The List component is particularly useful when used as a navigation tool. Any `<a>` or `<button>`
-elements added directly in a `List.Item` will be styled as a list item, but with a hover effect added.
+-   `List.Item`
+-   `List.Button`
+-   `List.Link`
+
+## Links and buttons
+
+`List.Button` and `List.Link` forward all props to `<button>` and `<a>` elements respectively.
+
+The benefit of using `List.Button` and `List.Link` is that they will have
+consistant styling with a `List.Item`. They will also have a hover effect added.
+This is particularly useful when used as a navigation tool.
 
 Lists like this can be combined with `<Drawers>` to create a a sliding side menu or in `<NavBar>` dropdowns.
 
@@ -33,10 +36,28 @@ Lists like this can be combined with `<Drawers>` to create a a sliding side menu
 
 #### Divider
 
-Adding a divider as above is achieved by wrapping an `<hr/>` in a `<div>`
+Adding a divider is as simple as adding an `<hr/>` in `List.Item`
 
-```html
-<div>
+```jsx
+<List.Item>
     <hr />
-</div>
+</List.Item>
 ```
+
+## Item Composition
+
+Use composition to alter `List.Item` styles.
+
+```jsx
+const MyListItem = ({ children, ...props }) => (
+    <Lookingglass paddingX="1" paddingY="3" fontSize="1.25">
+        <List.Item {...props}>{children}</List.Item>
+    </Lookingglass>
+);
+```
+
+Using `<MyListItem>`
+
+<Canvas>
+    <Story story={stories.Composition} />
+</Canvas>

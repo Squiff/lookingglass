@@ -19,38 +19,46 @@ export const NavList = (args) => {
     return (
         <>
             <Lookingglass border="1" borderRadius="2" borderColor="light" display="inline-block" padding="0" div>
-                <List>
+                <List style={{ width: '100px' }}>
                     <List.Item>
-                        <h6>Actions</h6>
+                        <Lookingglass marginBottom="1">
+                            <h6>Actions</h6>
+                        </Lookingglass>
+                    </List.Item>
+                    <List.Button>Button 1</List.Button>
+                    <List.Button>Button 2</List.Button>
+                    <List.Button>Button 3</List.Button>
+                    <List.Item>
+                        <hr />
                     </List.Item>
                     <List.Item>
-                        <button>Button 1</button>
+                        <Lookingglass marginBottom="1">
+                            <h6>Links</h6>
+                        </Lookingglass>
                     </List.Item>
-                    <List.Item>
-                        <button>Button 2</button>
-                    </List.Item>
-                    <List.Item>
-                        <button>Button 3</button>
-                    </List.Item>
-                    <List.Item>
-                        <div>
-                            <hr />
-                        </div>
-                    </List.Item>
-                    <List.Item>
-                        <h6>Links</h6>
-                    </List.Item>
-                    <List.Item>
-                        <a>Link 1</a>
-                    </List.Item>
-                    <List.Item>
-                        <a>Link 2</a>
-                    </List.Item>
-                    <List.Item>
-                        <a>Link 3</a>
-                    </List.Item>
+                    <List.Link>Link 1</List.Link>
+                    <List.Link>Link 2</List.Link>
+                    <List.Link>Link 3</List.Link>
                 </List>
             </Lookingglass>
         </>
+    );
+};
+
+/* ---------- Composition ------------- */
+const MyListItem = ({ children, ...props }) => (
+    <Lookingglass paddingX="1" paddingY="3" fontSize="1.25">
+        <List.Item {...props}>{children}</List.Item>
+    </Lookingglass>
+);
+
+export const Composition = (args) => {
+    return (
+        <List>
+            <MyListItem>List Item 1</MyListItem>
+            <MyListItem>List Item 2</MyListItem>
+            <MyListItem>List Item 3</MyListItem>
+            <MyListItem>List Item 4</MyListItem>
+        </List>
     );
 };

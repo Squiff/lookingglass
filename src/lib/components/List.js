@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 
-/** a List of styled List Items */
+/** A styled list of items */
 function List({ children, className, ...props }) {
     const classes = classNames('list', className);
 
@@ -12,21 +12,39 @@ function List({ children, className, ...props }) {
     );
 }
 
-List.Item = ({ children, ...props }) => {
-    const listItemClass = 'list__item';
-    let content;
+List.Item = ({ children, className, ...props }) => {
+    const classes = classNames('list__item', className);
+    return (
+        <li className={classes} {...props}>
+            {children}
+        </li>
+    );
+};
 
-    if (typeof children === 'string') {
-        content = <div className={listItemClass}>{children}</div>;
-    } else {
-        const onlyChild = React.Children.only(children);
-        const mergedClasses = classNames(listItemClass, onlyChild.props.className);
-        content = React.cloneElement(onlyChild, { className: mergedClasses });
-    }
+List.Button = ({ children, className, ...props }) => {
+    const classes = classNames('list__item', className);
+    return (
+        <li>
+            <button className={classes} {...props}>
+                {children}
+            </button>
+        </li>
+    );
+};
 
-    return <li {...props}>{content}</li>;
+List.Link = ({ children, className, ...props }) => {
+    const classes = classNames('list__item', className);
+    return (
+        <li>
+            <a className={classes} {...props}>
+                {children}
+            </a>
+        </li>
+    );
 };
 
 List.Item.displayName = 'List.Item';
+List.Button.displayName = 'List.Button';
+List.Link.displayName = 'List.Link';
 
 export default List;

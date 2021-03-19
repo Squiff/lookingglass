@@ -128,22 +128,20 @@ CloseDrawer.parameters = {
 const ExampleListItem = ({ children, icon, text }) => {
     return (
         <>
-            <List.Item>
+            <List.Button>
                 <Lookingglass paddingY="2">
-                    <button>
-                        <Flex cols="auto" align="center">
-                            <Lookingglass fontSize="1" marginRight="3" textAlign="center" display="inline-block">
-                                <span style={{ width: '1.5rem' }}>
-                                    <FontAwesomeIcon icon={icon} />
-                                </span>
-                            </Lookingglass>
-                            <Lookingglass fontSize="1" fontWeight="600">
-                                <span>{text}</span>
-                            </Lookingglass>
-                        </Flex>
-                    </button>
+                    <Flex cols="auto" align="center">
+                        <Lookingglass fontSize="1" marginRight="3" textAlign="center" display="inline-block">
+                            <span style={{ width: '1.5rem' }}>
+                                <FontAwesomeIcon icon={icon} />
+                            </span>
+                        </Lookingglass>
+                        <Lookingglass fontSize="1" fontWeight="600">
+                            <span>{text}</span>
+                        </Lookingglass>
+                    </Flex>
                 </Lookingglass>
-            </List.Item>
+            </List.Button>
         </>
     );
 };
