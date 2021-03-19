@@ -55,7 +55,7 @@ Drawer.propTypes = {
     direction: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
     /** used to show or hide the drawer */
     show: PropTypes.bool,
-    /** Callback fired when close starts */
+    /** Callback fired when close is requested  */
     onClose: PropTypes.func,
     /** Callback fired when finished closing */
     onClosed: PropTypes.func,

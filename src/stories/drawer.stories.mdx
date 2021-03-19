@@ -18,18 +18,40 @@ import Drawer from '../lib/components/Drawer';
 
 ## Basics
 
-A drawer can be configured to appear from any direction using the `direction` prop.
+A `Drawer` can contain any type of content. It is positioned out of view until `show` is set to true.
+When set to true, the drawer will slide into view from the specified `direction`.
 
--   Left and right drawers will size to their content width
--   Top and bottom drawers will size to their content height
+When a `drawer` is active:
 
-#### Scrolling
+-   An overlay will be enabled to prevent clicking
+-   The window's scrollbar will be removed
+-   Focus will be scoped to the drawer content
 
-Overflow is set to auto depening on direction:
+#### Sizing
 
+Width, height and overflow are set according to direction:
+
+-   Left and right drawers will size to their content's width
+-   Top and bottom drawers will size to their content's height
 -   Left and right have `overflow-y: auto`
 -   Top and Bottom have `overflow-x: auto`
 
 <Canvas>
     <Story story={stories.Scrolling} />
+</Canvas>
+
+## Closing
+
+A drawer can be closed by setting `show={false}`
+
+An `onClose` callback should be provided. This allows the `Drawer` to close when:
+
+-   The `ESC` key is pressed
+-   The overlay is clicked
+
+The `ESC` key is mandatory, but you can prevent an overlay click triggering
+`onClose` by setting `closeOnClick={false}` - This is set to false in the example below.
+
+<Canvas>
+    <Story story={stories.CloseDrawer} />
 </Canvas>
