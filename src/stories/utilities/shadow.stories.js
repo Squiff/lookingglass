@@ -28,7 +28,7 @@ Shadow.args = {
 };
 
 export const ShadowExamples = (args) => (
-    <Flex>
+    <Flex cols="equal">
         <Lookingglass
             shadow="0"
             div

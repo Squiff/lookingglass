@@ -160,7 +160,11 @@ const DrawerCloseIconBtn = ({ children, icon, text, ...props }) => {
 
 export const VerticalDrawerContent = ({ toggleDrawer }) => {
     return (
-        <Flex direction="columns" style={{ width: '200px', minHeight: '350px', color: '#707070', height: '100%' }}>
+        <Flex
+            direction="columns"
+            cols="equal"
+            style={{ width: '200px', minHeight: '350px', color: '#707070', height: '100%' }}
+        >
             <Flex.Child cols="auto">
                 <DrawerCloseIconBtn onClick={toggleDrawer} />
             </Flex.Child>

@@ -1,4 +1,6 @@
 import Flex from '../lib/components/Flex';
+import Lookingglass from '../lib/components/Lookingglass';
+import { cleanArgs, UpdateArgTable } from './helpers/utils';
 
 const tableDisable = { table: { disable: true } };
 const tableEnable = { table: { disable: false } };
@@ -9,35 +11,60 @@ export const argTypes = {
             type: 'select',
             options: ['auto', 'equal', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
         },
-        ...tableDisable,
     },
-    justify: { ...tableDisable },
-    align: { ...tableDisable },
+    justify: {
+        control: {
+            type: 'select',
+            options: ['default', 'center', 'start', 'end', 'between', 'around', 'evenly'],
+        },
+    },
+    align: {
+        control: {
+            type: 'select',
+            options: ['default', 'start', 'end', 'center', 'baseline'],
+        },
+    },
+    direction: { control: { type: 'radio', options: ['default', 'columns'] } },
+    wrap: { control: { type: 'radio', options: ['default', 'nowrap'] } },
 };
 
 const Content = ({ children }) => {
-    return <div className="bg--light bdr bdr--1 text-align--center p--2">{children}</div>;
+    return (
+        <Lookingglass div backgroundColor="light" border="1" textAlign="center" padding="2">
+            {children}
+        </Lookingglass>
+    );
 };
 
-const Template = (args) => (
-    <Flex {...args}>
-        <Flex.Child>
-            <Content>Child 1</Content>
-        </Flex.Child>
-        <Flex.Child>
-            <Content>Child 1</Content>
-        </Flex.Child>
-        <Flex.Child>
-            <Content>Child 3</Content>
-        </Flex.Child>
-        <Flex.Child>
-            <Content>Child 4</Content>
-        </Flex.Child>
-    </Flex>
-);
+const Template = (args) => {
+    const cArgs = cleanArgs(args);
+
+    return (
+        <>
+            <Flex {...cArgs}>
+                <Flex.Child>
+                    <Content>Child 1</Content>
+                </Flex.Child>
+                <Flex.Child>
+                    <Content>Child 1</Content>
+                </Flex.Child>
+                <Flex.Child>
+                    <Content>Child 3</Content>
+                </Flex.Child>
+                <Flex.Child>
+                    <Content>Child 4</Content>
+                </Flex.Child>
+            </Flex>
+        </>
+    );
+};
 
 /* -------- ALL PROPS ---------------- */
 export const AllProps = Template.bind({});
+
+AllProps.args = {
+    cols: 'equal',
+};
 
 AllProps.argTypes = {
     cols: { ...tableEnable },
@@ -45,16 +72,23 @@ AllProps.argTypes = {
     align: { ...tableEnable },
 };
 
+/* -------- Default ---------------- */
+export const FlexDefault = Template.bind({});
+
 /* -------- Equal Width ---------------- */
 export const Equal = Template.bind({});
+
+Equal.args = {
+    cols: 'equal',
+};
 
 /* -------- Columns ---------------- */
 export const Columns = Template.bind({});
 Columns.args = { cols: '2' };
 
 /* -------- Auto ---------------- */
-export const Auto = Template.bind({});
-Auto.args = { cols: 'auto', justify: 'center' };
+export const Justify = Template.bind({});
+Justify.args = { cols: 'auto', justify: 'center' };
 
 /* --------------- RESPONSIVE FLEX ------------------- */
 

@@ -10,31 +10,16 @@ $columns: 12;
 $justify-responsive: true !default;
 $align-responsive: true !default;
 
-// ----- FLEX ----
-// Top Level API
-// - flex-equal: children share all space equally (DEFAULT)
-// - flex-auto: each childs width is based on its content
-// - flex-{#columns}: each child is given width of 100%/#columns
-
-// Flex Child API
-// each child will take its default width from the flex container (details above).
-// But can be overridden with the below options
-// - fx-{#columns}: a flex child can set its width (or 'column span') based on a 12 column grid
-//                             width = 100%/12 * #columns
-// - fx-auto: width will be base on it's contents
-
-// [flex-grow] [flex-shrink] [flex-basis]
-
-// Default: equal width (share remaining space equally)
+// equal width (share remaining space equally)
 @mixin flex-equal($prefix) {
-    .#{$prefix}flex-equal > * {
+    .#{$prefix}flex--equal > * {
         flex: 1 0 0;
     }
 }
 
 @mixin flex-cols($prefix) {
     @for $i from 1 through $columns {
-        .#{$prefix}flex-#{$i} > * {
+        .#{$prefix}flex--#{$i} > * {
             flex: 0 0 utils.round(100% / $i, 5, down);
         }
     }
@@ -42,24 +27,24 @@ $align-responsive: true !default;
 
 // size based on content
 @mixin flex-auto($prefix) {
-    .#{$prefix}flex-auto > * {
-        flex: 0 0 auto;
+    .#{$prefix}flex--auto > * {
+        flex: 0 1 auto;
     }
 }
 
 // Child columns/auto
 @mixin flex-child($prefix) {
     @for $i from 1 through $columns {
-        .#{$prefix}fx-#{$i} {
+        .#{$prefix}fx--#{$i} {
             flex: 0 0 utils.round((100% / $columns) * $i, 5, down);
         }
     }
 
-    .#{$prefix}fx-auto {
-        flex: 0 0 auto;
+    .#{$prefix}fx--auto {
+        flex: 0 1 auto;
     }
 
-    .#{$prefix}fx-equal {
+    .#{$prefix}fx--equal {
         flex: 1 0 0;
     }
 }
@@ -71,53 +56,55 @@ $align-responsive: true !default;
     }
 }
 
+@mixin flex-wrap() {
+    .flex--nowrap {
+        flex-wrap: nowrap;
+    }
+}
+
 // JUSTIFY CONTENT
-@mixin justify($prefix, $defaultBreakpoint) {
-    @if $defaultBreakpoint or $justify-responsive {
-        .#{$prefix}justify-center {
-            justify-content: center;
-        }
+@mixin justify() {
+    .justify--center {
+        justify-content: center;
+    }
 
-        .#{$prefix}justify-start {
-            justify-content: flex-start;
-        }
+    .justify--start {
+        justify-content: flex-start;
+    }
 
-        .#{$prefix}justify-end {
-            justify-content: flex-end;
-        }
+    .justify--end {
+        justify-content: flex-end;
+    }
 
-        .#{$prefix}justify-between {
-            justify-content: space-between;
-        }
+    .justify--between {
+        justify-content: space-between;
+    }
 
-        .#{$prefix}justify-around {
-            justify-content: space-around;
-        }
+    .justify--around {
+        justify-content: space-around;
+    }
 
-        .#{$prefix}justify-evenly {
-            justify-content: space-evenly;
-        }
+    .justify--evenly {
+        justify-content: space-evenly;
     }
 }
 
 // ALIGN ITEMS
-@mixin align($prefix, $defaultBreakpoint) {
-    @if $defaultBreakpoint or $align-responsive {
-        .#{$prefix}align-start {
-            align-items: start;
-        }
+@mixin align() {
+    .align--start {
+        align-items: start;
+    }
 
-        .#{$prefix}align-end {
-            align-items: end;
-        }
+    .align--end {
+        align-items: end;
+    }
 
-        .#{$prefix}align-center {
-            align-items: center;
-        }
+    .align--center {
+        align-items: center;
+    }
 
-        .#{$prefix}align-baseline {
-            align-items: baseline;
-        }
+    .align--baseline {
+        align-items: baseline;
     }
 }
 
@@ -131,11 +118,11 @@ $align-responsive: true !default;
 
     @include flex-child($prefix);
 
-    @include justify($prefix, $isDefault);
-    @include align($prefix, $isDefault);
-
     @if $isDefault {
+        @include justify();
+        @include align();
         @include flex-direction();
+        @include flex-wrap();
     }
 }
 
@@ -143,11 +130,6 @@ $align-responsive: true !default;
 .flex {
     display: flex;
     flex-wrap: wrap;
-}
-
-// default to equal width
-.flex > * {
-    flex: 1 0 0;
 }
 
 // GENERATE RESPONSIVE FLEX CLASSES
