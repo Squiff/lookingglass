@@ -2,20 +2,11 @@ import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-do
 import * as stories from './modal.stories.js';
 import Modal from '../lib/components/Modal';
 
-<Meta title="Modal" component={Modal} argTypes={stories.argTypes}/>
+<Meta title="Modal" component={Modal} argTypes={stories.argTypes} />
 
 # Modals
 
 <Description of={Modal} />
-
-## Basics
-A Modal will become visible when `show = true`. During it's opening and closing Transitions it will fire the following callback:
-
-- `onClose`: When closing first starts
-- `onClosed`: When closing is finished
-- `onOpened`: When opening transition starts
-
-Modals will be centered and should be sized using the sizing utilities (i.e. 50vw for half width )
 
 <Canvas>
     <Story story={stories.AllProps} name="All Props" />
@@ -23,4 +14,39 @@ Modals will be centered and should be sized using the sizing utilities (i.e. 50v
 
 <ArgsTable story="All Props" />
 
+## Basics
 
+A Modal will become visible when `show` is set to true. It will be positioned in the center of the screen.
+
+When a modal is active:
+
+-   An overlay will be enabled to prevent clicking outside
+-   The window's Scrollbar will be removed
+-   Focus will be scoped to the modal content
+
+## Closing
+
+A Modal can be closed by setting `show={false}`
+
+An `onClose` callback should be provided. This is triggered by the `Modal` when:
+
+-   The `ESC` key is pressed
+-   The overlay is clicked
+
+Set `closeOnClick = {false}` to prevent the `onClose` callback triggering on an overlay click.
+
+<Canvas>
+    <Story story={stories.Closing} />
+</Canvas>
+
+## Sizing
+
+A good way to size a modal is by setting a `max-width` that is appropriate for the modal's content.
+This ensures:
+
+1. It is limited to `max-width` on larger viewports.
+2. The Modal can take up the full width when screen size is smaller than `max width`.
+
+<Canvas>
+    <Story story={stories.Sizing} />
+</Canvas>

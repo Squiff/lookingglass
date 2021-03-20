@@ -3,27 +3,26 @@ import { CSSTransition } from 'react-transition-group';
 import useTransitionEnd from '../utilities/hooks/useTransitionEnd';
 import Overlay from './Overlay';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-/** A pop up dialog that needs to be interacted with before other content */
-function Modal({ children, show, onClose, onClosed, onOpened, closeOnClick }) {
+/** A dialog box that needs to be interacted with before other content */
+function Modal({ children, className, show, onClose, onClosed, onOpened, closeOnClick, ...props }) {
     const modalRef = useRef();
     const transitionEnd = useTransitionEnd(modalRef);
-    const transitionClassNames = transitionClasses();
-    const classes = ['modal'];
 
-    const classStr = classes.join(' ');
+    const classStr = classNames('modal', className);
 
     return (
         <CSSTransition
             in={show}
-            classNames={transitionClassNames}
+            classNames={transitionClasses}
             nodeRef={modalRef}
             addEndListener={transitionEnd}
             onExited={onClosed}
             onEntered={onOpened}
         >
             <Overlay show={show} onClose={onClose} closeOnClick={closeOnClick} center={true}>
-                <div className={classStr} ref={modalRef}>
+                <div className={classStr} ref={modalRef} {...props}>
                     {children}
                 </div>
             </Overlay>
@@ -32,21 +31,12 @@ function Modal({ children, show, onClose, onClosed, onOpened, closeOnClick }) {
 }
 
 // get class names to be used in the CSSTransition
-function transitionClasses() {
-    const prefix = `modal--`;
-
-    const enter = `${prefix}opening`;
-    const enterActive = `${prefix}open`;
-    const exit = `${prefix}closed`;
-    const exitDone = `${prefix}closed`;
-
-    return {
-        enter,
-        enterActive,
-        exit,
-        exitDone,
-    };
-}
+const transitionClasses = {
+    enter: `modal--opening`,
+    enterActive: `modal--open`,
+    exit: `modal--closed`,
+    exitDone: `modal--closed`,
+};
 
 Modal.propTypes = {
     /** Show or hide the modal */
