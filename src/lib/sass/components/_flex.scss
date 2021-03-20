@@ -108,6 +108,7 @@ $align-responsive: true !default;
     }
 }
 
+// GENERATE FLEX STYLES FOR A SINGLE BREAKPOINT
 @mixin flex-breakpoints($breakpoint) {
     $prefix: breakpoint.prefix($breakpoint);
     $isDefault: breakpoint.isDefault($breakpoint);
@@ -126,7 +127,7 @@ $align-responsive: true !default;
     }
 }
 
-// MAIN FELX CONTAINER.
+// MAIN FLEX CONTAINER.
 .flex {
     display: flex;
     flex-wrap: wrap;
