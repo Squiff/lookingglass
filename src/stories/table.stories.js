@@ -1,30 +1,35 @@
+import Lookingglass from '../lib/components/Lookingglass';
 import Table from '../lib/components/Table';
+import { cleanArgs } from './helpers/utils';
 
 export const argTypes = {
     border: {
-        control: {type:'radio', options:['default','all','none']}
+        control: { type: 'radio', options: ['default', 'all', 'none'] },
     },
     size: {
-        control: {type: 'radio', options:['deafult','s','l']}
-    }
+        control: { type: 'radio', options: ['default', 's', 'l'] },
+    },
 };
 
-
-const MockData = (args) => {
+const MockData = ({ columns, rows }) => {
     const headers = [];
     const headerRow = [];
     const dataRows = [];
 
-    for (let i = 1; i <= args.columns; i++) {
-        headers.push(<th>{`headers ${i}`}</th>);
+    for (let i = 1; i <= columns; i++) {
+        headers.push(<th>{`Headers ${i}`}</th>);
     }
 
-    headerRow.push(<tr>{headers}</tr>);
+    headerRow.push(
+        <Lookingglass backgroundColor="primary" color="white" borderColor="primary">
+            <tr>{headers}</tr>
+        </Lookingglass>
+    );
 
-    for (let j = 1; j <= args.rows; j++) {
+    for (let j = 1; j <= rows; j++) {
         const data = [];
 
-        for (let i = 1; i <= args.columns; i++) {
+        for (let i = 1; i <= columns; i++) {
             console.log(i, j);
             data.push(<td>{`Data ${i}`}</td>);
         }
@@ -35,56 +40,63 @@ const MockData = (args) => {
     return (
         <>
             <thead>{headerRow}</thead>
+
             <tbody>{dataRows}</tbody>
         </>
     );
 };
 
 /* -------- ALL PROPS ---------------- */
-export const AllProps = (args) => (
-    <Table {...args}>
-        <MockData columns="5" rows="5" />
-    </Table>
-);
+export const AllProps = (args) => {
+    const cArgs = cleanArgs(args);
+    return (
+        <Table {...cArgs}>
+            <MockData columns="5" rows="5" />
+        </Table>
+    );
+};
 
 AllProps.parameters = {
-    options: {showPanel: true}
-}
+    options: { showPanel: true },
+};
 
 /* -------- Sizes ---------------- */
 export const Sizes = (args) => (
-        <>
-            <h5>Small</h5>
-            <Table size="s">
-                <MockData columns="4" rows="3" />
-            </Table>
-            <h5>Default</h5>
-            <Table>
-                <MockData columns="4" rows="3" />
-            </Table>
-            <h5>Large</h5>
-            <Table size="l">
-                <MockData columns="4" rows="3" />
-            </Table>
-        </>
-    );
+    <>
+        <h6>Small</h6>
+        <Table size="s">
+            <MockData columns="4" rows="3" />
+        </Table>
+        <h6>Default</h6>
+        <Table>
+            <MockData columns="4" rows="3" />
+        </Table>
+        <h6>Large</h6>
+        <Table size="l">
+            <MockData columns="4" rows="3" />
+        </Table>
+    </>
+);
 
 Sizes.parameters = {
-    options: {showPanel: false}
-}
+    options: { showPanel: false },
+};
 
 /* -------- Borders ---------------- */
 export const Borders = (args) => (
     <>
-        <h5>Default</h5>
+        <h6>Default</h6>
         <Table size="s">
             <MockData columns="3" rows="2" />
         </Table>
-        <h5>None</h5>
+
+        <h6>None</h6>
+
         <Table size="s" border="none">
             <MockData columns="3" rows="2" />
         </Table>
-        <h5>All</h5>
+
+        <h6>All</h6>
         <Table size="s" border="all">
             <MockData columns="3" rows="2" />
         </Table>
@@ -92,31 +104,72 @@ export const Borders = (args) => (
 );
 
 Borders.parameters = {
-    options: {showPanel: false}
-}
-
+    options: { showPanel: false },
+};
 
 /* -------- Hover ---------------- */
 export const Hover = (args) => (
     <Table hover={false}>
         <MockData columns="4" rows="3" />
     </Table>
-
 );
 
 Hover.parameters = {
-    options: {showPanel: false}
-}
+    options: { showPanel: false },
+};
 
 /* -------- Heading Color ---------------- */
 export const HeadingColor = (args) => (
-    <Table removeHeadColor={true}>
-        <MockData columns="4" rows="3" />
-    </Table>
+    <>
+        <h6>Primary</h6>
+        <Table>
+            <thead>
+                <Lookingglass backgroundColor="primary" color="white">
+                    <tr>
+                        <th>Headers 1</th>
+                        <th>Headers 2</th>
+                        <th>Headers 3</th>
+                        <th>Headers 4</th>
+                    </tr>
+                </Lookingglass>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                    <td>Data 4</td>
+                </tr>
+            </tbody>
+            {/* <MockData columns="4" rows="3" /> */}
+        </Table>
 
+        <h6>Dark</h6>
+
+        <Table>
+            <thead>
+                <Lookingglass backgroundColor="dark" color="white">
+                    <tr>
+                        <th>Headers 1</th>
+                        <th>Headers 2</th>
+                        <th>Headers 3</th>
+                        <th>Headers 4</th>
+                    </tr>
+                </Lookingglass>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Data 1</td>
+                    <td>Data 2</td>
+                    <td>Data 3</td>
+                    <td>Data 4</td>
+                </tr>
+            </tbody>
+            {/* <MockData columns="4" rows="3" /> */}
+        </Table>
+    </>
 );
 
 HeadingColor.parameters = {
-    options: {showPanel: false}
-}
-
+    options: { showPanel: false },
+};

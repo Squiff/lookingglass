@@ -1,14 +1,16 @@
+@use 'sass:map';
 @use '../utilities/shadows';
+@use './config';
 
-$padding: 10px;
-$padding-s: 6px;
-$padding-l: 14px;
-$td-font-size: 0.875rem;
-$th-bg-color: #3c3c3c;
-$th-color: #ffffff;
-$th-font-size: 1rem;
-$th-font-weight: 600;
-$border-color: #aaaaaa;
+$padding: 0.375rem 0.5rem !default;
+$padding-s: 0.25rem 0.375rem !default;
+$padding-l: 0.5rem 0.75rem !default;
+$td-font-size: 0.875rem !default;
+$th-font-size: 0.875rem !default;
+$th-font-weight: 600 !default;
+$border-color: #aaaaaa !default;
+$hover-background-color: rgba(0, 0, 0, 0.1) !default;
+$margin: 0 0 1rem 0 !default;
 $shadow: 1 !default;
 
 .table {
@@ -16,15 +18,16 @@ $shadow: 1 !default;
     text-align: center;
     border-radius: 5px;
     border-spacing: 0;
+    margin: $margin;
     @include shadows.shadow($shadow);
 
     & tr {
         border-bottom: 1px solid #aaa;
     }
 
-    // data row hover
-    &:not(&--hover-none) :not(thead) tr:hover {
-        background-color: #f4f4f4;
+    // when row hovered, add hover effect to all tds in the row
+    &:not(&--hover-none) tr:hover td {
+        background-color: $hover-background-color;
     }
 
     & td {
@@ -37,15 +40,7 @@ $shadow: 1 !default;
         padding: $padding;
         font-size: $th-font-size;
         font-weight: $th-font-weight;
-        background-color: $th-bg-color;
-        border-color: $th-bg-color;
-        color: $th-color;
-    }
-
-    &--th-plain th {
-        color: inherit;
-        background-color: transparent;
-        border-color: $border-color;
+        border-color: inherit;
     }
 
     &--l td,

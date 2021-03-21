@@ -1,29 +1,23 @@
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-/** Provides styling options for Tables */
-function Table({ children, size, border, hover, removeHeadColor }) {
-    const classes = ['table'];
+/** Provides styling options for tables */
+function Table({ children, className, size, border, hover, ...props }) {
+    const classes = {
+        table: true,
+        [`table--${size}`]: size !== undefined,
+        [`table--border-${border}`]: border !== undefined,
+        'table--hover-none': hover === false,
+    };
 
-    if (size) {
-        classes.push(`table--${size}`);
-    }
+    const classStr = classNames(classes, className);
 
-    if (border) {
-        classes.push(`table--border-${border}`);
-    }
-
-    if (!hover) {
-        classes.push('table--hover-none');
-    }
-
-    if (removeHeadColor) {
-        classes.push('table--th-plain');
-    }
-
-    const classStr = classes.join(' ');
-
-    return <table className={classStr}>{children}</table>;
+    return (
+        <table className={classStr} {...props}>
+            {children}
+        </table>
+    );
 }
 
 Table.propTypes = {
@@ -31,9 +25,7 @@ Table.propTypes = {
     border: PropTypes.oneOf(['all', 'none']),
     /** Enable row hover effect */
     hover: PropTypes.bool,
-    /** Add Background Color to Header row */
-    removeHeadColor: PropTypes.bool,
-    /** Padding modifier to provide to td/th elements */
+    /** Adjust amount of padding in each cell */
     size: PropTypes.oneOf(['s', 'l']),
 };
 

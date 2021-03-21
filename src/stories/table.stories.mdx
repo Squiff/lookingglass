@@ -14,14 +14,42 @@ import Table from '../lib/components/Table';
 
 <ArgsTable story="All Props" />
 
+## Usage
+
+`<Table>` is a styled wrapper around the standard `<table>` element.
+It can be used as a direct replacement for `<table>`.
+
+## Header Color
+
+Table headers have no background by default.
+Use backgroundColor, color and borderColor utilities to style the header row.
+
+Examples in this section will use the `primary` color.
+
+```jsx
+<thead>
+    <Lookingglass backgroundColor="primary" color="white" borderColor="primary">
+        <tr>
+            <th>Headers 1</th>
+            <th>Headers 2</th>
+            <th>Headers 3</th>
+            <th>Headers 4</th>
+        </tr>
+    </Lookingglass>
+</thead>
+```
+
+<Canvas>
+    <Story story={stories.HeadingColor} />
+</Canvas>
+
 ## Borders
 
-Set border to change the border style
+Set the `border` prop to change the border style
 
 <Canvas>
     <Story story={stories.Borders} />
 </Canvas>
-
 
 ## Sizes
 
@@ -37,13 +65,4 @@ Remove hover effect by setting `hover = false`
 
 <Canvas>
     <Story story={stories.Hover} />
-</Canvas>
-
-
-## Remove heading Background
-
-Remove the heading background by setting `removeHeadColor = true`
-
-<Canvas>
-    <Story story={stories.HeadingColor} />
 </Canvas>
