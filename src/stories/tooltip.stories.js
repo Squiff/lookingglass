@@ -91,16 +91,16 @@ export const Placements = (args) => {
 
     return (
         <Flex cols="auto" justify="around">
-            <Button ref={rightBtn} btnStyle="none">
+            <Button ref={rightBtn} color="info" btnStyle="outline">
                 Right
             </Button>
-            <Button ref={leftBtn} btnStyle="none">
+            <Button ref={leftBtn} color="info" btnStyle="outline">
                 Left
             </Button>
-            <Button ref={topBtn} btnStyle="none">
+            <Button ref={topBtn} color="info" btnStyle="outline">
                 Top
             </Button>
-            <Button ref={bottomBtn} btnStyle="none">
+            <Button ref={bottomBtn} color="info" btnStyle="outline">
                 Bottom
             </Button>
 
@@ -139,29 +139,31 @@ export const Triggers = (args) => {
     return (
         <>
             <h6>Trigger - No Delay</h6>
-            <Button ref={hoverBtn} btnStyle="none">
-                Hover
-            </Button>
-            <Button ref={focusBtn} btnStyle="none">
+            <Lookingglass marginRight="2">
+                <Button ref={hoverBtn} color="info" btnStyle="outline">
+                    Hover
+                </Button>
+            </Lookingglass>
+            <Button ref={focusBtn} color="info" btnStyle="outline">
                 Focus
             </Button>
             <Lookingglass marginTop="3">
                 <h6>Trigger - 1000ms Delay</h6>
             </Lookingglass>
-            <Button ref={hoverDelayBtn} btnStyle="none">
-                Hover
-            </Button>
-            <Button ref={focusDelayBtn} btnStyle="none">
+            <Lookingglass marginRight="2">
+                <Button ref={hoverDelayBtn} color="info" btnStyle="outline">
+                    Hover
+                </Button>
+            </Lookingglass>
+            <Button ref={focusDelayBtn} color="info" btnStyle="outline">
                 Focus
             </Button>
-
             <Tooltip targetRef={hoverBtn} trigger="hover" triggerDelay={0}>
                 Hover Tooltip
             </Tooltip>
             <Tooltip targetRef={focusBtn} trigger="focus" triggerDelay={0}>
                 Focus Tooltip
             </Tooltip>
-
             <Tooltip targetRef={hoverDelayBtn} trigger="hover" triggerDelay={1000}>
                 Hover Tooltip
             </Tooltip>
