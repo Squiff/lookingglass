@@ -5,6 +5,7 @@ import List from '../lib/components/List';
 import Lookingglass from '../lib/components/Lookingglass';
 import Flex from '../lib/components/Flex';
 import CloseButton from '../lib/components/CloseButton';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faHome,
@@ -149,7 +150,7 @@ const ExampleListItem = ({ children, icon, text }) => {
 const DrawerCloseIconBtn = ({ children, icon, text, ...props }) => {
     return (
         <Flex cols="auto" justify="end">
-            <Lookingglass fontSize="2" marginRight="2" marginTop="1" padding="1">
+            <Lookingglass marginRight="2" marginTop="1" padding="1">
                 <CloseButton {...props} />
             </Lookingglass>
         </Flex>

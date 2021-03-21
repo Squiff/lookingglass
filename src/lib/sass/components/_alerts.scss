@@ -1,6 +1,7 @@
 @use 'sass:map';
 @use 'sass:color';
 @use '../utilities/colors';
+@use './internal/closebutton';
 
 $colors: colors.componentColors();
 
@@ -52,10 +53,6 @@ $header-margin: 0 0 0.5rem 0 !default;
         font-size: $header-font-size;
         font-weight: $header-font-weight;
         margin: $header-margin;
-    }
-
-    &__closebtn {
-        padding: 0.5rem 0.75rem;
     }
 
     &--opening,
