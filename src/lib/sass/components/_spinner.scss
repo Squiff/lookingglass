@@ -19,14 +19,14 @@ $svg-circumference: 2 * math.$pi * $svg-radius;
 
     &__circle {
         fill: none;
-        stroke-width: 12;
+        stroke-width: 8;
         stroke: currentColor;
         animation: fill-animation $animation-duration linear infinite;
     }
 
     &__halo {
         fill: none;
-        stroke-width: 16;
+        stroke-width: 10;
         stroke: currentColor;
         opacity: 0.2;
     }
@@ -36,11 +36,11 @@ $svg-circumference: 2 * math.$pi * $svg-radius;
         width: 20px;
 
         & .spinner__circle {
-            stroke-width: 18;
+            stroke-width: 14;
         }
 
         & .spinner__halo {
-            stroke-width: 22;
+            stroke-width: 18;
         }
     }
 
@@ -49,11 +49,11 @@ $svg-circumference: 2 * math.$pi * $svg-radius;
         width: 50px;
 
         & .spinner__circle {
-            stroke-width: 8;
+            stroke-width: 6;
         }
 
         & .spinner__halo {
-            stroke-width: 10;
+            stroke-width: 8;
         }
     }
 }

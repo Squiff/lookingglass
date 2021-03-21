@@ -1,34 +1,28 @@
 import Spinner from '../lib/components/Spinner';
-import {cleanArgs} from './helpers/utils'
+import Lookingglass from '../lib/components/Lookingglass';
+import { cleanArgs } from './helpers/utils';
 
 const tableDisable = { table: { disable: true } };
 const tableEnable = { table: { disable: false } };
 
 export const argTypes = {
-    size: {control: {type: 'radio', options: ['default','s','l']},
-            ...tableDisable
-        },
-    color: {control: 'color',
-            table: {category: 'Helpers',
-                    disable: true            
-                },
-        },
-    halo: {...tableDisable},
-    
-}
+    size: { control: { type: 'radio', options: ['default', 's', 'l'] }, ...tableDisable },
+    color: { control: 'color', table: { category: 'Helpers', disable: true } },
+    halo: { ...tableDisable },
+};
 
 /* --------  All Props ---------------- */
 export const All = (args) => {
-    const cArgs =  cleanArgs(args);
-    const {color, ...spinnerArgs} = cArgs
+    const cArgs = cleanArgs(args);
+    const { color, ...spinnerArgs } = cArgs;
 
     // ensures style only shows in source if color has been defined
     if (color) {
-        spinnerArgs.style = {color}
+        spinnerArgs.style = { color };
     }
- 
-    return (<Spinner {...spinnerArgs}/>)
-}
+
+    return <Spinner {...spinnerArgs} />;
+};
 
 All.args = {
     size: 'default',
@@ -36,10 +30,10 @@ All.args = {
 };
 
 All.argTypes = {
-    size: {...tableEnable},
-    halo: {...tableEnable},
-    color: {...tableEnable}
-}
+    size: { ...tableEnable },
+    halo: { ...tableEnable },
+    color: { ...tableEnable },
+};
 
 /* --------  Sizes ---------------- */
 export const Sizes = (args) => (
@@ -54,8 +48,26 @@ export const Sizes = (args) => (
 export const Halo = (args) => <Spinner halo={true} />;
 
 /* --------  Custom Styles ---------------- */
-export const Styled = (args) => <Spinner halo={true} {...args}/>;
+export const Styled = (args) => <Spinner halo={true} {...args} />;
 Styled.args = {
     style: { color: 'purple', width: '100px', height: '100px' },
     size: 'l',
 };
+
+/* --------  Colors ---------------- */
+export const Colors = (args) => (
+    <>
+        <Lookingglass color="primary">
+            <Spinner halo={true} />
+        </Lookingglass>
+        <Lookingglass color="success">
+            <Spinner halo={true} />
+        </Lookingglass>
+        <Lookingglass color="error">
+            <Spinner halo={true} />
+        </Lookingglass>
+        <Lookingglass color="warning">
+            <Spinner halo={true} />
+        </Lookingglass>
+    </>
+);
