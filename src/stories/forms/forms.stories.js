@@ -53,7 +53,7 @@ export const Form = (args) => {
                     <option>Option 1</option>
                     <option>Option 2</option>
                     <option>Option 3</option>
-                    <option>Option 3</option>
+                    <option>Option 4</option>
                 </Select>
                 <InputHelp>Select an option from the dropdown</InputHelp>
             </FormGroup>
@@ -81,7 +81,7 @@ export const Form = (args) => {
                 <Label htmlFor="formRadio2">Option 2</Label>
                 <Input type="radio" name="formRadio" id="formRadio2" />
             </FormGroup>
-            <Button block={true} color="primary">
+            <Button block={true} color="success">
                 Submit
             </Button>
         </>

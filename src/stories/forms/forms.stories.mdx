@@ -8,6 +8,8 @@ import { Input, Select, TextArea } from '../../lib/components/Input';
 
 A variety of components used for building forms. Including inputs, selects, spacing and styled text
 
+<hr />
+
 <Canvas>
     <Story story={stories.Form} />
 </Canvas>
@@ -41,7 +43,7 @@ Styling is provided for read only and disabled fields.
 
 -   Disabled fields are greyed out and cannot be interacted with
 -   Read Only fields have a dulled border. The value cannot be changed, but the field can be focused.
--   Setting `<Label disabled>` will add opacity to the label
+-   Style the label by setting `<Label disabled>`
 
 <Canvas>
     <Story story={stories.States} />
@@ -49,7 +51,7 @@ Styling is provided for read only and disabled fields.
 
 ## Validation
 
-Validation styles are available for highlighting the field that has an issue and displaying any error information.
+Validation styles are provided for indicating errors.
 
 -   Setting `<Input invalid>` will apply an error border to the field
 -   Setting `<Label invalid>` will apply an error color to the label
@@ -106,7 +108,7 @@ As with `Select`, the `TextArea` component uses the same props as `Input`.
 
 ## Help Text
 
-`InputHelp` will display a helpful messages below the field.
+`InputHelp` can display a helpful message about a field.
 
 <Canvas>
     <Story story={stories.HelpText} />
