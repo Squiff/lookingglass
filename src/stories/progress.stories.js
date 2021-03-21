@@ -27,6 +27,7 @@ export const allProps = (args) => {
             <Button onClick={() => handleClick()} color="primary">
                 Update Progress
             </Button>
+            <Spacer />
             <Progress progress={progressArg} {...args} />
         </>
     );
@@ -48,6 +49,7 @@ export const setProgress = (args) => {
             <Button onClick={() => handleClick()} color="primary">
                 Update Progress
             </Button>
+            <Spacer />
             <Progress progress={progress} />
         </>
     );
