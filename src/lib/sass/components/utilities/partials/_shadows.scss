@@ -4,7 +4,7 @@ $shadows: true !default;
 
 @mixin shadow($number) {
     .shadow--#{$number} {
-        @include shadows.shadow($number);
+        @include shadows.shadow($number, !important);
     }
 }
 

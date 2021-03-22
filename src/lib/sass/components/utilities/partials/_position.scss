@@ -13,14 +13,14 @@ $position-distance: (
 @mixin position() {
     @each $p in $positions {
         .pos--#{$p} {
-            position: $p;
+            position: $p !important;
         }
     }
 
     @each $direction in $position-directions {
         @each $distance-id, $distance in $position-distance {
             .#{$direction}--#{$distance-id} {
-                #{$direction}: $distance;
+                #{$direction}: $distance !important;
             }
         }
     }

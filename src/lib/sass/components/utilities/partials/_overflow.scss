@@ -5,13 +5,13 @@ $overflows: (scroll, hidden, auto, visible) !default;
 @mixin overflow() {
     @each $f in $overflows {
         .overflow--#{$f} {
-            overflow: $f;
+            overflow: $f !important;
         }
         .overflow-x--#{$f} {
-            overflow-x: $f;
+            overflow-x: $f !important;
         }
         .overflow-y--#{$f} {
-            overflow-y: $f;
+            overflow-y: $f !important;
         }
     }
 }

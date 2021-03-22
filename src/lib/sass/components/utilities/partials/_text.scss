@@ -25,7 +25,7 @@ $text-aligns: (left, right, center) !default;
 @mixin fontSize() {
     @each $size-id, $size in $font-sizes {
         .fs--#{$size-id} {
-            font-size: $size;
+            font-size: $size !important;
         }
     }
 }
@@ -33,29 +33,29 @@ $text-aligns: (left, right, center) !default;
 @mixin fontWeight() {
     @each $weight in $font-weights {
         .fw--#{$weight} {
-            font-weight: $weight;
+            font-weight: $weight !important;
         }
     }
 }
 
 @mixin textDecoration() {
     .text-decoration--none {
-        text-decoration: none;
+        text-decoration: none !important;
     }
 
     .text-decoration--underline {
-        text-decoration: underline;
+        text-decoration: underline !important;
     }
 
     .text-decoration--strike {
-        text-decoration: line-through;
+        text-decoration: line-through !important;
     }
 }
 
 @mixin textTransform() {
     @each $transform in $text-transforms {
         .text-transform--#{$transform} {
-            text-transform: $transform;
+            text-transform: $transform !important;
         }
     }
 }
@@ -63,7 +63,7 @@ $text-aligns: (left, right, center) !default;
 @mixin textAlign() {
     @each $align in $text-aligns {
         .text-align--#{$align} {
-            text-align: $align;
+            text-align: $align !important;
         }
     }
 }

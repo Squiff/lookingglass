@@ -9,7 +9,7 @@ $displays: (none, block, inline-block);
 
     @each $d in $displays {
         .#{$prefix}display--#{$d} {
-            display: $d;
+            display: $d !important;
         }
     }
 }

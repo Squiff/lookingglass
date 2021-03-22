@@ -87,11 +87,11 @@ $ambient-map: (
     24: '0px 9px 46px 8px',
 ) !default;
 
-@mixin shadow($elevation) {
+@mixin shadow($elevation, $important: '') {
     $umbra: map.get($umbra-map, $elevation);
     $penumbra: map.get($penumbra-map, $elevation);
     $ambient: map.get($ambient-map, $elevation);
 
     box-shadow: #{$umbra} rgba(0, 0, 0, 0.2), #{$penumbra} rgba(0, 0, 0, 0.14),
-        #{$ambient} rgba(0, 0, 0, 0.12);
+        #{$ambient} rgba(0, 0, 0, 0.12) #{$important};
 }
