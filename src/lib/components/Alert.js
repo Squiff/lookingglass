@@ -31,7 +31,7 @@ function Alert({ children, className, color, alertStyle, show, closeBtn, onClose
 
     let alertCloseBtn;
     if (closeBtn) {
-        alertCloseBtn = <CloseButton onClick={handleClick} className="alert__closebtn" />;
+        alertCloseBtn = <CloseButton onClick={handleClick} />;
         classes.push('alert--closebtn');
     }
 
