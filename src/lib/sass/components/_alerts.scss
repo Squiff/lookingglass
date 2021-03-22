@@ -10,8 +10,8 @@ $border-width: 0 !default;
 $padding: 0.75rem 1rem !default;
 $font-size: 0.875rem !default;
 
-$colorLightness: -80% !default; // color scale factor
-$bgLightness: 85% !default; // background color scale factor
+$color-lightness: -80% !default; // color scale factor
+$background-lightness: 85% !default; // background color scale factor
 
 // Header
 $header-font-size: 0.875rem !default;
@@ -20,8 +20,8 @@ $header-margin: 0 0 0.5rem 0 !default;
 
 @mixin alert($colorName, $color) {
     .alert-#{$colorName} {
-        color: color.scale($color, $lightness: $colorLightness);
-        background-color: color.scale($color, $lightness: $bgLightness);
+        color: color.scale($color, $lightness: $color-lightness);
+        background-color: color.scale($color, $lightness: $background-lightness);
 
         @if $border-width > 0 {
             border-color: $color;

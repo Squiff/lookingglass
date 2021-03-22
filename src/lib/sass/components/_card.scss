@@ -1,14 +1,14 @@
 @use '../utilities/shadows';
 
-$border-radius: 5px;
-$shadow: 2;
-$padding: 12px;
+$border-radius: 5px !default;
+$shadow: 2 !default;
+$padding: 12px !default;
 
-$header-font-weight: 500;
-$header-font-size: 1.125rem;
-$header-margin: 0.75rem;
+$header-font-weight: 500 !default;
+$header-font-size: 1.125rem !default;
+$header-margin: 0.75rem !default;
 
-$body-font-size: 0.875rem;
+$body-font-size: 0.875rem !default;
 
 .card {
     @include shadows.shadow($shadow);

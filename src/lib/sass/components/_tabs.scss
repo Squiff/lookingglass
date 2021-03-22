@@ -2,12 +2,12 @@
 @use '../components/config';
 @use 'sass:map';
 
-$background-nav: #f4f4f4;
-$tab-padding: 9px 16px 12px 16px;
-$tab-active-background: #ffffff;
-$tab-active-hightlight: map.get(config.$theme, 'primary');
-$panel-background: #ffffff;
-$panel-padding: 12px;
+$background-nav: #f4f4f4 !default;
+$tab-padding: 9px 16px 12px 16px !default;
+$tab-active-background: #ffffff !default;
+$tab-active-hightlight: map.get(config.$theme, 'primary') !default;
+$panel-background: #ffffff !default;
+$panel-padding: 12px !default;
 
 .tabs {
     border: 2px solid $background-nav;

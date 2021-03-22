@@ -17,8 +17,8 @@ $borderRadius: 2px !default;
 $shadow: 1 !default;
 
 // ========= Solid Color  ============
-@mixin buttonSolid($colorName, $color) {
-    .btn--clr-#{$colorName} {
+@mixin buttonSolid($color-name, $color) {
+    .btn--clr-#{$color-name} {
         background-color: $color;
         color: colors.textColor($color);
         @include shadows.shadow($shadow);
@@ -30,8 +30,8 @@ $shadow: 1 !default;
 }
 
 // ========= Outline Color  ============
-@mixin buttonOutline($colorName, $color) {
-    .btn--outline-#{$colorName} {
+@mixin buttonOutline($color-name, $color) {
+    .btn--outline-#{$color-name} {
         background-color: transparent;
         border: 1px solid $color;
         color: $color;
@@ -100,7 +100,7 @@ $shadow: 1 !default;
     }
 }
 
-@each $colorName, $color in $colors {
-    @include buttonSolid($colorName, $color);
-    @include buttonOutline($colorName, $color);
+@each $color-name, $color in $colors {
+    @include buttonSolid($color-name, $color);
+    @include buttonOutline($color-name, $color);
 }

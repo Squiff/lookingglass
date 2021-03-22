@@ -5,7 +5,7 @@
 $container-full-breakpoint: 'm' !default;
 // padding to apply when at full width
 $container-full-padding: 0 10px !default;
-// max/@forward ; after breakpoint
+// max after breakpoint
 $width: 85vw !default;
 $max-width: 1400px !default;
 
@@ -21,4 +21,4 @@ $max-width: 1400px !default;
         width: $width;
         padding: 0;
     }
-} ;
+}

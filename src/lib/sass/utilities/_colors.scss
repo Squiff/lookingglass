@@ -10,28 +10,28 @@
 
 // get all colors ($variants: include light/dark variants)
 @function allColors($variants: true) {
-    $allColors: map.merge(config.$colors, config.$theme);
+    $all-colors: map.merge(config.$colors, config.$theme);
 
     @if $variants {
-        $colorVariants: colorVariants();
-        $allColors: map.merge($colorVariants, $allColors);
+        $color-variants: colorVariants();
+        $all-colors: map.merge($color-variants, $all-colors);
     }
 
-    @return $allColors;
+    @return $all-colors;
 }
 
-// generate light/dark variants for all colors supplied in config.$colorVariants
+// generate light/dark variants for all colors supplied in config.$color-variants
 @function colorVariants() {
     $output: ();
     $colors: allColors(
         $variants: false,
     );
 
-    @each $colorName in config.$colorVariants {
-        $color: map.get($colors, $colorName);
+    @each $color-name in config.$color-variants {
+        $color: map.get($colors, $color-name);
 
         @if $color {
-            $variants: colorVariant($colorName, $color);
+            $variants: colorVariant($color-name, $color);
             $output: map.merge($output, $variants);
         }
     }
@@ -40,18 +40,18 @@
 }
 
 // generate light/dark variations for a single color
-@function colorVariant($colorName, $color) {
+@function colorVariant($color-name, $color) {
     $output: ();
-    $variantStep: 100% / (config.$colorVariantCount + 1);
+    $variant-step: 100% / (config.$color-variant-count + 1);
 
-    @for $scale from 1 through config.$colorVariantCount {
-        $variantScale: $scale * $variantStep;
+    @for $scale from 1 through config.$color-variant-count {
+        $variant-scale: $scale * $variant-step;
 
-        $light: color.scale($color, $lightness: $variantScale);
-        $lightName: #{$colorName}-l#{$scale};
+        $light: color.scale($color, $lightness: $variant-scale);
+        $lightName: #{$color-name}-l#{$scale};
 
-        $dark: color.scale($color, $lightness: -$variantScale);
-        $darkName: #{$colorName}-d#{$scale};
+        $dark: color.scale($color, $lightness: -$variant-scale);
+        $darkName: #{$color-name}-d#{$scale};
 
         $output: map.set($output, $darkName, $dark);
         $output: map.set($output, $lightName, $light);
@@ -67,15 +67,15 @@
 // function to pick the appropriate dark or light text color for the specied background
 // will give a warning if the background is not suitable for light or dark text
 @function textColor($bg) {
-    $lightContrast: contrastRatio($bg, #ffffff);
-    $darkContrast: contrastRatio($bg, config.$darkTextColor);
+    $light-contrast: contrastRatio($bg, #ffffff);
+    $dark-contrast: contrastRatio($bg, config.$dark-text-color);
 
-    @if $lightContrast < 4.5 and $darkContrast < 4.5 {
+    @if $light-contrast < 4.5 and $dark-contrast < 4.5 {
         @warn 'background #{$bg} does not have a text color with the appropriate contrast ratio';
     }
 
-    @if $lightContrast < $darkContrast {
-        @return config.$darkTextColor;
+    @if $light-contrast < $dark-contrast {
+        @return config.$dark-text-color;
     } @else {
         @return #ffffff;
     }

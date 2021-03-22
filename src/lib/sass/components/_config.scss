@@ -28,12 +28,12 @@ $colors: (
 ) !default;
 
 // generate [variantCount] light/dark variations for specified colors
-$colorVariants: ('primary') !default;
-$colorVariantCount: 4 !default;
+$color-variants: ('primary') !default;
+$color-variant-count: 4 !default;
 
 $background-color: #fff !default; // default background for the body
 $text-color: #222222 !default; // default color for the body
-$darkTextColor: #222222 !default; // Text color to be used on light backgrounds
+$dark-text-color: #222222 !default; // Text color to be used on light backgrounds
 
 // ********** OTHER **********
 $z-index: (
