@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { usePopper } from 'react-popper';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Popup from './Popup';

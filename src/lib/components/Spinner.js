@@ -4,11 +4,10 @@ import PropTypes from 'prop-types';
 
 /**  Spinners for indicating loading state */
 function Spinner({ className, style, halo, size }) {
-    const classes = ['spinner'];
-
-    if (['s', 'l'].includes(size)) {
-        classes.push(`spinner--${size}`);
-    }
+    const classes = {
+        spinner: true,
+        [`spinner--${size}`]: size,
+    };
 
     // include a transparent halo
     let haloCircle;

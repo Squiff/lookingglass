@@ -30,4 +30,10 @@ $shadow: 10 !default;
         transform: scale(1);
         opacity: 1;
     }
+
+    // modifier class for overlay (flex container)
+    &__overlay {
+        justify-content: center;
+        align-items: center;
+    }
 }

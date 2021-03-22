@@ -27,10 +27,10 @@ const Flex = React.forwardRef(
     }
 );
 
-Flex.Child = ({ children, cols, ...props }) => {
+Flex.Child = ({ children, className, cols, ...props }) => {
     const columnClasses = getColumnClasses(cols, 'fx');
 
-    const classStr = classNames(columnClasses);
+    const classStr = classNames(columnClasses, className);
 
     return (
         <div className={classStr} {...props}>

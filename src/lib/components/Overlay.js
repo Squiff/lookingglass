@@ -3,6 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import FocusTrap from 'focus-trap-react/dist/focus-trap-react';
 import useTransitionEnd from '../utilities/hooks/useTransitionEnd';
 import useRemoveWindowScroll from '../utilities/hooks/useRemoveWindowScroll';
+import classNames from 'classnames';
 
 // returnFocusOnDeactivate: returns focus to last active element before overlay was opened
 // escapeDeactivates: prevent focus trap handling escape. Will be handled by Overlay
@@ -23,11 +24,10 @@ const transitionClasses = {
 // trapping/retaining focus
 // escape key to close
 // clicking on overlay to close
-function Overlay({ children, show, onClose, closeOnClick, center }) {
+function Overlay({ children, className, show, onClose, closeOnClick }) {
     const overlayRef = useRef();
     const transitionEnd = useTransitionEnd(overlayRef);
     const [focusTrapActive, setFocusTrapActive] = useState(show);
-    const classes = ['overlay'];
 
     // disable the scroll and hide scrollbar
     useRemoveWindowScroll(show);
@@ -64,11 +64,7 @@ function Overlay({ children, show, onClose, closeOnClick, center }) {
         }
     }
 
-    if (center) {
-        classes.push('overlay--center');
-    }
-
-    const classStr = classes.join(' ');
+    const classes = classNames('overlay', className);
 
     return (
         <CSSTransition
@@ -79,7 +75,7 @@ function Overlay({ children, show, onClose, closeOnClick, center }) {
             addEndListener={transitionEnd}
         >
             <FocusTrap active={focusTrapActive} focusTrapOptions={FocusOptions}>
-                <div className={classStr} onClick={handleClick} ref={overlayRef} role="dialog" aria-modal="true">
+                <div className={classes} onClick={handleClick} ref={overlayRef} role="dialog" aria-modal="true">
                     <div
                         className="overlay__content"
                         tabIndex="0" //ensures focus trap always has something to focus

@@ -17,12 +17,14 @@ Card.Content = ({ children, className }) => {
     return <div className={classes}>{children}</div>;
 };
 
-Card.Header = ({ children }) => {
-    return <h3 className="card__header">{children}</h3>;
+Card.Header = ({ children, className }) => {
+    const classes = classNames('card__header', className);
+    return <h3 className={classes}>{children}</h3>;
 };
 
-Card.Body = ({ children }) => {
-    return <div className="card__body">{children}</div>;
+Card.Body = ({ children, className }) => {
+    const classes = className('card__body', className);
+    return <div className={classes}>{children}</div>;
 };
 
 Card.Img = ({ children, className, ...props }) => {

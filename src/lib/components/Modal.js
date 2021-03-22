@@ -21,7 +21,7 @@ function Modal({ children, className, show, onClose, onClosed, onOpened, closeOn
             onExited={onClosed}
             onEntered={onOpened}
         >
-            <Overlay show={show} onClose={onClose} closeOnClick={closeOnClick} center={true}>
+            <Overlay show={show} onClose={onClose} closeOnClick={closeOnClick} className="modal__overlay">
                 <div className={classStr} ref={modalRef} {...props}>
                     {children}
                 </div>

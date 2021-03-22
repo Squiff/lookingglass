@@ -23,11 +23,6 @@ $background-color-closed: color.change($background-color, $alpha: 0);
         outline: none;
     }
 
-    &--center {
-        justify-content: center;
-        align-items: center;
-    }
-
     &--closed {
         display: none;
     }
