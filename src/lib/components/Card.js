@@ -12,8 +12,9 @@ function Card({ children, className, style }) {
     );
 }
 
-Card.Content = ({ children }) => {
-    return <div className="card__content">{children}</div>;
+Card.Content = ({ children, className }) => {
+    const classes = classNames('card__content', className);
+    return <div className={classes}>{children}</div>;
 };
 
 Card.Header = ({ children }) => {
