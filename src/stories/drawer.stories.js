@@ -162,7 +162,7 @@ export const VerticalDrawerContent = ({ toggleDrawer }) => {
         <Flex
             direction="columns"
             cols="equal"
-            style={{ width: '200px', minHeight: '350px', color: '#707070', height: '100%' }}
+            style={{ width: '200px', minHeight: '400px', color: '#707070', height: '100%' }}
         >
             <Flex.Child cols="auto">
                 <DrawerCloseIconBtn onClick={toggleDrawer} />
