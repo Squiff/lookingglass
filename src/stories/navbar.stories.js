@@ -9,6 +9,8 @@ import List from '../lib/components/List';
 import Lookingglass from '../lib/components/Lookingglass';
 import NavBar from '../lib/components/NavBar';
 import Card from '../lib/components/Card';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 export const argTypes = {};
 export const parameters = {
@@ -74,28 +76,19 @@ export const All = (args) => {
                     {/* wrap in a div so display: block does not interfere with Nav layout */}
                     <Lookingglass display={{ s: 'none', l: 'block' }} div>
                         <NavBar.Nav>
-                            <NavBar.NavItem>
-                                <a>Home</a>
-                            </NavBar.NavItem>
-                            <NavBar.NavItem>
-                                <a>About</a>
-                            </NavBar.NavItem>
-                            <NavBar.NavItem>
-                                <a>Services</a>
-                            </NavBar.NavItem>
-                            <NavBar.NavItem>
-                                <a>Help</a>
-                            </NavBar.NavItem>
-                            <NavBar.NavItem>
-                                <button
-                                    onClick={() => {
-                                        setShowDropdown(!showDropdown);
-                                    }}
-                                    ref={dropdownRef}
-                                >
-                                    Dropdown
-                                </button>
-                            </NavBar.NavItem>
+                            <NavBar.NavLink>Home</NavBar.NavLink>
+                            <NavBar.NavLink>About</NavBar.NavLink>
+                            <NavBar.NavLink>Services</NavBar.NavLink>
+                            <NavBar.NavLink>Help</NavBar.NavLink>
+                            <NavBar.NavButton
+                                onClick={() => {
+                                    setShowDropdown(!showDropdown);
+                                }}
+                                ref={dropdownRef}
+                                dropdown
+                            >
+                                Dropdown
+                            </NavBar.NavButton>
 
                             <NavBar.Dropdown
                                 show={showDropdown}
@@ -152,18 +145,10 @@ export const Color = (args) => (
         <NavBar>
             <Logo />
             <NavBar.Nav>
-                <NavBar.NavItem>
-                    <a>Link 1</a>
-                </NavBar.NavItem>
-                <NavBar.NavItem>
-                    <a>Link 2</a>
-                </NavBar.NavItem>
-                <NavBar.NavItem>
-                    <a>Link 3</a>
-                </NavBar.NavItem>
-                <NavBar.NavItem>
-                    <a>Link 4</a>
-                </NavBar.NavItem>
+                <NavBar.NavLink>Link 1</NavBar.NavLink>
+                <NavBar.NavLink>Link 2</NavBar.NavLink>
+                <NavBar.NavLink>Link 3</NavBar.NavLink>
+                <NavBar.NavLink>Link 4</NavBar.NavLink>
             </NavBar.Nav>
         </NavBar>
 
@@ -171,18 +156,10 @@ export const Color = (args) => (
             <NavBar>
                 <Logo />
                 <NavBar.Nav>
-                    <NavBar.NavItem>
-                        <a>Link 1</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
-                        <a>Link 2</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
-                        <a>Link 3</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
-                        <a>Link 4</a>
-                    </NavBar.NavItem>
+                    <NavBar.NavLink>Link 1</NavBar.NavLink>
+                    <NavBar.NavLink>Link 2</NavBar.NavLink>
+                    <NavBar.NavLink>Link 3</NavBar.NavLink>
+                    <NavBar.NavLink>Link 4</NavBar.NavLink>
                 </NavBar.Nav>
             </NavBar>
         </Lookingglass>
@@ -191,18 +168,18 @@ export const Color = (args) => (
             <NavBar>
                 <Logo />
                 <NavBar.Nav>
-                    <NavBar.NavItem>
+                    <NavBar.NavLink>
                         <a>Link 1</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
+                    </NavBar.NavLink>
+                    <NavBar.NavLink>
                         <a>Link 2</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
+                    </NavBar.NavLink>
+                    <NavBar.NavLink>
                         <a>Link 3</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
+                    </NavBar.NavLink>
+                    <NavBar.NavLink>
                         <a>Link 4</a>
-                    </NavBar.NavItem>
+                    </NavBar.NavLink>
                 </NavBar.Nav>
             </NavBar>
         </Lookingglass>
@@ -210,18 +187,18 @@ export const Color = (args) => (
         <NavBar style={{ backgroundColor: 'purple', color: 'white' }}>
             <Logo />
             <NavBar.Nav>
-                <NavBar.NavItem>
+                <NavBar.NavLink>
                     <a>Link 1</a>
-                </NavBar.NavItem>
-                <NavBar.NavItem>
+                </NavBar.NavLink>
+                <NavBar.NavLink>
                     <a>Link 2</a>
-                </NavBar.NavItem>
-                <NavBar.NavItem>
+                </NavBar.NavLink>
+                <NavBar.NavLink>
                     <a>Link 3</a>
-                </NavBar.NavItem>
-                <NavBar.NavItem>
+                </NavBar.NavLink>
+                <NavBar.NavLink>
                     <a>Link 4</a>
-                </NavBar.NavItem>
+                </NavBar.NavLink>
             </NavBar.Nav>
         </NavBar>
     </>
@@ -234,18 +211,10 @@ export const Spacing = (args) => (
             <NavBar>
                 <Logo />
                 <NavBar.Nav>
-                    <NavBar.NavItem>
-                        <a>Link 1</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
-                        <a>Link 2</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
-                        <a>Link 3</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
-                        <a>Link 4</a>
-                    </NavBar.NavItem>
+                    <NavBar.NavLink>Link 1</NavBar.NavLink>
+                    <NavBar.NavLink>Link 2</NavBar.NavLink>
+                    <NavBar.NavLink>Link 3</NavBar.NavLink>
+                    <NavBar.NavLink>Link 4</NavBar.NavLink>
                 </NavBar.Nav>
             </NavBar>
         </Lookingglass>
@@ -255,18 +224,10 @@ export const Spacing = (args) => (
                 <Logo />
                 <Lookingglass marginX="auto">
                     <NavBar.Nav>
-                        <NavBar.NavItem>
-                            <a>Link 1</a>
-                        </NavBar.NavItem>
-                        <NavBar.NavItem>
-                            <a>Link 2</a>
-                        </NavBar.NavItem>
-                        <NavBar.NavItem>
-                            <a>Link 3</a>
-                        </NavBar.NavItem>
-                        <NavBar.NavItem>
-                            <a>Link 4</a>
-                        </NavBar.NavItem>
+                        <NavBar.NavLink>Link 1</NavBar.NavLink>
+                        <NavBar.NavLink>Link 2</NavBar.NavLink>
+                        <NavBar.NavLink>Link 3</NavBar.NavLink>
+                        <NavBar.NavLink>Link 4</NavBar.NavLink>
                     </NavBar.Nav>
                 </Lookingglass>
             </NavBar>
@@ -339,18 +300,10 @@ export const Breakpoints = (args) => (
             <Logo />
             <Lookingglass div display={{ s: 'none', m: 'block' }}>
                 <NavBar.Nav>
-                    <NavBar.NavItem>
-                        <a>Link 1</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
-                        <a>Link 2</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
-                        <a>Link 3</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
-                        <a>Link 4</a>
-                    </NavBar.NavItem>
+                    <NavBar.NavLink>Link 1</NavBar.NavLink>
+                    <NavBar.NavLink>Link 2</NavBar.NavLink>
+                    <NavBar.NavLink>Link 3</NavBar.NavLink>
+                    <NavBar.NavLink>Link 4</NavBar.NavLink>
                 </NavBar.Nav>
             </Lookingglass>
         </NavBar>
@@ -367,25 +320,24 @@ export const Dropdown = (args) => {
             <NavBar>
                 <Logo />
                 <NavBar.Nav>
-                    <NavBar.NavItem>
+                    <NavBar.NavLink>
                         <a>Link 1</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
+                    </NavBar.NavLink>
+                    <NavBar.NavLink>
                         <a>Link 2</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
+                    </NavBar.NavLink>
+                    <NavBar.NavLink>
                         <a>Link 3</a>
-                    </NavBar.NavItem>
-                    <NavBar.NavItem>
-                        <button
-                            onClick={() => {
-                                setShowDropdown(!showDropdown);
-                            }}
-                            ref={dropdownRef}
-                        >
-                            Dropdown
-                        </button>
-                    </NavBar.NavItem>
+                    </NavBar.NavLink>
+                    <NavBar.NavButton
+                        onClick={() => {
+                            setShowDropdown(!showDropdown);
+                        }}
+                        ref={dropdownRef}
+                        dropdown
+                    >
+                        Dropdown
+                    </NavBar.NavButton>
                 </NavBar.Nav>
                 <NavBar.Dropdown
                     show={showDropdown}
@@ -443,16 +395,18 @@ export const DropdownLogin = (args) => {
         <Lookingglass backgroundColor="primary" color="white">
             <NavBar>
                 <Logo />
-                <Button
-                    btnStyle="none"
-                    hoverEffect="light"
-                    ref={showSignInRef}
-                    onClick={() => {
-                        setShowSignIn(!showSignIn);
-                    }}
-                >
-                    Login
-                </Button>
+                <Lookingglass fontWeight="600">
+                    <Button
+                        btnStyle="none"
+                        hoverEffect="light"
+                        ref={showSignInRef}
+                        onClick={() => {
+                            setShowSignIn(!showSignIn);
+                        }}
+                    >
+                        Login
+                    </Button>
+                </Lookingglass>
                 <NavBar.Dropdown show={showSignIn} onClose={() => setShowSignIn(false)} targetRef={showSignInRef}>
                     <Lookingglass div paddingY="2" paddingX="2">
                         <form style={{ width: '200px' }} onSubmit={handleSubmit}>
@@ -495,9 +449,11 @@ DropdownLogin.parameters = {
 /* ---------------- Navigation Tray ---------------- */
 const TrayCard = ({ children }) => (
     <Lookingglass padding="2" div>
-        <Lookingglass backgroundColor="white">
+        <Lookingglass backgroundColor="primary-d2" color="white">
             <Card>
-                <Card.Content>{children}</Card.Content>
+                <Lookingglass padding="2" fontSize="0.875" fontWeight="600">
+                    <Card.Content>{children}</Card.Content>
+                </Lookingglass>
             </Card>
         </Lookingglass>
     </Lookingglass>
@@ -510,22 +466,24 @@ export const Tray = (args) => {
         <Lookingglass backgroundColor="primary" color="white">
             <NavBar>
                 <Logo />
-                <Button
-                    btnStyle="none"
-                    hoverEffect="light"
-                    onClick={() => {
-                        setShowTray(!showTray);
-                    }}
-                >
-                    Open Tray
-                </Button>
+                <Lookingglass fontWeight="600">
+                    <Button
+                        btnStyle="none"
+                        hoverEffect="light"
+                        onClick={() => {
+                            setShowTray(!showTray);
+                        }}
+                    >
+                        Open Tray
+                    </Button>
+                </Lookingglass>
                 <NavBar.Tray
                     show={showTray}
                     onClose={() => {
                         setShowTray(false);
                     }}
                 >
-                    <Lookingglass padding="2" backgroundColor="primary-d1">
+                    <Lookingglass padding="2" backgroundColor="primary">
                         <Flex cols="auto">
                             <TrayCard>Tray Card 1</TrayCard>
                             <TrayCard>Tray Card 2</TrayCard>
@@ -565,18 +523,18 @@ export const NavDrawer = (args) => {
                     <Logo />
                     <Lookingglass div display={{ s: 'none', m: 'block' }}>
                         <NavBar.Nav>
-                            <NavBar.NavItem>
+                            <NavBar.NavLink>
                                 <a>Link 1</a>
-                            </NavBar.NavItem>
-                            <NavBar.NavItem>
+                            </NavBar.NavLink>
+                            <NavBar.NavLink>
                                 <a>Link 2</a>
-                            </NavBar.NavItem>
-                            <NavBar.NavItem>
+                            </NavBar.NavLink>
+                            <NavBar.NavLink>
                                 <a>Link 3</a>
-                            </NavBar.NavItem>
-                            <NavBar.NavItem>
+                            </NavBar.NavLink>
+                            <NavBar.NavLink>
                                 <a>Link 4</a>
-                            </NavBar.NavItem>
+                            </NavBar.NavLink>
                         </NavBar.Nav>
                     </Lookingglass>
                     <Lookingglass div display={{ s: 'block', m: 'none' }}>
@@ -587,7 +545,9 @@ export const NavDrawer = (args) => {
                                 setShowDrawer(!showDrawer);
                             }}
                         >
-                            Open Drawer
+                            <Lookingglass fontSize="1">
+                                <FontAwesomeIcon icon={faBars} />
+                            </Lookingglass>
                         </Button>
                     </Lookingglass>
                 </NavBar>

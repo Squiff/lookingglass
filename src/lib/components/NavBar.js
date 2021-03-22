@@ -28,22 +28,61 @@ NavBar.Nav = ({ children, className, ...props }) => {
 
 NavBar.Nav.displayName = 'NavBar.Nav';
 
-NavBar.NavItem = ({ children, ...props }) => {
-    const onlyChild = React.Children.only(children);
-    const mergedClasses = classNames('navbar__navitem', onlyChild.props.className);
-    const child = React.cloneElement(onlyChild, { className: mergedClasses });
+NavBar.NavLink = ({ children, className, ...props }) => {
+    const classes = classNames('navbar__navitem', className);
 
-    return <li {...props}>{child}</li>;
+    return (
+        <li>
+            <a className={classes} {...props}>
+                {children}
+            </a>
+        </li>
+    );
 };
 
-NavBar.NavItem.displayName = 'NavBar.NavItem';
+NavBar.NavLink.displayName = 'NavBar.NavLink';
+
+NavBar.NavButton = React.forwardRef(({ children, className, dropdown, ...props }, ref) => {
+    const classes = classNames('navbar__navitem', className);
+
+    const btnContent = dropdown ? DropdownButtonContent({ children }) : children;
+
+    return (
+        <li>
+            <button className={classes} {...props} ref={ref}>
+                {btnContent}
+            </button>
+        </li>
+    );
+});
+
+const DropdownButtonContent = ({ children }) => (
+    <div className="navbar__dropdown-btn-content">
+        {children}
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            strokeWidth="1"
+            stroke="currentColor"
+            class="navbar__dropdown-icon"
+            viewBox="0 0 16 16"
+        >
+            <path
+                fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+            />
+        </svg>
+    </div>
+);
 
 NavBar.Dropdown = ({ children, className, style, ...props }) => {
     const classes = classNames('navbar__dropdown', className);
 
     return (
         <>
-            <Popup placement="bottom-start" {...props}>
+            <Popup placement="bottom-end" {...props}>
                 <div className={classes} style={style}>
                     {children}
                 </div>

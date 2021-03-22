@@ -8,7 +8,7 @@ $padding: 0 20px !default;
 $margin: 0 0 32px 0 !default;
 $shadow: 3 !default;
 // navitem options
-$nav-item-padding: 10px 12px !default;
+$nav-item-padding: 0.5rem 0.75rem !default;
 $nav-item-font-size: 0.875rem !default;
 $nav-item-font-weight: 500 !default;
 $nav-item-hover-background: rgba(0, 0, 0, 0.1) !default;
@@ -17,6 +17,7 @@ $dropdown-background: config.$background-color !default;
 $dropdown-color: config.$text-color !default;
 $dropdown-border: 1px solid #ccc !default;
 $dropdown-shadow: 5 !default;
+$dropdown-font-size: 0.875rem !default;
 // tray options
 $tray-background-color: config.$background-color !default;
 $tray-color: config.$text-color !default;
@@ -71,7 +72,20 @@ $tray-shadow: $shadow !default;
         background-color: $dropdown-background;
         color: $dropdown-color;
         border: $dropdown-border;
+        font-size: $dropdown-font-size;
         @include shadows.shadow($dropdown-shadow);
+
+        // the dropdown button content container
+        &-btn-content {
+            display: flex;
+            align-items: center;
+        }
+
+        &-icon {
+            margin-left: 0.25rem;
+            width: 12px;
+            height: 12px;
+        }
     }
 
     // a full width vertical sliding drawer for the navbar

@@ -27,8 +27,8 @@ First let's cover the main style properties of a nav bar:
 A `NavBar` is comprised of several subcomponents
 
 -   `NavBar.Nav` - This is the main `<nav>` element that should wrap the list of links
--   `NavBar.NavItem` - is an individual link or button that makes up part of the main `<nav>`.
-    They should be children of `NavBar.Nav`
+-   `NavBar.NavLink` - is a link within `NavBar.Nav`
+-   `NavBar.NavButton` - is a button within `NavBar.Nav`
 -   `NavBar.Dropdown` Contains dropdown content such as additional links or login forms.
 -   `NavBar.Tray` is a full width dropdown that slides down from the navbar. It can contain most content types.
 
@@ -95,6 +95,18 @@ Any props `Nav.Dropdown` receives are passed onto `<Popup>` - You can read more 
 -   set `show={true}` to show the dropdown and `show={false}` to hide it.
 -   pass an `onClose` callback, which the dropdown will trigger when it wants to close (i.e. when the user clicks away or presses ESC)
 
+#### Dropdown Button
+
+`Nav.NavButton` has a `dropdown` prop that will add a caret to the button when set to true.
+
+```jsx
+<NavBar.Nav>
+    ...
+    <NavBar.NavButton dropdown>Dropdown</NavBar.NavButton>
+    ...
+</NavBar.Nav>
+```
+
 #### Lists
 
 Use a `<List>` to create a simple navigation dropdown. This provides the styling for lists of items as well as hover effects for `<a>` and `<button>` elements.
@@ -137,7 +149,7 @@ Use the `className` prop or `<Lookingglass>` utility to apply further styles.
 In the below example we have setup the "Open Tray" button to toggle the `show` prop.
 
 The contents of the `<Nav.Tray>` is a set of Cards (but the content could be anything you like!).
-They have been wrapped in `<Lookingglass padding="2" backgroundColor="primary-d1">` to provide padding
+They have been wrapped in `<Lookingglass padding="2" backgroundColor="primary">` to provide padding
 and a background color.
 
 <Canvas>
