@@ -21,9 +21,9 @@ $dropdown-font-size: 0.875rem !default;
 // tray options
 $tray-background-color: config.$background-color !default;
 $tray-color: config.$text-color !default;
-$tray-margin-bottom: 11px !default;
 $tray-transition-duration: 200ms !default;
 $tray-shadow: $shadow !default;
+$tray-margin-bottom: 11px !default; // this needs adjusting with the shadow
 
 .navbar {
     position: relative;
