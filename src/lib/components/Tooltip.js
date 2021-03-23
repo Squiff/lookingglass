@@ -2,11 +2,27 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Popup from './Popup';
+import useDescribedBy from '../utilities/hooks/useDescribedBy';
 
 /** Pop ups that float near a target element */
-function Tooltip({ placement, arrow, trigger, triggerDelay, show, distance, targetRef, children, className, style }) {
+function Tooltip({
+    placement,
+    arrow,
+    trigger,
+    triggerDelay,
+    show,
+    distance,
+    targetRef,
+    children,
+    className,
+    style,
+    id,
+}) {
     const [showInternal, setShowInternal] = useState(false);
     const delayTimeout = useRef(null);
+
+    // if show is passed, then visibility is controlled by the user
+    let _show = show === undefined ? showInternal : show;
 
     // no distance supplied
     let offsetDistance;
@@ -18,16 +34,19 @@ function Tooltip({ placement, arrow, trigger, triggerDelay, show, distance, targ
         offsetDistance = arrowDistance + distance;
     }
 
-    // need to rerender after mount to get the target node
+    // force a rerender as we need targetRef after it has mounted
     const [targetElement, setTargetElement] = useState(targetRef.current);
 
     useEffect(() => {
-        setTargetElement(targetRef.current);
+        if (!targetElement) setTargetElement(targetRef.current);
     }, []);
+
+    // get id for aria-describedby
+    const tooltipId = useDescribedBy(targetElement, _show, id);
 
     // Add Trigger Effect Event listeners
     useEffect(() => {
-        // any value for show indicates means this is a controlled components
+        // any value for show indicates this is a controlled components
         if (!targetElement || show !== undefined) return;
 
         let inListener = () => {
@@ -58,9 +77,6 @@ function Tooltip({ placement, arrow, trigger, triggerDelay, show, distance, targ
         };
     }, [targetElement]);
 
-    // if show is passed, then visibility is controlled by the user
-    let _show = show === undefined ? showInternal : show;
-
     const tooltipClasses = classNames('tooltip', className);
 
     return (
@@ -73,6 +89,8 @@ function Tooltip({ placement, arrow, trigger, triggerDelay, show, distance, targ
             popupStyles={style}
             arrow={arrow}
             arrowClassName="tooltip__arrow"
+            id={tooltipId}
+            role="tooltip"
         >
             {children}
         </Popup>

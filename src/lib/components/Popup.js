@@ -19,6 +19,7 @@ function Popup({
     arrow, // add an arrow
     arrowClassName,
     arrowOptions,
+    ...props
 }) {
     const [targetElement, setTargetElement] = useState(targetRef.current);
     const [popperElement, setPopperElement] = useState(null);
@@ -57,6 +58,7 @@ function Popup({
                 style={{ ...popupStyles, ...styles.popper }}
                 {...attributes.popper}
                 className={popupClasses}
+                {...props}
             >
                 {children}
                 {arrow && <div style={styles.arrow} className={arrowClassName} data-popper-arrow />}
