@@ -85,6 +85,7 @@ export const All = (args) => {
                                     setShowDropdown(!showDropdown);
                                 }}
                                 ref={dropdownRef}
+                                aria-expanded={showDropdown}
                                 dropdown
                             >
                                 Dropdown
@@ -109,6 +110,7 @@ export const All = (args) => {
                         onClick={() => {
                             setShowTray(!showTray);
                         }}
+                        aria-expanded={showTray}
                     >
                         Open Tray
                     </Button>
@@ -334,6 +336,7 @@ export const Dropdown = (args) => {
                             setShowDropdown(!showDropdown);
                         }}
                         ref={dropdownRef}
+                        aria-expanded={showDropdown}
                         dropdown
                     >
                         Dropdown
@@ -385,7 +388,7 @@ Dropdown.parameters = {
 /* ---------------- DropdownLogin ---------------- */
 export const DropdownLogin = (args) => {
     const [showSignIn, setShowSignIn] = useState(false);
-    const showSignInRef = useRef();
+    const signInRef = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -399,15 +402,16 @@ export const DropdownLogin = (args) => {
                     <Button
                         btnStyle="none"
                         hoverEffect="light"
-                        ref={showSignInRef}
+                        ref={signInRef}
                         onClick={() => {
                             setShowSignIn(!showSignIn);
                         }}
+                        aria-expanded={showSignIn}
                     >
                         Login
                     </Button>
                 </Lookingglass>
-                <NavBar.Dropdown show={showSignIn} onClose={() => setShowSignIn(false)} targetRef={showSignInRef}>
+                <NavBar.Dropdown show={showSignIn} onClose={() => setShowSignIn(false)} targetRef={signInRef}>
                     <Lookingglass div paddingY="2" paddingX="2">
                         <form style={{ width: '200px' }} onSubmit={handleSubmit}>
                             <FormGroup>
@@ -473,6 +477,7 @@ export const Tray = (args) => {
                         onClick={() => {
                             setShowTray(!showTray);
                         }}
+                        aria-expanded={showTray}
                     >
                         Open Tray
                     </Button>
@@ -544,6 +549,8 @@ export const NavDrawer = (args) => {
                             onClick={() => {
                                 setShowDrawer(!showDrawer);
                             }}
+                            aria-expanded={showDrawer}
+                            aria-label="toggle navigation"
                         >
                             <Lookingglass fontSize="1">
                                 <FontAwesomeIcon icon={faBars} />

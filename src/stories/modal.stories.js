@@ -32,7 +32,7 @@ export const AllProps = (args) => {
 
     return (
         <>
-            <Modal {...args} show={show} onClose={toggleShow}>
+            <Modal {...args} show={show} onClose={toggleShow} aria-label="Modal Example">
                 <h5>Modal Content</h5>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi unde nulla est aspernatur iusto ex
@@ -67,7 +67,7 @@ export const Closing = (args) => {
 
     return (
         <>
-            <Modal {...args} show={show} onClose={toggleShow} closeOnClick={false}>
+            <Modal {...args} show={show} onClose={toggleShow} closeOnClick={false} aria-label="Delete Confirmation">
                 <Lookingglass div fontWeight="600" paddingX="1" marginBottom="2">
                     Are you sure you want to delete
                 </Lookingglass>
@@ -111,7 +111,7 @@ export const Sizing = (args) => {
 
     return (
         <>
-            <Modal style={modalStyle} {...args} show={show} onClose={toggleShow}>
+            <Modal style={modalStyle} show={show} onClose={toggleShow} aria-label="Size Example">
                 <h5>Modal Header</h5>
                 <p>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id officia unde amet voluptates sit

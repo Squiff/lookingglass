@@ -12,8 +12,17 @@ function Progress({ className, children, progress, indeterminate, ...props }) {
 
     const classStr = classNames(classes, className);
 
+    let ariaProps = {};
+    if (!indeterminate) {
+        ariaProps = {
+            'aria-valuenow': progress,
+            'aria-valuemin': 0,
+            'aria-valuemax': 100,
+        };
+    }
+
     return (
-        <div role="progressbar" className={classStr} {...props}>
+        <div role="progressbar" className={classStr} {...ariaProps} {...props}>
             {progressBar}
         </div>
     );

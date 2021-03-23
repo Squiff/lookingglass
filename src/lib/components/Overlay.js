@@ -24,7 +24,7 @@ const transitionClasses = {
 // trapping/retaining focus
 // escape key to close
 // clicking on overlay to close
-function Overlay({ children, className, show, onClose, closeOnClick }) {
+function Overlay({ children, className, show, onClose, closeOnClick, ...props }) {
     const overlayRef = useRef();
     const transitionEnd = useTransitionEnd(overlayRef);
     const [focusTrapActive, setFocusTrapActive] = useState(show);
@@ -75,7 +75,14 @@ function Overlay({ children, className, show, onClose, closeOnClick }) {
             addEndListener={transitionEnd}
         >
             <FocusTrap active={focusTrapActive} focusTrapOptions={FocusOptions}>
-                <div className={classes} onClick={handleClick} ref={overlayRef} role="dialog" aria-modal="true">
+                <div
+                    className={classes}
+                    onClick={handleClick}
+                    ref={overlayRef}
+                    role="dialog"
+                    aria-modal="true"
+                    {...props}
+                >
                     <div
                         className="overlay__content"
                         tabIndex="0" //ensures focus trap always has something to focus

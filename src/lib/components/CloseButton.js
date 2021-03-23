@@ -5,7 +5,7 @@ function CloseButton({ className, ...btnProps }) {
     const classes = classNames('close-btn', className);
 
     return (
-        <button {...btnProps} className={classes}>
+        <button {...btnProps} className={classes} aria-label="close">
             <CloseIcon className="close-btn__icon" />
         </button>
     );

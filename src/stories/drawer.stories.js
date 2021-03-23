@@ -45,7 +45,7 @@ export const AllProps = (args) => {
 
     return (
         <>
-            <Button block onClick={toggleDrawer} color="info">
+            <Button block onClick={toggleDrawer} color="info" aria-expanded={show}>
                 Open Drawer
             </Button>
             <Drawer {...args} show={show} onClose={toggleDrawer}>
@@ -75,7 +75,7 @@ export const Scrolling = (args) => {
 
     return (
         <>
-            <Button block onClick={toggleDrawer} color="info">
+            <Button block onClick={toggleDrawer} color="info" aria-expanded={show}>
                 Open Drawer
             </Button>
             <Drawer direction="left" show={show} onClose={toggleDrawer}>
@@ -103,7 +103,7 @@ export const CloseDrawer = (args) => {
 
     return (
         <>
-            <Button block onClick={toggleDrawer} color="info">
+            <Button block onClick={toggleDrawer} color="info" aria-expanded={show}>
                 Open Drawer
             </Button>
             <Drawer direction="left" show={show} closeOnClick={false} onClose={toggleDrawer}>
@@ -199,7 +199,7 @@ export const HorizontalDrawerContent = () => (
     </Lookingglass>
 );
 
-const HorizontalDrawerItem = ({ children, icon, text, className }) => {
+const HorizontalDrawerItem = ({ icon, text, className }) => {
     return (
         <Lookingglass paddingX="3" textAlign="center" className={className}>
             <Button btnStyle="none">

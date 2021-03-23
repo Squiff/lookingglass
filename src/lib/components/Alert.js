@@ -49,7 +49,7 @@ function Alert({ children, className, color, alertStyle, show, closeBtn, onClose
             onEntered={onOpened}
             unmountOnExit={true}
         >
-            <div ref={alertRef} className={classStr} {...props}>
+            <div ref={alertRef} className={classStr} {...props} role="alert">
                 <div className="alert__content">{children}</div>
                 {alertCloseBtn}
             </div>
