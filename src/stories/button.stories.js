@@ -11,20 +11,16 @@ export const argTypes = {
             type: 'select',
             options: themeColors,
         },
-        ...tableDisable,
     },
     btnStyle: {
         control: {
             type: 'radio',
             options: ['default', 'none', 'outline'],
         },
-        ...tableDisable,
     },
     size: {
         control: { type: 'radio', options: ['default', 's', 'l'] },
-        ...tableDisable,
     },
-    block: { ...tableDisable },
     hoverEffect: {
         control: {
             type: 'radio',
@@ -49,12 +45,7 @@ AllProps.args = {
     color: 'info',
 };
 
-AllProps.argTypes = {
-    color: { ...tableEnable },
-    btnStyle: { ...tableEnable },
-    block: { ...tableEnable },
-    size: { ...tableEnable },
-};
+AllProps.parameters = { options: { showPanel: true } };
 
 /* -------- SOLID ---------------- */
 export const SolidColors = (args) => (

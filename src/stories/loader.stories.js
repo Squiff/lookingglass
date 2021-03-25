@@ -21,6 +21,10 @@ AllProps.args = {
     status: 'loading',
 };
 
+AllProps.parameters = {
+    options: { showPanel: true },
+};
+
 /* -------- With Components ---------------- */
 
 export const CustomComponents = (args) => {

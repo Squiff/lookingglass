@@ -27,6 +27,10 @@ export const ListProps = (args) => {
     );
 };
 
+ListProps.parameters = {
+    options: { showPanel: true },
+};
+
 /* --------Ordered Unordered -------- */
 export const OrderedUnordered = (args) => {
     return (

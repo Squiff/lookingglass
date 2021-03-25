@@ -22,6 +22,10 @@ BorderProps.args = {
     borderColor: 'primary',
 };
 
+BorderProps.parameters = {
+    options: { showPanel: true },
+};
+
 /* --------- Border Width ---------- */
 export const BorderWidth = (args) => (
     <Lookingglass border="1" borderLeft="4" padding="2">

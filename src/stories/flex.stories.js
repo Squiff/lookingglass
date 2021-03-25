@@ -30,7 +30,15 @@ export const argTypes = {
 
 const Content = ({ children }) => {
     return (
-        <Lookingglass div backgroundColor="light" border="1" textAlign="center" padding="2">
+        <Lookingglass
+            div
+            backgroundColor="primary"
+            color="white"
+            border="1"
+            borderColor="dark"
+            textAlign="center"
+            padding="2"
+        >
             {children}
         </Lookingglass>
     );
@@ -46,7 +54,7 @@ const Template = (args) => {
                     <Content>Child 1</Content>
                 </Flex.Child>
                 <Flex.Child>
-                    <Content>Child 1</Content>
+                    <Content>Child 2</Content>
                 </Flex.Child>
                 <Flex.Child>
                     <Content>Child 3</Content>
@@ -66,10 +74,8 @@ AllProps.args = {
     cols: 'equal',
 };
 
-AllProps.argTypes = {
-    cols: { ...tableEnable },
-    justify: { ...tableEnable },
-    align: { ...tableEnable },
+AllProps.parameters = {
+    options: { showPanel: true },
 };
 
 /* -------- Default ---------------- */

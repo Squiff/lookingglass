@@ -78,10 +78,6 @@ export const Sizes = (args) => (
     </>
 );
 
-Sizes.parameters = {
-    options: { showPanel: false },
-};
-
 /* -------- Borders ---------------- */
 export const Borders = (args) => (
     <>
@@ -103,20 +99,12 @@ export const Borders = (args) => (
     </>
 );
 
-Borders.parameters = {
-    options: { showPanel: false },
-};
-
 /* -------- Hover ---------------- */
 export const Hover = (args) => (
     <Table hover={false}>
         <MockData columns="4" rows="3" />
     </Table>
 );
-
-Hover.parameters = {
-    options: { showPanel: false },
-};
 
 /* -------- Heading Color ---------------- */
 export const HeadingColor = (args) => (
@@ -169,7 +157,3 @@ export const HeadingColor = (args) => (
         </Table>
     </>
 );
-
-HeadingColor.parameters = {
-    options: { showPanel: false },
-};

@@ -28,3 +28,7 @@ export const OverflowProps = (args) => {
         </Lookingglass>
     );
 };
+
+OverflowProps.parameters = {
+    options: { showPanel: true },
+};

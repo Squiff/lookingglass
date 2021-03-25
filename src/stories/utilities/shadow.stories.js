@@ -27,6 +27,10 @@ Shadow.args = {
     shadow: '1',
 };
 
+Shadow.parameters = {
+    options: { showPanel: true },
+};
+
 export const ShadowExamples = (args) => (
     <Flex cols="equal">
         <Lookingglass

@@ -20,6 +20,10 @@ DisplayProps.args = {
     backgroundColor: 'light',
 };
 
+DisplayProps.parameters = {
+    options: { showPanel: true },
+};
+
 /* --------- Display Breakpoints --------- */
 export const Responsive = (args) => (
     <>

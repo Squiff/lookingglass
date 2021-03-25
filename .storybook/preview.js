@@ -8,6 +8,7 @@ import Theme from './Theme';
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
     // controls: { expanded: true },
+    options: { showPanel: false },
     docs: {
         theme: Theme,
     },

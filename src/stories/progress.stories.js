@@ -11,7 +11,7 @@ export const argTypes = {
 const Spacer = () => <Lookingglass marginBottom="2" div />;
 
 /* -------- All Props ---------- */
-export const allProps = (args) => {
+export const AllProps = (args) => {
     const [progress, setProgress] = useState(25);
 
     const handleClick = () => {
@@ -33,7 +33,11 @@ export const allProps = (args) => {
     );
 };
 
-allProps.args = { indeterminate: false };
+AllProps.args = { indeterminate: false };
+
+AllProps.parameters = {
+    options: { showPanel: true },
+};
 
 /* -------- Progress ---------- */
 export const setProgress = (args) => {

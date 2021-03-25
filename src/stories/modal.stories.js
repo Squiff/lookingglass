@@ -50,6 +50,7 @@ export const AllProps = (args) => {
 };
 
 AllProps.parameters = {
+    options: { showPanel: true },
     docs: {
         source: {
             type: 'code', // shows event handlers correcly in the docs

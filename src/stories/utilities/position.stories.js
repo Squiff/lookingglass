@@ -58,6 +58,10 @@ PositionProps.args = {
     left: '0',
 };
 
+PositionProps.parameters = {
+    options: { showPanel: true },
+};
+
 /* --------- Fixed -----------*/
 export const Fixed = (args) => {
     const [showFixed, setShowFixed] = useState(false);

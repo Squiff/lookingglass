@@ -19,6 +19,10 @@ ColorProps.args = {
     padding: '3',
 };
 
+ColorProps.parameters = {
+    options: { showPanel: true },
+};
+
 /* ---------- Theme Colors -------------- */
 export const ThemeColors = (args) => (
     <>

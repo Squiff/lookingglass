@@ -13,9 +13,8 @@ export const argTypes = {
             type: 'select',
             options: themeColors,
         },
-        ...tableDisable,
     },
-    show: { control: 'none', ...tableDisable },
+    show: { control: null },
     onClose: {
         table: {
             category: 'Events',
@@ -52,10 +51,8 @@ AlertProps.args = {
     color: 'success',
 };
 
-AlertProps.argTypes = {
-    color: { ...tableEnable },
-    show: { ...tableEnable },
-    onClose: { ...tableEnable },
+AlertProps.parameters = {
+    options: { showPanel: true },
 };
 
 /* --------  COLORS ---------------- */

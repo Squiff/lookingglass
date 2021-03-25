@@ -17,3 +17,7 @@ export const SizingProps = (args) => (
         </Lookingglass>
     </div>
 );
+
+SizingProps.parameters = {
+    options: { showPanel: true },
+};

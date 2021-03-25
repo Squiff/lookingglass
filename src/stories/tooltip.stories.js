@@ -59,6 +59,10 @@ AllProps.args = {
     show: true,
 };
 
+AllProps.parameters = {
+    options: { showPanel: true },
+};
+
 /* -------- Scrolling -------------- */
 export const Scrolling = (args) => {
     const targetRef = useRef();

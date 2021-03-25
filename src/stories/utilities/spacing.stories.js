@@ -37,6 +37,10 @@ SpacingProps.args = {
     padding: '2',
 };
 
+SpacingProps.parameters = {
+    options: { showPanel: true },
+};
+
 /* ---------- Spacing Examples ------------- */
 export const MarginAuto = (args) => (
     <>

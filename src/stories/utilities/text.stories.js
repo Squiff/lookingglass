@@ -22,6 +22,10 @@ export const TextProps = (args) => (
     </Lookingglass>
 );
 
+TextProps.parameters = {
+    options: { showPanel: true },
+};
+
 /*--------- ALL PROPS ------------ */
 export const FontSize = (args) => (
     <>

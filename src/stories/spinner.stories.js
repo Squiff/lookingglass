@@ -6,13 +6,12 @@ const tableDisable = { table: { disable: true } };
 const tableEnable = { table: { disable: false } };
 
 export const argTypes = {
-    size: { control: { type: 'radio', options: ['default', 's', 'l'] }, ...tableDisable },
-    color: { control: 'color', table: { category: 'Helpers', disable: true } },
-    halo: { ...tableDisable },
+    size: { control: { type: 'radio', options: ['default', 's', 'l'] } },
+    color: { control: 'color', table: { category: 'Style' } },
 };
 
 /* --------  All Props ---------------- */
-export const All = (args) => {
+export const AllProps = (args) => {
     const cArgs = cleanArgs(args);
     const { color, ...spinnerArgs } = cArgs;
 
@@ -24,15 +23,13 @@ export const All = (args) => {
     return <Spinner {...spinnerArgs} />;
 };
 
-All.args = {
+AllProps.args = {
     size: 'default',
     halo: false,
 };
 
-All.argTypes = {
-    size: { ...tableEnable },
-    halo: { ...tableEnable },
-    color: { ...tableEnable },
+AllProps.parameters = {
+    options: { showPanel: true },
 };
 
 /* --------  Sizes ---------------- */

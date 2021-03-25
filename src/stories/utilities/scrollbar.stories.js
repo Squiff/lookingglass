@@ -43,6 +43,10 @@ export const ScrollbarProps = (args) => {
 
 ScrollbarProps.args = {};
 
+ScrollbarProps.parameters = {
+    options: { showPanel: true },
+};
+
 /*----------- Scrollbar Colors --------- */
 export const Colors = (args) => {
     return (
