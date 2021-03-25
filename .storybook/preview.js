@@ -7,9 +7,11 @@ import Theme from './Theme';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
-    // controls: { expanded: true },
-    options: { showPanel: false },
+    controls: { expanded: true },
+    options: { showPanel: false, storySort: { order: ['Global Styles', 'Utilities', 'Components', 'Forms'] } },
     docs: {
         theme: Theme,
     },
+    // make docs the defaault landing page
+    viewMode: 'docs',
 };

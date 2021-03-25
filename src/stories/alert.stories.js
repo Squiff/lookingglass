@@ -4,9 +4,6 @@ import Button from '../lib/components/Button';
 import Lookingglass from '../lib/components/Lookingglass';
 import { cleanArgs, themeColors } from './helpers/utils';
 
-const tableDisable = { table: { disable: true } };
-const tableEnable = { table: { disable: false } };
-
 export const argTypes = {
     color: {
         control: {
