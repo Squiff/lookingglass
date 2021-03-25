@@ -23,7 +23,7 @@ Card.Header = ({ children, className }) => {
 };
 
 Card.Body = ({ children, className }) => {
-    const classes = className('card__body', className);
+    const classes = classNames('card__body', className);
     return <div className={classes}>{children}</div>;
 };
 
