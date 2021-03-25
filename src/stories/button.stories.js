@@ -173,3 +173,15 @@ export const Disabled = (args) => (
         </Button>
     </>
 );
+
+/* -------- LINKS ---------------- */
+export const Links = (args) => (
+    <>
+        <Button color="info" href="#">
+            Active Link
+        </Button>{' '}
+        <Button color="info" href="#" disabled>
+            Disabled Link
+        </Button>{' '}
+    </>
+);

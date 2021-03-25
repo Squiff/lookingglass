@@ -75,3 +75,17 @@ Setting the standard `disabled` attribute will add `opacity` to the button and r
 <Canvas>
     <Story story={stories.Disabled} />
 </Canvas>
+
+## Links
+
+`Button` will render as an `<a>` element when a `href` provided.
+
+The `disabled` flag on a link button will:
+
+-   Mark element as `aria-disabled`
+-   add `tabindex="-1"` to prevent tabbing
+-   add `preventDefault` to the click event to stop navigation to the URL
+
+<Canvas>
+    <Story story={stories.Links} />
+</Canvas>

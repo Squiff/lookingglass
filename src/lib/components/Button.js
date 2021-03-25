@@ -2,48 +2,58 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const Button = React.forwardRef(({ children, color, size, btnStyle, block, className, hoverEffect, ...props }, ref) => {
-    const classes = ['btn'];
+const Button = React.forwardRef(
+    ({ children, color, size, btnStyle, block, className, hoverEffect, disabled, ...props }, ref) => {
+        const classes = {
+            btn: true,
+            'btn--none': btnStyle === 'none',
+            [`btn--none--hover-${hoverEffect}`]: btnStyle === 'none' && hoverEffect,
+            'btn--block': block,
+            [`btn--${size}`]: size,
+            [`btn--outline-${color}`]: btnStyle === 'outline',
+            [`btn--clr-${color}`]: !btnStyle,
+        };
 
-    if (btnStyle === 'none') {
-        classes.push('btn--none');
+        const classStr = classNames(classes, className);
+
+        // allow rendering something other than a button
+        // will default to "<a> if an href is supplied"
+        const Tag = props.href ? 'a' : 'button';
+        const disabledProps = disabledProperies(disabled, Tag);
+
+        return (
+            <Tag className={classStr} {...disabledProps} {...props} ref={ref}>
+                {children}
+            </Tag>
+        );
     }
+);
 
-    if (block) {
-        classes.push('btn--block');
-    }
+/** get disabled attributes depending on the rendered tag */
+function disabledProperies(disabled, tag) {
+    if (!disabled) return {};
 
-    switch (size) {
-        case 's':
-            classes.push('btn--s');
-            break;
-        case 'l':
-            classes.push('btn--l');
-            break;
+    switch (tag) {
+        case 'a':
+            return linkDisabled;
         default:
-        // no class added
+            return buttonDisabled;
     }
+}
 
-    switch (btnStyle) {
-        case 'none':
-            classes.push('btn--none');
-            if (hoverEffect) classes.push(`btn--none--hover-${hoverEffect}`);
-            break;
-        case 'outline':
-            classes.push(`btn--outline-${color}`);
-            break;
-        default:
-            classes.push(`btn--clr-${color}`);
-    }
+/** DISABLED ATTRIBUTES */
+const buttonDisabled = { disabled: true };
 
-    const classStr = classNames(classes, className);
+const linkDisabled = {
+    tabIndex: '-1',
+    'aria-disabled': true,
+    onClick: handleDisabledClick,
+};
 
-    return (
-        <button className={classStr} {...props} ref={ref}>
-            {children}
-        </button>
-    );
-});
+/** Prevent disabled link navigation */
+function handleDisabledClick(e) {
+    e.preventDefault();
+}
 
 Button.propTypes = {
     /** theme color to apply to the button */
@@ -56,6 +66,8 @@ Button.propTypes = {
     block: PropTypes.bool,
     /** Add hover effect when btnStyle="none" */
     hoverEffect: PropTypes.oneOf(['dark', 'light', 'opacity']),
+    /** The HTML tag to render */
+    // tag: PropTypes.string,
 };
 
 export default Button;
