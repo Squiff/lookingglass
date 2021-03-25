@@ -61,15 +61,25 @@ AlertProps.argTypes = {
 /* --------  COLORS ---------------- */
 export const Colors = (args) => (
     <>
-        <Alert color="success">This is a success alert</Alert>
+        <Alert color="success">
+            This is a success alert with a <a href="#">Link</a>
+        </Alert>
         <Spacer />
-        <Alert color="error">This is an error alert</Alert>
+        <Alert color="error">
+            This is an error alert with a <a href="#">Link</a>
+        </Alert>
         <Spacer />
-        <Alert color="warning">This is a warning alert</Alert>
+        <Alert color="warning">
+            This is a warning alert with a <a href="#">Link</a>
+        </Alert>
         <Spacer />
-        <Alert color="info">This is an info alert</Alert>
+        <Alert color="info">
+            This is an info alert with a <a href="#">Link</a>
+        </Alert>
         <Spacer />
-        <Alert color="primary">This is a primary alert</Alert>
+        <Alert color="primary">
+            This is a primary alert with a <a href="#">Link</a>
+        </Alert>
     </>
 );
 

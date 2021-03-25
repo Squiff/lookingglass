@@ -1,3 +1,5 @@
+import Lookingglass from '../lib/components/Lookingglass';
+
 export const Headers = (args) => {
     return (
         <>
@@ -32,6 +34,9 @@ export const Paragraph = (args) => (
             cum dolore, ratione iste numquam ut ipsam. Corporis harum adipisci iure quidem laudantium voluptatem
             distinctio rerum veritatis quam deserunt facere natus hic, temporibus explicabo mollitia at similique
             consequatur! Cupiditate, molestiae!
+        </p>
+        <p>
+            Some Example Text with a <a href="#">Test Link</a>
         </p>
     </div>
 );

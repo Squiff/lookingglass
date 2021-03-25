@@ -17,6 +17,8 @@ $background-lightness: 85% !default; // background color scale factor
 $header-font-size: 0.875rem !default;
 $header-font-weight: 600 !default;
 $header-margin: 0 0 0.5rem 0 !default;
+// Links
+$link-font-weight: 600 !default;
 
 @mixin alert($colorName, $color) {
     .alert-#{$colorName} {
@@ -53,6 +55,11 @@ $header-margin: 0 0 0.5rem 0 !default;
         font-size: $header-font-size;
         font-weight: $header-font-weight;
         margin: $header-margin;
+    }
+
+    & a {
+        color: inherit;
+        font-weight: $link-font-weight;
     }
 
     &--opening,
