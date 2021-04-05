@@ -1,12 +1,12 @@
 {
-    "name": "react-lookingglass",
+    "name": "lookingglass-react",
     "version": "0.0.1",
     "description": "A React UI Component Library",
     "homepage": "https://lookingglass.asquith.dev",
     "repository": {
         "type": "git",
         "url": "https://github.com/Squiff/lookingglass"
-      },
+    },
     "scripts": {
         "start": "webpack serve --config webpack.dev.js",
         "build": "node buildtools/build",
