@@ -1,0 +1,24 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './container.stories.js';
+import Lookingglass from '../../lib/components/Lookingglass';
+
+<Meta title="Utilities/Container" />
+
+# Container
+
+Containers are a high level layout element that restrict content width for larger viewports.
+Containers use margin auto, so will be centered when they hit the max-width.
+
+-   **max-width** 1280px
+-   **Padding** 0 10px
+-   **margin** auto
+
+### Example
+
+Create a container by adding a `container` flag to the `Lookingglass` component
+
+<Canvas>
+    <Story story={stories.Container} name="Container" />
+</Canvas>
+
+Note: You can create more complex containers by using the `Flex` component with `justify="center"`

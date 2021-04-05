@@ -30,6 +30,7 @@ const Lookingglass = React.forwardRef(({ children, className, style, ...props },
 });
 
 const classPrefix = {
+    // container: 'container',
     backgroundColor: 'bg',
     color: 'clr',
     border: 'bdr',
@@ -101,7 +102,9 @@ function miscClassResolver(props) {
 
     // add base scrollbar style if at least one of these props is defined
     const { scrollbarColor, scrollbarSize, scrollbarStyle, scrollbarTrack } = props;
-    if ([scrollbarColor, scrollbarSize, scrollbarStyle, scrollbarTrack].some((a) => a !== undefined)) {
+    if (
+        [scrollbarColor, scrollbarSize, scrollbarStyle, scrollbarTrack].some((a) => a !== undefined)
+    ) {
         output.push('scrl');
     }
 
@@ -115,10 +118,14 @@ function miscClassResolver(props) {
         }
     }
 
+    if (props.container) output.push('container');
+
     return output;
 }
 
 Lookingglass.propTypes = {
+    /** Is this a container */
+    container: PropTypes.bool,
     /** Background Color */
     backgroundColor: PropTypes.string,
     /** Text Color */

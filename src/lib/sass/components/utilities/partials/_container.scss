@@ -1,0 +1,18 @@
+@use '../../config';
+@use '../../../utilities/breakpoint';
+
+$container: true !default;
+$container-max-width: 1280px !default;
+$container-padding: 0 10px !default;
+
+@mixin container() {
+    .container {
+        padding: $container-padding;
+        margin: auto;
+        max-width: $container-max-width;
+    }
+}
+
+@if $container {
+    @include container();
+}

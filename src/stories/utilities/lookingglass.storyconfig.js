@@ -114,6 +114,9 @@ const listStyleType = [
 
 // base arg types
 const baseArgTypes = {
+    container: {
+        control: false,
+    },
     backgroundColor: {
         control: {
             type: 'select',
