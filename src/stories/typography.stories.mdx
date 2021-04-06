@@ -1,16 +1,17 @@
 import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
 import * as stories from './typography.stories.js';
 
-<Meta title="Global Styles/Typography" />
+<Meta title="Introduction/Typography" />
 
 # Typography
+
+This page details global typography styles that are included in the main Sass entry point.
 
 The following system font stack is set on the `<body>`
 
 ```css
-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
 ```
 
 ## Headers
@@ -26,3 +27,24 @@ Headings `<h1>` through `<h6>`. Headers will dynamically resize base on the scre
 <Canvas>
     <Story story={stories.Paragraph} />
 </Canvas>
+
+## Lists
+
+Lists use the following global styles.
+
+```css
+ol,
+ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+```
+
+## Sass Imports
+
+If not using the main Sass entry point, you can include typography styles in Sass
+
+```scss
+@use 'lookingglass-react/sass/components/Typography';
+```

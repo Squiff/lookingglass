@@ -8,7 +8,19 @@ import Theme from './Theme';
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: { expanded: true },
-    options: { showPanel: false, storySort: { order: ['Global Styles', 'Utilities', 'Components', 'Forms'] } },
+    options: {
+        showPanel: false,
+        storySort: {
+            order: [
+                'Introduction',
+                ['Introduction'],
+                'Utilities',
+                ['Introduction'],
+                'Components',
+                'Forms',
+            ],
+        },
+    },
     docs: {
         theme: Theme,
     },
