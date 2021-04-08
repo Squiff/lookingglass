@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction/Theming" />
+
+# Theming
+
+<hr />
+
+You can customize your project's color pallete, breakpoints or individual components by using configurable Sass variables.
+Read more on the `@use ... with ...` syntax [here](https://sass-lang.com/documentation/at-rules/use).
+
+### Sass Imports with @use
+
+The main config file is located at `lookingglass-react/sass/components/_config.scss`
+This holds high level variables such as **breakpoints** and **theme colors**.
+
+Components styles are located in `lookingglass-react/sass/components`
+and contain customizable variables for individual components e.g. `lookingglass-react/sass/components/_alert.scss`
+for `<Alert>` styles.
+
+## Config Example
+
+This shows how you could change the theme colors from the config file.
+
+```scss
+@use 'lookingglass-react/sass/components/config' with (
+    $theme: (
+        'primary': #FF69B4,
+        'success': #1b881f,
+        'error': #dd2b0e,
+        'warning': #f5b700,
+        'info': #1d77d1,
+    )
+);
+```
+
+**Note that the config file should be imported before any imports**
+
+## Component Example
+
+This shows hows you could alter the default `<Alert>` styles
+
+```scss
+@use 'lookingglass-react/sass/components/alerts' with (
+    $padding: 0.25rem,
+    $font-size: 1rem,
+    $header-font-size: 1rem,
+    $border-radius: 0.25rem
+);
+```
