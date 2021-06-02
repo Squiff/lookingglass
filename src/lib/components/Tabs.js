@@ -91,10 +91,10 @@ function Tabs({ children, active, onChange }) {
             <div className="tabs">
                 <div className={navwrapperClasses}>
                     <TabButton onClick={handleScrollStart} direction="prev" />
-                    <TabButton onClick={handleScrollEnd} direction="next" />
                     <div className="tabs__nav" ref={tabNavRef} onKeyDown={handleKeyDown}>
                         {tabs}
                     </div>
+                    <TabButton onClick={handleScrollEnd} direction="next" />
                 </div>
                 {activePanel}
             </div>

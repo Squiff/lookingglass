@@ -2,27 +2,19 @@
 @use '../components/config';
 @use 'sass:map';
 
-$background-nav: #f4f4f4 !default;
+$tab-background: #f4f4f4 !default;
 $tab-font-size: 0.875rem !default;
+$tab-font-weight: 600 !default;
 $tab-padding: 0.5rem 1rem !default;
+$tab-margin: 0 0 0.5rem 0 !default;
+$tab-active-color: map.get(config.$theme, 'info') !default;
 $tab-active-background: #ffffff !default;
-$tab-active-hightlight: map.get(config.$theme, 'primary') !default;
-$panel-background: #ffffff !default;
-$panel-padding: 0.75rem !default;
 
 .tabs {
-    border: 2px solid $background-nav;
-    border-top-width: 0;
-
-    &__panel {
-        background: $panel-background;
-        padding: $panel-padding;
-    }
-
     &__nav {
         display: flex;
-        background-color: $background-nav;
-        width: 100%;
+        background-color: $tab-background;
+        flex: 1 1 auto;
         overflow: auto;
         scroll-behavior: smooth;
         scrollbar-width: none;
@@ -33,37 +25,39 @@ $panel-padding: 0.75rem !default;
     }
 
     &__tab {
-        background-color: $background-nav;
         padding: $tab-padding;
-        font-weight: 500;
+        font-weight: $tab-font-weight;
         cursor: pointer;
-        border-width: 3px 0 0 0;
+        border-width: 0 0 2px 0;
         border-style: solid;
-        border-color: $background-nav;
+        border-color: $tab-background;
         font-size: $tab-font-size;
         font-family: inherit;
         flex: none;
 
-        &:focus:not(&--active) {
+        &:focus {
             background-color: #dddddd;
+            border-color: #dddddd;
             outline: none;
         }
 
         &--active {
-            background-color: $tab-active-background;
-            border-color: $tab-active-hightlight;
+            border-color: $tab-active-color;
+            color: $tab-active-color;
 
-            &:focus:not(:focus-visible) {
-                outline: none;
+            &:focus {
+                border-color: $tab-active-color;
             }
         }
     }
 
     /* A container for scroll button positioning */
     &__navwrapper {
-        position: relative;
+        background-color: $tab-background;
+        display: flex;
+        margin: $tab-margin;
 
-        &--scrollable:hover .tabs__scrollbtn {
+        &--scrollable .tabs__scrollbtn {
             display: block;
         }
     }
@@ -72,19 +66,7 @@ $panel-padding: 0.75rem !default;
         cursor: pointer;
         border: none;
         font-family: inherit;
-        position: absolute;
         display: none;
-        top: 0;
-        bottom: 0;
-        background: rgba(255, 255, 255, 0.95);
-
-        &--prev {
-            left: 0;
-        }
-
-        &--next {
-            right: 0;
-        }
     }
 
     &__scrollicon {
