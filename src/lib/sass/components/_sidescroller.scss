@@ -1,0 +1,37 @@
+.sidescroller {
+    display: flex;
+
+    &__content {
+        flex: 1 1 auto;
+        overflow: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__btn {
+        cursor: pointer;
+        padding: 0.25rem;
+        border: none;
+        background-color: rgba(255, 255, 255, 0.8);
+
+        &--hidden {
+            display: none;
+        }
+
+        // do not display if on a touch only device
+        @media (any-hover: none) {
+            &--auto {
+                display: none;
+            }
+        }
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+    }
+}
