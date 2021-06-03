@@ -1,0 +1,35 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './sidescroller.stories.js';
+import SideScroller from '../lib/components/SideScroller';
+
+<Meta title="Components/SideScroller" component={SideScroller} argTypes={stories.argTypes} />
+
+# SideScroller
+
+<Description of={SideScroller} />
+
+```js
+import SideScroller from 'lookingglass-react/SideScroller';
+```
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />
+
+## Usage
+
+A `SideScroller` enables horizontal scrolling without scrollbars.
+
+#### Scroll Buttons
+
+Set the `buttonVisibility` to show/hide the left and right scroll buttons. A value of `auto` will
+hide the buttons on touch only devices and show them on all other devices i.e desktops. The default is `visible`.
+
+Note: A touch only device is determined using [@media (any-hover: none)](https://caniuse.com/?search=any-hover)
+
+#### Scroll Factor
+
+Set the `ScrollFactor` to adjust the distance that is scrolled when clicking on the left/right buttons.
+This is a percentage value i.e a value of 0.5 will scroll 50% on click.
