@@ -58,6 +58,15 @@
         &:focus:not(:focus-visible) {
             outline: none;
         }
+
+        // only show button when carousel hovered
+        .carousel &--hover {
+            display: none;
+        }
+
+        .carousel:hover &--hover {
+            display: block;
+        }
     }
 
     &__icon {

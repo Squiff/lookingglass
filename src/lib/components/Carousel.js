@@ -1,12 +1,13 @@
 import classNames from 'classnames';
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import ChevronLeft from './icons/ChevronLeft';
 import ChevronRight from './icons/ChevronRight';
 
 const CarouselContext = createContext();
 
 /** Component for cycling through images or content */
-function Carousel({ children }) {
+function Carousel({ buttonVisibility, children }) {
     const [direction, setDirection] = useState();
     const [running, setRunning] = useState(false);
     const [active, setActive] = useState(1);
@@ -57,8 +58,16 @@ function Carousel({ children }) {
         <>
             <CarouselContext.Provider value={contextValue}>
                 <div className="carousel">
-                    <CarouselButton onClick={handlePrev} direction="prev" />
-                    <CarouselButton onClick={handleNext} direction="next" />
+                    <CarouselButton
+                        onClick={handlePrev}
+                        direction="prev"
+                        visibility={buttonVisibility}
+                    />
+                    <CarouselButton
+                        onClick={handleNext}
+                        direction="next"
+                        visibility={buttonVisibility}
+                    />
                     <div
                         className={sliderClasses}
                         ref={sliderRef}
@@ -97,7 +106,9 @@ function CarouselSlide({ id, children }) {
     return <div className={classes}>{children}</div>;
 }
 
-function CarouselButton({ direction, ...props }) {
+function CarouselButton({ direction, visibility, ...props }) {
+    if (visibility === 'hidden') return null;
+
     const icon =
         direction === 'prev' ? (
             <ChevronLeft className="carousel__icon" />
@@ -108,6 +119,7 @@ function CarouselButton({ direction, ...props }) {
     const classes = classNames({
         carousel__btn: true,
         [`carousel__btn--${direction}`]: direction,
+        'carousel__btn--hover': visibility === 'hover',
     });
 
     return (
@@ -116,5 +128,9 @@ function CarouselButton({ direction, ...props }) {
         </button>
     );
 }
+
+Carousel.propTypes = {
+    buttonVisibility: PropTypes.oneOf(['visible', 'hidden', 'hover']),
+};
 
 export default Carousel;
