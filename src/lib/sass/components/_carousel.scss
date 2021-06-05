@@ -1,0 +1,85 @@
+.carousel {
+    overflow: hidden;
+    position: relative;
+
+    &__slider {
+        display: flex;
+
+        &--next {
+            animation: carouselNext 750ms ease-in-out;
+        }
+
+        &--prev {
+            animation: carouselPrev 750ms ease-in-out;
+        }
+    }
+
+    &__slide {
+        flex: 0 0 100%;
+        display: none;
+
+        &--exiting,
+        &--active {
+            display: block;
+        }
+
+        .carousel__slider--next > &--active {
+            order: 1;
+        }
+
+        .carousel__slider--prev > &--active {
+            order: -1;
+        }
+    }
+
+    &__btn {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 10;
+        background-color: transparent;
+        border: none;
+        padding: 0 1rem;
+        cursor: pointer;
+        opacity: 0.4;
+
+        &--next {
+            right: 0;
+        }
+
+        &--prev {
+            left: 0;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+    }
+
+    &__icon {
+        height: 36px;
+        width: 36px;
+    }
+}
+
+@keyframes carouselNext {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes carouselPrev {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
