@@ -7,7 +7,7 @@ import ChevronRight from './icons/ChevronRight';
 const CarouselContext = createContext();
 
 /** Component for cycling through images or content */
-function Carousel({ buttonVisibility, children }) {
+function Carousel({ buttonVisibility, autoCycle, children }) {
     const [direction, setDirection] = useState();
     const [running, setRunning] = useState(false);
     const [active, setActive] = useState(1);
@@ -40,7 +40,19 @@ function Carousel({ buttonVisibility, children }) {
         setRunning(false);
     }
 
-    // for each slide, create a
+    // Auto Cycle Effect
+    useEffect(() => {
+        if (!autoCycle) return;
+        if (running) return; // only enable after animation is complete
+
+        const timer = setTimeout(handleNext, autoCycle);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [autoCycle, running]);
+
+    // create each slide
     const slides = React.Children.map(children, (c, i) => (
         <CarouselSlide id={i + 1} key={i + 1}>
             {c}
@@ -130,7 +142,10 @@ function CarouselButton({ direction, visibility, ...props }) {
 }
 
 Carousel.propTypes = {
+    /** Visibility of the Previous and Next Buttons */
     buttonVisibility: PropTypes.oneOf(['visible', 'hidden', 'hover']),
+    /** Timer period to move onto the next slide */
+    autoCycle: PropTypes.number,
 };
 
 export default Carousel;
