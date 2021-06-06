@@ -1,10 +1,8 @@
 import classNames from 'classnames';
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import ChevronLeft from './icons/ChevronLeft';
 import ChevronRight from './icons/ChevronRight';
-
-const CarouselContext = createContext();
 
 /** Component for cycling through images or content */
 function Carousel({ buttonVisibility, autoCycle, children }) {
@@ -54,7 +52,7 @@ function Carousel({ buttonVisibility, autoCycle, children }) {
 
     // create each slide
     const slides = React.Children.map(children, (c, i) => (
-        <CarouselSlide id={i + 1} key={i + 1}>
+        <CarouselSlide id={i + 1} key={i + 1} active={active} running={running}>
             {c}
         </CarouselSlide>
     ));
@@ -64,31 +62,23 @@ function Carousel({ buttonVisibility, autoCycle, children }) {
         [`carousel__slider--${direction}`]: running,
     });
 
-    const contextValue = { active, running };
-
     return (
         <>
-            <CarouselContext.Provider value={contextValue}>
-                <div className="carousel">
-                    <CarouselButton
-                        onClick={handlePrev}
-                        direction="prev"
-                        visibility={buttonVisibility}
-                    />
-                    <CarouselButton
-                        onClick={handleNext}
-                        direction="next"
-                        visibility={buttonVisibility}
-                    />
-                    <div
-                        className={sliderClasses}
-                        ref={sliderRef}
-                        onAnimationEnd={handleAnimationEnd}
-                    >
-                        {slides}
-                    </div>
+            <div className="carousel">
+                <CarouselButton
+                    onClick={handlePrev}
+                    direction="prev"
+                    visibility={buttonVisibility}
+                />
+                <CarouselButton
+                    onClick={handleNext}
+                    direction="next"
+                    visibility={buttonVisibility}
+                />
+                <div className={sliderClasses} ref={sliderRef} onAnimationEnd={handleAnimationEnd}>
+                    {slides}
                 </div>
-            </CarouselContext.Provider>
+            </div>
         </>
     );
 }
@@ -100,19 +90,28 @@ Carousel.Slide = ({ children }) => {
 Carousel.Slide.displayName = 'Carousel.Child';
 
 /*======== Internal Components ========= */
-function CarouselSlide({ id, children }) {
-    const { active, running } = useContext(CarouselContext);
-    const isActive = id === active;
-    const prevActiveRef = useRef(); // the previously active ID
+function CarouselSlide({ id, active, running, children }) {
+    const [transitionState, setTransitionState] = useState(id === active ? 'ACTIVE' : null);
 
-    useEffect(() => {
-        prevActiveRef.current = active; // do we need to force a rerender here?
-    }, [active]);
+    // Layout Effect - need classes to be applied syncronously
+    useLayoutEffect(() => {
+        if (id === active) {
+            return setTransitionState('ACTIVE');
+        }
+        // was active, but no longer active
+        if (transitionState === 'ACTIVE' && id !== active) {
+            return setTransitionState('EXITING');
+        }
+        // Transition complete on the parent
+        if (transitionState === 'EXITING' && !running) {
+            return setTransitionState(null);
+        }
+    }, [active, running]);
 
     const classes = classNames({
         carousel__slide: true,
-        'carousel__slide--active': isActive,
-        'carousel__slide--exiting': id === prevActiveRef.current && running,
+        'carousel__slide--active': transitionState === 'ACTIVE',
+        'carousel__slide--exiting': transitionState === 'EXITING',
     });
 
     return <div className={classes}>{children}</div>;
