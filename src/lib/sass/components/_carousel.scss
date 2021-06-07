@@ -72,6 +72,11 @@
     &__icon {
         height: 32px;
         width: 32px;
+        fill: #ffffff;
+
+        .carousel--ctrl-dark & {
+            fill: #222222;
+        }
     }
 
     &__indicator {
@@ -94,7 +99,11 @@
             border-radius: 50%;
             width: 8px;
             height: 8px;
-            background-color: #000;
+            background-color: #ffffff;
+
+            .carousel--ctrl-dark & {
+                background-color: #222222;
+            }
         }
     }
 

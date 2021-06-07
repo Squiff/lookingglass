@@ -5,7 +5,7 @@ import ChevronLeft from './icons/ChevronLeft';
 import ChevronRight from './icons/ChevronRight';
 
 /** Component for cycling through images or content */
-function Carousel({ buttonVisibility, indicators, autoCycle, children }) {
+function Carousel({ buttonVisibility, indicators, autoCycle, children, controlColor }) {
     const [direction, setDirection] = useState();
     const [running, setRunning] = useState(false);
     const [active, setActive] = useState(1);
@@ -75,9 +75,14 @@ function Carousel({ buttonVisibility, indicators, autoCycle, children }) {
         [`carousel__slider--${direction}`]: running,
     });
 
+    const carouselClasses = classNames({
+        carousel: true,
+        [`carousel--ctrl-${controlColor}`]: controlColor,
+    });
+
     return (
         <>
-            <div className="carousel">
+            <div className={carouselClasses}>
                 <CarouselButton
                     onClick={handlePrev}
                     direction="prev"
@@ -191,6 +196,8 @@ Carousel.propTypes = {
     buttonVisibility: PropTypes.oneOf(['visible', 'hidden', 'hover']),
     /** Show slide indicators */
     indicators: PropTypes.bool,
+    /** Color scheme of indicators and scroll buttons. Defaults to Light. */
+    controlColor: PropTypes.oneOf(['dark']),
     /** Timer period to move onto the next slide */
     autoCycle: PropTypes.number,
 };
