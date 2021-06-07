@@ -39,7 +39,7 @@
         z-index: 10;
         background-color: transparent;
         border: none;
-        padding: 0 1rem;
+        padding: 0 0.5rem;
         cursor: pointer;
         opacity: 0.4;
 
@@ -70,8 +70,8 @@
     }
 
     &__icon {
-        height: 36px;
-        width: 36px;
+        height: 32px;
+        width: 32px;
     }
 }
 
