@@ -23,7 +23,13 @@ const TargetElement = React.forwardRef(({ children }, ref) => {
     };
 
     return (
-        <Lookingglass color="white" padding="2" textAlign="center" fontWeight="600" borderRadius="2">
+        <Lookingglass
+            color="white"
+            padding="2"
+            textAlign="center"
+            fontWeight="600"
+            borderRadius="2"
+        >
             <Flex justify="center" align="center" ref={ref} style={style}>
                 {children}
             </Flex>
@@ -72,7 +78,12 @@ export const Scrolling = (args) => {
         overflow: 'auto',
         position: 'relative', // important - makes tooltip relative to this container
     };
-    const innerContainerStyle = { height: '600px', width: '600px', paddingTop: '50px', paddingLeft: '50px' };
+    const innerContainerStyle = {
+        height: '600px',
+        width: '600px',
+        paddingTop: '50px',
+        paddingLeft: '50px',
+    };
 
     return (
         <div style={scrollContainer}>
@@ -196,9 +207,11 @@ export const Controlled = (args) => {
         <>
             <Button
                 btnStyle="none"
+                hoverEffect="dark"
                 onClick={() => {
                     setShow(!show);
                 }}
+                style={{ marginBottom: '1rem' }}
             >
                 Toggle Tooltip
             </Button>
