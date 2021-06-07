@@ -5,7 +5,15 @@ import ChevronLeft from './icons/ChevronLeft';
 import ChevronRight from './icons/ChevronRight';
 
 /** Component for cycling through images or content */
-function Carousel({ buttonVisibility, indicators, autoCycle, children, controlColor }) {
+function Carousel({
+    buttonVisibility,
+    indicators,
+    autoCycle,
+    children,
+    controlColor,
+    onChange,
+    onChangeEnd,
+}) {
     const [direction, setDirection] = useState();
     const [running, setRunning] = useState(false);
     const [active, setActive] = useState(1);
@@ -17,18 +25,24 @@ function Carousel({ buttonVisibility, indicators, autoCycle, children, controlCo
         if (running) return;
         if (slideCount === 1) return;
 
+        const newActive = (active % slideCount) + 1;
+
         setDirection('next');
         setRunning(true);
-        setActive((active) => (active % slideCount) + 1);
+        setActive(newActive);
+        if (onChange) onChange({ active: newActive });
     }
 
     function handlePrev() {
         if (running) return;
         if (slideCount === 1) return;
 
+        const newActive = active - 1 === 0 ? slideCount : active - 1;
+
         setDirection('prev');
         setRunning(true);
-        setActive((active) => (active - 1 === 0 ? slideCount : active - 1));
+        setActive(newActive);
+        if (onChange) onChange({ active: newActive });
     }
 
     function handleIndicatorClick({ id }) {
@@ -42,6 +56,7 @@ function Carousel({ buttonVisibility, indicators, autoCycle, children, controlCo
         setDirection(transitionDirection);
         setRunning(true);
         setActive(id);
+        onChange({ active: id });
     }
 
     // animation complete listener
@@ -49,6 +64,7 @@ function Carousel({ buttonVisibility, indicators, autoCycle, children, controlCo
         if (e.target !== sliderRef.current) return;
 
         setRunning(false);
+        if (onChangeEnd) onChangeEnd({ active });
     }
 
     // Auto Cycle Effect
@@ -202,6 +218,10 @@ Carousel.propTypes = {
     controlColor: PropTypes.oneOf(['dark']),
     /** Timer period to move onto the next slide */
     autoCycle: PropTypes.number,
+    /** Event fired when new slide selected */
+    onChange: PropTypes.func,
+    /** Event fired when new slide animation is complete */
+    onChangeEnd: PropTypes.func,
 };
 
 export default Carousel;
