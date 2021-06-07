@@ -1,0 +1,67 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './carousel.stories.js';
+import Carousel from '../lib/components/Carousel';
+
+<Meta title="Components/Carousel" component={Carousel} argTypes={stories.argTypes} />
+
+# Carousel
+
+<Description of={Carousel} />
+
+```js
+import Carousel from 'lookingglass-react/Carousel';
+```
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />
+
+## Sizing
+
+A `Carousel` is a block element, so will expand to the maximum available width and it's height is determined by
+the height of the slides. To prevent height changes when transitioning between slides you should either:
+
+1. Set a height on the `Carousel` using `className` or `style` props
+2. Set all slide contents to be a consistant height
+
+## Controls
+
+Carousel controls can be configured to control visibility and color scheme.
+
+#### Buttons
+
+Previous and next buttons are visible by default. These can be hidden by setting `buttonVisibility="hidden"`
+or only shown on hover using `buttonVisibility="hover"`
+
+#### Indicators
+
+Indicator "Dot" controls can be added to the bottom of the Carousel by setting `indicators={true}`.
+Each Indicator can be clicked to go directly to the relative slide.
+
+#### Colors
+
+The Buttons and Indicators use a light them by default. This can be changed to dark by setting `controlColor="dark"`
+
+<Canvas>
+    <Story story={stories.Controls} />
+</Canvas>
+
+## Auto Run
+
+The Carousel can be set to automatically slide on an interval using the `autoCycle` prop.
+For example, setting `autoCycle="2000"` will move to the next slide every 2 seconds
+
+<Canvas>
+    <Story story={stories.AutoCycle} />
+</Canvas>
+
+## Callbacks
+
+Callbacks are fired when a new slide is initially selected and when the slide animation is completed.
+The Callbacks will be passed the selected slide.
+
+<Canvas>
+    <Story story={stories.Callbacks} />
+</Canvas>

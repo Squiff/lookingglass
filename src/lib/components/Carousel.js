@@ -13,6 +13,8 @@ function Carousel({
     controlColor,
     onChange,
     onChangeEnd,
+    className,
+    ...props
 }) {
     const [direction, setDirection] = useState();
     const [running, setRunning] = useState(false);
@@ -91,14 +93,17 @@ function Carousel({
         [`carousel__slider--${direction}`]: running,
     });
 
-    const carouselClasses = classNames({
-        carousel: true,
-        [`carousel--ctrl-${controlColor}`]: controlColor,
-    });
+    const carouselClasses = classNames(
+        {
+            carousel: true,
+            [`carousel--ctrl-${controlColor}`]: controlColor,
+        },
+        className
+    );
 
     return (
         <>
-            <div className={carouselClasses}>
+            <div className={carouselClasses} {...props}>
                 <CarouselButton
                     onClick={handlePrev}
                     direction="prev"
