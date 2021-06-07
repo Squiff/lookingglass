@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 /**  Spinners for indicating loading state */
-function Spinner({ className, style, halo, size }) {
+function Spinner({ className, style, halo, size, delay }) {
+    const [mount, setMount] = useState(delay ? false : true);
+
+    useEffect(() => {
+        if (!delay) return;
+
+        const timer = setTimeout(() => setMount(true), delay);
+
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [delay]);
+
+    if (!mount) return null;
+
     const classes = {
         spinner: true,
         [`spinner--${size}`]: size,
@@ -32,6 +46,8 @@ Spinner.propTypes = {
     halo: PropTypes.bool,
     /** Size modifier */
     size: PropTypes.oneOf(['s', 'l']),
+    /** Mount delay timer */
+    delay: PropTypes.number,
 };
 
 export default Spinner;

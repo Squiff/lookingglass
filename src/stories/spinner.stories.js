@@ -1,6 +1,8 @@
 import Spinner from '../lib/components/Spinner';
 import Lookingglass from '../lib/components/Lookingglass';
+import Button from '../lib/components/Button';
 import { cleanArgs } from './helpers/utils';
+import { useEffect, useState } from 'react';
 
 const tableDisable = { table: { disable: true } };
 const tableEnable = { table: { disable: false } };
@@ -68,3 +70,35 @@ export const Colors = (args) => (
         </Lookingglass>
     </>
 );
+
+/* --------  Delay ---------------- */
+export const Delay = (args) => {
+    const [mount, setMount] = useState();
+
+    const handleClick = () => {
+        setMount(false);
+    };
+
+    useEffect(() => {
+        if (mount) return;
+        setMount(true);
+    }, [mount]);
+
+    return (
+        <>
+            <Lookingglass div marginBottom="2">
+                <Button onClick={handleClick}>Reload</Button>
+            </Lookingglass>
+            {mount && <Spinner delay={500} />}
+        </>
+    );
+};
+
+Delay.parameters = {
+    // show hooks in source view
+    docs: {
+        source: {
+            code: '<Spinner delay={500} />',
+        },
+    },
+};

@@ -50,3 +50,15 @@ Using Color Utilities
 <Canvas>
     <Story story={stories.Colors} />
 </Canvas>
+
+## Delay
+
+It can sometimes be benificial to delay showing a loading spinner.
+For example, if you have a request that typically resolves
+quickly, you may not want to show a flash of the spinner followed by the content.
+
+In these circumstances you can set the `delay` prop to only show the spinner after a selected timeout.
+
+<Canvas>
+    <Story story={stories.Delay} />
+</Canvas>
