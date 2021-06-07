@@ -73,6 +73,39 @@
         height: 32px;
         width: 32px;
     }
+
+    &__indicator {
+        flex: 0 0 auto;
+        opacity: 0.4;
+        cursor: pointer;
+        padding: 0.5rem;
+        background-color: transparent;
+        border: none;
+        width: 20px;
+        height: 20px;
+
+        &--active {
+            opacity: 1;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+            background-color: #000;
+        }
+    }
+
+    &__indicators {
+        display: flex;
+        position: absolute;
+        z-index: 10;
+        bottom: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 @keyframes carouselNext {

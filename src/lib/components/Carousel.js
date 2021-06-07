@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { bool } from 'prop-types';
 import ChevronLeft from './icons/ChevronLeft';
 import ChevronRight from './icons/ChevronRight';
 
 /** Component for cycling through images or content */
-function Carousel({ buttonVisibility, autoCycle, children }) {
+function Carousel({ buttonVisibility, indicators, autoCycle, children }) {
     const [direction, setDirection] = useState();
     const [running, setRunning] = useState(false);
     const [active, setActive] = useState(1);
@@ -29,6 +29,19 @@ function Carousel({ buttonVisibility, autoCycle, children }) {
         setDirection('prev');
         setRunning(true);
         setActive((active) => (active - 1 === 0 ? slideCount : active - 1));
+    }
+
+    function handleIndicatorClick({ id }) {
+        console.log('inicatorClick', id);
+        if (running) return;
+        if (slideCount === 1) return;
+        if (id === active) return;
+
+        const transitionDirection = id < active ? 'prev' : 'next';
+
+        setDirection(transitionDirection);
+        setRunning(true);
+        setActive(id);
     }
 
     // animation complete listener
@@ -74,6 +87,12 @@ function Carousel({ buttonVisibility, autoCycle, children }) {
                     onClick={handleNext}
                     direction="next"
                     visibility={buttonVisibility}
+                />
+                <CarouselIndicators
+                    show={indicators}
+                    slideCount={slideCount}
+                    active={active}
+                    handleClick={handleIndicatorClick}
                 />
                 <div className={sliderClasses} ref={sliderRef} onAnimationEnd={handleAnimationEnd}>
                     {slides}
@@ -140,9 +159,38 @@ function CarouselButton({ direction, visibility, ...props }) {
     );
 }
 
+function CarouselIndicators({ show, slideCount, active, handleClick }) {
+    if (!show) return null;
+
+    const indicators = [];
+
+    for (let i = 1; i <= slideCount; i++) {
+        indicators.push(
+            <CarouselIndicator
+                key={i}
+                isActive={i === active}
+                handleClick={() => handleClick({ id: i })}
+            />
+        );
+    }
+
+    return <div className="carousel__indicators">{indicators}</div>;
+}
+
+function CarouselIndicator({ handleClick, isActive }) {
+    const classes = classNames({
+        carousel__indicator: true,
+        'carousel__indicator--active': isActive,
+    });
+
+    return <button className={classes} tabIndex="-1" onClick={handleClick}></button>;
+}
+
 Carousel.propTypes = {
     /** Visibility of the Previous and Next Buttons */
     buttonVisibility: PropTypes.oneOf(['visible', 'hidden', 'hover']),
+    /** Show slide indicators */
+    indicators: PropTypes.bool,
     /** Timer period to move onto the next slide */
     autoCycle: PropTypes.number,
 };
