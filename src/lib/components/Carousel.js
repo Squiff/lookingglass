@@ -151,6 +151,8 @@ function CarouselButton({ direction, visibility, ...props }) {
             <ChevronRight className="carousel__icon" />
         );
 
+    const label = direction === 'prev' ? 'previous' : 'next';
+
     const classes = classNames({
         carousel__btn: true,
         [`carousel__btn--${direction}`]: direction,
@@ -158,7 +160,7 @@ function CarouselButton({ direction, visibility, ...props }) {
     });
 
     return (
-        <button className={classes} {...props}>
+        <button className={classes} aria-label={label} {...props}>
             {icon}
         </button>
     );
