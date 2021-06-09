@@ -1,0 +1,36 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './skeleton.stories.js';
+import Skeleton from '../lib/components/Skeleton';
+
+<Meta title="Components/Skeleton" component={Skeleton} argTypes={stories.argTypes} />
+
+# Skeleton
+
+<Description of={Skeleton} />
+
+```js
+import Skeleton from 'lookingglass-react/Skeleton';
+```
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />
+
+## Usage
+
+A skeleton is a placeholder that can be used when you know the shape of the content that will be loaded.
+Use the `className` or `style` properties to set the shape of your expected content by applying height, margins, border radius etc.
+
+<Canvas>
+    <Story story={stories.Size} />
+</Canvas>
+
+## Dark Backgrounds
+
+Setting the `dark` prop changes the color scheme of the skeleton to be more suitable for darker backgrounds.
+
+<Canvas>
+    <Story story={stories.Dark} />
+</Canvas>

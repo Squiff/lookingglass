@@ -1,0 +1,64 @@
+$background: rgba(75, 75, 75, 0.15) !default;
+$background-dark: rgba(255, 255, 255, 0.2) !default;
+$margin: 0 0 0.5rem 0;
+$border-radius: 4px !default;
+$skeleton-flash-width: 500px !default;
+$height: 1rem !default;
+
+.skeleton {
+    overflow: hidden;
+    position: relative;
+    background: $background;
+    margin: $margin;
+    border-radius: $border-radius;
+    height: $height;
+    animation: skeletonFadeIn 0.5s linear;
+
+    &::after {
+        content: '';
+        display: block;
+        animation: skeletonFlash 1.5s ease-in-out 1s infinite;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -$skeleton-flash-width;
+        width: $skeleton-flash-width;
+        background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0.4),
+            rgba(255, 255, 255, 0)
+        );
+    }
+
+    &--dark {
+        background: $background-dark;
+
+        &::after {
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0),
+                rgba(200, 200, 200, 0.1),
+                rgba(255, 255, 255, 0)
+            );
+        }
+    }
+}
+
+@keyframes skeletonFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes skeletonFlash {
+    0% {
+        left: -$skeleton-flash-width;
+    }
+    100% {
+        left: 100%;
+    }
+}
