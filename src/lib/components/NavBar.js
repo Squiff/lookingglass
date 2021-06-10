@@ -82,7 +82,7 @@ NavBar.Dropdown = ({ children, className, style, ...props }) => {
 
     return (
         <>
-            <Popup placement="bottom-end" {...props}>
+            <Popup placement="bottom-start" {...props}>
                 <div className={classes} style={style}>
                     {children}
                 </div>
