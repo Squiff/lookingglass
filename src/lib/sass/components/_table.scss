@@ -2,27 +2,25 @@
 @use '../utilities/shadows';
 @use './config';
 
-$padding: 0.375rem 0.5rem !default;
+$padding: 0.5rem 0.75rem !default;
 $padding-s: 0.25rem 0.375rem !default;
-$padding-l: 0.5rem 0.75rem !default;
+$padding-l: 0.75rem 1rem !default;
 $td-font-size: 0.875rem !default;
 $th-font-size: 0.875rem !default;
 $th-font-weight: 600 !default;
-$border-color: #aaaaaa !default;
-$hover-background-color: rgba(0, 0, 0, 0.1) !default;
+$border-color: #dde0e3 !default;
+$hover-background-color: rgba(64, 71, 79, 0.05) !default;
 $margin: 0 0 1rem 0 !default;
-$shadow: 1 !default;
 
 .table {
     border-collapse: collapse;
-    text-align: center;
     border-radius: 5px;
     border-spacing: 0;
     margin: $margin;
-    @include shadows.shadow($shadow);
+    width: 100%;
 
     & tr {
-        border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid $border-color;
     }
 
     // when row hovered, add hover effect to all tds in the row
@@ -40,7 +38,8 @@ $shadow: 1 !default;
         padding: $padding;
         font-size: $th-font-size;
         font-weight: $th-font-weight;
-        border-color: inherit;
+        border-color: $border-color;
+        text-align: left;
     }
 
     &--l td,

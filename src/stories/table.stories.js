@@ -13,18 +13,11 @@ export const argTypes = {
 
 const MockData = ({ columns, rows }) => {
     const headers = [];
-    const headerRow = [];
     const dataRows = [];
 
     for (let i = 1; i <= columns; i++) {
         headers.push(<th>{`Headers ${i}`}</th>);
     }
-
-    headerRow.push(
-        <Lookingglass backgroundColor="primary" color="white" borderColor="primary">
-            <tr>{headers}</tr>
-        </Lookingglass>
-    );
 
     for (let j = 1; j <= rows; j++) {
         const data = [];
@@ -39,7 +32,9 @@ const MockData = ({ columns, rows }) => {
 
     return (
         <>
-            <thead>{headerRow}</thead>
+            <thead>
+                <tr>{headers}</tr>
+            </thead>
 
             <tbody>{dataRows}</tbody>
         </>
@@ -129,7 +124,6 @@ export const HeadingColor = (args) => (
                     <td>Data 4</td>
                 </tr>
             </tbody>
-            {/* <MockData columns="4" rows="3" /> */}
         </Table>
 
         <h6>Dark</h6>
@@ -153,7 +147,6 @@ export const HeadingColor = (args) => (
                     <td>Data 4</td>
                 </tr>
             </tbody>
-            {/* <MockData columns="4" rows="3" /> */}
         </Table>
     </>
 );
