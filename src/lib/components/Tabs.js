@@ -91,7 +91,12 @@ function Tabs({ children, active, onChange }) {
             <div className="tabs">
                 <div className={navwrapperClasses}>
                     <TabButton onClick={handleScrollStart} direction="prev" />
-                    <div className="tabs__nav" ref={tabNavRef} onKeyDown={handleKeyDown}>
+                    <div
+                        className="tabs__nav"
+                        ref={tabNavRef}
+                        onKeyDown={handleKeyDown}
+                        role="tablist"
+                    >
                         {tabs}
                     </div>
                     <TabButton onClick={handleScrollEnd} direction="next" />
@@ -113,14 +118,24 @@ Tabs.Tab = ({ children, tabId }) => {
     const tabIndex = tabId === activeTabId ? 0 : -1;
 
     return (
-        <button className={classes} onClick={() => handleTabClick(tabId)} tabIndex={tabIndex}>
+        <button
+            className={classes}
+            onClick={() => handleTabClick(tabId)}
+            tabIndex={tabIndex}
+            role="tab"
+            aria-selected={tabId === activeTabId}
+        >
             {children}
         </button>
     );
 };
 
 Tabs.Panel = ({ children, tabId }) => {
-    return <div className="tabs__panel">{children}</div>;
+    return (
+        <div className="tabs__panel" role="tabpanel">
+            {children}
+        </div>
+    );
 };
 
 /* used internally only */
