@@ -87,7 +87,9 @@ export const Delay = (args) => {
     return (
         <>
             <Lookingglass div marginBottom="2">
-                <Button onClick={handleClick}>Reload</Button>
+                <Button onClick={handleClick} color="info">
+                    Reload
+                </Button>
             </Lookingglass>
             {mount && <Spinner delay={500} />}
         </>
