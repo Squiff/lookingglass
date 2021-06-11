@@ -1,0 +1,26 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './collapser.stories.js';
+import Collapser from '../lib/components/Collapser';
+
+<Meta title="Components/Collapser" component={Collapser} argTypes={stories.argTypes} />
+
+# Collapser
+
+<Description of={Collapser} />
+
+```js
+import Collapser from 'lookingglass-react/Collapser';
+```
+
+## Props
+
+A `Collapser` will transition content into a collapsed state.
+Simply wrap content in a `<Collapser>` and pass a value to the `show` prop - `true` for open and `false` for collapsed.
+
+Collapsers can be used as building blocks for components such as accordians or sub menus
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />

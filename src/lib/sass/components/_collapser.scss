@@ -1,0 +1,9 @@
+.collapser {
+    overflow: hidden;
+    transition: height 200ms ease-in;
+
+    &__content {
+        // prevents margin overflow
+        overflow: hidden;
+    }
+}
