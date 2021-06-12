@@ -4,5 +4,5 @@ export default create({
     base: 'light',
     fontBase:
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans','Helvetica Neue', sans-serif",
-    textColor: '#222222',
+    textColor: '#41474e',
 });
