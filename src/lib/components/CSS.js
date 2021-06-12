@@ -1,124 +1,160 @@
 import React from 'react';
 import classNames from 'classnames';
 import { prefixClass } from '../utilities/utils';
-import { classNameResolver } from '../utilities/classes';
 import PropTypes from 'prop-types';
 
 /** A Utility Class Generator */
-const CSS = React.forwardRef(({ children, className, style, ...props }, ref) => {
-    const classes1 = classNameResolver(props, classPrefix, classValueMapping);
-    const classes2 = miscClassResolver(props);
+const CSS = React.forwardRef(
+    (
+        {
+            children,
+            className,
+            style,
+            div,
+            container,
+            backgroundColor,
+            color,
+            border,
+            borderTop,
+            borderRight,
+            borderBottom,
+            borderLeft,
+            borderColor,
+            borderRadius,
+            margin,
+            marginTop,
+            marginRight,
+            marginBottom,
+            marginLeft,
+            marginX,
+            marginY,
+            padding,
+            paddingTop,
+            paddingRight,
+            paddingBottom,
+            paddingLeft,
+            paddingX,
+            paddingY,
+            shadow,
+            fontSize,
+            fontWeight,
+            textDecoration,
+            textTransform,
+            textAlign,
+            width,
+            height,
+            position,
+            left,
+            right,
+            top,
+            bottom,
+            absolute,
+            display,
+            overflow,
+            overflowX,
+            overflowY,
+            scrollbarColor,
+            scrollbarSize,
+            scrollbarStyle,
+            scrollbarTrack,
+            listStyleType,
+            listPosition,
+        },
+        ref
+    ) => {
+        /*======== CLASSES ======== */
+        const brdClrClass = borderColor === 'currentColor' ? 'current-color' : borderColor;
+        const textDecClass = textDecoration === 'line-through' ? 'strike' : textDecoration;
+        const displayClasses = displayClassResolver(display);
 
-    const classes = classNames(classes1, classes2, className);
+        const classes = classNames(className, displayClasses, {
+            container: container,
+            [`bg--${backgroundColor}`]: backgroundColor,
+            [`clr--${color}`]: color,
+            bdr: border || borderTop || borderRight || borderBottom || borderLeft,
+            [`bdr--${border}`]: border,
+            [`bdr-t--${borderTop}`]: borderTop,
+            [`bdr-r--${borderRight}`]: borderRight,
+            [`bdr-b--${borderBottom}`]: borderBottom,
+            [`bdr-l--${borderLeft}`]: borderLeft,
+            [`bdr-clr--${brdClrClass}`]: borderColor,
+            [`bdr-rad--${borderRadius}`]: borderRadius,
+            [`m--${margin}`]: margin,
+            [`m-t--${marginTop}`]: marginTop,
+            [`m-r--${marginRight}`]: marginRight,
+            [`m-b--${marginBottom}`]: marginBottom,
+            [`m-l--${marginLeft}`]: marginLeft,
+            [`m-x--${marginX}`]: marginX,
+            [`m-y--${marginY}`]: marginY,
+            [`p--${padding}`]: padding,
+            [`p-t--${paddingTop}`]: paddingTop,
+            [`p-r--${paddingRight}`]: paddingRight,
+            [`p-b--${paddingBottom}`]: paddingBottom,
+            [`p-l--${paddingLeft}`]: paddingLeft,
+            [`p-x--${paddingX}`]: paddingX,
+            [`p-y--${paddingY}`]: paddingY,
+            [`shadow--${shadow}`]: shadow,
+            [`fs--${fontSize?.replace('.', '-')}`]: fontSize,
+            [`fw--${fontWeight}`]: fontWeight,
+            [`text-decoration--${textDecClass}`]: textDecoration,
+            [`text-transform--${textTransform}`]: textTransform,
+            [`text-align--${textAlign}`]: textAlign,
+            [`w--${width}`]: width,
+            [`h--${height}`]: height,
+            [`pos--${position}`]: position,
+            [`left--${left}`]: left,
+            [`right--${right}`]: right,
+            [`top--${top}`]: top,
+            [`bottom--${bottom}`]: bottom,
+            [`pos-abs--${absolute}`]: absolute,
+            [`overflow--${overflow}`]: overflow,
+            [`overflow-x--${overflowX}`]: overflowX,
+            [`overflow-y--${overflowY}`]: overflowY,
+            scrl: scrollbarColor || scrollbarSize || scrollbarStyle || scrollbarTrack,
+            [`scrl-clr--${scrollbarColor}`]: scrollbarColor,
+            [`scrl--${scrollbarSize}`]: scrollbarSize,
+            [`scrl--${scrollbarStyle}`]: scrollbarStyle,
+            [`scrl__track--${scrollbarTrack}`]: scrollbarTrack,
+            [`lst--${listStyleType}`]: listStyleType,
+            [`list-pos--${listPosition}`]: listPosition,
+        });
 
-    // if props.div then wrap children in a div that has the generated classes applied
-    // otherwise There should be a single child that will be passed the generated classNames
-    let child;
-    if (props.div === true) {
-        child = (
-            <div className={classes} style={style} ref={ref}>
-                {children}
-            </div>
-        );
-    } else {
-        const onlyChild = React.Children.only(children);
-        const mergedClasses = classNames(classes, onlyChild.props.className);
-        child = React.cloneElement(onlyChild, { className: mergedClasses });
+        /*======== CLASSES END ======== */
+
+        // if props.div then wrap children in a div that has the generated classes applied
+        // otherwise There should be a single child that will be passed the generated classNames
+        let child;
+        if (div === true) {
+            child = (
+                <div className={classes} style={style} ref={ref}>
+                    {children}
+                </div>
+            );
+        } else {
+            const onlyChild = React.Children.only(children);
+            const mergedClasses = classNames(classes, onlyChild.props.className);
+            child = React.cloneElement(onlyChild, { className: mergedClasses });
+        }
+
+        return <>{child}</>;
     }
+);
 
-    return <>{child}</>;
-});
-
-const classPrefix = {
-    // container: 'container',
-    backgroundColor: 'bg',
-    color: 'clr',
-    border: 'bdr',
-    borderTop: 'bdr-t',
-    borderRight: 'bdr-r',
-    borderBottom: 'bdr-b',
-    borderLeft: 'bdr-l',
-    borderColor: 'bdr-clr',
-    borderRadius: 'bdr-rad',
-    margin: 'm',
-    marginTop: 'm-t',
-    marginRight: 'm-r',
-    marginBottom: 'm-b',
-    marginLeft: 'm-l',
-    marginX: 'm-x',
-    marginY: 'm-y',
-    padding: 'p',
-    paddingTop: 'p-t',
-    paddingRight: 'p-r',
-    paddingBottom: 'p-b',
-    paddingLeft: 'p-l',
-    paddingX: 'p-x',
-    paddingY: 'p-y',
-    shadow: 'shadow',
-    // fontSize: 'fs',
-    fontWeight: 'fw',
-    textDecoration: 'text-decoration',
-    textTransform: 'text-transform',
-    textAlign: 'text-align',
-    width: 'w',
-    height: 'h',
-    position: 'pos',
-    left: 'left',
-    right: 'right',
-    top: 'top',
-    bottom: 'bottom',
-    absolute: 'pos-abs',
-    display: 'display',
-    overflow: 'overflow',
-    overflowX: 'overflow-x',
-    overflowY: 'overflow-y',
-    scrollbarColor: 'scrl-clr',
-    scrollbarSize: 'scrl',
-    scrollbarStyle: 'scrl',
-    scrollbarTrack: 'scrl__track',
-    listStyleType: 'lst',
-    listPosition: 'list-pos',
-};
-
-const classValueMapping = {
-    borderColor: { currentColor: 'current-color' },
-    textDecoration: { 'line-through': 'strike' },
-};
-
-// function for class Names that do not fit into the classNameResolver pattern
-function miscClassResolver(props) {
-    const { border, borderTop, borderRight, borderBottom, borderLeft } = props;
+/** Return array of display classes. Display can be an string or object of breakpoint values */
+function displayClassResolver(display) {
     const output = [];
 
-    // add base border style if at least ones of these props is defined
-    if ([border, borderTop, borderRight, borderBottom, borderLeft].some((a) => a !== undefined)) {
-        output.push('bdr');
-    }
-
-    // font-size replace '.' with '-'
-    if (props.fontSize) {
-        output.push(`fs--${props.fontSize.replace('.', '-')}`);
-    }
-
-    // add base scrollbar style if at least one of these props is defined
-    const { scrollbarColor, scrollbarSize, scrollbarStyle, scrollbarTrack } = props;
-    if (
-        [scrollbarColor, scrollbarSize, scrollbarStyle, scrollbarTrack].some((a) => a !== undefined)
-    ) {
-        output.push('scrl');
-    }
-
-    // display can pass in an object of breakpoint values {s:'none', m:'block'}
-    const display = props.display;
     if (typeof display === 'object') {
         for (const k in display) {
-            const displayClassName = `${classPrefix.display}--${display[k]}`;
+            const displayClassName = `display--${display[k]}`;
             const breakpointClass = prefixClass(k, displayClassName);
             output.push(breakpointClass);
         }
     }
 
-    if (props.container) output.push('container');
+    if (typeof display === 'string') {
+        output.push(`display--${display}`);
+    }
 
     return output;
 }
