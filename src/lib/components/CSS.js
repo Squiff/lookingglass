@@ -5,7 +5,7 @@ import { classNameResolver } from '../utilities/classes';
 import PropTypes from 'prop-types';
 
 /** A Utility Class Generator */
-const Lookingglass = React.forwardRef(({ children, className, style, ...props }, ref) => {
+const CSS = React.forwardRef(({ children, className, style, ...props }, ref) => {
     const classes1 = classNameResolver(props, classPrefix, classValueMapping);
     const classes2 = miscClassResolver(props);
 
@@ -123,7 +123,7 @@ function miscClassResolver(props) {
     return output;
 }
 
-Lookingglass.propTypes = {
+CSS.propTypes = {
     /** Is this a container */
     container: PropTypes.bool,
     /** Background Color */
@@ -232,4 +232,4 @@ Lookingglass.propTypes = {
     listPosition: PropTypes.oneOf(['inside']),
 };
 
-export default Lookingglass;
+export default CSS;

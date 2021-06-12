@@ -1,4 +1,4 @@
-import Lookingglass from '../../lib/components/Lookingglass';
+import CSS from '../../lib/components/CSS';
 import { UpdateArgTable } from '../helpers/utils';
 import { argTypes as lookingglassArgs } from './lookingglass.storyconfig';
 
@@ -10,16 +10,16 @@ const _argTypes = UpdateArgTable(lookingglassArgs, {
 export const argTypes = _argTypes;
 
 const Template = (args) => (
-    <Lookingglass {...args}>
+    <CSS {...args}>
         <div>The quick brown fox jumps over the lazy dog</div>
-    </Lookingglass>
+    </CSS>
 );
 
 /*--------- ALL PROPS ------------ */
 export const TextProps = (args) => (
-    <Lookingglass {...args}>
+    <CSS {...args}>
         <div>The quick brown fox jumps over the lazy dog</div>
-    </Lookingglass>
+    </CSS>
 );
 
 TextProps.parameters = {
@@ -29,82 +29,82 @@ TextProps.parameters = {
 /*--------- ALL PROPS ------------ */
 export const FontSize = (args) => (
     <>
-        <Lookingglass fontSize="0.75" div>
+        <CSS fontSize="0.75" div>
             The quick brown fox jumps over the lazy dog
-        </Lookingglass>
-        <Lookingglass fontSize="0.875" div>
+        </CSS>
+        <CSS fontSize="0.875" div>
             The quick brown fox jumps over the lazy dog
-        </Lookingglass>
-        <Lookingglass fontSize="1" div>
+        </CSS>
+        <CSS fontSize="1" div>
             The quick brown fox jumps over the lazy dog
-        </Lookingglass>
-        <Lookingglass fontSize="1.125" div>
+        </CSS>
+        <CSS fontSize="1.125" div>
             The quick brown fox jumps over the lazy dog
-        </Lookingglass>
-        <Lookingglass fontSize="1.25" div>
+        </CSS>
+        <CSS fontSize="1.25" div>
             The quick brown fox jumps over the lazy dog
-        </Lookingglass>
-        <Lookingglass fontSize="1.5" div>
+        </CSS>
+        <CSS fontSize="1.5" div>
             The quick brown fox jumps over the lazy dog
-        </Lookingglass>
+        </CSS>
     </>
 );
 
 export const FontWeight = (args) => (
     <>
-        <Lookingglass fontWeight="200" div>
+        <CSS fontWeight="200" div>
             Font Weight 200
-        </Lookingglass>
-        <Lookingglass fontWeight="400" div>
+        </CSS>
+        <CSS fontWeight="400" div>
             Font Weight 400
-        </Lookingglass>
-        <Lookingglass fontWeight="600" div>
+        </CSS>
+        <CSS fontWeight="600" div>
             Font Weight 600
-        </Lookingglass>
-        <Lookingglass fontWeight="800" div>
+        </CSS>
+        <CSS fontWeight="800" div>
             Font Weight 800
-        </Lookingglass>
+        </CSS>
     </>
 );
 
 export const TextDecoration = (args) => (
     <>
-        <Lookingglass textDecoration="none" div>
+        <CSS textDecoration="none" div>
             Text Decoration None
-        </Lookingglass>
-        <Lookingglass textDecoration="underline" div>
+        </CSS>
+        <CSS textDecoration="underline" div>
             Text Decoration Underline
-        </Lookingglass>
-        <Lookingglass textDecoration="line-through" div>
+        </CSS>
+        <CSS textDecoration="line-through" div>
             Text Decoration Line-Through
-        </Lookingglass>
+        </CSS>
     </>
 );
 
 export const TextTransform = (args) => (
     <>
-        <Lookingglass textTransform="capitalize" div>
+        <CSS textTransform="capitalize" div>
             text transform capitalize
-        </Lookingglass>
-        <Lookingglass textTransform="uppercase" div>
+        </CSS>
+        <CSS textTransform="uppercase" div>
             Text Transform Uppercase
-        </Lookingglass>
-        <Lookingglass textTransform="lowercase" div>
+        </CSS>
+        <CSS textTransform="lowercase" div>
             Text Transform Lowercase
-        </Lookingglass>
+        </CSS>
     </>
 );
 
 export const TextAlign = (args) => (
     <>
-        <Lookingglass textAlign="left" div>
+        <CSS textAlign="left" div>
             Text Align Left
-        </Lookingglass>
-        <Lookingglass textAlign="center" div>
+        </CSS>
+        <CSS textAlign="center" div>
             Text Align Center
-        </Lookingglass>
-        <Lookingglass textAlign="right" div>
+        </CSS>
+        <CSS textAlign="right" div>
             Text Align Right
-        </Lookingglass>
+        </CSS>
     </>
 );

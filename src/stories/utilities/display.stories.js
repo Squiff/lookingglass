@@ -1,4 +1,4 @@
-import Lookingglass from '../../lib/components/Lookingglass';
+import CSS from '../../lib/components/CSS';
 import { UpdateArgTable } from '../helpers/utils';
 import { argTypes as lookingglassArgs } from './lookingglass.storyconfig';
 
@@ -7,9 +7,9 @@ const _argTypes = UpdateArgTable(lookingglassArgs, { enable: ['display'] });
 export const argTypes = _argTypes;
 
 const Template = (args) => (
-    <Lookingglass {...args} padding="2">
+    <CSS {...args} padding="2">
         <div>The quick brown fox jumps over the lazy dog</div>
-    </Lookingglass>
+    </CSS>
 );
 
 /* --------- Display Props --------- */
@@ -27,11 +27,23 @@ DisplayProps.parameters = {
 /* --------- Display Breakpoints --------- */
 export const Responsive = (args) => (
     <>
-        <Lookingglass display={{ s: 'none', l: 'block' }} backgroundColor="light" color="dark" padding="2" div>
+        <CSS
+            display={{ s: 'none', l: 'block' }}
+            backgroundColor="light"
+            color="dark"
+            padding="2"
+            div
+        >
             Small: None | Large: Block
-        </Lookingglass>
-        <Lookingglass display={{ s: 'block', l: 'none' }} backgroundColor="dark" color="light" padding="2" div>
+        </CSS>
+        <CSS
+            display={{ s: 'block', l: 'none' }}
+            backgroundColor="dark"
+            color="light"
+            padding="2"
+            div
+        >
             Small: Block | Large: None
-        </Lookingglass>
+        </CSS>
     </>
 );

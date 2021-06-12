@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import Button from '../lib/components/Button';
 import Tooltip from '../lib/components/Tooltip';
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 import Flex from '../lib/components/Flex';
 
 export const argTypes = {
@@ -23,17 +23,11 @@ const TargetElement = React.forwardRef(({ children }, ref) => {
     };
 
     return (
-        <Lookingglass
-            color="white"
-            padding="2"
-            textAlign="center"
-            fontWeight="600"
-            borderRadius="2"
-        >
+        <CSS color="white" padding="2" textAlign="center" fontWeight="600" borderRadius="2">
             <Flex justify="center" align="center" ref={ref} style={style}>
                 {children}
             </Flex>
-        </Lookingglass>
+        </CSS>
     );
 });
 
@@ -154,22 +148,22 @@ export const Triggers = (args) => {
     return (
         <>
             <h6>Trigger - No Delay</h6>
-            <Lookingglass marginRight="2">
+            <CSS marginRight="2">
                 <Button ref={hoverBtn} color="info" btnStyle="outline">
                     Hover
                 </Button>
-            </Lookingglass>
+            </CSS>
             <Button ref={focusBtn} color="info" btnStyle="outline">
                 Focus
             </Button>
-            <Lookingglass marginTop="3">
+            <CSS marginTop="3">
                 <h6>Trigger - 1000ms Delay</h6>
-            </Lookingglass>
-            <Lookingglass marginRight="2">
+            </CSS>
+            <CSS marginRight="2">
                 <Button ref={hoverDelayBtn} color="info" btnStyle="outline">
                     Hover
                 </Button>
-            </Lookingglass>
+            </CSS>
             <Button ref={focusDelayBtn} color="info" btnStyle="outline">
                 Focus
             </Button>

@@ -1,5 +1,5 @@
 import Flex from '../lib/components/Flex';
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 import { cleanArgs, UpdateArgTable } from './helpers/utils';
 
 const tableDisable = { table: { disable: true } };
@@ -9,7 +9,22 @@ export const argTypes = {
     cols: {
         control: {
             type: 'select',
-            options: ['auto', 'equal', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+            options: [
+                'auto',
+                'equal',
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '7',
+                '8',
+                '9',
+                '10',
+                '11',
+                '12',
+            ],
         },
     },
     justify: {
@@ -30,7 +45,7 @@ export const argTypes = {
 
 const Content = ({ children }) => {
     return (
-        <Lookingglass
+        <CSS
             div
             backgroundColor="primary"
             color="white"
@@ -40,7 +55,7 @@ const Content = ({ children }) => {
             padding="2"
         >
             {children}
-        </Lookingglass>
+        </CSS>
     );
 };
 

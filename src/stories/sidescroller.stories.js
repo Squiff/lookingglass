@@ -4,13 +4,13 @@ import Button from '../lib/components/Button';
 import Card from '../lib/components/Card';
 import Flex from '../lib/components/Flex';
 import SideScroller from '../lib/components/SideScroller';
-import LG from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 
 export const argTypes = {};
 
 function Content() {
     return (
-        <LG marginTop="4" marginBottom="4">
+        <CSS marginTop="4" marginBottom="4">
             <Flex wrap="nowrap" cols="4">
                 <ContentCard />
                 <ContentCard />
@@ -25,13 +25,13 @@ function Content() {
                 <ContentCard />
                 <ContentCard />
             </Flex>
-        </LG>
+        </CSS>
     );
 }
 
 function ContentCard({ children }) {
     return (
-        <LG
+        <CSS
             marginRight="3"
             padding="5"
             shadow="2"

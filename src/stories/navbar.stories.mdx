@@ -46,8 +46,8 @@ A `NavBar` is comprised of several subcomponents
 You are not restricted to only using the above sub components.
 Useful components to combine with `NavBar` include:
 
--   **Breakpoints** - Hide or show content at certain breakpoints using the `<Lookingglass display={...} ..>` utility
--   **Color** - Add color to `NavBar` using the `className` prop or the `<Lookingglass backgroundColor="..." ..>` utility
+-   **Breakpoints** - Hide or show content at certain breakpoints using the `<CSS display={...} ..>` utility
+-   **Color** - Add color to `NavBar` using the `className` prop or the `<CSS backgroundColor="..." ..>` utility
 -   **Lists** - use the `<List>` component to give structure to dropdown content
 -   **Drawers** - Add a `<Drawer>` for small screens to display navigation links
 -   **Buttons** - The `<Button>` component provides an unstyled variation with configurable hover effects that make it ideal for use in a navbar
@@ -55,7 +55,7 @@ Useful components to combine with `NavBar` include:
 ## Color
 
 By default a `NavBar` will have no distinctive colors applied.
-Apply colors by setting `className`, `style` or using the `<Lookingglass>` Utility.
+Apply colors by setting `className`, `style` or using the `<CSS>` Utility.
 
 <Canvas>
     <Story story={stories.Color} />
@@ -74,7 +74,7 @@ You can control the spacing using the margin utilities
 
 ### Breakpoints
 
-Hide and show content at a specified breakpoint using the `<Lookingglass display={...} ..>` utility
+Hide and show content at a specified breakpoint using the `<CSS display={...} ..>` utility
 
 Here we hide the navigation links at the small breakpoint and show them from the medium breakpoint. We will use the same technique when we look at using `<Drawers>`
 
@@ -153,7 +153,7 @@ It can contain any type of content such as navigation options that cannot fit on
 ### Tray Styles
 
 The Tray only comes with very basic styling out of the box.
-Use the `className` prop or `<Lookingglass>` utility to apply further styles.
+Use the `className` prop or `<CSS>` utility to apply further styles.
 
 In the below example we have setup the "Open Tray" button to toggle the `show` prop.
 

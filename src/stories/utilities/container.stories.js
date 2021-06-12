@@ -1,6 +1,6 @@
-import Lookingglass from '../../lib/components/Lookingglass';
+import CSS from '../../lib/components/CSS';
 
 /* --------- Border Width ---------- */
 export const Container = (args) => (
-    <Lookingglass container div backgroundColor="primary" style={{ height: '50px' }}></Lookingglass>
+    <CSS container div backgroundColor="primary" style={{ height: '50px' }}></CSS>
 );

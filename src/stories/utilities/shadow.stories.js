@@ -1,4 +1,4 @@
-import Lookingglass from '../../lib/components/Lookingglass';
+import CSS from '../../lib/components/CSS';
 import Flex from '../../lib/components/Flex';
 import { UpdateArgTable } from '../helpers/utils';
 import { argTypes as lookingglassArgs } from './lookingglass.storyconfig';
@@ -11,7 +11,7 @@ const _argTypes = UpdateArgTable(lookingglassArgs, {
 export const argTypes = _argTypes;
 
 export const Shadow = (args) => (
-    <Lookingglass
+    <CSS
         {...args}
         div
         padding="5"
@@ -20,7 +20,7 @@ export const Shadow = (args) => (
         border="1"
         borderRadius="2"
         borderColor="light"
-    ></Lookingglass>
+    ></CSS>
 );
 
 Shadow.args = {
@@ -33,7 +33,7 @@ Shadow.parameters = {
 
 export const ShadowExamples = (args) => (
     <Flex cols="equal">
-        <Lookingglass
+        <CSS
             shadow="0"
             div
             padding="5"
@@ -45,8 +45,8 @@ export const ShadowExamples = (args) => (
             textAlign="center"
         >
             0
-        </Lookingglass>
-        <Lookingglass
+        </CSS>
+        <CSS
             shadow="2"
             div
             padding="5"
@@ -58,9 +58,9 @@ export const ShadowExamples = (args) => (
             textAlign="center"
         >
             2
-        </Lookingglass>
+        </CSS>
 
-        <Lookingglass
+        <CSS
             shadow="5"
             div
             padding="5"
@@ -72,9 +72,9 @@ export const ShadowExamples = (args) => (
             textAlign="center"
         >
             5
-        </Lookingglass>
+        </CSS>
 
-        <Lookingglass
+        <CSS
             shadow="10"
             div
             padding="5"
@@ -86,9 +86,9 @@ export const ShadowExamples = (args) => (
             textAlign="center"
         >
             10
-        </Lookingglass>
+        </CSS>
 
-        <Lookingglass
+        <CSS
             shadow="20"
             div
             padding="5"
@@ -100,6 +100,6 @@ export const ShadowExamples = (args) => (
             textAlign="center"
         >
             20
-        </Lookingglass>
+        </CSS>
     </Flex>
 );

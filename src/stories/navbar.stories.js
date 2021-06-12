@@ -6,7 +6,7 @@ import FormGroup from '../lib/components/FormGroup';
 import { Input } from '../lib/components/Input';
 import Label from '../lib/components/Label';
 import List from '../lib/components/List';
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 import SideScroller from '../lib/components/SideScroller';
 import NavBar from '../lib/components/NavBar';
 import Card from '../lib/components/Card';
@@ -28,13 +28,13 @@ const DropdownContent = () => (
 );
 
 const DropdownItem = ({ children, ...props }) => (
-    <Lookingglass paddingX="3" paddingY="2" fontSize="0.875">
+    <CSS paddingX="3" paddingY="2" fontSize="0.875">
         <List.Button {...props}>{children}</List.Button>
-    </Lookingglass>
+    </CSS>
 );
 
 const TrayContent = () => (
-    <Lookingglass div paddingX="4" paddingY="2" paddingTop="4" marginBottom="2">
+    <CSS div paddingX="4" paddingY="2" paddingTop="4" marginBottom="2">
         {/* <h6>Additional Items</h6> */}
         <Flex cols="auto">
             <List>
@@ -58,19 +58,19 @@ const TrayContent = () => (
                 <TrayItem>Additional Item 12</TrayItem>
             </List>
         </Flex>
-    </Lookingglass>
+    </CSS>
 );
 
 const TrayItem = ({ children }) => (
-    <Lookingglass paddingX="4" fontSize="0.875">
+    <CSS paddingX="4" fontSize="0.875">
         <List.Button>{children}</List.Button>
-    </Lookingglass>
+    </CSS>
 );
 
 const Logo = () => (
-    <Lookingglass div fontSize="1" fontWeight="600" paddingY="2">
+    <CSS div fontSize="1" fontWeight="600" paddingY="2">
         LOGO
-    </Lookingglass>
+    </CSS>
 );
 
 export const All = (args) => {
@@ -82,10 +82,9 @@ export const All = (args) => {
 
     return (
         <>
-            {/* <Lookingglass backgroundColor="primary" color="white"> */}
             <NavBar>
                 <Logo />
-                <Lookingglass display={{ s: 'none', l: 'block' }} div>
+                <CSS display={{ s: 'none', l: 'block' }} div>
                     <NavBar.Nav>
                         <NavBar.NavLink>Home</NavBar.NavLink>
                         <NavBar.NavLink>About</NavBar.NavLink>
@@ -112,7 +111,7 @@ export const All = (args) => {
                             <DropdownContent />
                         </NavBar.Dropdown>
                     </NavBar.Nav>
-                </Lookingglass>
+                </CSS>
 
                 <Button
                     btnStyle="none"
@@ -135,7 +134,6 @@ export const All = (args) => {
                     <TrayContent />
                 </NavBar.Tray>
             </NavBar>
-            {/* </Lookingglass> */}
         </>
     );
 };
@@ -165,7 +163,7 @@ export const Color = (args) => (
             </NavBar.Nav>
         </NavBar>
 
-        <Lookingglass backgroundColor="primary" color="white">
+        <CSS backgroundColor="primary" color="white">
             <NavBar>
                 <Logo />
                 <NavBar.Nav>
@@ -175,9 +173,9 @@ export const Color = (args) => (
                     <NavBar.NavLink>Link 4</NavBar.NavLink>
                 </NavBar.Nav>
             </NavBar>
-        </Lookingglass>
+        </CSS>
 
-        <Lookingglass backgroundColor="primary-d3" color="white">
+        <CSS backgroundColor="primary-d3" color="white">
             <NavBar>
                 <Logo />
                 <NavBar.Nav>
@@ -195,7 +193,7 @@ export const Color = (args) => (
                     </NavBar.NavLink>
                 </NavBar.Nav>
             </NavBar>
-        </Lookingglass>
+        </CSS>
 
         <NavBar style={{ backgroundColor: 'purple', color: 'white' }}>
             <Logo />
@@ -220,7 +218,7 @@ export const Color = (args) => (
 /* ---------------- Spacing ---------------- */
 export const Spacing = (args) => (
     <>
-        <Lookingglass backgroundColor="primary" color="white">
+        <CSS backgroundColor="primary" color="white">
             <NavBar>
                 <Logo />
                 <NavBar.Nav>
@@ -230,27 +228,27 @@ export const Spacing = (args) => (
                     <NavBar.NavLink>Link 4</NavBar.NavLink>
                 </NavBar.Nav>
             </NavBar>
-        </Lookingglass>
+        </CSS>
         <h6>Using Margin Auto</h6>
-        <Lookingglass backgroundColor="primary" color="white">
+        <CSS backgroundColor="primary" color="white">
             <NavBar>
                 <Logo />
-                <Lookingglass marginX="auto">
+                <CSS marginX="auto">
                     <NavBar.Nav>
                         <NavBar.NavLink>Link 1</NavBar.NavLink>
                         <NavBar.NavLink>Link 2</NavBar.NavLink>
                         <NavBar.NavLink>Link 3</NavBar.NavLink>
                         <NavBar.NavLink>Link 4</NavBar.NavLink>
                     </NavBar.Nav>
-                </Lookingglass>
+                </CSS>
             </NavBar>
-        </Lookingglass>
+        </CSS>
     </>
 );
 
 export const Buttons = (args) => (
     <>
-        <Lookingglass backgroundColor="primary" color="white">
+        <CSS backgroundColor="primary" color="white">
             <NavBar>
                 <Logo />
                 <div>
@@ -266,9 +264,9 @@ export const Buttons = (args) => (
                     </Button>
                 </div>
             </NavBar>
-        </Lookingglass>
+        </CSS>
 
-        <Lookingglass backgroundColor="dark" color="white">
+        <CSS backgroundColor="dark" color="white">
             <NavBar>
                 <Logo />
                 <div>
@@ -284,9 +282,9 @@ export const Buttons = (args) => (
                     </Button>
                 </div>
             </NavBar>
-        </Lookingglass>
+        </CSS>
 
-        <Lookingglass backgroundColor="light" color="dark">
+        <CSS backgroundColor="light" color="dark">
             <NavBar>
                 <Logo />
                 <div>
@@ -302,25 +300,25 @@ export const Buttons = (args) => (
                     </Button>
                 </div>
             </NavBar>
-        </Lookingglass>
+        </CSS>
     </>
 );
 
 /* ---------------- Breakpoints ---------------- */
 export const Breakpoints = (args) => (
-    <Lookingglass backgroundColor="primary" color="white">
+    <CSS backgroundColor="primary" color="white">
         <NavBar>
             <Logo />
-            <Lookingglass div display={{ s: 'none', m: 'block' }}>
+            <CSS div display={{ s: 'none', m: 'block' }}>
                 <NavBar.Nav>
                     <NavBar.NavLink>Link 1</NavBar.NavLink>
                     <NavBar.NavLink>Link 2</NavBar.NavLink>
                     <NavBar.NavLink>Link 3</NavBar.NavLink>
                     <NavBar.NavLink>Link 4</NavBar.NavLink>
                 </NavBar.Nav>
-            </Lookingglass>
+            </CSS>
         </NavBar>
-    </Lookingglass>
+    </CSS>
 );
 
 /* ---------------- Dropdown ---------------- */
@@ -329,7 +327,7 @@ export const Dropdown = (args) => {
     const dropdownRef = useRef();
 
     return (
-        <Lookingglass backgroundColor="primary" color="white">
+        <CSS backgroundColor="primary" color="white">
             <NavBar>
                 <Logo />
                 <NavBar.Nav>
@@ -362,16 +360,16 @@ export const Dropdown = (args) => {
                 >
                     <List>
                         <List.Item>
-                            <Lookingglass margin="0" marginTop="2">
+                            <CSS margin="0" marginTop="2">
                                 <h6>Actions</h6>
-                            </Lookingglass>
+                            </CSS>
                         </List.Item>
                         <List.Button>Button 1</List.Button>
                         <List.Button>Button 2</List.Button>
                         <List.Item>
-                            <Lookingglass margin="0" marginTop="2">
+                            <CSS margin="0" marginTop="2">
                                 <h6>Links</h6>
-                            </Lookingglass>
+                            </CSS>
                         </List.Item>
                         <List.Link>Link 1</List.Link>
                         <List.Link>Link 2</List.Link>
@@ -379,7 +377,7 @@ export const Dropdown = (args) => {
                     </List>
                 </NavBar.Dropdown>
             </NavBar>
-        </Lookingglass>
+        </CSS>
     );
 };
 
@@ -406,10 +404,10 @@ export const DropdownLogin = (args) => {
     };
 
     return (
-        <Lookingglass backgroundColor="primary" color="white">
+        <CSS backgroundColor="primary" color="white">
             <NavBar>
                 <Logo />
-                <Lookingglass fontWeight="600">
+                <CSS fontWeight="600">
                     <Button
                         btnStyle="none"
                         hoverEffect="light"
@@ -421,13 +419,13 @@ export const DropdownLogin = (args) => {
                     >
                         Login
                     </Button>
-                </Lookingglass>
+                </CSS>
                 <NavBar.Dropdown
                     show={showSignIn}
                     onClose={() => setShowSignIn(false)}
                     targetRef={signInRef}
                 >
-                    <Lookingglass div paddingY="2" paddingX="2">
+                    <CSS div paddingY="2" paddingX="2">
                         <form style={{ width: '200px' }} onSubmit={handleSubmit}>
                             <FormGroup>
                                 <Label>User Name</Label>
@@ -445,10 +443,10 @@ export const DropdownLogin = (args) => {
                                 Sign In
                             </Button>
                         </form>
-                    </Lookingglass>
+                    </CSS>
                 </NavBar.Dropdown>
             </NavBar>
-        </Lookingglass>
+        </CSS>
     );
 };
 
@@ -467,23 +465,23 @@ DropdownLogin.parameters = {
 
 /* ---------------- Navigation Tray ---------------- */
 const TrayCard = ({ children }) => (
-    <Lookingglass backgroundColor="primary-d2" color="white" marginX="2">
+    <CSS backgroundColor="primary-d2" color="white" marginX="2">
         <Card>
-            <Lookingglass padding="2" fontSize="0.875" fontWeight="600" textAlign="center">
+            <CSS padding="2" fontSize="0.875" fontWeight="600" textAlign="center">
                 <Card.Content>{children}</Card.Content>
-            </Lookingglass>
+            </CSS>
         </Card>
-    </Lookingglass>
+    </CSS>
 );
 
 export const Tray = (args) => {
     const [showTray, setShowTray] = useState(false);
 
     return (
-        <Lookingglass backgroundColor="primary" color="white">
+        <CSS backgroundColor="primary" color="white">
             <NavBar>
                 <Logo />
-                <Lookingglass fontWeight="600">
+                <CSS fontWeight="600">
                     <Button
                         btnStyle="none"
                         hoverEffect="light"
@@ -494,14 +492,14 @@ export const Tray = (args) => {
                     >
                         Open Tray
                     </Button>
-                </Lookingglass>
+                </CSS>
                 <NavBar.Tray
                     show={showTray}
                     onClose={() => {
                         setShowTray(false);
                     }}
                 >
-                    <Lookingglass div padding="2" backgroundColor="primary">
+                    <CSS div padding="2" backgroundColor="primary">
                         <SideScroller scrollFactor={0.4}>
                             <Flex wrap="nowrap" cols={{ l: 8, m: 6, s: 3 }}>
                                 <TrayCard>Tray Card 1</TrayCard>
@@ -518,10 +516,10 @@ export const Tray = (args) => {
                                 <TrayCard>Tray Card 12</TrayCard>
                             </Flex>
                         </SideScroller>
-                    </Lookingglass>
+                    </CSS>
                 </NavBar.Tray>
             </NavBar>
-        </Lookingglass>
+        </CSS>
     );
 };
 
@@ -544,10 +542,10 @@ export const NavDrawer = (args) => {
 
     return (
         <>
-            <Lookingglass backgroundColor="primary" color="white">
+            <CSS backgroundColor="primary" color="white">
                 <NavBar>
                     <Logo />
-                    <Lookingglass div display={{ s: 'none', m: 'block' }}>
+                    <CSS div display={{ s: 'none', m: 'block' }}>
                         <NavBar.Nav>
                             <NavBar.NavLink>
                                 <a>Link 1</a>
@@ -562,8 +560,8 @@ export const NavDrawer = (args) => {
                                 <a>Link 4</a>
                             </NavBar.NavLink>
                         </NavBar.Nav>
-                    </Lookingglass>
-                    <Lookingglass div display={{ s: 'block', m: 'none' }}>
+                    </CSS>
+                    <CSS div display={{ s: 'block', m: 'none' }}>
                         <Button
                             btnStyle="none"
                             hoverEffect="light"
@@ -573,13 +571,13 @@ export const NavDrawer = (args) => {
                             aria-expanded={showDrawer}
                             aria-label="toggle navigation"
                         >
-                            <Lookingglass fontSize="1">
+                            <CSS fontSize="1">
                                 <FontAwesomeIcon icon={faBars} />
-                            </Lookingglass>
+                            </CSS>
                         </Button>
-                    </Lookingglass>
+                    </CSS>
                 </NavBar>
-            </Lookingglass>
+            </CSS>
             <Drawer
                 show={showDrawer}
                 onClose={() => {

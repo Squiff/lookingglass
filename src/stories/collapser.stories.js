@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Button from '../lib/components/Button';
 import Collapser from '../lib/components/Collapser';
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 
 export const argTypes = {
     show: {
@@ -19,13 +19,13 @@ export const AllProps = (args) => {
                 Toggle Collapse
             </Button>
             <Collapser show={open}>
-                <Lookingglass marginY="4" border="1" borderColor="light" padding="3">
+                <CSS marginY="4" border="1" borderColor="light" padding="3">
                     <p>
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus debitis
                         asperiores corporis architecto, a neque qui ullam nemo ut optio dolorem
                         autem iusto suscipit fugiat nam perspiciatis cum maxime possimus!
                     </p>
-                </Lookingglass>
+                </CSS>
             </Collapser>
         </>
     );

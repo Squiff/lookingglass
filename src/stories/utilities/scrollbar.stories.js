@@ -1,4 +1,4 @@
-import Lookingglass from '../../lib/components/Lookingglass';
+import CSS from '../../lib/components/CSS';
 import Flex from '../../lib/components/Flex';
 import { cleanArgs, UpdateArgTable } from '../helpers/utils';
 import { argTypes as lookingglassArgs } from './lookingglass.storyconfig';
@@ -35,9 +35,9 @@ export const ScrollbarProps = (args) => {
     const cArgs = cleanArgs(args);
 
     return (
-        <Lookingglass {...cArgs}>
+        <CSS {...cArgs}>
             <ScrollContainer />
-        </Lookingglass>
+        </CSS>
     );
 };
 
@@ -51,12 +51,12 @@ ScrollbarProps.parameters = {
 export const Colors = (args) => {
     return (
         <Flex cols="auto">
-            <Lookingglass scrollbarColor="light">
+            <CSS scrollbarColor="light">
                 <ScrollContainer />
-            </Lookingglass>
-            <Lookingglass scrollbarColor="dark">
+            </CSS>
+            <CSS scrollbarColor="dark">
                 <ScrollContainer />
-            </Lookingglass>
+            </CSS>
         </Flex>
     );
 };
@@ -66,12 +66,12 @@ export const Sizes = (args) => {
     return (
         <Flex cols="auto">
             <ScrollContainer />
-            <Lookingglass scrollbarSize="s">
+            <CSS scrollbarSize="s">
                 <ScrollContainer />
-            </Lookingglass>
-            <Lookingglass scrollbarSize="none">
+            </CSS>
+            <CSS scrollbarSize="none">
                 <ScrollContainer>Scroll Me!</ScrollContainer>
-            </Lookingglass>
+            </CSS>
         </Flex>
     );
 };
@@ -79,26 +79,26 @@ export const Sizes = (args) => {
 /*----------- Rounded --------- */
 export const Rounded = (args) => (
     <Flex cols="auto">
-        <Lookingglass scrollbarColor="light">
+        <CSS scrollbarColor="light">
             <ScrollContainer />
-        </Lookingglass>
-        <Lookingglass scrollbarStyle="rounded">
+        </CSS>
+        <CSS scrollbarStyle="rounded">
             <ScrollContainer />
-        </Lookingglass>
-        <Lookingglass scrollbarStyle="rounded" scrollbarSize="s">
+        </CSS>
+        <CSS scrollbarStyle="rounded" scrollbarSize="s">
             <ScrollContainer />
-        </Lookingglass>
+        </CSS>
     </Flex>
 );
 
 /*----------- Track --------- */
 export const Track = (args) => (
     <div style={{ display: 'flex' }}>
-        <Lookingglass {...args}>
+        <CSS {...args}>
             <ScrollContainer />
-        </Lookingglass>
-        <Lookingglass scrollbarTrack="none" {...args}>
+        </CSS>
+        <CSS scrollbarTrack="none" {...args}>
             <ScrollContainer />
-        </Lookingglass>
+        </CSS>
     </div>
 );

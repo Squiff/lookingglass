@@ -1,11 +1,8 @@
 import Spinner from '../lib/components/Spinner';
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 import Button from '../lib/components/Button';
 import { cleanArgs } from './helpers/utils';
 import { useEffect, useState } from 'react';
-
-const tableDisable = { table: { disable: true } };
-const tableEnable = { table: { disable: false } };
 
 export const argTypes = {
     size: { control: { type: 'radio', options: ['default', 's', 'l'] } },
@@ -56,18 +53,18 @@ Styled.args = {
 /* --------  Colors ---------------- */
 export const Colors = (args) => (
     <>
-        <Lookingglass color="primary">
+        <CSS color="primary">
             <Spinner halo={true} />
-        </Lookingglass>
-        <Lookingglass color="success">
+        </CSS>
+        <CSS color="success">
             <Spinner halo={true} />
-        </Lookingglass>
-        <Lookingglass color="error">
+        </CSS>
+        <CSS color="error">
             <Spinner halo={true} />
-        </Lookingglass>
-        <Lookingglass color="warning">
+        </CSS>
+        <CSS color="warning">
             <Spinner halo={true} />
-        </Lookingglass>
+        </CSS>
     </>
 );
 
@@ -86,11 +83,11 @@ export const Delay = (args) => {
 
     return (
         <>
-            <Lookingglass div marginBottom="2">
+            <CSS div marginBottom="2">
                 <Button onClick={handleClick} color="info">
                     Reload
                 </Button>
-            </Lookingglass>
+            </CSS>
             {mount && <Spinner delay={500} />}
         </>
     );

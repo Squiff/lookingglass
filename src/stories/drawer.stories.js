@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '../lib/components/Button';
 import Drawer from '../lib/components/Drawer';
 import List from '../lib/components/List';
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 import Flex from '../lib/components/Flex';
 import CloseButton from '../lib/components/CloseButton';
 
@@ -80,9 +80,9 @@ export const Scrolling = (args) => {
                 Open Drawer
             </Button>
             <Drawer direction="left" show={show} onClose={toggleDrawer}>
-                <Lookingglass div style={{ height: '150vh' }}>
+                <CSS div style={{ height: '150vh' }}>
                     <DrawerContent direction="left" toggleDrawer={toggleDrawer} />
-                </Lookingglass>
+                </CSS>
             </Drawer>
         </>
     );
@@ -108,11 +108,11 @@ export const CloseDrawer = (args) => {
                 Open Drawer
             </Button>
             <Drawer direction="left" show={show} closeOnClick={false} onClose={toggleDrawer}>
-                <Lookingglass div padding="3">
+                <CSS div padding="3">
                     <Button block color="error" btnStyle="outline" onClick={toggleDrawer}>
                         Close Drawer
                     </Button>
-                </Lookingglass>
+                </CSS>
             </Drawer>
         </>
     );
@@ -131,18 +131,18 @@ const ExampleListItem = ({ children, icon, text }) => {
     return (
         <>
             <List.Button>
-                <Lookingglass paddingY="2">
+                <CSS paddingY="2">
                     <Flex cols="auto" align="center">
-                        <Lookingglass fontSize="1" marginRight="3" textAlign="center" display="inline-block">
+                        <CSS fontSize="1" marginRight="3" textAlign="center" display="inline-block">
                             <span style={{ width: '1.5rem' }}>
                                 <FontAwesomeIcon icon={icon} />
                             </span>
-                        </Lookingglass>
-                        <Lookingglass fontSize="1" fontWeight="600">
+                        </CSS>
+                        <CSS fontSize="1" fontWeight="600">
                             <span>{text}</span>
-                        </Lookingglass>
+                        </CSS>
                     </Flex>
-                </Lookingglass>
+                </CSS>
             </List.Button>
         </>
     );
@@ -151,9 +151,9 @@ const ExampleListItem = ({ children, icon, text }) => {
 const DrawerCloseIconBtn = ({ children, icon, text, ...props }) => {
     return (
         <Flex cols="auto" justify="end">
-            <Lookingglass marginRight="2" marginTop="1" padding="1">
+            <CSS marginRight="2" marginTop="1" padding="1">
                 <CloseButton {...props} />
-            </Lookingglass>
+            </CSS>
         </Flex>
     );
 };
@@ -176,42 +176,42 @@ export const VerticalDrawerContent = ({ toggleDrawer }) => {
                 <ExampleListItem icon={faTasks} text="Tasks" />
             </List>
             <Flex.Child cols="auto">
-                <Lookingglass marginTop="auto" marginBottom="2">
+                <CSS marginTop="auto" marginBottom="2">
                     <List>
                         <ExampleListItem icon={faCog} text="Settings" />
                         <ExampleListItem icon={faQuestion} text="Help" />
                     </List>
-                </Lookingglass>
+                </CSS>
             </Flex.Child>
         </Flex>
     );
 };
 
 export const HorizontalDrawerContent = () => (
-    <Lookingglass margin="auto" paddingY="3">
+    <CSS margin="auto" paddingY="3">
         <Flex style={{ maxWidth: '800px', color: '#707070' }} justify="around" cols="auto">
             <HorizontalDrawerItem icon={faHome} text="Home" />
             <HorizontalDrawerItem icon={faUser} text="Profile" />
             <HorizontalDrawerItem icon={faHeart} text="Favorites" />
-            <Lookingglass display={{ s: 'none', m: 'block' }}>
+            <CSS display={{ s: 'none', m: 'block' }}>
                 <HorizontalDrawerItem icon={faEnvelope} text="Messages" />
-            </Lookingglass>
+            </CSS>
         </Flex>
-    </Lookingglass>
+    </CSS>
 );
 
 const HorizontalDrawerItem = ({ icon, text, className }) => {
     return (
-        <Lookingglass paddingX="3" textAlign="center" className={className}>
+        <CSS paddingX="3" textAlign="center" className={className}>
             <Button btnStyle="none">
-                <Lookingglass fontSize="1.5" textAlign="center" marginBottom="1" div>
+                <CSS fontSize="1.5" textAlign="center" marginBottom="1" div>
                     <FontAwesomeIcon icon={icon} />
-                </Lookingglass>
-                <Lookingglass fontSize="1" fontWeight="600" textAlign="center" div>
+                </CSS>
+                <CSS fontSize="1" fontWeight="600" textAlign="center" div>
                     {text}
-                </Lookingglass>
+                </CSS>
             </Button>
-        </Lookingglass>
+        </CSS>
     );
 };
 

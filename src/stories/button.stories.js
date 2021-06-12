@@ -1,5 +1,5 @@
 import Button from '../lib/components/Button';
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 import { cleanArgs, themeColors } from './helpers/utils';
 
 const tableDisable = { table: { disable: true } };
@@ -33,7 +33,7 @@ export const argTypes = {
     },
 };
 
-const Spacer = () => <Lookingglass marginBottom="2" div />;
+const Spacer = () => <CSS marginBottom="2" div />;
 
 /* -------- ALL PROPS ---------------- */
 export const AllProps = (args) => {
@@ -51,7 +51,8 @@ AllProps.parameters = { options: { showPanel: true } };
 export const SolidColors = (args) => (
     <>
         <Button color="primary">Primary</Button> <Button color="success">Success</Button>{' '}
-        <Button color="warning">Warning</Button> <Button color="error">Error</Button> <Button color="info">Info</Button>{' '}
+        <Button color="warning">Warning</Button> <Button color="error">Error</Button>{' '}
+        <Button color="info">Info</Button>{' '}
     </>
 );
 
@@ -82,7 +83,7 @@ export const NoStyle = (args) => <Button btnStyle="none">No Style</Button>;
 /* -------- Hover ---------------- */
 export const Hover = (args) => (
     <>
-        <Lookingglass backgroundColor="dark" padding="1" color="white" marginBottom="1" div>
+        <CSS backgroundColor="dark" padding="1" color="white" marginBottom="1" div>
             <Button btnStyle="none" hoverEffect="dark">
                 Dark
             </Button>
@@ -92,8 +93,8 @@ export const Hover = (args) => (
             <Button btnStyle="none" hoverEffect="opacity">
                 Opacity
             </Button>
-        </Lookingglass>
-        <Lookingglass backgroundColor="light" padding="1" marginBottom="1" div>
+        </CSS>
+        <CSS backgroundColor="light" padding="1" marginBottom="1" div>
             <Button btnStyle="none" hoverEffect="dark">
                 Dark
             </Button>
@@ -103,8 +104,8 @@ export const Hover = (args) => (
             <Button btnStyle="none" hoverEffect="opacity">
                 Opacity
             </Button>
-        </Lookingglass>
-        <Lookingglass backgroundColor="primary" padding="1" color="white" div>
+        </CSS>
+        <CSS backgroundColor="primary" padding="1" color="white" div>
             <Button btnStyle="none" hoverEffect="dark">
                 Dark
             </Button>
@@ -114,7 +115,7 @@ export const Hover = (args) => (
             <Button btnStyle="none" hoverEffect="opacity">
                 Opacity
             </Button>
-        </Lookingglass>
+        </CSS>
     </>
 );
 

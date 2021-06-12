@@ -1,4 +1,4 @@
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 import Table from '../lib/components/Table';
 import { cleanArgs } from './helpers/utils';
 
@@ -107,14 +107,14 @@ export const HeadingColor = (args) => (
         <h6>Primary</h6>
         <Table>
             <thead>
-                <Lookingglass backgroundColor="primary" color="white">
+                <CSS backgroundColor="primary" color="white">
                     <tr>
                         <th>Headers 1</th>
                         <th>Headers 2</th>
                         <th>Headers 3</th>
                         <th>Headers 4</th>
                     </tr>
-                </Lookingglass>
+                </CSS>
             </thead>
             <tbody>
                 <tr>
@@ -130,14 +130,14 @@ export const HeadingColor = (args) => (
 
         <Table>
             <thead>
-                <Lookingglass backgroundColor="dark" color="white">
+                <CSS backgroundColor="dark" color="white">
                     <tr>
                         <th>Headers 1</th>
                         <th>Headers 2</th>
                         <th>Headers 3</th>
                         <th>Headers 4</th>
                     </tr>
-                </Lookingglass>
+                </CSS>
             </thead>
             <tbody>
                 <tr>

@@ -1,5 +1,5 @@
 import List from '../lib/components/List';
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 
 export const argTypes = {};
 
@@ -18,12 +18,19 @@ export const Standard = (args) => {
 export const NavList = (args) => {
     return (
         <>
-            <Lookingglass border="1" borderRadius="2" borderColor="light" display="inline-block" padding="0" div>
+            <CSS
+                border="1"
+                borderRadius="2"
+                borderColor="light"
+                display="inline-block"
+                padding="0"
+                div
+            >
                 <List style={{ width: '100px' }}>
                     <List.Item>
-                        <Lookingglass marginBottom="1">
+                        <CSS marginBottom="1">
                             <h6>Actions</h6>
-                        </Lookingglass>
+                        </CSS>
                     </List.Item>
                     <List.Button>Button 1</List.Button>
                     <List.Button>Button 2</List.Button>
@@ -32,24 +39,24 @@ export const NavList = (args) => {
                         <hr />
                     </List.Item>
                     <List.Item>
-                        <Lookingglass marginBottom="1">
+                        <CSS marginBottom="1">
                             <h6>Links</h6>
-                        </Lookingglass>
+                        </CSS>
                     </List.Item>
                     <List.Link>Link 1</List.Link>
                     <List.Link>Link 2</List.Link>
                     <List.Link>Link 3</List.Link>
                 </List>
-            </Lookingglass>
+            </CSS>
         </>
     );
 };
 
 /* ---------- Composition ------------- */
 const MyListItem = ({ children, ...props }) => (
-    <Lookingglass paddingX="1" paddingY="3" fontSize="1.25">
+    <CSS paddingX="1" paddingY="3" fontSize="1.25">
         <List.Item {...props}>{children}</List.Item>
-    </Lookingglass>
+    </CSS>
 );
 
 export const Composition = (args) => {

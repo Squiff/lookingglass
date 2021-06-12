@@ -1,4 +1,4 @@
-import Lookingglass from '../../lib/components/Lookingglass';
+import CSS from '../../lib/components/CSS';
 import Flex from '../../lib/components/Flex';
 import { UpdateArgTable } from '../helpers/utils';
 import { argTypes as lookingglassArgs } from './lookingglass.storyconfig';
@@ -27,9 +27,9 @@ export const argTypes = _argTypes;
 
 /* ---------- Spacing Props ------------- */
 export const SpacingProps = (args) => (
-    <Lookingglass {...args} backgroundColor="primary" color="white" div>
+    <CSS {...args} backgroundColor="primary" color="white" div>
         The quick brown fox jumps over the lazy dog
-    </Lookingglass>
+    </CSS>
 );
 
 SpacingProps.args = {
@@ -45,19 +45,19 @@ SpacingProps.parameters = {
 export const MarginAuto = (args) => (
     <>
         <Flex cols="auto">
-            <Lookingglass padding="2" margin="auto" backgroundColor="light" color="dark" div>
+            <CSS padding="2" margin="auto" backgroundColor="light" color="dark" div>
                 Margin Auto
-            </Lookingglass>
+            </CSS>
         </Flex>
         <Flex cols="auto">
-            <Lookingglass padding="2" marginLeft="auto" backgroundColor="light" color="dark" div>
+            <CSS padding="2" marginLeft="auto" backgroundColor="light" color="dark" div>
                 Margin Left Auto
-            </Lookingglass>
+            </CSS>
         </Flex>
         <Flex cols="auto">
-            <Lookingglass padding="2" marginRight="auto" backgroundColor="light" color="dark" div>
+            <CSS padding="2" marginRight="auto" backgroundColor="light" color="dark" div>
                 Margin Right Auto
-            </Lookingglass>
+            </CSS>
         </Flex>
     </>
 );

@@ -1,4 +1,4 @@
-import Lookingglass from '../../lib/components/Lookingglass';
+import CSS from '../../lib/components/CSS';
 import Button from '../../lib/components/Button';
 import Alert from '../../lib/components/Alert';
 import { cleanArgs, UpdateArgTable } from '../helpers/utils';
@@ -16,7 +16,7 @@ const Template = (args) => {
     const cArgs = cleanArgs(args);
 
     return (
-        <Lookingglass
+        <CSS
             position="relative"
             backgroundColor="light"
             width="50vw"
@@ -25,11 +25,11 @@ const Template = (args) => {
             marginTop="5"
         >
             <div>
-                <Lookingglass {...cArgs} backgroundColor="dark" borderRadius="rounded">
+                <CSS {...cArgs} backgroundColor="dark" borderRadius="rounded">
                     <div style={{ height: '50px', width: '50px' }}></div>
-                </Lookingglass>
+                </CSS>
             </div>
-        </Lookingglass>
+        </CSS>
     );
 };
 
@@ -38,18 +38,18 @@ export const PositionProps = (args) => {
     const cArgs = cleanArgs(args);
 
     return (
-        <Lookingglass position="relative" backgroundColor="light" width="50vw" height="50vh" margin="5" div>
-            <Lookingglass
+        <CSS position="relative" backgroundColor="light" width="50vw" height="50vh" margin="5" div>
+            <CSS
                 div
                 {...cArgs}
                 backgroundColor="dark"
                 borderRadius="rounded"
                 style={{ height: '50px', width: '50px' }}
             />
-            <Lookingglass div absolute="middle" fontSize="15" fontWeight="600">
+            <CSS div absolute="middle" fontSize="15" fontWeight="600">
                 Position Relative
-            </Lookingglass>
-        </Lookingglass>
+            </CSS>
+        </CSS>
     );
 };
 
@@ -78,9 +78,9 @@ export const Fixed = (args) => {
                 Show Fixed Element
             </Button>
             {showFixed && (
-                <Lookingglass position="fixed" bottom="0" right="0" margin="4">
+                <CSS position="fixed" bottom="0" right="0" margin="4">
                     <Alert color="warning">Position Fixed</Alert>
-                </Lookingglass>
+                </CSS>
             )}
         </>
     );
@@ -98,14 +98,15 @@ export const Sticky = (args) => {
     return (
         <>
             <div style={containerStyles}>
-                <Lookingglass position="sticky" top="0">
+                <CSS position="sticky" top="0">
                     <Alert color="error">Position Sticky</Alert>
-                </Lookingglass>
+                </CSS>
                 <div style={childStyles}>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam iure deleniti velit vitae illo
-                    amet hic assumenda tempore quaerat adipisci. Deserunt mollitia, repellendus at atque cupiditate ea?
-                    Quaerat voluptatibus, animi accusamus eveniet quibusdam voluptates maiores libero nemo laudantium?
-                    Officiis iste nemo voluptatem asperiores eum similique? Nemo amet veniam maxime optio!
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam iure deleniti
+                    velit vitae illo amet hic assumenda tempore quaerat adipisci. Deserunt mollitia,
+                    repellendus at atque cupiditate ea? Quaerat voluptatibus, animi accusamus
+                    eveniet quibusdam voluptates maiores libero nemo laudantium? Officiis iste nemo
+                    voluptatem asperiores eum similique? Nemo amet veniam maxime optio!
                 </div>
             </div>
         </>
@@ -114,7 +115,14 @@ export const Sticky = (args) => {
 
 /* --------- Absolute -----------*/
 const Circle = () => {
-    return <Lookingglass div borderRadius="rounded" backgroundColor="dark" style={{ height: '20px', width: '20px' }} />;
+    return (
+        <CSS
+            div
+            borderRadius="rounded"
+            backgroundColor="dark"
+            style={{ height: '20px', width: '20px' }}
+        />
+    );
 };
 
 export const Absolute = (args) => {
@@ -122,35 +130,35 @@ export const Absolute = (args) => {
 
     return (
         <>
-            <Lookingglass position="relative" backgroundColor="light" margin="5" div style={containerStyles}>
-                <Lookingglass div absolute="top-left">
+            <CSS position="relative" backgroundColor="light" margin="5" div style={containerStyles}>
+                <CSS div absolute="top-left">
                     <Circle />
-                </Lookingglass>
-                <Lookingglass div absolute="top-middle">
+                </CSS>
+                <CSS div absolute="top-middle">
                     <Circle />
-                </Lookingglass>
-                <Lookingglass div absolute="top-right">
+                </CSS>
+                <CSS div absolute="top-right">
                     <Circle />
-                </Lookingglass>
-                <Lookingglass div absolute="middle-left">
+                </CSS>
+                <CSS div absolute="middle-left">
                     <Circle />
-                </Lookingglass>
-                <Lookingglass div absolute="middle">
+                </CSS>
+                <CSS div absolute="middle">
                     <Circle />
-                </Lookingglass>
-                <Lookingglass div absolute="middle-right">
+                </CSS>
+                <CSS div absolute="middle-right">
                     <Circle />
-                </Lookingglass>
-                <Lookingglass div absolute="bottom-left">
+                </CSS>
+                <CSS div absolute="bottom-left">
                     <Circle />
-                </Lookingglass>
-                <Lookingglass div absolute="bottom-middle">
+                </CSS>
+                <CSS div absolute="bottom-middle">
                     <Circle />
-                </Lookingglass>
-                <Lookingglass div absolute="bottom-right">
+                </CSS>
+                <CSS div absolute="bottom-right">
                     <Circle />
-                </Lookingglass>
-            </Lookingglass>
+                </CSS>
+            </CSS>
         </>
     );
 };
@@ -160,10 +168,10 @@ export const AbsoluteButton = (args) => {
     const notificationStyles = { height: '20px', width: '20px' };
 
     return (
-        <Lookingglass position="relative">
+        <CSS position="relative">
             <Button color="primary">
                 Click
-                <Lookingglass
+                <CSS
                     div
                     absolute="top-right"
                     backgroundColor="success"
@@ -175,11 +183,11 @@ export const AbsoluteButton = (args) => {
                     borderColor="white"
                     style={notificationStyles}
                 >
-                    <Lookingglass absolute="middle">
+                    <CSS absolute="middle">
                         <span>1</span>
-                    </Lookingglass>
-                </Lookingglass>
+                    </CSS>
+                </CSS>
             </Button>
-        </Lookingglass>
+        </CSS>
     );
 };

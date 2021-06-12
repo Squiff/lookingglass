@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import Progress from '../lib/components/Progress';
 import Button from '../lib/components/Button';
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 
 export const argTypes = {
     progress: { control: null },
     indeterminate: {},
 };
 
-const Spacer = () => <Lookingglass marginBottom="2" div />;
+const Spacer = () => <CSS marginBottom="2" div />;
 
 /* -------- All Props ---------- */
 export const AllProps = (args) => {
@@ -74,13 +74,13 @@ export const Indeterminate = (args) => <Progress indeterminate />;
 export const Customized = (args) => (
     <>
         <h6>Colors</h6>
-        <Lookingglass backgroundColor="error">
+        <CSS backgroundColor="error">
             <Progress progress={10} />
-        </Lookingglass>
+        </CSS>
         <Spacer />
-        <Lookingglass backgroundColor="success">
+        <CSS backgroundColor="success">
             <Progress progress={20} />
-        </Lookingglass>
+        </CSS>
         <Spacer />
         <Progress progress={30} style={{ backgroundColor: 'purple' }} />
         <Spacer />

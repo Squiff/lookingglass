@@ -1,9 +1,5 @@
-import { useState } from 'react';
 import Switch from '../lib/components/Switch';
 import Alert from '../lib/components/Alert';
-import Button from '../lib/components/Button';
-import Progress from '../lib/components/Progress';
-import Lookingglass from '../lib/components/Lookingglass';
 import Spinner from '../lib/components/Spinner';
 
 export const argTypes = {

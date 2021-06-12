@@ -1,4 +1,4 @@
-import Lookingglass from '../../lib/components/Lookingglass';
+import CSS from '../../lib/components/CSS';
 import { UpdateArgTable } from '../helpers/utils';
 import { argTypes as lookingglassArgs } from './lookingglass.storyconfig';
 
@@ -15,17 +15,19 @@ export const OverflowProps = (args) => {
     const childStyles = { width: '750px', height: '750px' };
 
     return (
-        <Lookingglass {...args}>
+        <CSS {...args}>
             <div style={containerStyles}>
                 <div style={childStyles}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde totam harum nulla exercitationem
-                    cumque sint id quod. Maxime nulla id tempore laborum vitae accusamus quis velit excepturi, unde
-                    illo. Quia quae facilis aliquam, ipsam recusandae non perferendis! Tenetur, corrupti, consectetur
-                    totam fuga in cupiditate, iusto dolor optio esse veniam quas facere eius saepe quis quo nemo est ex
-                    iure inventore reiciendis tempora cumque? Iste modi dolorem nemo iusto voluptatem. Dolorem, ea.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde totam harum nulla
+                    exercitationem cumque sint id quod. Maxime nulla id tempore laborum vitae
+                    accusamus quis velit excepturi, unde illo. Quia quae facilis aliquam, ipsam
+                    recusandae non perferendis! Tenetur, corrupti, consectetur totam fuga in
+                    cupiditate, iusto dolor optio esse veniam quas facere eius saepe quis quo nemo
+                    est ex iure inventore reiciendis tempora cumque? Iste modi dolorem nemo iusto
+                    voluptatem. Dolorem, ea.
                 </div>
             </div>
-        </Lookingglass>
+        </CSS>
     );
 };
 

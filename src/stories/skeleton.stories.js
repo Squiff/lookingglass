@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Skeleton from '../lib/components/Skeleton';
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 import Button from '../lib/components/Button';
 
 export const argTypes = {};
@@ -11,12 +11,12 @@ export const AllProps = (args) => {
 
     return (
         <>
-            <Lookingglass div padding="3" backgroundColor={backgroundClass}>
+            <CSS div padding="3" backgroundColor={backgroundClass}>
                 <Skeleton style={{ height: '2rem' }} {...args} />
                 <Skeleton {...args} />
                 <Skeleton {...args} />
                 <Skeleton {...args} />
-            </Lookingglass>
+            </CSS>
         </>
     );
 };
@@ -34,7 +34,7 @@ export const Size = (args) => {
     }, [loading]);
 
     return (
-        <Lookingglass div padding="3" style={{ height: '150px' }}>
+        <CSS div padding="3" style={{ height: '150px' }}>
             {loading && (
                 <>
                     <Skeleton style={{ height: '2rem', marginBottom: '1rem' }} {...args} />
@@ -56,7 +56,7 @@ export const Size = (args) => {
                     </p>
                 </>
             )}
-        </Lookingglass>
+        </CSS>
     );
 };
 
@@ -77,12 +77,12 @@ Size.parameters = {
 export const Dark = (args) => {
     return (
         <>
-            <Lookingglass div padding="3" backgroundColor="primary-d1">
+            <CSS div padding="3" backgroundColor="primary-d1">
                 <Skeleton style={{ height: '2rem' }} dark />
                 <Skeleton dark />
                 <Skeleton dark />
                 <Skeleton dark />
-            </Lookingglass>
+            </CSS>
         </>
     );
 };

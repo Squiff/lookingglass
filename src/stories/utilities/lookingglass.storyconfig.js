@@ -1,4 +1,4 @@
-// the 'lookingglass' utility is used by all utility stories
+// the 'CSS' utility is used by all utility stories
 // put common config here to share across stories
 
 import { UpdateArgTable } from '../helpers/utils';

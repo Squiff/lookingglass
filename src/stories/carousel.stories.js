@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import Carousel from '../lib/components/Carousel';
 import Flex from '../lib/components/Flex';
-import LG from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 import { cleanArgs } from './helpers/utils';
 
 export const argTypes = {
@@ -12,11 +12,11 @@ export const argTypes = {
 
 function ExampleSlideContent({ slideNumber, ...props }) {
     return (
-        <LG {...props} fontSize="2">
+        <CSS {...props} fontSize="2">
             <Flex justify="center" align="center" style={{ height: '400px' }}>
                 Slide {slideNumber}
             </Flex>
-        </LG>
+        </CSS>
     );
 }
 
@@ -88,12 +88,12 @@ export const Callbacks = (args) => {
 
     return (
         <>
-            <LG div fontWeight="600">
+            <CSS div fontWeight="600">
                 On Change: {changeStart}
-            </LG>
-            <LG div fontWeight="600">
+            </CSS>
+            <CSS div fontWeight="600">
                 On Change End: {changeEnd}
-            </LG>
+            </CSS>
             <Carousel onChange={onChange} onChangeEnd={onChangeEnd}>
                 <Carousel.Slide>
                     <ExampleSlideContent backgroundColor="primary" color="white" slideNumber="1" />

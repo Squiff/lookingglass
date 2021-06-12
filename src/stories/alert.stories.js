@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Alert from '../lib/components/Alert';
 import Button from '../lib/components/Button';
-import Lookingglass from '../lib/components/Lookingglass';
+import CSS from '../lib/components/CSS';
 import { cleanArgs, themeColors } from './helpers/utils';
 
 export const argTypes = {
@@ -29,7 +29,7 @@ export const argTypes = {
     },
 };
 
-const Spacer = () => <Lookingglass div margin="2" />;
+const Spacer = () => <CSS div margin="2" />;
 
 /* -------- ALL PROPS ---------------- */
 export const AlertProps = (args) => {
@@ -38,8 +38,8 @@ export const AlertProps = (args) => {
     return (
         <Alert {...props}>
             <Alert.Header>Alert Header</Alert.Header>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat adipisci eligendi tempore, ullam sapiente
-            officiis!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat adipisci eligendi
+            tempore, ullam sapiente officiis!
         </Alert>
     );
 };
