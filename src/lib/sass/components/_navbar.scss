@@ -2,6 +2,7 @@
 @use '../utilities/shadows';
 @use './popup';
 @use 'sass:map';
+@use 'sass:color';
 
 // navbar options
 $padding: 0 1.5rem !default;
@@ -11,11 +12,11 @@ $shadow: 3 !default;
 $nav-item-padding: 0.5rem 0.75rem !default;
 $nav-item-font-size: 0.875rem !default;
 $nav-item-font-weight: 500 !default;
-$nav-item-hover-background: rgba(0, 0, 0, 0.1) !default;
+$nav-item-hover-background: rgba(map.get(config.$palette, greys, '9'), 0.1) !default;
 // dropdown options
 $dropdown-background: config.$background-color !default;
 $dropdown-color: config.$text-color !default;
-$dropdown-border: 1px solid #ccc !default;
+$dropdown-border: 1px solid map.get(config.$palette, greys, '4') !default;
 $dropdown-shadow: 5 !default;
 $dropdown-font-size: 0.875rem !default;
 // tray options

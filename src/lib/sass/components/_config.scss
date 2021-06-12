@@ -10,7 +10,7 @@ $breakpoints: (
 
 // ********** COLORS **********
 
-// themes: generate component variants
+// themes: the colors are used to generate component variants
 $theme: (
     'primary': #0c837b,
     'success': #1b881f,
@@ -19,12 +19,29 @@ $theme: (
     'info': #1d77d1,
 ) !default;
 
-// $colors only used for text/border/bakground - not component variants
+// colors to used throughout app
+// $color: map.get($colors, $color-name)
+$palette: (
+    'greys': (
+        '1': #f4f5f6,
+        '2': #e9ebec,
+        '3': #dee0e3,
+        '4': #bcc2c7,
+        '5': #9ba3ab,
+        '6': #7a8590,
+        '7': #5d666f,
+        '8': #41474e,
+        '9': #25292c,
+        '10': #131416,
+    ),
+) !default;
+
+// $colors only used for text/border/bakground utilities
 $colors: (
     'white': #ffffff,
     'black': #000000,
-    'dark': #333333,
-    'light': #cccccc,
+    'dark': map.get($palette, greys, '8'),
+    'light': map.get($palette, greys, '3'),
 ) !default;
 
 // generate [variantCount] light/dark variations for specified colors
@@ -32,8 +49,12 @@ $color-variants: ('primary') !default;
 $color-variant-count: 4 !default;
 
 $background-color: #fff !default; // default background for the body
-$text-color: #222222 !default; // default color for the body
-$dark-text-color: #222222 !default; // Text color to be used on light backgrounds
+$text-color: map.get($palette, greys, '8') !default; // default color for the body
+$dark-text-color: map.get(
+    $palette,
+    greys,
+    '8'
+) !default; // Text color to be used on light backgrounds
 
 // ********** OTHER **********
 $z-index: (

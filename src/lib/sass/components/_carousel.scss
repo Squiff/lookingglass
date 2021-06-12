@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use '../components/config';
+
 .carousel {
     overflow: hidden;
     position: relative;
@@ -75,7 +78,7 @@
         fill: #ffffff;
 
         .carousel--ctrl-dark & {
-            fill: #222222;
+            fill: map.get(config.$palette, greys, '9');
         }
     }
 
@@ -102,7 +105,7 @@
             background-color: #ffffff;
 
             .carousel--ctrl-dark & {
-                background-color: #222222;
+                background-color: map.get(config.$palette, greys, '9');
             }
         }
     }

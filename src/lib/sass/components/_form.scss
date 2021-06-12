@@ -4,9 +4,9 @@
 
 $padding: 0.5rem 0.75rem !default;
 $font-size: 0.875rem !default;
-$border: 1px solid #bbb !default;
+$border: 1px solid map.get(config.$palette, greys, '4') !default;
 $border-radius: 4px !default;
-$placeholder-color: #999 !default;
+$placeholder-color: map.get(config.$palette, greys, '5') !default;
 $placeholder-font-weight: 400 !default;
 $margin: 0 0 0.5rem 0 !default;
 $inline-margin: 0 1rem 0 0 !default;
@@ -17,8 +17,8 @@ $large-font-size: 1rem !default;
 $large-padding: 0.625rem 0.75rem !default;
 // Input States
 $focus-color: #389aeb !default;
-$disabled-background-color: #f0f0f0 !default;
-$disabled-border-color: #cccccc !default;
+$disabled-background-color: map.get(config.$palette, greys, '1') !default;
+$disabled-border-color: map.get(config.$palette, greys, '3') !default;
 $error-color: map.get(config.$theme, 'error') !default;
 // Type specific
 $option-font-size: 0.875rem !default;
@@ -29,7 +29,7 @@ $label-font-weight: 600 !default;
 // Form text
 $validation-font-size: 0.75rem !default;
 $validation-font-weight: 600 !default;
-$help-color: #666666;
+$help-color: map.get(config.$palette, greys, '7');
 $help-font-size: 0.75rem !default;
 $help-font-weight: 400 !default;
 // Form Group

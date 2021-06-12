@@ -1,5 +1,10 @@
+@use 'sass:map';
+@use 'sass:color';
+@use 'sass:math';
+@use '../components/config';
+
 $padding: 4px 8px !default;
-$hover-background-color: rgba(27, 27, 27, 0.1) !default;
+$hover-background-color: rgba(map.get(config.$palette, greys, '5'), 0.1) !default;
 
 .list {
     margin: 0;

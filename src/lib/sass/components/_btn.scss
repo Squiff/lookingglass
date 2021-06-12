@@ -1,4 +1,5 @@
 @use 'sass:color';
+@use 'sass:map';
 @use './config';
 @use '../utilities/colors';
 @use '../utilities/shadows';
@@ -15,6 +16,10 @@ $padding-large: 0.625rem 1.25rem !default;
 $font-size-large: 1rem !default;
 $borderRadius: 2px !default;
 $shadow: 1 !default;
+// hover colors
+$hover-dark-base: map.get(config.$palette, greys, '9');
+$hover-dark: color.change($hover-dark-base, $alpha: 0.1) !default;
+$hover-light: rgba(255, 255, 255, 0.2) !default;
 
 // ========= Solid Color  ============
 @mixin buttonSolid($color-name, $color) {
@@ -89,11 +94,11 @@ $shadow: 1 !default;
 
         /* additional hover effect can be added */
         &--hover-dark:hover:not(:disabled) {
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: $hover-dark;
         }
 
         &--hover-light:hover:not(:disabled) {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: $hover-light;
         }
 
         &--hover-opacity:hover:not(:disabled) {
