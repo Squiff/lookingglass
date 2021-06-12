@@ -29,16 +29,16 @@ export const ThemeColors = (args) => (
         <CSS div padding="3" margin="1" backgroundColor="primary" color="white">
             Primary
         </CSS>
-        <CSS div padding="3" margin="1" backgroundColor="success">
+        <CSS div padding="3" margin="1" backgroundColor="success" color="white">
             Success
         </CSS>
-        <CSS div padding="3" margin="1" backgroundColor="error">
+        <CSS div padding="3" margin="1" backgroundColor="error" color="white">
             Error
         </CSS>
-        <CSS div padding="3" margin="1" backgroundColor="warning">
+        <CSS div padding="3" margin="1" backgroundColor="warning" color="dark">
             Warning
         </CSS>
-        <CSS div padding="3" margin="1" backgroundColor="info">
+        <CSS div padding="3" margin="1" backgroundColor="info" color="white">
             Info
         </CSS>
     </>
