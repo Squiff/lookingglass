@@ -1,0 +1,65 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './switch.stories.js';
+import Switch from '../lib/components/Switch';
+
+<Meta title="Components/Switch Case" component={Switch} argTypes={stories.argTypes} />
+
+# Switch Case
+
+<Description of={Switch} />
+
+```js
+import Switch from 'lookingglass-react/Switch';
+```
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />
+
+## Basics
+
+A Switch shows components based on the status passed to it.
+
+#### Using Values
+
+Set a `value` on the `Switch` and any component in the corresponding `Switch.Case` that has a matching value (using `===`) will be rendered.
+
+```jsx
+<Switch value="success">
+    <Switch.Case value="success">
+        <Alert color="success">Complete!</Alert>
+    </Switch.Case>
+    <Switch.Case value="error">
+        <Alert color="error">Error!</Alert>
+    </Switch.Case>
+    <Switch.Case value="loading">
+        <Spinner />
+    </Switch.Case>
+</Switch>
+```
+
+#### Using booleans
+
+The `value` for `Switch.Case` can also accept booleans. If set to true then the component will be rendered.
+
+<Canvas>
+    <Story story={stories.Booleans} />
+</Canvas>
+
+#### Single Match
+
+Add the `single` flag to `Switch` to only return the first matching element
+
+<Canvas>
+    <Story story={stories.Single} />
+</Canvas>
+
+#### Fallback
+
+Add the `fallback` flag to `Switch.Case` to show the component if there are no other matches
+
+<Canvas>
+    <Story story={stories.Fallback} />
+</Canvas>
