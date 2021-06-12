@@ -1,6 +1,9 @@
 @use 'sass:map';
 @use '../components/config';
 
+$animation-duration: 750ms !default;
+$control-color-dark: map.get(config.$palette, greys, '10') !default;
+
 .carousel {
     overflow: hidden;
     position: relative;
@@ -9,11 +12,11 @@
         display: flex;
 
         &--next {
-            animation: carouselNext 750ms ease-in-out;
+            animation: carouselNext $animation-duration ease-in-out;
         }
 
         &--prev {
-            animation: carouselPrev 750ms ease-in-out;
+            animation: carouselPrev $animation-duration ease-in-out;
         }
     }
 
@@ -78,7 +81,7 @@
         fill: #ffffff;
 
         .carousel--ctrl-dark & {
-            fill: map.get(config.$palette, greys, '9');
+            fill: $control-color-dark;
         }
     }
 
@@ -105,7 +108,7 @@
             background-color: #ffffff;
 
             .carousel--ctrl-dark & {
-                background-color: map.get(config.$palette, greys, '9');
+                background-color: $control-color-dark;
             }
         }
     }
