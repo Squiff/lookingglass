@@ -8,8 +8,8 @@ $padding-l: 0.75rem 1rem !default;
 $td-font-size: 0.875rem !default;
 $th-font-size: 0.875rem !default;
 $th-font-weight: 600 !default;
-$border-color: #dde0e3 !default;
-$hover-background-color: rgba(64, 71, 79, 0.05) !default;
+$border-color: map.get(config.$palette, greys, '3') !default;
+$hover-background-color: rgba(map.get(config.$palette, greys, '5'), 0.1) !default;
 $margin: 0 0 1rem 0 !default;
 
 .table {

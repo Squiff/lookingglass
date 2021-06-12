@@ -2,13 +2,15 @@
 @use '../components/config';
 @use 'sass:map';
 
-$tab-background: #f4f4f4 !default;
+$tab-background: map.get(config.$palette, greys, '1') !default;
 $tab-font-size: 0.875rem !default;
 $tab-font-weight: 600 !default;
 $tab-padding: 0.5rem 1rem !default;
 $tab-margin: 0 0 0.5rem 0 !default;
+// ACTIVE
 $tab-active-color: map.get(config.$theme, 'info') !default;
-$tab-active-background: #ffffff !default;
+// FOCUS
+$tab-focus-color: map.get(config.$palette, greys, '3') !default;
 
 .tabs {
     &__nav {
@@ -34,10 +36,11 @@ $tab-active-background: #ffffff !default;
         font-size: $tab-font-size;
         font-family: inherit;
         flex: none;
+        background: transparent;
 
         &:focus {
-            background-color: #dddddd;
-            border-color: #dddddd;
+            background-color: $tab-focus-color;
+            border-color: $tab-focus-color;
             outline: none;
         }
 

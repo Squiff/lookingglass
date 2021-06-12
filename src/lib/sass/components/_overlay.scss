@@ -2,8 +2,8 @@
 @use 'sass:color';
 @use './config';
 
-$background-color: rgba(27, 27, 27, 0.5) !default;
-$background-color-closed: color.change($background-color, $alpha: 0);
+$background-color: rgba(map.get(config.$palette, greys, '10'), 0.5) !default;
+$background-color-closed: rgba(map.get(config.$palette, greys, '10'), 0) !default;
 
 .overlay {
     position: fixed;

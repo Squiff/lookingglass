@@ -1,10 +1,11 @@
 @use 'sass:map';
 @use 'sass:color';
+@use '../../config';
 
 $scrollbar: true !default;
 
 $scrollbar-colors: (
-    'dark': #666666,
+    'dark': map.get(config.$palette, greys, '8'),
     'light': #c1c1c1,
 ) !default;
 

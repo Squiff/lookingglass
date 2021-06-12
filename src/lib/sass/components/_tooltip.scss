@@ -2,7 +2,7 @@
 @use './popup';
 @use 'sass:map';
 
-$background-color: #333333 !default;
+$background-color: map.get(config.$palette, greys, '8') !default;
 $color: #ffffff !default;
 $font-weight: 500 !default;
 $padding: 4px 8px !default;
