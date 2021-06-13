@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import useClickAway from '../utilities/hooks/useClickAway';
 import useKeyDownListener from '../utilities/hooks/useKeyListener';
+import PropTypes from 'prop-types';
 
 /** Component for managing popups. Built on top of popperjs. */
 function Popup({
@@ -10,15 +11,14 @@ function Popup({
     targetRef,
     show,
     onClose,
-    clickAway, // call onClose when clicked away
-    escape, // call onClose when escape key hit
+    clickAway,
+    escape,
     placement,
     distance,
-    popupClassName, // class to be added to the popup
+    popupClassName,
     popupStyles,
-    arrow, // add an arrow
+    arrow,
     arrowClassName,
-    arrowOptions,
     ...props
 }) {
     const [targetElement, setTargetElement] = useState(targetRef.current);
@@ -30,7 +30,7 @@ function Popup({
     }, []);
 
     // usePopper provides the styles and attributes to be applied
-    const popperOptions = getPopperOptions({ arrowOptions, distance, placement });
+    const popperOptions = getPopperOptions({ distance, placement });
     const { styles, attributes } = usePopper(targetElement, popperElement, popperOptions);
 
     // clickAway Listener
@@ -67,6 +67,44 @@ function Popup({
     );
 }
 
+Popup.propTypes = {
+    /** ref of the target element */
+    targetRef: PropTypes.shape({ current: PropTypes.any }),
+    /** Control whether the popup is visible or not */
+    show: PropTypes.bool,
+    /** Callback fired when popper wants to close */
+    onClose: PropTypes.func,
+    /** Fire onClose callback when clicked away */
+    clickAway: PropTypes.bool,
+    /** Fire onClose callback on escape key */
+    escape: PropTypes.bool,
+    /** Popup placement in relation to the target element */
+    placement: PropTypes.oneOf([
+        'top-start',
+        'top',
+        'top-end',
+        'right-start',
+        'right',
+        'right-end',
+        'bottom-start',
+        'bottom',
+        'bottom-end',
+        'left-start',
+        'left',
+        'left-end',
+    ]),
+    /** Popup distance, in pixels, from target element */
+    distance: PropTypes.number,
+    /** Additional popup classes */
+    popupClassName: PropTypes.string,
+    /** Additional popup styles*/
+    popupStyles: PropTypes.object,
+    /** Include poup arrow */
+    arrow: PropTypes.bool,
+    /** Arrow Styles */
+    arrowClassName: PropTypes.string,
+};
+
 Popup.defaultProps = {
     clickAway: true,
     escape: true,
@@ -74,7 +112,7 @@ Popup.defaultProps = {
 
 function getPopperOptions(options) {
     // padding prevents arrow spilling into borderRadius
-    const arrowoptions = { name: 'arrow', options: { padding: 10, ...options.arrowOptions } };
+    const arrowoptions = { name: 'arrow', options: { padding: 10 } };
     // {name: 'offset', [skid, distance]}
     // skid is position along the reference edge (i.e. if placement top, then 5 will move 5px right)
     // distance is distance from the reference edge (i.e. if placement top, then 5 will move 5px up (further away))

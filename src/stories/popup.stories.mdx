@@ -1,0 +1,131 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './popup.stories.js';
+import Popup from '../lib/components/Popup';
+
+<Meta title="Components/Popup" component={Popup} argTypes={stories.argTypes} />
+
+# Popup
+
+<Description of={Popup} />
+
+```js
+import Popup from 'lookingglass-react/Popup';
+```
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />
+
+## Basics
+
+Popup is bulit on top of [popperjs](https://popper.js.org/) and should is used to place content next to a target element.
+
+#### Tooltips vs Popup
+
+`Tooltip` and `Popup` share much of the same functionality.
+
+-   `Tooltip` is built on top of `Popup`
+-   `Tooltip` has opinionated styling applied. `Popup` does not have styling
+-   `Tooltip` abstracts away some of the complexity of using a `Popup` at the cost of hiding some of the `Popup` options.
+
+### Overflow and Scrolling
+
+Where possible, `Popup` will adjust location to keep the content in view.
+
+<Canvas>
+    <Story story={stories.Scrolling} />
+</Canvas>
+
+_Note: If you are using a scrolling container that is not the the window, then you need to ensure the
+container has a non-static `position`_
+
+## Usage
+
+#### Refs
+
+A `Popup` requires access to the target's DOM node to position correctly, so the first step is to get a ref to the target element.
+This ref can then be passed to `<Popup>` using the `targetRef` prop.
+
+If the target is a react component, ensure that the component forwards the ref to a DOM element. See [Ref Forwarding](https://reactjs.org/docs/forwarding-refs.html)
+
+```jsx
+ const targetRef = useRef(null);
+...
+<button ref={targetRef}>Target Button</button>
+...
+<Popup targetRef={targetRef} ... >...</Popup>
+```
+
+#### Positioning
+
+A `Popup` will only be visible when the `show` prop is set to true.
+
+`placement` allows the popup to be positioned in one of twelve locations.
+
+`distance` specifies the distance in pixels from the target element.
+
+<Canvas>
+    <Story story={stories.Placements} />
+</Canvas>
+
+#### Callbacks
+
+An `onClose` callback can be provided.
+This will be fired when the user clicks outside of the popup or hits the `ESC` key.
+
+You can set `clickAway` and `escape` options to false to prevent `onClose` from being fired.
+
+<Canvas>
+    <Story story={stories.Callbacks} />
+</Canvas>
+
+#### Styling
+
+Typically you will style content directly, but if required, classes and styles can be added to `Popup` using `popupClassName` and `popupStyles`.
+
+#### Arrows
+
+`Popup` is able to independantly position an additional arrow element.
+Arrow styles will need to be provided.
+
+-   Popper applies CSS transforms to the **arrow** element to keep it on the target.
+-   Popper applies data attributes to the **popup** element to let you know what direction the
+    popup is in relation to the target element e.g. `data-popper-placement="top"`
+-   Apply styles using `arrowClassName`
+
+Here is an example implementation from `Tooltip`
+
+```css
+/* popper applies the transforms to arrow. ::before is the viewable arrow */
+.tooltip__arrow,
+.tooltip__arrow::before {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+}
+
+.tooltip__arrow::before {
+    content: '';
+    transform: rotate(45deg);
+    background-color: #222;
+}
+
+/* position box halfway out to form the arrow */
+.tooltip[data-popper-placement^='top'] > .tooltip__arrow {
+    bottom: -4px;
+}
+
+.tooltip[data-popper-placement^='bottom'] > .tooltip__arrow {
+    top: -4px;
+}
+
+.tooltip[data-popper-placement^='left'] > .tooltip__arrow {
+    right: -4px;
+}
+
+.tooltip[data-popper-placement^='right'] > .tooltip__arrow {
+    left: -4px;
+}
+```
