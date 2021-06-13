@@ -20,7 +20,8 @@ import Tooltip from 'lookingglass-react/Tooltip';
 
 ## Basics
 
-Tooltips are powered by [popper](https://popper.js.org/) for optimal placement. A tooltip will switch locations and make adjustments when scrolling to prevent overflow.
+Tooltips are built on top of the `Popup` component, which is powered by [popperjs](https://popper.js.org/).
+A tooltip will place content next to a target element and will adjust location to keep the tooltip content in view.
 
 <Canvas>
     <Story story={stories.Scrolling} />
