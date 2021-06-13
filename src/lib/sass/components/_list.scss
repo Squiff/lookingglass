@@ -3,7 +3,7 @@
 @use 'sass:math';
 @use '../components/config';
 
-$padding: 4px 8px !default;
+$padding: 0.25rem 0.5rem !default;
 $hover-background-color: rgba(map.get(config.$palette, greys, '5'), 0.1) !default;
 
 .list {

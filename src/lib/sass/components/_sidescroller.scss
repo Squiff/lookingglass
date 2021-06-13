@@ -1,3 +1,6 @@
+$btn-padding: 0.25rem !default;
+$icon-size: 20px !default;
+
 .sidescroller {
     display: flex;
 
@@ -14,7 +17,7 @@
 
     &__btn {
         cursor: pointer;
-        padding: 0.25rem;
+        padding: $btn-padding;
         border: none;
         background-color: transparent;
 
@@ -31,7 +34,7 @@
     }
 
     &__icon {
-        width: 20px;
-        height: 20px;
+        width: $icon-size;
+        height: $icon-size;
     }
 }
