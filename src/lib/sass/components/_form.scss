@@ -81,7 +81,7 @@ $form-group-margin: 0 0 0.875rem 0;
     &:focus {
         border-color: $focus-color;
         // outline will not respect border-radius
-        box-shadow: 0 0 0 2px color.change($focus-color, $alpha: 0.3);
+        box-shadow: 0 0 0 1px color.change($focus-color, $alpha: 0.5);
 
         // Remove focus for Checkbox and radio for mouse user
         &:not(:focus-visible) {
