@@ -23,22 +23,18 @@ $_arrow-size: 4px;
 }
 
 /* popper applies it translations to arrow - ::before is the viewable arrow */
-.tooltip__arrow {
-    visibility: hidden;
-}
 
 .tooltip__arrow,
 .tooltip__arrow::before {
     position: absolute;
     width: $_arrow-size * 2;
     height: $_arrow-size * 2;
-    background-color: inherit;
 }
 
 .tooltip__arrow::before {
-    visibility: visible;
     content: '';
     transform: rotate(45deg);
+    background-color: $background-color;
 }
 
 /* arrow initial position */
