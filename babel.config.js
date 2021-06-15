@@ -3,16 +3,18 @@ module.exports = function (api) {
     let modules;
 
     switch (env) {
+        case 'test':
+            return testConfig;
         case 'esm':
-            modules = false;
-            break;
+            return getConfig({ modules: false });
         case 'cjs':
-            modules = 'cjs';
-            break;
+            return getConfig({ modules: 'cjs' });
         default:
-            modules = 'auto';
+            return getConfig({ modules: 'auto' });
     }
+};
 
+function getConfig({ modules }) {
     return {
         presets: [
             [
@@ -26,4 +28,16 @@ module.exports = function (api) {
         ],
         plugins: ['@babel/plugin-transform-runtime'],
     };
+}
+
+const testConfig = {
+    presets: [
+        [
+            '@babel/preset-env',
+            {
+                targets: { node: 'current' },
+            },
+        ],
+        '@babel/preset-react',
+    ],
 };
