@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Button = React.forwardRef(
-    ({ children, color, size, btnStyle, block, className, hoverEffect, disabled, ...props }, ref) => {
+    (
+        { children, color, size, btnStyle, block, className, hoverEffect, disabled, ...props },
+        ref
+    ) => {
         const classes = {
             btn: true,
             'btn--none': btnStyle === 'none',
             [`btn--none--hover-${hoverEffect}`]: btnStyle === 'none' && hoverEffect,
             'btn--block': block,
             [`btn--${size}`]: size,
-            [`btn--outline-${color}`]: btnStyle === 'outline',
-            [`btn--clr-${color}`]: !btnStyle,
+            [`btn--outline-${color}`]: btnStyle === 'outline' && color,
+            [`btn--clr-${color}`]: !btnStyle && color,
         };
 
         const classStr = classNames(classes, className);
