@@ -38,6 +38,11 @@ const testConfig = {
                 targets: { node: 'current' },
             },
         ],
-        '@babel/preset-react',
+        [
+            '@babel/preset-react',
+            {
+                runtime: 'automatic',
+            },
+        ],
     ],
 };
