@@ -84,12 +84,12 @@ describe('<Carousel>', () => {
         expect(screen.getByText('Slide 3')).toHaveClass('carousel__slide--active');
     });
 
-    test('It fires onChange event', () => {
+    test('It fires change events', () => {
         const onChange = jest.fn();
-        // const onChanged = jest.fn(); // no clean way to grab this
+        const onChangeEnd = jest.fn();
 
         render(
-            <Carousel onChange={onChange}>
+            <Carousel onChange={onChange} onChangeEnd={onChangeEnd}>
                 <Carousel.Slide>Slide 1</Carousel.Slide>
                 <Carousel.Slide>Slide 2</Carousel.Slide>
                 <Carousel.Slide>Slide 3</Carousel.Slide>
@@ -97,9 +97,18 @@ describe('<Carousel>', () => {
         );
 
         expect(onChange).toBeCalledTimes(0);
+        expect(onChangeEnd).toBeCalledTimes(0);
 
         fireEvent.click(screen.getByLabelText('next'));
 
         expect(onChange).toBeCalledTimes(1);
+        expect(onChange).toHaveBeenCalledWith({ active: 2 });
+        expect(onChangeEnd).toBeCalledTimes(0);
+
+        fireEvent.animationEnd(screen.getByText('Slide 1').parentElement);
+
+        expect(onChange).toBeCalledTimes(1);
+        expect(onChangeEnd).toBeCalledTimes(1);
+        expect(onChangeEnd).toHaveBeenCalledWith({ active: 2 });
     });
 });
