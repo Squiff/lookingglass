@@ -3,7 +3,7 @@ import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 /** A component to transition to and from a collapsed state */
-function Collapser({ show, className, children }) {
+function Collapser({ show, className, children, ...props }) {
     const collapserRef = useRef();
     const collapserContentRef = useRef();
     const initialMountRef = useRef(true);
@@ -22,8 +22,8 @@ function Collapser({ show, className, children }) {
 
     // initial mount in collapsed state
     useLayoutEffect(() => {
-        if (initialMountRef.current && !show) collapserRef.current.style.height = 0;
-    }, [show]);
+        if (!show) collapserRef.current.style.height = 0;
+    }, []);
 
     // set initial mount flag. !! Keep as last effect !!
     useEffect(() => {
@@ -39,7 +39,12 @@ function Collapser({ show, className, children }) {
     const classes = classNames('collapser', className);
 
     return (
-        <div className={classes} onTransitionEnd={handleTransitionEnd} ref={collapserRef}>
+        <div
+            className={classes}
+            onTransitionEnd={handleTransitionEnd}
+            ref={collapserRef}
+            {...props}
+        >
             <div className="collapser__content" ref={collapserContentRef} aria-hidden={!show}>
                 <div>{children}</div>
             </div>
