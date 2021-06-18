@@ -25,7 +25,7 @@ afterEach(() => {
     Overlay.mockClear();
 });
 
-describe('<Drawer>', () => {
+describe('<Modal>', () => {
     test('It renders children', () => {
         render(<Modal show={true}>Modal Content</Modal>);
 
@@ -41,7 +41,7 @@ describe('<Drawer>', () => {
     test('It forwards props', () => {
         render(
             <Modal show={true} data-testid="modal">
-                Drawer Content
+                Modal Content
             </Modal>
         );
 
@@ -70,7 +70,7 @@ describe('<Drawer>', () => {
 
         render(
             <Modal show={true} onClosed={onClosed} onOpened={onOpened}>
-                Drawer Content
+                Modal Content
             </Modal>
         );
 
