@@ -127,7 +127,6 @@ export const All = (args) => {
                 <NavBar.Tray
                     show={showTray}
                     onClose={() => {
-                        console.log('CLOSE TRAY');
                         setShowTray(false);
                     }}
                 >
