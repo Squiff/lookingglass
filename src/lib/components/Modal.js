@@ -6,7 +6,17 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 /** A dialog box that needs to be interacted with before other content */
-function Modal({ children, className, style, show, onClose, onClosed, onOpened, closeOnClick, ...props }) {
+function Modal({
+    children,
+    className,
+    style,
+    show,
+    onClose,
+    onClosed,
+    onOpened,
+    closeOnClick,
+    ...props
+}) {
     const modalRef = useRef();
     const transitionEnd = useTransitionEnd(modalRef);
 
@@ -21,8 +31,13 @@ function Modal({ children, className, style, show, onClose, onClosed, onOpened, 
             onExited={onClosed}
             onEntered={onOpened}
         >
-            <Overlay show={show} onClose={onClose} closeOnClick={closeOnClick} className="modal__overlay" {...props}>
-                <div className={classStr} style={style} ref={modalRef}>
+            <Overlay
+                show={show}
+                onClose={onClose}
+                closeOnClick={closeOnClick}
+                className="modal__overlay"
+            >
+                <div className={classStr} style={style} ref={modalRef} {...props}>
                     {children}
                 </div>
             </Overlay>
