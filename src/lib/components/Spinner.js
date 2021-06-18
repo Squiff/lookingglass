@@ -32,7 +32,7 @@ function Spinner({ className, style, halo, size, delay }) {
     const classStr = classNames(classes, className);
 
     return (
-        <span aria-label="Loading">
+        <span aria-label="loading">
             <svg className={classStr} style={style} viewBox="0 0 100 100">
                 {haloCircle}
                 <circle className="spinner__circle" cx="50" cy="50" r="40"></circle>
