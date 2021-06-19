@@ -31,8 +31,3 @@ export function useScrollable(ref) {
 
     return isScrollable;
 }
-
-/** determine whether element content is larger than width */
-function canScroll(ref) {
-    return tabNavRef.current?.offsetWidth < tabNavRef.current?.scrollWidth;
-}
