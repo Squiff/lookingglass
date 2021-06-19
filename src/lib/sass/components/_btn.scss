@@ -45,6 +45,7 @@ $hover-light: rgba(255, 255, 255, 0.2) !default;
         &:hover:not(:disabled) {
             background-color: color.scale($color, $lightness: 95%);
             color: color.scale($color, $lightness: -20%);
+            border-color: color.scale($color, $lightness: -20%);
         }
     }
 }
