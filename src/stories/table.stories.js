@@ -16,18 +16,17 @@ const MockData = ({ columns, rows }) => {
     const dataRows = [];
 
     for (let i = 1; i <= columns; i++) {
-        headers.push(<th>{`Headers ${i}`}</th>);
+        headers.push(<th key={i}>{`Headers ${i}`}</th>);
     }
 
     for (let j = 1; j <= rows; j++) {
         const data = [];
 
         for (let i = 1; i <= columns; i++) {
-            console.log(i, j);
-            data.push(<td>{`Data ${i}`}</td>);
+            data.push(<td key={i}>{`Data ${i}`}</td>);
         }
 
-        dataRows.push(<tr>{data}</tr>);
+        dataRows.push(<tr key={j}>{data}</tr>);
     }
 
     return (
