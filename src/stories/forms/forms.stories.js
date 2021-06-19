@@ -49,7 +49,7 @@ export const Form = (args) => {
             </FormGroup>
             <FormGroup>
                 <Label htmlFor="formSelect">Select</Label>
-                <Select id="formSelect" placeholder="ddd">
+                <Select id="formSelect">
                     <option>Option 1</option>
                     <option>Option 2</option>
                     <option>Option 3</option>
@@ -289,7 +289,13 @@ export const TextAreas = (args) => {
             <div>
                 <Label htmlFor="textAreaInline">Inline</Label>
             </div>
-            <TextArea htmlFor="textArea1" rows="3" defaultValue={dummyText} inline id="textAreaInline" />
+            <TextArea
+                htmlFor="textArea1"
+                rows="3"
+                defaultValue={dummyText}
+                inline
+                id="textAreaInline"
+            />
         </>
     );
 };
