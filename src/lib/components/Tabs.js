@@ -2,6 +2,8 @@ import React, { Children, createContext, useContext, useRef, useState } from 're
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useScrollable } from '../utilities/hooks/useScrollable';
+import ChevronLeft from './icons/ChevronLeft';
+import ChevronRight from './icons/ChevronRight';
 
 const TabContext = createContext();
 
@@ -142,44 +144,17 @@ Tabs.Panel = ({ children, tabId }) => {
 function TabButton({ direction, ...props }) {
     const classes = classNames('tabs__scrollbtn', `tabs__scrollbtn--${direction}`);
 
-    const icon = direction === 'prev' ? <PrevIcon /> : <NextIcon />;
+    const icon =
+        direction === 'prev' ? (
+            <ChevronLeft className="tabs__scrollicon" />
+        ) : (
+            <ChevronRight className="tabs__scrollicon" />
+        );
 
     return (
         <button {...props} className={classes} tabIndex="-1">
             {icon}
         </button>
-    );
-}
-
-function NextIcon() {
-    return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            width="24px"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="tabs__scrollicon"
-        >
-            <path d="M0 0h24v24H0V0z" fill="none" />
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z" />
-        </svg>
-    );
-}
-
-function PrevIcon() {
-    return (
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            width="24px"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="tabs__scrollicon"
-        >
-            <path d="M0 0h24v24H0V0z" fill="none" />
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z" />
-        </svg>
     );
 }
 
