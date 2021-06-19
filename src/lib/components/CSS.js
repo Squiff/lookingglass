@@ -59,6 +59,7 @@ const CSS = React.forwardRef(
             scrollbarTrack,
             listStyleType,
             listPosition,
+            ...props
         },
         ref
     ) => {
@@ -126,7 +127,7 @@ const CSS = React.forwardRef(
         let child;
         if (div === true) {
             child = (
-                <div className={classes} style={style} ref={ref}>
+                <div className={classes} style={style} ref={ref} {...props}>
                     {children}
                 </div>
             );
