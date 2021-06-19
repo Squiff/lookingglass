@@ -48,7 +48,6 @@ function Carousel({
     }
 
     function handleIndicatorClick({ id }) {
-        console.log('inicatorClick', id);
         if (running) return;
         if (slideCount === 1) return;
         if (id === active) return;
