@@ -1,0 +1,89 @@
+import { Meta, Story, Canvas, Description, ArgsTable } from '@storybook/addon-docs/blocks';
+import * as stories from './notification.stories.js';
+import Notification from '../lib/components/Notification';
+import Alert from '../lib/components/Alert';
+
+<Meta title="Components/Notification" component={Notification} argTypes={stories.argTypes} />
+
+# Notification
+
+<Description of={Notification} />
+
+```js
+import Notification from 'lookingglass-react/Notification';
+```
+
+<Canvas>
+    <Story story={stories.AllProps} name="All Props" />
+</Canvas>
+
+<ArgsTable story="All Props" />
+
+## Components
+
+Notifications use the following components.
+
+**Notification**: A single notification comprised of a heading and body. `<Notification>` should **Always** be wrapped in a `<Notification.Group>`
+
+**Notification.Group**: Responsible for poisitioning notifications and managing queued notifications.
+
+**Notification.Header**: The notification header
+
+**Notification.Body**: The notification body
+
+<br />
+
+### Basics
+
+<hr />
+
+#### type
+
+There are four types of notification: `info`, `success`, `error` and `warning`.
+The supplied type determines the color scheme and icon used.
+
+#### placement
+
+Notifications use position `fixed` and can be placed in six locations: `top-start`,
+`top`,
+`top-end`,
+`bottom-start`,
+`bottom` and
+`bottom-end`
+
+`placement` is set on the `<Notification.Group>`
+
+<Canvas>
+    <Story story={stories.Placement} />
+</Canvas>
+
+### Limit
+
+You can cap the number of notifications by setting `limit` e.g. `<Notification.Group limit={1}>`.
+Any notifications over the limit will be queued and displayed when an open notification is dismissed.
+
+<Canvas>
+    <Story story={stories.Limit} />
+</Canvas>
+
+### Opening and Closing
+
+<hr />
+
+#### closeBtn
+
+A close button will be enabled by default. Set `<Notification closeBtn={false}>` to remove the button
+
+#### autoDismiss
+
+Is the duration in ms before the notification is dismissed.
+The timer will be disabled when the user hovers the notification and restarted when the user "unhovers".
+Set to `0` to disable.
+
+#### Callbacks
+
+The `onOpened` and `onClosed` callbacks are fired when the opening/closing animation has completed.
+
+<Alert color="info">
+    You should remove notifications from your array using the `onClosed` callback.
+</Alert>
