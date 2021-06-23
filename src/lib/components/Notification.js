@@ -52,25 +52,34 @@ function Notification({
         setIsHovered(false);
     }
 
-    // when animation ends, trigger the element to collapse
-    // This ensures stacked notifications don't jump
+    // inform <Transition> when animation complete
     function handleAddEndListener(done) {
+        addEndListener(() => {
+            if (show) {
+                done();
+            } else {
+                collapse(done);
+            }
+        });
+    }
+
+    // run after closing animation
+    // This ensures stacked notifications don't jump
+    function collapse(done) {
         const style = notificationRef.current.style;
         const height = notificationRef.current.scrollHeight;
         const duration = 250;
 
-        addEndListener(() => {
-            style.height = height + 'px';
-            style.transition = `all ${duration}ms`;
+        style.height = height + 'px';
+        style.transition = `all ${duration}ms`;
 
-            const _ = notificationRef.current.scrollHeight; // force reflow
+        const _ = notificationRef.current.scrollHeight; // force reflow
 
-            style.height = '0';
-            style.margin = '0';
-            style.padding = '0';
+        style.height = '0';
+        style.margin = '0';
+        style.padding = '0';
 
-            setTimeout(done, duration);
-        });
+        setTimeout(done, duration);
     }
 
     return (
@@ -81,6 +90,7 @@ function Notification({
             unmountOnExit={true}
             onExited={onClosed}
             onEntered={onOpened}
+            appear={true}
         >
             {(state) => {
                 return (
@@ -125,7 +135,7 @@ Notification.defaultProps = {
  * Responsible for positioning and queuing notifications.
  * Notifications should ALWAYS be wrapped in a Notification.Group
  * */
-Notification.Group = ({ placement, limit, children }) => {
+Notification.Group = ({ placement, limit, children, ...props }) => {
     const [queueAnimation, setQueueAnimation] = useState(false);
     const childrenArr = React.Children.toArray(children);
 
@@ -156,7 +166,9 @@ Notification.Group = ({ placement, limit, children }) => {
 
     return (
         <GroupContext.Provider value={{ queueAnimation, placement }}>
-            <div className={wrapperClasses}>{displayChildren}</div>
+            <div className={wrapperClasses} {...props}>
+                {displayChildren}
+            </div>
         </GroupContext.Provider>
     );
 };
@@ -187,11 +199,11 @@ const NotificationWrapped = React.forwardRef(
                 notification: true,
                 [`notification--${type}`]: type,
                 'notification--closable': closeBtn,
-                'notification--top': placement.substring(0, 3) === 'top',
-                'notification--bottom': placement.substring(0, 6) === 'bottom',
+                'notification--top': placement && placement.substring(0, 3) === 'top',
+                'notification--bottom': placement && placement.substring(0, 6) === 'bottom',
                 'notification--closing': state === 'exiting',
-                'notification--open': state === 'entered' && !queueAnimationRef.current,
-                'notification--qopen': state === 'entered' && queueAnimationRef.current,
+                'notification--open': state === 'entering' && !queueAnimationRef.current,
+                'notification--qopen': state === 'entering' && queueAnimationRef.current,
             },
             className
         );
