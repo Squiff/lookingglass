@@ -1,29 +1,67 @@
 import { useRef, useState } from 'react';
 import Button from '../lib/components/Button';
 import Notification from '../lib/components/Notification';
-import CSS from '../lib/components/CSS';
 import Flex from '../lib/components/Flex';
-import { cleanArgs } from './helpers/utils';
 
 export const argTypes = {
-    show: {
-        control: null,
-    },
-    type: { control: null },
-    closeBtn: { control: null },
-    placement: { control: null },
-    autoDismiss: { control: null },
-    onClose: {
+    placement: {
+        description: 'Notification placement',
+        control: {
+            type: null,
+            options: ['large', 'small'],
+        },
         table: {
-            category: 'Events',
+            category: 'Notification Group',
+            type: {
+                summary: 'top-start|top|top-end|bottom-start|bottom|bottom-end',
+            },
+            defaultValue: { summary: 'bottom' },
+        },
+    },
+    limit: {
+        description: 'Limit the number of displayed notifications',
+        control: {
+            type: null,
+        },
+        table: {
+            type: {
+                summary: 'number',
+            },
+            category: 'Notification Group',
+        },
+    },
+    type: {
+        table: {
+            category: 'Notification',
+        },
+        control: {
+            type: null,
+        },
+    },
+    closeBtn: {
+        control: null,
+        table: {
+            category: 'Notification',
+        },
+    },
+    autoDismiss: {
+        control: null,
+        table: {
+            category: 'Notification',
         },
     },
     onClosed: {
+        control: {
+            type: null,
+        },
         table: {
             category: 'Events',
         },
     },
     onOpened: {
+        control: {
+            type: null,
+        },
         table: {
             category: 'Events',
         },
@@ -31,7 +69,7 @@ export const argTypes = {
 };
 
 /* -------- ALL PROPS ---------------- */
-export const AllProps = (args) => {
+export const AllProps = () => {
     const idRef = useRef(0);
     const [notificationList, setNotificationList] = useState([]);
 
@@ -186,7 +224,12 @@ export const Limit = (args) => {
 
             <Notification.Group placement="bottom-end" limit={1}>
                 {notificationList.map((n) => (
-                    <Notification type={n.type} key={n.id} onClosed={() => handleClosed(n.id)}>
+                    <Notification
+                        type={n.type}
+                        key={n.id}
+                        onClosed={() => handleClosed(n.id)}
+                        autoDismiss={1000}
+                    >
                         <Notification.Header>{n.header}</Notification.Header>
                         <Notification.Body>{n.body}</Notification.Body>
                     </Notification>

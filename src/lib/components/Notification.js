@@ -227,11 +227,7 @@ Notification.Group.displayName = 'Notification.Group';
 Notification.Header.displayName = 'Notification.Header';
 Notification.Body.displayName = 'Notification.Body';
 
-Notification.propTypes = {
-    /** The type of notification */
-    type: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
-    /** Include close button */
-    closeBtn: PropTypes.bool,
+Notification.Group.propTypes = {
     /** Notification placement */
     placement: PropTypes.oneOf([
         'top-start',
@@ -241,6 +237,15 @@ Notification.propTypes = {
         'bottom',
         'bottom-end',
     ]),
+    /** Limit the number of displayed notifications */
+    limit: PropTypes.number,
+};
+
+Notification.propTypes = {
+    /** The type of notification */
+    type: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
+    /** Include close button */
+    closeBtn: PropTypes.bool,
     /** Duration before notification is dismissed. Set to 0 to disable. */
     autoDismiss: PropTypes.number,
     /** Callback fired when finished opening */
