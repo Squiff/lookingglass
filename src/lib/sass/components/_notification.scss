@@ -1,0 +1,231 @@
+@use 'sass:map';
+@use './config';
+@use '../utilities/colors';
+@use './internal/closebutton';
+
+$border-radius: 4px !default;
+$padding: 0.5rem 1rem !default;
+$border: 1px solid map.get(config.$palette, greys, '3') !default;
+$position-vertical: 20px !default;
+$position-horizontal: 20px !default;
+$font-size: 0.875rem !default;
+$background: config.$background-color !default;
+$color: config.$dark-text-color !default;
+$z-index: map.get(config.$z-index, 'notification');
+$box-shadow: rgba(map.get(config.$palette, greys, '9'), 0.15) 0px 16px 24px 0px !default;
+$margin: 10px !default;
+// header
+$header-font-size: 0.875rem !default;
+$header-font-weight: 0.875rem !default;
+$header-margin: 0 0 0.5rem 0 !default; // 0.25
+// body
+$body-font-size: 0.875rem !default;
+// colors
+$info-color: map.get(config.$theme, info) !default;
+$warning-color: map.get(config.$theme, warning) !default;
+$error-color: map.get(config.$theme, error) !default;
+$success-color: map.get(config.$theme, success) !default;
+
+/* ========= MIXINS ============ */
+@mixin notificationKeyframes() {
+    $translate-from: 32px;
+    $translate-overshoot: -6px;
+
+    // Enter Animation
+    @keyframes notification-show-top {
+        0% {
+            transform: translateY(-$translate-from);
+            opacity: 0;
+        }
+
+        75% {
+            transform: translateY(-$translate-overshoot);
+            opacity: 0.9;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes notification-show-bottom {
+        0% {
+            transform: translateY($translate-from);
+            opacity: 0;
+        }
+
+        75% {
+            transform: translateY($translate-overshoot);
+            opacity: 0.9;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    // Close Animation
+    @keyframes notification-close {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translateY(-$translate-from);
+            opacity: 0;
+        }
+    }
+
+    // Queue Enter Animation
+    @keyframes notification-show-queue {
+        0% {
+            transform: translateY($translate-from);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}
+
+@mixin colorVariant($name, $color) {
+    &--#{$name} {
+        border-left: 3px solid $color;
+
+        & .notification__icon {
+            color: $color;
+        }
+    }
+}
+
+/* ========= CSS ============ */
+.notification {
+    // All notifications are wrapped in a __group
+    &__group {
+        position: fixed;
+        z-index: $z-index;
+        font-size: $font-size;
+
+        &--top-start {
+            top: $position-vertical;
+            left: $position-horizontal;
+        }
+
+        &--top {
+            top: $position-vertical;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &--top-end {
+            top: $position-vertical;
+            right: $position-horizontal;
+        }
+
+        &--bottom-start {
+            bottom: $position-vertical;
+            left: $position-horizontal;
+        }
+
+        &--bottom {
+            bottom: $position-vertical;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &--bottom-end {
+            bottom: $position-vertical;
+            right: $position-horizontal;
+        }
+    }
+
+    // this will be wrapped in __group
+    & {
+        position: relative;
+        background: $background;
+        color: $color;
+        border-radius: $border-radius;
+        padding: $padding;
+        box-shadow: $box-shadow;
+        border: $border;
+        overflow: hidden;
+
+        @include colorVariant(info, $info-color);
+        @include colorVariant(warning, $warning-color);
+        @include colorVariant(error, $error-color);
+        @include colorVariant(success, $success-color);
+
+        // animations
+        @include notificationKeyframes();
+
+        &--top {
+            margin-bottom: $margin;
+
+            &.notification--open {
+                animation: notification-show-top 350ms ease-in-out;
+            }
+
+            &.notification--closing {
+                animation: notification-close 350ms ease-in-out;
+                animation-fill-mode: forwards;
+            }
+
+            &.notification--qopen {
+                animation: notification-show-queue 350ms ease-in-out;
+            }
+        }
+
+        &--bottom {
+            margin-top: $margin;
+
+            &.notification--open {
+                animation: notification-show-bottom 350ms ease-in-out;
+            }
+
+            &.notification--closing {
+                animation: notification-close 350ms ease-in-out;
+                animation-fill-mode: forwards;
+            }
+
+            &.notification--qopen {
+                animation: notification-show-queue 350ms ease-in-out;
+            }
+        }
+
+        // ensure there is room for the absolute positioned button
+        &--closable {
+            padding-right: 2rem;
+        }
+    }
+
+    &__top {
+        display: flex;
+        align-items: center;
+        margin: $header-margin;
+    }
+
+    &__header {
+        font-size: $header-font-size;
+        font-weight: $header-font-weight;
+        margin: 0;
+    }
+
+    &__body {
+        font-size: $body-font-size;
+    }
+
+    &__closeBtn {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 0.75rem;
+    }
+}

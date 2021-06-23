@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
 
-function CloseButton({ className, ...btnProps }) {
-    const classes = classNames('close-btn', className);
+function CloseButton({ className, size, ...btnProps }) {
+    const classes = classNames({ 'close-btn': true, [`close-btn--${size}`]: size }, className);
 
     return (
         <button {...btnProps} className={classes} aria-label="close">
