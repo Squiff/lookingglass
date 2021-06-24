@@ -26,6 +26,7 @@ Follow the links below for more information on individual components.
 -   [List](https://lookingglass.asquith.dev/?path=/docs/components-list)
 -   [Modal](https://lookingglass.asquith.dev/?path=/docs/components-modal)
 -   [NavBar](https://lookingglass.asquith.dev/?path=/docs/components-navbar)
+-   [Notifications](https://lookingglass.asquith.dev/?path=/docs/components-notification)
 -   [Popup](https://lookingglass.asquith.dev/?path=/docs/components-popup)
 -   [Progress](https://lookingglass.asquith.dev/?path=/docs/components-progress)
 -   [SideScroller](https://lookingglass.asquith.dev/?path=/docs/components-sidescroller)
