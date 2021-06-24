@@ -428,11 +428,11 @@ export const DropdownLogin = (args) => {
                         <form style={{ width: '200px' }} onSubmit={handleSubmit}>
                             <FormGroup>
                                 <Label>User Name</Label>
-                                <Input type="text" />
+                                <Input type="text" size="s" />
                             </FormGroup>
                             <FormGroup>
                                 <Label>Password</Label>
-                                <Input type="password" />
+                                <Input type="password" size="s" />
                             </FormGroup>
                             <FormGroup>
                                 <Label> Keep Me Signed In</Label>
