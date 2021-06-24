@@ -7,30 +7,34 @@ import ChevronRight from './icons/ChevronRight';
 
 const TabContext = createContext();
 
-/** Navigate between multiple panes of content. Tabs have opinionated styling applied. */
+/** Navigate between multiple panes of content */
 function Tabs({ children, active, onChange }) {
     const ChildrenArr = Children.toArray(children);
-    const tabs = ChildrenArr.filter((c) => c.type === Tabs.Tab);
-    const panels = ChildrenArr.filter((c) => c.type === Tabs.Panel);
-
     const tabNavRef = useRef();
     const isScrollable = useScrollable(tabNavRef);
 
+    //  Focus is assumed visible by default and disabled onMouseDown
+    //  We are not trying to replicate :focus-visible pseudo selector,
+    //  but provide a modifier class that can be used like **tabs__nav--focus-visible .xyz:focus**
+    const [focusVisible, setFocusVisible] = useState(true);
+
+    const tabs = ChildrenArr.filter((c) => c.type === Tabs.Tab);
+    const panels = ChildrenArr.filter((c) => c.type === Tabs.Panel);
+
+    // default to the first tab
     let defaultTab;
     if (tabs[0]) {
         defaultTab = tabs[0].props.tabId;
     }
 
-    // default to the first tab
     const [activeTabInternal, setActiveTabInternal] = useState(defaultTab);
     const activeTabId = active ? active : activeTabInternal;
 
     // get active panel from id
     let activePanel = panels.filter((p) => p.props.tabId === activeTabId);
 
+    /** if user controlled, run callback, otherwise use internal state */
     function handleTabClick(id) {
-        // if user controlled, run callback
-        // otherwise use internal state
         if (active) {
             if (onChange) onChange(id);
         } else {
@@ -57,16 +61,17 @@ function Tabs({ children, active, onChange }) {
             case 'ArrowLeft':
                 e.preventDefault();
                 focusTab('prev');
+                break;
             default:
                 break;
         }
     }
 
-    /* direction: next/prev */
     function focusTab(direction) {
-        // get active tab
         const focusedTab = document.activeElement;
         if (focusedTab.classList.contains('tabs__tab') === false) return;
+
+        setFocusVisible(true);
 
         switch (direction) {
             case 'next':
@@ -81,9 +86,25 @@ function Tabs({ children, active, onChange }) {
         }
     }
 
+    function handleMouseDown() {
+        setFocusVisible(false);
+    }
+
+    // reset when nav loses focus
+    function handleFocusOut(e) {
+        if (e.currentTarget.contains(e.relatedTarget) == false) {
+            setFocusVisible(true);
+        }
+    }
+
     const navwrapperClasses = classNames({
         tabs__navwrapper: true,
         'tabs__navwrapper--scrollable': isScrollable,
+    });
+
+    const navClasses = classNames({
+        tabs__nav: true,
+        'tabs__nav--focus-visible': focusVisible,
     });
 
     const contextValue = { handleTabClick, activeTabId };
@@ -94,9 +115,11 @@ function Tabs({ children, active, onChange }) {
                 <div className={navwrapperClasses}>
                     <TabButton onClick={handleScrollStart} direction="prev" />
                     <div
-                        className="tabs__nav"
+                        className={navClasses}
                         ref={tabNavRef}
                         onKeyDown={handleKeyDown}
+                        onMouseDown={handleMouseDown}
+                        onBlur={handleFocusOut}
                         role="tablist"
                     >
                         {tabs}
@@ -166,10 +189,12 @@ Tabs.propTypes = {
 };
 
 Tabs.Tab.propTypes = {
+    /** The tab ID. Should match the tabId on the related Tabs.Panel */
     tabId: PropTypes.any.isRequired,
 };
 
 Tabs.Panel.propTypes = {
+    /** The tab ID. Should match the tabId on the related Tabs.Tab */
     tabId: PropTypes.any.isRequired,
 };
 

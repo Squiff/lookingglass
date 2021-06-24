@@ -2,20 +2,19 @@
 @use '../components/config';
 @use 'sass:map';
 
-$tab-background: map.get(config.$palette, greys, '1') !default;
 $tab-font-size: 0.875rem !default;
 $tab-font-weight: 600 !default;
 $tab-padding: 0.5rem 1rem !default;
-$tab-margin: 0 0 0.5rem 0 !default;
+$tab-margin: 0 0 1rem 0 !default;
 // ACTIVE
 $tab-active-color: map.get(config.$theme, 'info') !default;
 // FOCUS
-$tab-focus-color: map.get(config.$palette, greys, '3') !default;
+$tab-focus-color: map.get(config.$palette, greys, '2') !default;
 
 .tabs {
     &__nav {
         display: flex;
-        background-color: $tab-background;
+
         flex: 1 1 auto;
         overflow: auto;
         scroll-behavior: smooth;
@@ -32,23 +31,27 @@ $tab-focus-color: map.get(config.$palette, greys, '3') !default;
         cursor: pointer;
         border-width: 0 0 2px 0;
         border-style: solid;
-        border-color: $tab-background;
+        border-color: transparent;
         font-size: $tab-font-size;
         font-family: inherit;
+        color: inherit;
         flex: none;
         background: transparent;
 
         &:focus {
-            background-color: $tab-focus-color;
-            border-color: $tab-focus-color;
             outline: none;
+
+            .tabs__nav--focus-visible & {
+                background-color: $tab-focus-color;
+                border-color: $tab-focus-color;
+            }
         }
 
         &--active {
             border-color: $tab-active-color;
             color: $tab-active-color;
 
-            &:focus {
+            .tabs__nav--focus-visible &:focus {
                 border-color: $tab-active-color;
             }
         }
@@ -56,8 +59,8 @@ $tab-focus-color: map.get(config.$palette, greys, '3') !default;
 
     /* A container for scroll button positioning */
     &__navwrapper {
-        background-color: $tab-background;
         display: flex;
+        border-bottom: 1px solid map.get(config.$palette, greys, '2');
         margin: $tab-margin;
 
         &--scrollable .tabs__scrollbtn {
@@ -70,6 +73,7 @@ $tab-focus-color: map.get(config.$palette, greys, '3') !default;
         border: none;
         font-family: inherit;
         display: none;
+        background: transparent;
     }
 
     &__scrollicon {
