@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Skeleton from '../lib/components/Skeleton';
 import CSS from '../lib/components/CSS';
-import Button from '../lib/components/Button';
 
 export const argTypes = {};
 

@@ -161,6 +161,10 @@ function displayClassResolver(display) {
 }
 
 CSS.propTypes = {
+    /** create a div element */
+    div: PropTypes.bool,
+    /** div styles */
+    style: PropTypes.object,
     /** Is this a container */
     container: PropTypes.bool,
     /** Background Color */

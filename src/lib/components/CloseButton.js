@@ -1,4 +1,6 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
 import React from 'react';
 
 function CloseButton({ className, size, ...btnProps }) {
@@ -25,5 +27,9 @@ function CloseIcon(props) {
         </svg>
     );
 }
+
+CloseButton.propTypes = {
+    size: PropTypes.oneOf(['s']),
+};
 
 export default CloseButton;

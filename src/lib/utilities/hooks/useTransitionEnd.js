@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 // Hook to maintain a transitionEnd callback on ref
 // useful for CSSTransition addEndListener prop

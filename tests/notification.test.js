@@ -1,12 +1,6 @@
 import { fireEvent, render, screen, act } from '@testing-library/react';
 import Notification from '../src/lib/components/Notification';
 
-/** Notification Animation Helper */
-function completeAnimation(element) {
-    fireEvent.animationEnd(element);
-    jest.runAllTimers();
-}
-
 afterEach(() => {
     jest.useRealTimers();
 });

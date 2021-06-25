@@ -22,7 +22,7 @@ function Tooltip({
     const delayTimeout = useRef(null);
 
     // if show is passed, then visibility is controlled by the user
-    let _show = show === undefined ? showInternal : show;
+    const _show = show === undefined ? showInternal : show;
 
     // no distance supplied
     let offsetDistance;
@@ -49,7 +49,7 @@ function Tooltip({
         // any value for show indicates this is a controlled components
         if (!targetElement || show !== undefined) return;
 
-        let inListener = () => {
+        const inListener = () => {
             if (triggerDelay) {
                 delayTimeout.current = setTimeout(() => {
                     setShowInternal(true);
@@ -59,7 +59,7 @@ function Tooltip({
             }
         };
 
-        let outListener = () => {
+        const outListener = () => {
             delayTimeout.current && clearTimeout(delayTimeout.current);
             setShowInternal(false);
         };
@@ -131,6 +131,8 @@ Tooltip.propTypes = {
     distance: PropTypes.number,
     /** ref of the target element */
     targetRef: PropTypes.shape({ current: PropTypes.any }),
+    /** The tooltips id. Used to apply aria-described by to the target element  */
+    id: PropTypes.string,
 };
 
 const TRIGGERS = {

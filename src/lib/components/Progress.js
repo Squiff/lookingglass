@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 /** A Progress/Loading Bar */
-function Progress({ className, children, progress, indeterminate, ...props }) {
+function Progress({ className, progress, indeterminate, ...props }) {
     const classes = ['progress'];
 
     if (indeterminate) classes.push('progress--indeterminate');
@@ -43,6 +43,10 @@ Progress.propTypes = {
     progress: PropTypes.number,
     /** Indicates an unknown loading period */
     indeterminate: PropTypes.bool,
+};
+
+ProgressBar.propTypes = {
+    progress: PropTypes.number,
 };
 
 export default Progress;

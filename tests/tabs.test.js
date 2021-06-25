@@ -83,7 +83,7 @@ describe('<Tabs>', () => {
 
         expect(screen.getByText('Panel 2')).toBeInTheDocument();
 
-        render(
+        rerender(
             <Tabs active="3">
                 <Tabs.Tab tabId="1">Tab One</Tabs.Tab>
                 <Tabs.Tab tabId="2">Tab Two</Tabs.Tab>

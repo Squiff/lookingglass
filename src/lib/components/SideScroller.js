@@ -72,4 +72,9 @@ SideScroller.propTypes = {
     scrollFactor: PropTypes.number,
 };
 
+SideScrollerButton.propTypes = {
+    direction: PropTypes.oneOf(['next', 'prev']),
+    visibility: PropTypes.oneOf(['visible', 'auto', 'hidden']),
+};
+
 export default SideScroller;

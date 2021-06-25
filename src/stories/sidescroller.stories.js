@@ -1,7 +1,3 @@
-import { useState } from 'react';
-import Tabs from '../lib/components/Tabs';
-import Button from '../lib/components/Button';
-import Card from '../lib/components/Card';
 import Flex from '../lib/components/Flex';
 import SideScroller from '../lib/components/SideScroller';
 import CSS from '../lib/components/CSS';
@@ -29,7 +25,7 @@ function Content() {
     );
 }
 
-function ContentCard({ children }) {
+function ContentCard() {
     return (
         <CSS
             marginRight="3"

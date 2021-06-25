@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 /** Styled wrapper around HTML Label */
 const Label = React.forwardRef(({ disabled, invalid, children, className, ...props }, ref) => {
@@ -17,5 +18,12 @@ const Label = React.forwardRef(({ disabled, invalid, children, className, ...pro
         </label>
     );
 });
+
+Label.displayName = 'Label';
+
+Label.propTypes = {
+    disabled: PropTypes.bool,
+    invalid: PropTypes.bool,
+};
 
 export default Label;

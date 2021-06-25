@@ -31,7 +31,7 @@ function Tabs({ children, active, onChange }) {
     const activeTabId = active ? active : activeTabInternal;
 
     // get active panel from id
-    let activePanel = panels.filter((p) => p.props.tabId === activeTabId);
+    const activePanel = panels.filter((p) => p.props.tabId === activeTabId);
 
     /** if user controlled, run callback, otherwise use internal state */
     function handleTabClick(id) {
@@ -74,13 +74,16 @@ function Tabs({ children, active, onChange }) {
         setFocusVisible(true);
 
         switch (direction) {
-            case 'next':
+            case 'next': {
                 const nextTab = focusedTab.nextElementSibling;
                 if (nextTab) nextTab.focus();
                 break;
-            case 'prev':
+            }
+            case 'prev': {
                 const prevTab = focusedTab.previousElementSibling;
                 if (prevTab) prevTab.focus();
+                break;
+            }
             default:
                 break;
         }
@@ -132,6 +135,7 @@ function Tabs({ children, active, onChange }) {
     );
 }
 
+// eslin
 Tabs.Tab = ({ children, tabId }) => {
     const { handleTabClick, activeTabId } = useContext(TabContext);
 
@@ -155,6 +159,7 @@ Tabs.Tab = ({ children, tabId }) => {
     );
 };
 
+// eslint-disable-next-line no-unused-vars
 Tabs.Panel = ({ children, tabId }) => {
     return (
         <div className="tabs__panel" role="tabpanel">
@@ -198,7 +203,12 @@ Tabs.Panel.propTypes = {
     tabId: PropTypes.any.isRequired,
 };
 
+TabButton.propTypes = {
+    direction: PropTypes.oneOf(['prev', 'next']),
+};
+
 Tabs.Tab.displayName = 'Tabs.Tab';
 Tabs.Panel.displayName = 'Tabs.Panel';
+TabButton.displayName = 'TabButton';
 
 export default Tabs;

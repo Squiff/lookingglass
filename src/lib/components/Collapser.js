@@ -13,7 +13,7 @@ function Collapser({ show, className, children, ...props }) {
 
         if (!show) {
             collapserRef.current.style.height = `${collapserContentRef.current?.clientHeight}px`;
-            const _ = collapserRef.current.clientHeight; // force reflow
+            collapserRef.current.clientHeight; // force reflow
             collapserRef.current.style.height = 0;
         } else {
             collapserRef.current.style.height = `${collapserContentRef.current?.clientHeight}px`;

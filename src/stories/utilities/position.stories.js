@@ -3,7 +3,7 @@ import Button from '../../lib/components/Button';
 import Alert from '../../lib/components/Alert';
 import { cleanArgs, UpdateArgTable } from '../helpers/utils';
 import { argTypes as lookingglassArgs } from './lookingglass.storyconfig';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 // Note: directly exporting from a function is an issue for storybook
 const _argTypes = UpdateArgTable(lookingglassArgs, {
@@ -11,27 +11,6 @@ const _argTypes = UpdateArgTable(lookingglassArgs, {
 });
 
 export const argTypes = _argTypes;
-
-const Template = (args) => {
-    const cArgs = cleanArgs(args);
-
-    return (
-        <CSS
-            position="relative"
-            backgroundColor="light"
-            width="50vw"
-            height="50vh"
-            margin="auto"
-            marginTop="5"
-        >
-            <div>
-                <CSS {...cArgs} backgroundColor="dark" borderRadius="rounded">
-                    <div style={{ height: '50px', width: '50px' }}></div>
-                </CSS>
-            </div>
-        </CSS>
-    );
-};
 
 /* --------- Position Props -----------*/
 export const PositionProps = (args) => {

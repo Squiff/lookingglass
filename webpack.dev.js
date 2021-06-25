@@ -1,8 +1,4 @@
-// webpack serve --config webpack.dev.js
-// react hot loader
-
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 

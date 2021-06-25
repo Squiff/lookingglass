@@ -1,4 +1,6 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
 import React, { useRef, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import useClickAway from '../utilities/hooks/useClickAway';
@@ -26,8 +28,6 @@ NavBar.Nav = ({ children, className, ...props }) => {
     );
 };
 
-NavBar.Nav.displayName = 'NavBar.Nav';
-
 NavBar.NavLink = ({ children, className, ...props }) => {
     const classes = classNames('navbar__navitem', className);
 
@@ -39,8 +39,6 @@ NavBar.NavLink = ({ children, className, ...props }) => {
         </li>
     );
 };
-
-NavBar.NavLink.displayName = 'NavBar.NavLink';
 
 NavBar.NavButton = React.forwardRef(({ children, className, dropdown, ...props }, ref) => {
     const classes = classNames('navbar__navitem', className);
@@ -91,8 +89,6 @@ NavBar.Dropdown = ({ children, className, style, ...props }) => {
     );
 };
 
-NavBar.Dropdown.displayName = 'NavBar.Dropdown';
-
 NavBar.Tray = ({ children, show, onClose, className, onClosed, onOpened, clickAway }) => {
     const [trayElement, setTrayElement] = useState();
     const trayRef = useRef();
@@ -124,8 +120,6 @@ NavBar.Tray = ({ children, show, onClose, className, onClosed, onOpened, clickAw
     );
 };
 
-NavBar.Tray.displayName = 'NavBar.Tray';
-
 NavBar.Tray.defaultProps = {
     clickAway: true,
 };
@@ -135,6 +129,25 @@ const trayTransitionClasses = {
     enterActive: 'navbar__tray--open',
     enterDone: 'navbar__tray--open',
     exit: 'navbar__tray--closing',
+};
+
+NavBar.Nav.displayName = 'NavBar.Nav';
+NavBar.Dropdown.displayName = 'NavBar.Dropdown';
+NavBar.Tray.displayName = 'NavBar.Tray';
+NavBar.NavLink.displayName = 'NavBar.NavLink';
+NavBar.NavButton.displayName = 'NavBar.NavButton';
+
+NavBar.NavButton.propTypes = {
+    dropdown: PropTypes.bool,
+};
+
+NavBar.Tray.propTypes = {
+    show: PropTypes.bool,
+    onClose: PropTypes.func,
+    className: PropTypes.func,
+    onClosed: PropTypes.func,
+    onOpened: PropTypes.func,
+    clickAway: PropTypes.bool,
 };
 
 export default NavBar;

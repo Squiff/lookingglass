@@ -58,6 +58,8 @@ function handleDisabledClick(e) {
     e.preventDefault();
 }
 
+Button.displayName = 'Button';
+
 Button.propTypes = {
     /** theme color to apply to the button */
     color: PropTypes.string,
@@ -69,8 +71,10 @@ Button.propTypes = {
     block: PropTypes.bool,
     /** Add hover effect when btnStyle="none" */
     hoverEffect: PropTypes.oneOf(['dark', 'light', 'opacity']),
-    /** The HTML tag to render */
-    // tag: PropTypes.string,
+    /** is the button disabled */
+    disabled: PropTypes.bool,
+    /** href location. Renders an <a> element */
+    href: PropTypes.string,
 };
 
 export default Button;

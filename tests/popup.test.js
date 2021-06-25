@@ -1,5 +1,5 @@
-import { render, screen, waitFor, act, fireEvent } from '@testing-library/react';
-import React, { useEffect, useState } from 'react';
+import { render, screen, act, fireEvent } from '@testing-library/react';
+import React from 'react';
 import Popup from '../src/lib/components/Popup';
 
 // Note on await act(async () => await null);

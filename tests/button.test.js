@@ -1,6 +1,6 @@
-import React, { createRef, useRef } from 'react';
+import React, { createRef } from 'react';
 import Button from '../src/lib/components/Button';
-import { fireEvent, render, screen, cleanup } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 describe('<Button>', () => {
     test('It renders a button', () => {

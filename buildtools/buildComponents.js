@@ -2,10 +2,7 @@ const fse = require('fs-extra');
 const path = require('path');
 const buildPath = require('./buildPaths');
 
-const componentRelPath = path.relative(
-    buildPath.babelEntry,
-    buildPath.componentEntry
-);
+const componentRelPath = path.relative(buildPath.babelEntry, buildPath.componentEntry);
 
 // Return Array of Components
 async function getComponents() {
@@ -21,14 +18,14 @@ async function getComponents() {
 // return esm, cjs path and component package directory for provided component name
 function componentPaths(componentName) {
     const filename = `${componentName}.js`;
-    const package = path.join(buildPath.out, componentName);
-    const esm = path.relative(package, buildPath.esm);
-    const cjs = path.relative(package, buildPath.cjs);
+    const pkg = path.join(buildPath.out, componentName);
+    const esm = path.relative(pkg, buildPath.esm);
+    const cjs = path.relative(pkg, buildPath.cjs);
 
     return {
         esm: path.join(esm, componentRelPath, filename),
         cjs: path.join(cjs, componentRelPath, filename),
-        package: package,
+        package: pkg,
     };
 }
 
@@ -50,7 +47,7 @@ async function createComponentPackages() {
         const packageObj = componentPackage(cp);
         const packageJson = JSON.stringify(packageObj, null, 4);
         const filePath = path.join(cp.package, 'package.json');
-        //const p = WriteFile(cp.package, 'package.json', packageJson);
+
         const p = fse.outputFile(filePath, packageJson);
 
         promises.push(p);

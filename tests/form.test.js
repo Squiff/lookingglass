@@ -1,4 +1,4 @@
-import { fireEvent, getByRole, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Input, Select, TextArea } from '../src/lib/components/Input';
 import Label from '../src/lib/components/Label';
 import FormGroup from '../src/lib/components/FormGroup';

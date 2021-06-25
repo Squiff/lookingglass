@@ -14,7 +14,6 @@ import {
     faTasks,
     faCog,
     faQuestion,
-    faTimes,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -127,7 +126,7 @@ CloseDrawer.parameters = {
 };
 
 /* ------------ DRAWER CONTENT ---------- */
-const ExampleListItem = ({ children, icon, text }) => {
+const ExampleListItem = ({ icon, text }) => {
     return (
         <>
             <List.Button>
@@ -148,7 +147,7 @@ const ExampleListItem = ({ children, icon, text }) => {
     );
 };
 
-const DrawerCloseIconBtn = ({ children, icon, text, ...props }) => {
+const DrawerCloseIconBtn = (props) => {
     return (
         <Flex cols="auto" justify="end">
             <CSS marginRight="2" marginTop="1" padding="1">

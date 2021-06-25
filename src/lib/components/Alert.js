@@ -8,7 +8,17 @@ import useTransitionEnd from '../utilities/hooks/useTransitionEnd';
 /**
  * Displays a message with the supplied color scheme
  */
-function Alert({ children, className, color, alertStyle, show, closeBtn, onClose, onClosed, onOpened, ...props }) {
+function Alert({
+    children,
+    className,
+    color,
+    show,
+    closeBtn,
+    onClose,
+    onClosed,
+    onOpened,
+    ...props
+}) {
     const [showInternal, setShowInternal] = useState(true);
     const alertRef = useRef();
     const transitionEnd = useTransitionEnd(alertRef);
@@ -25,7 +35,7 @@ function Alert({ children, className, color, alertStyle, show, closeBtn, onClose
         }
     }
 
-    let classes = ['alert'];
+    const classes = ['alert'];
 
     classes.push(`alert-${color}`);
 
@@ -68,6 +78,8 @@ Alert.propTypes = {
     onClosed: PropTypes.func,
     /** Callback fired when opening starts */
     onOpened: PropTypes.func,
+    /** Include a close button on the alert */
+    closeBtn: PropTypes.bool,
 };
 
 const alertTransitionClasses = {
