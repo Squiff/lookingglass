@@ -35,7 +35,7 @@ export const ThemeColors = (args) => (
         <CSS div padding="3" margin="1" backgroundColor="error" color="white">
             Error
         </CSS>
-        <CSS div padding="3" margin="1" backgroundColor="warning" color="dark">
+        <CSS div padding="3" margin="1" backgroundColor="warning" color="black">
             Warning
         </CSS>
         <CSS div padding="3" margin="1" backgroundColor="info" color="white">

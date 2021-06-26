@@ -403,6 +403,12 @@ const baseArgTypes = {
             options: ['default', 'inside'],
         },
     },
+    div: {
+        control: {
+            type: 'boolean',
+        },
+    },
+    style: { control: { type: false } },
 };
 
 export const argTypes = UpdateArgTable(baseArgTypes, { disableAll: true });
