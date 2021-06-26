@@ -8,6 +8,7 @@ $colors: colors.componentColors();
 $font-weight: 400 !default;
 $font-size: 0.875rem !default;
 $padding: 0.375rem 0.75rem !default;
+$dark-text-color: map.get(config.$palette, greys, '10') !default;
 // Small button Variant
 $padding-small: 0.125rem 0.625rem !default;
 $font-size-small: 0.875rem !default;
@@ -25,7 +26,7 @@ $hover-light: rgba(255, 255, 255, 0.2) !default;
 @mixin buttonSolid($color-name, $color) {
     .btn--clr-#{$color-name} {
         background-color: $color;
-        color: colors.textColor($color);
+        color: colors.textColor($color, $dark-text-color);
         @include shadows.shadow($shadow);
 
         &:hover:not(:disabled) {
