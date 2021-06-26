@@ -129,7 +129,7 @@ return (
             <Spinner />
         </Switch.Case>
         <Switch.Case fallback>
-            <h5 color="success">{content}</h5>
+            <h5>{content}</h5>
         </Switch.Case>
     </Switch>
 );`,

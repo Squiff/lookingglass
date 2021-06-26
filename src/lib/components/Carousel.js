@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import PropTypes, { bool } from 'prop-types';
+import PropTypes from 'prop-types';
 import ChevronLeft from './icons/ChevronLeft';
 import ChevronRight from './icons/ChevronRight';
 
@@ -131,7 +131,7 @@ Carousel.Slide = ({ children }) => {
     return <>{children}</>;
 };
 
-Carousel.Slide.displayName = 'Carousel.Child';
+Carousel.Slide.displayName = 'Carousel.Slide';
 
 /*======== Internal Components ========= */
 function CarouselSlide({ id, active, running, children }) {
@@ -226,6 +226,29 @@ Carousel.propTypes = {
     onChange: PropTypes.func,
     /** Event fired when new slide animation is complete */
     onChangeEnd: PropTypes.func,
+};
+
+CarouselSlide.propTypes = {
+    id: PropTypes.number,
+    active: PropTypes.number,
+    running: PropTypes.bool,
+};
+
+CarouselButton.propTypes = {
+    direction: PropTypes.oneOf(['prev', 'next']),
+    visibility: PropTypes.oneOf(['visible', 'hidden', 'hover']),
+};
+
+CarouselIndicators.propTypes = {
+    show: PropTypes.bool,
+    slideCount: PropTypes.number,
+    active: PropTypes.number,
+    handleClick: PropTypes.func,
+};
+
+CarouselIndicator.propTypes = {
+    handleClick: PropTypes.func,
+    isActive: PropTypes.bool,
 };
 
 export default Carousel;

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import Carousel from '../lib/components/Carousel';
 import Flex from '../lib/components/Flex';
 import CSS from '../lib/components/CSS';

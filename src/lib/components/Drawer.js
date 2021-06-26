@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Overlay from './Overlay';
 import { CSSTransition } from 'react-transition-group';
 import useTransitionEnd from '../utilities/hooks/useTransitionEnd';

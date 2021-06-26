@@ -13,6 +13,7 @@ export const argTypes = {
     show: {},
     trigger: { control: null },
     triggerDelay: { control: null },
+    id: { control: null },
 };
 
 const TargetElement = React.forwardRef(({ children }, ref) => {

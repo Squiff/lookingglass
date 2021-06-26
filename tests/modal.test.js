@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { CSSTransition } from 'react-transition-group';
 import Modal from '../src/lib/components/Modal';
 import Overlay from '../src/lib/components/Overlay';

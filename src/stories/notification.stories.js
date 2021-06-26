@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import Button from '../lib/components/Button';
 import Notification from '../lib/components/Notification';
 import Flex from '../lib/components/Flex';
+import BodyPortal from './helpers/BodyPortal';
 
 export const argTypes = {
     placement: {
@@ -105,15 +106,16 @@ export const AllProps = () => {
                     Notification
                 </Button>
             </Flex>
-
-            <Notification.Group placement="top-start" limit={4}>
-                {notificationList.map((n) => (
-                    <Notification type={n.type} key={n.id} onClosed={() => handleClosed(n.id)}>
-                        <Notification.Header>{n.header}</Notification.Header>
-                        <Notification.Body>{n.body}</Notification.Body>
-                    </Notification>
-                ))}
-            </Notification.Group>
+            <BodyPortal>
+                <Notification.Group placement="top-start" limit={4}>
+                    {notificationList.map((n) => (
+                        <Notification type={n.type} key={n.id} onClosed={() => handleClosed(n.id)}>
+                            <Notification.Header>{n.header}</Notification.Header>
+                            <Notification.Body>{n.body}</Notification.Body>
+                        </Notification>
+                    ))}
+                </Notification.Group>
+            </BodyPortal>
         </>
     );
 };
@@ -164,15 +166,16 @@ export const Placement = (args) => {
                     Bottom End
                 </Button>
             </Flex>
-
-            <Notification.Group placement={position} limit={1}>
-                {notificationList.map((n) => (
-                    <Notification type={n.type} key={n.id} onClosed={() => handleClosed(n.id)}>
-                        <Notification.Header>{n.header}</Notification.Header>
-                        <Notification.Body>{n.body}</Notification.Body>
-                    </Notification>
-                ))}
-            </Notification.Group>
+            <BodyPortal>
+                <Notification.Group placement={position} limit={1}>
+                    {notificationList.map((n) => (
+                        <Notification type={n.type} key={n.id} onClosed={() => handleClosed(n.id)}>
+                            <Notification.Header>{n.header}</Notification.Header>
+                            <Notification.Body>{n.body}</Notification.Body>
+                        </Notification>
+                    ))}
+                </Notification.Group>
+            </BodyPortal>
         </>
     );
 };
@@ -222,19 +225,21 @@ export const Limit = (args) => {
                 {notificationList.length} Notification(s)
             </Button>
 
-            <Notification.Group placement="bottom-end" limit={1}>
-                {notificationList.map((n) => (
-                    <Notification
-                        type={n.type}
-                        key={n.id}
-                        onClosed={() => handleClosed(n.id)}
-                        autoDismiss={1000}
-                    >
-                        <Notification.Header>{n.header}</Notification.Header>
-                        <Notification.Body>{n.body}</Notification.Body>
-                    </Notification>
-                ))}
-            </Notification.Group>
+            <BodyPortal>
+                <Notification.Group placement="bottom-end" limit={1}>
+                    {notificationList.map((n) => (
+                        <Notification
+                            type={n.type}
+                            key={n.id}
+                            onClosed={() => handleClosed(n.id)}
+                            autoDismiss={1000}
+                        >
+                            <Notification.Header>{n.header}</Notification.Header>
+                            <Notification.Body>{n.body}</Notification.Body>
+                        </Notification>
+                    ))}
+                </Notification.Group>
+            </BodyPortal>
         </>
     );
 };

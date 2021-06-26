@@ -9,12 +9,6 @@ const _argTypes = UpdateArgTable(lookingglassArgs, {
 
 export const argTypes = _argTypes;
 
-const Template = (args) => (
-    <CSS {...args}>
-        <div>The quick brown fox jumps over the lazy dog</div>
-    </CSS>
-);
-
 /*--------- ALL PROPS ------------ */
 export const TextProps = (args) => (
     <CSS {...args}>

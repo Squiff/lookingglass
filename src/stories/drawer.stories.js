@@ -14,9 +14,9 @@ import {
     faTasks,
     faCog,
     faQuestion,
-    faTimes,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import BodyPortal from './helpers/BodyPortal';
 
 export const argTypes = {
     show: { control: null },
@@ -48,9 +48,11 @@ export const AllProps = (args) => {
             <Button block onClick={toggleDrawer} color="info" aria-expanded={show}>
                 Open Drawer
             </Button>
-            <Drawer {...args} show={show} onClose={toggleDrawer}>
-                <DrawerContent direction={args.direction} toggleDrawer={toggleDrawer} />
-            </Drawer>
+            <BodyPortal>
+                <Drawer {...args} show={show} onClose={toggleDrawer}>
+                    <DrawerContent direction={args.direction} toggleDrawer={toggleDrawer} />
+                </Drawer>
+            </BodyPortal>
         </>
     );
 };
@@ -79,11 +81,13 @@ export const Scrolling = (args) => {
             <Button block onClick={toggleDrawer} color="info" aria-expanded={show}>
                 Open Drawer
             </Button>
-            <Drawer direction="left" show={show} onClose={toggleDrawer}>
-                <CSS div style={{ height: '150vh' }}>
-                    <DrawerContent direction="left" toggleDrawer={toggleDrawer} />
-                </CSS>
-            </Drawer>
+            <BodyPortal>
+                <Drawer direction="left" show={show} onClose={toggleDrawer}>
+                    <CSS div style={{ height: '150vh' }}>
+                        <DrawerContent direction="left" toggleDrawer={toggleDrawer} />
+                    </CSS>
+                </Drawer>
+            </BodyPortal>
         </>
     );
 };
@@ -107,13 +111,15 @@ export const CloseDrawer = (args) => {
             <Button block onClick={toggleDrawer} color="info" aria-expanded={show}>
                 Open Drawer
             </Button>
-            <Drawer direction="left" show={show} closeOnClick={false} onClose={toggleDrawer}>
-                <CSS div padding="3">
-                    <Button block color="error" btnStyle="outline" onClick={toggleDrawer}>
-                        Close Drawer
-                    </Button>
-                </CSS>
-            </Drawer>
+            <BodyPortal>
+                <Drawer direction="left" show={show} closeOnClick={false} onClose={toggleDrawer}>
+                    <CSS div padding="3">
+                        <Button block color="error" btnStyle="outline" onClick={toggleDrawer}>
+                            Close Drawer
+                        </Button>
+                    </CSS>
+                </Drawer>
+            </BodyPortal>
         </>
     );
 };
@@ -127,7 +133,7 @@ CloseDrawer.parameters = {
 };
 
 /* ------------ DRAWER CONTENT ---------- */
-const ExampleListItem = ({ children, icon, text }) => {
+const ExampleListItem = ({ icon, text }) => {
     return (
         <>
             <List.Button>
@@ -148,7 +154,7 @@ const ExampleListItem = ({ children, icon, text }) => {
     );
 };
 
-const DrawerCloseIconBtn = ({ children, icon, text, ...props }) => {
+const DrawerCloseIconBtn = (props) => {
     return (
         <Flex cols="auto" justify="end">
             <CSS marginRight="2" marginTop="1" padding="1">

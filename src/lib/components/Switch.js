@@ -1,10 +1,9 @@
 import React, { Children } from 'react';
-import Spinner from './Spinner';
 import PropTypes from 'prop-types';
 
 /** A switch-case implementation for controlling component visibility */
 function Switch({ value, single, children }) {
-    let cases = Children.toArray(children).filter((c) => c.type === Switch.Case);
+    const cases = Children.toArray(children).filter((c) => c.type === Switch.Case);
 
     if (cases.count === 0) return null;
 
@@ -26,19 +25,27 @@ function Switch({ value, single, children }) {
     return <>{matches}</>;
 }
 
-Switch.Case = ({ children, value }) => {
+// linter seems to have isse with the name "Case", despite being valid
+// eslint-disable-next-line no-unused-vars, react/display-name, react/prop-types
+Switch.Case = ({ children, value, fallback }) => {
     return <>{children}</>;
 };
 
+Switch.displayName = 'Switch';
 Switch.Case.displayName = 'Switch.Case';
 
 Switch.propTypes = {
+    /** The value to be tested */
     value: PropTypes.any,
+    /** Only show the first matching case */
     single: PropTypes.bool,
 };
 
 Switch.Case.propTypes = {
+    /** The value to test against */
     value: PropTypes.any,
+    /** Show if there are no matches in the Switch */
+    fallback: PropTypes.bool,
 };
 
 function isMatch(switchValue, caseValue) {
@@ -46,5 +53,3 @@ function isMatch(switchValue, caseValue) {
 }
 
 export default Switch;
-
-undefined === undefined;

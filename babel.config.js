@@ -1,6 +1,5 @@
 module.exports = function (api) {
     const env = api.env();
-    let modules;
 
     switch (env) {
         case 'test':

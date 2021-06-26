@@ -39,7 +39,7 @@ Card.Body = ({ children, className, ...props }) => {
     );
 };
 
-Card.Img = ({ children, className, ...props }) => {
+Card.Img = ({ className, ...props }) => {
     const classes = classNames('card__img', className);
 
     return <img className={classes} {...props} />;

@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+
 import classNames from 'classnames';
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Transition } from 'react-transition-group';
@@ -72,9 +74,7 @@ function Notification({
 
         style.height = height + 'px';
         style.transition = `all ${duration}ms`;
-
-        const _ = notificationRef.current.scrollHeight; // force reflow
-
+        notificationRef.current.scrollHeight; // force reflow
         style.height = '0';
         style.margin = '0';
         style.padding = '0';
@@ -173,17 +173,16 @@ Notification.Group = ({ placement, limit, children, ...props }) => {
     );
 };
 
-/** Notification Header */
-Notification.Header = ({ children, className }) => {
-    const classes = classNames('notification__header', className);
-
-    return <h6 className={classes}>{children}</h6>;
-};
-
 /** Notification Body text */
 Notification.Body = ({ children, className }) => {
     const classes = classNames('notification__header', className);
     return <div className={classes}>{children}</div>;
+};
+
+/** Notification Header */
+Notification.Header = ({ children, className }) => {
+    const classes = classNames('notification__header', className);
+    return <h6 className={classes}>{children}</h6>;
 };
 
 /* ======== INTERNAL COMPONENTS ======= */
@@ -235,8 +234,8 @@ function NotificationIcon({ type }) {
 }
 
 /** ===== META ===== */
-Notification.Group.displayName = 'Notification.Group';
 Notification.Header.displayName = 'Notification.Header';
+Notification.Group.displayName = 'Notification.Group';
 Notification.Body.displayName = 'Notification.Body';
 
 Notification.Group.propTypes = {
@@ -264,6 +263,16 @@ Notification.propTypes = {
     onOpened: PropTypes.func,
     /** Callback fired when finished closing */
     onClosed: PropTypes.func,
+};
+
+NotificationWrapped.propTypes = {
+    state: PropTypes.string,
+    type: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
+    closeBtn: PropTypes.bool,
+};
+
+NotificationIcon.propTypes = {
+    type: PropTypes.oneOf(['info', 'success', 'warning', 'error']),
 };
 
 export default Notification;

@@ -1,9 +1,6 @@
 import Flex from '../lib/components/Flex';
 import CSS from '../lib/components/CSS';
-import { cleanArgs, UpdateArgTable } from './helpers/utils';
-
-const tableDisable = { table: { disable: true } };
-const tableEnable = { table: { disable: false } };
+import { cleanArgs } from './helpers/utils';
 
 export const argTypes = {
     cols: {

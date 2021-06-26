@@ -1,5 +1,3 @@
-import CSS from '../../lib/components/CSS';
-
 export const Headers = (args) => {
     return (
         <>

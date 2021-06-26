@@ -1,0 +1,7 @@
+{
+    "rules": {
+        // used by storybook to generate code snippets
+        "no-unused-vars": ["error", { "argsIgnorePattern": "args" }],
+        "react/prop-types": "off"
+    }
+}

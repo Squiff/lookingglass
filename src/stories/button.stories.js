@@ -2,9 +2,6 @@ import Button from '../lib/components/Button';
 import CSS from '../lib/components/CSS';
 import { cleanArgs, themeColors } from './helpers/utils';
 
-const tableDisable = { table: { disable: true } };
-const tableEnable = { table: { disable: false } };
-
 export const argTypes = {
     color: {
         control: {

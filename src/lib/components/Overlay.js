@@ -4,6 +4,7 @@ import FocusTrap from 'focus-trap-react/dist/focus-trap-react';
 import useTransitionEnd from '../utilities/hooks/useTransitionEnd';
 import useRemoveWindowScroll from '../utilities/hooks/useRemoveWindowScroll';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 // returnFocusOnDeactivate: returns focus to last active element before overlay was opened
 // escapeDeactivates: prevent focus trap handling escape. Will be handled by Overlay
@@ -94,5 +95,11 @@ function Overlay({ children, className, show, onClose, closeOnClick, ...props })
         </CSSTransition>
     );
 }
+
+Overlay.propTypes = {
+    show: PropTypes.bool,
+    onClose: PropTypes.func,
+    closeOnClick: PropTypes.bool,
+};
 
 export default Overlay;

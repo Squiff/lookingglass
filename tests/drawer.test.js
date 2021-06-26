@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { CSSTransition } from 'react-transition-group';
 import Drawer from '../src/lib/components/Drawer';
 import Overlay from '../src/lib/components/Overlay';
