@@ -16,7 +16,7 @@ $box-shadow: rgba(map.get(config.$palette, greys, '9'), 0.15) 0px 16px 24px 0px 
 $margin: 10px !default;
 // header
 $header-font-size: 0.875rem !default;
-$header-font-weight: 0.875rem !default;
+$header-font-weight: 600 !default;
 $header-margin: 0 0 0.5rem 0 !default; // 0.25
 // body
 $body-font-size: 0.875rem !default;
