@@ -175,7 +175,7 @@ Notification.Group = ({ placement, limit, children, ...props }) => {
 
 /** Notification Body text */
 Notification.Body = ({ children, className }) => {
-    const classes = classNames('notification__header', className);
+    const classes = classNames('notification__body', className);
     return <div className={classes}>{children}</div>;
 };
 
