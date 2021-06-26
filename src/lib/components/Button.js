@@ -73,7 +73,7 @@ Button.propTypes = {
     hoverEffect: PropTypes.oneOf(['dark', 'light', 'opacity']),
     /** is the button disabled */
     disabled: PropTypes.bool,
-    /** href location. Renders an <a> element */
+    /** href location. Turns Button into a link */
     href: PropTypes.string,
 };
 
