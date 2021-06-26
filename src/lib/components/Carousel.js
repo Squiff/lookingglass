@@ -131,7 +131,7 @@ Carousel.Slide = ({ children }) => {
     return <>{children}</>;
 };
 
-Carousel.Slide.displayName = 'Carousel.Child';
+Carousel.Slide.displayName = 'Carousel.Slide';
 
 /*======== Internal Components ========= */
 function CarouselSlide({ id, active, running, children }) {
